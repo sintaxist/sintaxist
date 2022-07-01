@@ -1,0 +1,167 @@
+html {
+    background-color: #0F0B30;
+    position: relative;
+    height: 100vh;
+}
+
+.circle {
+    position: absolute;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    border-radius: 500px;
+    inset: 0;
+    margin: auto;
+    background: linear-gradient(#22D497, #840588, #EE7752, #E73C7E, #23A6D5, #23D5AB, #6FF15C, #FFDE30, #FF6557, #A259FF, #F60E70);
+    background-size: 800% 800%;
+    animation: Gradient 25s linear infinite;
+}
+
+.button {
+    clip-path: polygon(0 1%, 80% 0, 100% 100%, 0% 100%);
+}
+
+.circle img {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: auto;
+    z-index: 1;
+}
+.line{
+    position: absolute;
+    width: 100%;
+    height: 15px;
+    background-color: #0F0B30;
+    opacity: 0;
+    z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: line 10s infinite linear;
+}
+@for $i from 0 through 15 {
+    .lineItem-#{$i} {
+        animation-delay: 2s * $i;
+    }
+}
+@keyframes line{
+    0%{
+      opacity: .7;
+      bottom: -30px;
+    }
+    100%{
+      bottom: calc(33px * 7);
+      opacity: 0;
+    }
+  }
+.road{
+    width: calc(20% - 4px);
+    height: 120vh;
+    background: linear-gradient(#b6b6b6 20%, #b6b6b6 80%);
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: calc(50% + 2px);
+    transform: translateX(-50%);
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
+.ag-primary_road-map {
+    width: 100%;
+    height: 310px;
+    /* background: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/moving-cars-v2/images/great-trading-contest-2019-bottom.jpg) no-repeat scroll 50% 0; */
+    overflow: hidden;
+    perspective: 300px;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &:before {
+        content: "";
+        height: 50px;
+        background: linear-gradient(to bottom, #c924eb 0%, #c924ebcc 40%, rgba(201, 36, 235, 0) 100%);
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+    &:after {
+        content: "";
+        height: 150px;
+        background: linear-gradient(to bottom, #0F0B3000 0%, #0F0B30cc 60%, #1b1721 100%);
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+.columns{
+    height: 100%;
+    width: 200%;
+    position: absolute;
+    left: -50%;
+    transform: rotateX(30deg);
+}
+.column{
+    position: absolute;
+    background-color: #0AE5FD;
+    width: 5px;
+    height: 200%;
+    top: -50%;
+    z-index: 0;
+    @media (max-width:550px) {
+        &:nth-child(even){
+            opacity: 0;
+        }
+    }
+}
+@for $i from 1 through 15 {
+    .column-#{$i} {
+        left: 10% * $i;
+    }
+}
+.ag-primary_road {
+    height: 100%;
+    width: 200%;
+    position: absolute;
+    left: -50%;
+    transform: rotateX(30deg);
+    z-index: 1;
+    div {
+        position: absolute;
+        width: 100%;
+        height: 1300px;
+        top: -125px;
+        background-image: url(https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/moving-cars-v2/images/great-trading-contest-2019-road.png);
+        background-position: 50%;
+        transform: translateY(-650px);
+        animation: an-surface-road 3s linear infinite;
+    }
+}
+
+@keyframes an-surface-road {
+    0% {
+        transform: translateY(-650px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
