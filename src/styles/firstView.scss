@@ -3,7 +3,6 @@ html {
     position: relative;
     height: 100vh;
 }
-
 .circle {
     position: absolute;
     overflow: hidden;
@@ -15,12 +14,21 @@ html {
     background: linear-gradient(#22D497, #840588, #EE7752, #E73C7E, #23A6D5, #23D5AB, #6FF15C, #FFDE30, #FF6557, #A259FF, #F60E70);
     background-size: 800% 800%;
     animation: Gradient 25s linear infinite;
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 100%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 100%;
+        }
+    }
 }
-
 .button {
     clip-path: polygon(0 1%, 80% 0, 100% 100%, 0% 100%);
 }
-
 .circle img {
     position: absolute;
     top: 30px;
@@ -48,36 +56,41 @@ html {
 }
 @keyframes line{
     0%{
-      opacity: .7;
-      bottom: -30px;
+        opacity: .7;
+        bottom: -30px;
+    }
+    90%{
+        height: 15px;
     }
     100%{
-      bottom: calc(33px * 7);
-      opacity: 0;
+        bottom: calc(33px * 6);
+        height: 0px;
+        opacity: 0;
     }
-  }
-.road{
-    width: calc(20% - 4px);
-    height: 120vh;
-    background: linear-gradient(#b6b6b6 20%, #b6b6b6 80%);
-    opacity: 1;
-    position: absolute;
-    top: 0;
-    left: calc(50% + 2px);
-    transform: translateX(-50%);
 }
-
-@keyframes Gradient {
-    0% {
-        background-position: 0% 100%;
+.columns{
+    height: 100%;
+    width: 200%;
+    position: absolute;
+    left: -50%;
+    transform: rotateX(30deg);
+}
+.column{
+    position: absolute;
+    background-color: #0AE5FD;
+    width: 5px;
+    height: 200%;
+    top: -50%;
+    z-index: 0;
+    @media (max-width:550px) {
+        &:nth-child(even){
+            opacity: 0;
+        }
     }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 100%;
+}
+@for $i from 1 through 15 {
+    .column-#{$i} {
+        left: 10% * $i;
     }
 }
 .ag-primary_road-map {
@@ -110,31 +123,6 @@ html {
         left: 0;
         right: 0;
         bottom: 0;
-    }
-}
-.columns{
-    height: 100%;
-    width: 200%;
-    position: absolute;
-    left: -50%;
-    transform: rotateX(30deg);
-}
-.column{
-    position: absolute;
-    background-color: #0AE5FD;
-    width: 5px;
-    height: 200%;
-    top: -50%;
-    z-index: 0;
-    @media (max-width:550px) {
-        &:nth-child(even){
-            opacity: 0;
-        }
-    }
-}
-@for $i from 1 through 15 {
-    .column-#{$i} {
-        left: 10% * $i;
     }
 }
 .ag-primary_road {

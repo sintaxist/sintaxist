@@ -18,11 +18,6 @@ export default function FirstView() {
                 }
             </div>
 
-            {/* <div className='ground'>
-                <div className='road'>
-
-                </div>
-            </div> */}
             <div className="ag-primary-block">
                 <div className="ag-primary_road-map">
                     <div className="ag-primary_road">
@@ -30,7 +25,7 @@ export default function FirstView() {
                     </div>
                     <div className='columns'>
                         {
-                            columns.map(linea => (
+                            line.map(linea => (
                                 <span key={linea.id} className={`column column-${linea.id}`}></span>
                             ))
                         }
@@ -46,29 +41,6 @@ const line = [
     {
         id: 0,
     },
-    {
-        id: 1,
-    },
-    {
-        id: 2,
-    },
-    {
-        id: 3,
-    },
-    {
-        id: 4,
-    },
-    {
-        id: 5,
-    },
-    {
-        id: 6,
-    },
-    {
-        id: 7,
-    }
-]
-const columns = [
     {
         id: 1,
     },
