@@ -103,6 +103,11 @@ img {
     background: linear-gradient(108deg, #6630FF 60.17%, #44307D 110.45%);
 }
 
+.orange-gradient {
+    background-color: #FF5C00;
+    background: linear-gradient(108deg, #FF5C00 60.17%, #B54E14 110.45%);
+}
+
 .title-bg-gradient {
     color: #FCFCFC;
     font-weight: bold;
@@ -459,5 +464,9 @@ img {
     .bg-gradient {
         background-color: #6630FF;
         background: linear-gradient(108deg, #6630FF 60.17%, #44307D 110.45%);
+    }
+    .orange-gradient {
+        background-color: #FF5C00;
+        background: linear-gradient(108deg, #FF5C00 60.17%, #B54E14 110.45%);
     }
 }
