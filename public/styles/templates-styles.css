@@ -7,7 +7,7 @@
 body {
     margin: 0;
     background-color: #cecece;
-    font-family: Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif!important;
 }
 
 table {
@@ -28,7 +28,7 @@ h5 {
     margin-block-end: 0;
     line-height: 150%;
     color: #4E4B66;
-    font-family: Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif!important;
 }
 
 p {
@@ -80,8 +80,8 @@ img {
 .button {
     width: 100%;
     background-color: #6630FF;
-    text-decoration: none !important;
-    color: #FCFCFC !important;
+    text-decoration: none!important;
+    color: #FCFCFC!important;
     padding: 11px 0;
     display: block;
     text-align: center;
@@ -127,7 +127,7 @@ img {
 }
 
 .last-text {
-    margin-bottom: 0px !important;
+    margin-bottom: 0px!important;
 }
 
 .title-card {
@@ -190,7 +190,7 @@ img {
 }
 
 .link {
-    color: #6630FF !important;
+    color: #6630FF!important;
     text-decoration: underline;
 }
 
@@ -200,7 +200,7 @@ img {
 
 .badge {
     background-color: #D9DBE9;
-    color: #4E4B66 !important;
+    color: #4E4B66!important;
     padding: 5px 10px;
     border-radius: 50px;
     font-weight: bold;
