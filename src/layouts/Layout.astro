@@ -1,0 +1,209 @@
+---
+import "../styles/global.css";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  noNavgation: boolean;
+  headerInfo: object;
+  footerInfo: object;
+}
+
+const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" /> -->
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://www.momentainvitaciones.com.mx/opengraph.png" />
+    <meta property="og:url" content="https://www.momentainvitaciones.com.mx" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={title}>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.momentainvitaciones.com.mx/opengraph.png" />
+
+    <!-- Microsoft Clarity -->
+    <!-- <script type="text/javascript" defer>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "sz5d7cmuna");
+    </script> -->
+
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-KKH6EL827X"></script>
+    <script>
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KKH6EL827X', {
+          page_path: window.location.pathname,
+        });
+      `}
+    </script> -->
+
+    <script is:inline>
+      const hasBeenRedirected = sessionStorage.getItem("lang_redirected");
+
+      if (!hasBeenRedirected) {
+        const userLang = navigator.language.split("-")[0];
+        const currentPath = window.location.pathname;
+
+        if (userLang === "en" && currentPath === "/") {
+          window.location.href = "/en/";
+        }
+
+        sessionStorage.setItem("lang_redirected", "true");
+      }
+    </script>
+
+  </head>
+  <body class="bg-white text-gray-900">
+    <div class="relative z-10">
+      {noNavgation ? null : <Header t={headerInfo}/>}
+      <main class="m-6 md:mb-8 mb-0">
+        <slot />
+      </main>
+      {noNavgation ? null : <Footer t={footerInfo}/>}
+    </div>
+
+    <div
+      id="cookie-banner"
+      class="fixed bottom-4 left-4 right-4 md:left-auto md:w-[400px] p-6 rounded-xl bg-white shadow-2xl border border-gray-200/50 transition-transform duration-500 ease-out z-50"
+    >
+      <p class="  text-sm text-gray-700 mb-4 leading-relaxed">
+        Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Al
+        continuar, aceptas el uso de cookies. Puedes leer nuestra <a
+          href="/politica-de-cookies"
+          class="text-indigo-600 hover:underline font-semibold"
+          >Política de Cookies</a
+        >.
+      </p>
+      <div class="flex justify-end space-x-2">
+        <button
+          id="reject-cookies"
+          class="  px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+        >
+          Rechazar
+        </button>
+        <button
+          id="accept-cookies"
+          class="  px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const lang = localStorage.getItem("lang") || "es";
+  document.documentElement.lang = lang;
+  document.documentElement.classList.add(`lang-${lang}`);
+</script>
+
+<script type="text/javascript" defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animaciones globales
+    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+    if (animatedElements.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-in-view");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      animatedElements.forEach((el) => observer.observe(el));
+    }
+
+    // Banner de cookies
+    // const banner = document.getElementById("cookie-banner");
+    // const acceptBtn = document.getElementById("accept-cookies");
+    // const rejectBtn = document.getElementById("reject-cookies");
+
+    // if (!banner || !acceptBtn || !rejectBtn) return;
+
+    // const showBanner = () => banner.classList.add("show");
+    // const hideBanner = () => banner.classList.remove("show");
+
+    // const consent = localStorage.getItem("cookieConsent");
+
+    // if (consent === null) {
+    //   setTimeout(showBanner, 1000);
+    // }
+
+    // acceptBtn.addEventListener("click", function () {
+    //   localStorage.setItem("cookieConsent", "true");
+    //   hideBanner();
+    // });
+
+    // rejectBtn.addEventListener("click", function () {
+    //   localStorage.setItem("cookieConsent", "false");
+    //   hideBanner();
+    // });
+  });
+</script>
+
+<!-- <style>
+  #cookie-banner {
+    transform: translateY(200%);
+    opacity: 0;
+    transition:
+      transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #cookie-banner.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style> -->

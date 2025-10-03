@@ -1,0 +1,119 @@
+---
+import { LANGUAGES, defaultLang } from "@/locales";
+import Flag from "@/icons/flags/Flag.astro";
+
+const { class: externalClasses } = Astro.props;
+const combinedClasses = `lang-switcher relative h-fit ${externalClasses || ''}`;
+
+const currentLocale = (Astro.url.pathname.split("/")[1] || defaultLang);
+
+const currentLang = LANGUAGES[currentLocale];
+const otherLangs = Object.entries(LANGUAGES).filter(
+  ([code]) => code !== currentLocale
+);
+---
+
+<div class={combinedClasses}>
+  <button class="current-lang-btn flex items-center gap-2 px-4 py-1 rounded-full cursor-pointer border-1 border-primary text-primary transition-colors hover:bg-primary-light">
+    <Flag code={currentLocale} class="flag-icon" />
+    <span class="font-secondary text-sm">{currentLang.name}</span>
+    <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <ul class="lang-dropdown absolute w-full bg-secondary p-1 rounded-md list-none shadow margin-0 z-10 transition-all">
+    {
+      otherLangs.map(([code, lang]) => (
+        <li>
+          <a class="flex items-center gap-1 px-1 py-2 decoration-none text-primary text-sm text-bold rounded-sm transition-all hover:bg-primary-light" href={`/${code}/`}>
+            <Flag code={code} class="flag-icon" />
+            <span class="font-secondary">&nbsp;{lang.name}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .lang-switcher.is-open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    top: calc(100% + 5px);
+    right: -0px;
+    background-color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+  }
+
+  .lang-switcher.is-open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  :global(.flag-icon) {
+    width: 20px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  /* --- MEDIA QUERIES --- */
+
+  @media (max-width: 900px) {
+    .lang-dropdown {
+      top: unset;
+      bottom: calc(100% + 5px);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .lang-switcher {
+      transform: scale(1.2);
+    }
+    .lang-dropdown {
+      top: unset;
+      bottom: calc(100% + 5px);
+    }
+  }
+</style>
+
+<script>
+  function setupLangSwitchers() {
+    const switchers = document.querySelectorAll(".lang-switcher");
+
+    switchers.forEach((switcher) => {
+      const button = switcher.querySelector(".current-lang-btn");
+      if (!button) return;
+
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        switchers.forEach((otherSwitcher) => {
+          if (otherSwitcher !== switcher) {
+            otherSwitcher.classList.remove("is-open");
+          }
+        });
+
+        switcher.classList.toggle("is-open");
+      });
+    });
+
+    document.addEventListener("click", () => {
+      switchers.forEach((switcher) => {
+        if (switcher.classList.contains("is-open")) {
+          switcher.classList.remove("is-open");
+        }
+      });
+    });
+  }
+  document.addEventListener("DOMContentLoaded", setupLangSwitchers);
+</script>

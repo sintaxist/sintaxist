@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import HeroSection from "@/sections/HeroSection.astro";
+import PortfolioSection from "@/sections/PortfolioSection.astro";
+import FeaturesSection from "@/sections/FeaturesSection.astro";
+import AboutSection from "@/sections/AboutSection.astro";
+import PackagesSection from "@/sections/PackagesSection.astro";
+import ContactSection from "@/sections/ContactSection.astro";
+
+import { LANGUAGES, defaultLang, type AppLocale } from '@/locales';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang = defaultLang } = Astro.params as { lang: AppLocale };
+const t = LANGUAGES[lang].translations;
+
+---
+
+<Layout title="Mömenta - Transformando Eventos en Experiencias Digitales" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={t.footer}>
+  <HeroSection t={t.hero}/>
+  <PortfolioSection />
+  <FeaturesSection />
+  <AboutSection />
+  <PackagesSection />
+  <ContactSection />
+</Layout>

@@ -1,1 +1,141 @@
+/* Importamos las fuentes antes que cualquier otra cosa */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
 @import "tailwindcss";
+
+/* Definimos theme variables que Tailwind entiende */
+@theme {
+  /* Colores */
+  --color-primary: #234C91;
+  --color-primary-light: rgba(43, 58, 103, 0.1);
+  --color-secondary: #F3ECE4;
+
+  --color-primary-hover: #7782a2;
+
+
+  /* Tipografías */
+  --font-primary: "Bronzier", serif;
+  --font-secondary: "Libre Baskerville", serif;
+
+  /* Breakpoints */
+  --breakpoint-xs: 350px;
+}
+
+/* Declaración de la fuente Bronzier */
+@font-face {
+  font-family: "Bronzier";
+  src: url("/fonts/BronzierRusty.woff2") format("woff2"),
+       url("/fonts/BronzierRusty.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset y fondo blanco global */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-secondary);
+}
+
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform, opacity;
+}
+
+.animate-on-scroll.is-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-textured-wrapper {
+  position: relative;
+  display: inline-flex; /* Para que el pseudo-elemento se posicione correctamente */
+  z-index: 0; /* Asegura que el contenido del botón esté por encima */
+  padding: 3px; /* El grosor del borde de la textura */
+  border-radius: 9999px; /* O el valor exacto de Figma */
+}
+
+/* .textured-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/assets/border-texture.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 9999px;
+  z-index: -1;
+  transition: transform 0.3s ease;
+} */
+
+/* Opcional: Efecto de hover en el borde mismo */
+.textured-border-wrapper:hover::before {
+    transform: scale(1.05);
+}
+
+
+#cookie-banner {
+  transform: translateY(200%);
+}
+#cookie-banner.show {
+  transform: translateY(0);
+}

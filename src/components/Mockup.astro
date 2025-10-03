@@ -1,0 +1,274 @@
+---
+import { getVideosFromInvitaciones } from "../data/invitaciones";
+
+const videos = getVideosFromInvitaciones();
+
+const iconArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" x2="17" y1="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+
+/** JSON-LD: ItemList -> ListItem -> VideoObject */
+const videoSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: videos.map((project, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "VideoObject",
+      name: project.title,
+      description: project.description,
+      thumbnailUrl: project.poster,
+      contentUrl: project.video.mp4,
+      embedUrl: project.demoUrl,
+    },
+  })),
+};
+---
+
+<div id="mockup-container" class="relative animate-on-scroll">
+
+  <h2 class="sr-only">Ejemplos Invitaciones</h2>
+  <!-- Decoraciones -->
+  <div
+    class="floating-element -top-8 -left-8 bg-indigo-500/80 p-3 rounded-xl shadow-lg"
+  >
+    <div class="w-6 h-6 bg-white/20 rounded-sm"></div>
+  </div>
+  <div
+    class="floating-element -bottom-12 -right-12 bg-purple-500/80 p-4 rounded-xl shadow-xl"
+  >
+    <div class="w-6 h-6 bg-white/20 rounded-sm"></div>
+  </div>
+
+  <!-- Mockup -->
+  <div
+    id="mockup-frame"
+    class="relative w-65 md:w-80 h-[500px] md:h-[610px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl border-4 border-gray-700 transition-transform duration-500 ease-in-out"
+  >
+    <div
+      class="w-full h-full bg-black rounded-[2.2rem] overflow-hidden relative"
+    >
+      <!-- Barra superior -->
+      <div
+        class="absolute top-0 left-0 right-0 h-10 px-8 flex items-center justify-between text-black text-xs font-semibold z-20 bg-white"
+      >
+        <span>9:41</span>
+        <!-- notch oscuro -->
+        <div
+          class="absolute left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-full"
+        >
+        </div>
+        <div class="flex items-center gap-x-1">
+          <div class="hidden md:flex items-end gap-px text-black">
+            <span class="w-1 h-2 bg-black/70 rounded-sm"></span>
+            <span class="w-1 h-3 bg-black/70 rounded-sm"></span>
+            <span class="w-1 h-4 bg-black/70 rounded-sm"></span>
+            <span class="w-1 h-2 bg-black/30 rounded-sm"></span>
+          </div>
+          <span class="w-5 h-2.5 border border-black/70 rounded-[4px] p-px">
+            <div class="w-4 h-full bg-black/70 rounded-[2px]"></div>
+          </span>
+        </div>
+      </div>
+
+      <!-- Video -->
+      {
+        videos.map((project, index) => (
+          // @ts-ignore
+          <video
+          autoplay
+          loop
+          muted
+          playsinline
+          poster={project.poster}
+          class:list={["video-slide", { "is-active": index === 0 }]}
+          fetchpriority={index === 0 ? "high" : "auto"}
+          data-index={index}
+          data-demo-url={project.demoUrl}
+          data-title={project.title}
+          data-src={JSON.stringify([
+            // { src: project.video.hls, type: "application/x-mpegURL" },
+            { src: project.video.mp4, type: "video/mp4" }
+          ])}
+          loading="lazy"
+          width="1080"
+          height="1920"
+          aria-label={`${project.title}`}
+          title={`Video: ${project.title}`}
+        >
+        </video>
+        ))
+      }
+
+      <!-- Footer -->
+      <div class="absolute bottom-0 w-full pointer-events-none pt-12">
+        <div class="p-4 bg-gradient-to-t from-black/60 to-transparent">
+          <div
+            class="bg-white/20 backdrop-blur-sm rounded-xl p-3 border border-white/30 flex items-center justify-between"
+          >
+            <h2
+              id="mockup-title"
+              class="  text-white text-sm font-semibold"
+            >
+              {videos[0].title}
+            </h2>
+            <a
+              id="mockup-demo-link"
+              href={videos[0].demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver invitación de ${videos[0].title}`}
+              class="w-8 h-8 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white flex items-center justify-center transition-colors pointer-events-auto"
+            >
+              <Fragment set:html={iconArrow} />
+              <span class="sr-only">Ver invitación de ${videos[0].title}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JSON-LD para SEO -->
+<script type="application/ld+json">
+  {JSON.stringify(videoSchema)}
+</script>
+
+
+<script is:inline>
+  const mockupFrame = document.getElementById("mockup-frame");
+  const mockupTitle = document.getElementById("mockup-title");
+  const demoLink = document.getElementById("mockup-demo-link");
+  const videoSlides = document.querySelectorAll(".video-slide");
+  let currentIndex = 0;
+  let videoInterval;
+  let observer;
+
+  // Función para cargar video desde data-src
+  function loadVideo(video) {
+    if (video.dataset.src) {
+      const sources = JSON.parse(video.dataset.src);
+      sources.forEach((s) => {
+        const source = document.createElement("source");
+        source.src = s.src;
+        source.type = s.type;
+        video.appendChild(source);
+      });
+      video.removeAttribute("data-src");
+      video.load();
+    }
+  }
+
+  function playActiveVideo() {
+    const activeVideo = videoSlides[currentIndex];
+    if (activeVideo && activeVideo.paused) {
+      activeVideo.play().catch(() => {});
+    }
+  }
+
+  function pauseActiveVideo() {
+    const activeVideo = videoSlides[currentIndex];
+    if (activeVideo && !activeVideo.paused) activeVideo.pause();
+  }
+
+  function cycleVideo() {
+    videoSlides[currentIndex].classList.remove("is-active");
+    currentIndex = (currentIndex + 1) % videoSlides.length;
+    videoSlides[currentIndex].classList.add("is-active");
+
+    if (mockupTitle)
+      mockupTitle.textContent =
+        videoSlides[currentIndex].getAttribute("aria-label") || "";
+    if (demoLink)
+      demoLink.href = videoSlides[currentIndex].dataset.demoUrl || "#";
+
+    mockupFrame?.classList.add("is-animating");
+    setTimeout(() => mockupFrame?.classList.remove("is-animating"), 600);
+
+    playActiveVideo();
+  }
+
+  // IntersectionObserver para lazy load y play/pause
+  function initObserver() {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            loadVideo(video);
+            playActiveVideo();
+            if (!videoInterval) {
+              videoInterval = setInterval(cycleVideo, 4000);
+            }
+          } else {
+            pauseActiveVideo();
+            if (videoInterval) {
+              clearInterval(videoInterval);
+              videoInterval = null;
+            }
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    videoSlides.forEach((video, index) => {
+      if (index !== 0) observer.observe(video); // 👈 solo observa los demás
+    });
+  }
+
+  // Reproducir primer video al cargar
+  document.addEventListener("DOMContentLoaded", () => {
+    const firstVideo = videoSlides[0];
+    loadVideo(firstVideo);
+
+    // Esperar a que el primer video esté listo antes de seguir
+    firstVideo.addEventListener(
+      "canplaythrough",
+      () => {
+        playActiveVideo();
+        // Ahora sí inicializamos observer y ciclo
+        initObserver();
+        videoInterval = setInterval(cycleVideo, 4000);
+      },
+      { once: true }
+    );
+  });
+</script>
+
+
+<style>
+  .video-slide {
+    position: absolute;
+    inset: 0;
+    margin-top: 35px;
+    height: calc(100% - 35px);
+    object-fit: cover;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  .video-slide.is-active {
+    opacity: 1;
+  }
+  #mockup-frame.is-animating {
+    transform: scale(1.02) rotateY(3deg);
+  }
+  .floating-element {
+    position: absolute;
+    animation: float 3s ease-in-out infinite;
+  }
+  .floating-element:nth-child(2) {
+    animation-duration: 4s;
+    animation-delay: 1s;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0);
+    }
+    50% {
+      transform: translateY(-15px) rotate(5deg);
+    }
+  }
+</style>
