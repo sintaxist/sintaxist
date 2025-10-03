@@ -1,56 +1,83 @@
 ---
-import Button from '@/components/ui/Button.astro';
-import IconGitHub from '@/icons/IconGithub.astro';
-import IconLinkedIn from '@/icons/IconLinkedin.astro';
-import IconMail from '@/icons/IconMail.astro';
+import Button from "@/components/ui/Button.astro";
+import { socialLinks } from "@/data/links.js";
 
-const { t } = Astro.props;
+const { t, socials } = Astro.props;
 ---
 
-<section id="home" class="w-full border-3 border-primary rounded-2xl max-w-screen-xl mx-auto mt-[100px] px-6 xs:px-10 lg:pl-20 lg:pr-10 py-10 lg:py-20">
-  <header class="flex justify-between items-center mb-8 sm:mb-10 flex-col lg:flex-row gap-6 lg:gap-0 lg:pr-20">
+<section
+  id="home"
+  class="w-full border-3 border-primary rounded-2xl max-w-screen-xl mx-auto mt-[100px] px-6 xs:px-10 lg:pl-20 lg:pr-10 py-10 lg:py-20"
+>
+  <header
+    class="flex justify-between items-center mb-8 sm:mb-10 flex-col lg:flex-row gap-6 lg:gap-0 lg:pr-20"
+  >
+    <span
+      class="anim-item w-max font-secondary text-md sm:text-lg md:text-xl uppercase text-primary"
+      >{t.location}</span
+    >
 
-    <span class="anim-item w-max font-secondary text-md sm:text-lg md:text-xl uppercase text-primary">{t.location}</span>
-    
     <div class="flex items-center gap-4 md:gap-6">
-
-      <a href="#" class="text-primary hover:text-primary-hover transition-colors" aria-label="GitHub" title="GitHub">
-        <IconGitHub class="w-8 sm:w-9 h-8 sm:h-9" />
-      </a>
-      <a href="#" class="text-primary hover:text-primary-hover transition-colors" aria-label="LinkedIn" title="LinkedIn">
-        <IconLinkedIn class="w-8 sm:w-9  h-8 sm:h-9" />
-      </a>
-      <a href="#" class="text-primary hover:text-primary-hover transition-colors" aria-label="Email" title="Email">
-        <IconMail class="w-8 sm:w-9 h-8 sm:h-9" />
-      </a>
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={link.name}
+            aria-label={socials[link.ariaLabelKey]}
+            class="text-primary hover:text-primary-hover transition-all hover:-translate-y-1"
+          >
+            <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
+          </a>
+        ))
+      }
     </div>
   </header>
 
   <div class="flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between">
     <div class="text-center lg:text-left lg:max-w-[50%]">
-
-      <h1 class="anim-item font-primary text-5xl md:text-6xl lg:text-8xl text-primary leading-none">
+      <h1
+        class="anim-item font-primary text-5xl md:text-6xl lg:text-8xl text-primary leading-none"
+      >
         {t.title}
       </h1>
 
-
-      <p class="anim-item font-secondary text-sm xs:text-base sm:text-md md:text-lg leading-[160%] text-primary mt-6 mx-auto lg:mx-0">
+      <p
+        class="anim-item font-secondary text-sm xs:text-base sm:text-md md:text-lg leading-[160%] text-primary mt-6 mx-auto lg:mx-0"
+      >
         {t.description}
       </p>
 
-      <div class="anim-item mt-8 md:10 flex flex-col sm:flex-row gap-2 md:gap-4 justify-center lg:justify-start">
-        <Button as="a" text={t.ctaPrimary} href="#contact" fill={true} color="blue" arrow={true}/>
-        <Button as="a" text={t.ctaSecondary} href="#projects" fill={false} color="blue" arrow={true}/>
+      <div
+        class="anim-item mt-8 md:10 flex flex-col sm:flex-row gap-2 md:gap-4 justify-center lg:justify-start"
+      >
+        <Button
+          as="a"
+          text={t.ctaPrimary}
+          href="#contact"
+          fill={true}
+          color="blue"
+          arrow={true}
+        />
+        <Button
+          as="a"
+          text={t.ctaSecondary}
+          href="#projects"
+          fill={false}
+          color="blue"
+          arrow={true}
+        />
       </div>
     </div>
 
     <div class="lg:flex-1">
-      <img 
-        src="/assets/canek.svg" 
+      <img
+        src="/assets/canek.svg"
         alt={t.imageAlt}
         title={t.imageAlt}
         class="block m-auto lg:m-0 w-full max-w-sm lg:max-w-lg"
-      >
+      />
     </div>
   </div>
 </section>

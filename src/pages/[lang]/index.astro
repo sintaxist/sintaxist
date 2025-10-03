@@ -3,9 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 
 import HeroSection from "@/sections/HeroSection.astro";
 import PortfolioSection from "@/sections/PortfolioSection.astro";
-import FeaturesSection from "@/sections/FeaturesSection.astro";
 import AboutSection from "@/sections/AboutSection.astro";
-import PackagesSection from "@/sections/PackagesSection.astro";
 import ContactSection from "@/sections/ContactSection.astro";
 
 import { LANGUAGES, defaultLang, type AppLocale } from '@/locales';
@@ -22,11 +20,11 @@ const t = LANGUAGES[lang].translations;
 
 ---
 
-<Layout title="Mömenta - Transformando Eventos en Experiencias Digitales" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={t.footer}>
-  <HeroSection t={t.hero}/>
-  <PortfolioSection />
+<Layout title="Mömenta - Transformando Eventos en Experiencias Digitales" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={{}}>
+  <HeroSection t={t.hero} socials={t.socials}/>
+  <!-- <PortfolioSection />
   <FeaturesSection />
   <AboutSection />
-  <PackagesSection />
-  <ContactSection />
+  <PackagesSection /> -->
+  <ContactSection t={t.contact} socials={t.socials}/>
 </Layout>

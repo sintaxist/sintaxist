@@ -23,127 +23,15 @@
     "cta": "Hablemos de tu proyecto",
     "imageAlt": "Foto de Alejandro Canek trabajando en diseño UX/UI"
   },
-  "historia": {
-    "titulo": "Our Story",
-    "parrafo1": "A few years ago, in a place neither of us imagined, our eyes met for the first time. What began as a simple conversation turned into countless adventures, laughter, and shared dreams. Since that day, we have walked together, supporting each other at every step, learning, growing, and above all, loving each other more and more.",
-    "parrafo2": "Today, we want to celebrate the journey we've taken and take the next step in our story: joining our lives forever, surrounded by the people we love most."
+  "contact": {
+    "titleAlt": "Logo de Alejandro Canek",
+    "description": "Disponible para nuevos proyectos y colaboraciones. Refinamiento de experiencia de usuario, desarrollar una interfaz desde cero o auditar tu producto actual, estoy aquí para ayudar. Hablemos.",
+    "cta": "Agendar un meet"
   },
-  "detalles": {
-    "titulo": "Wedding Details",
-    "cards": [
-      {
-        "title": "Ceremony",
-        "description": "We will be united in marriage in the <strong>Parish of Santa María in Trastevere, Rome,</strong><strong> on Saturday, October 12, 2025</strong> at <strong>4:00 p.m.</strong>",
-        "linkText": "View Location",
-        "href": "https://maps.app.goo.gl/u5m7yS11sopn1Xx69"
-      },
-      {
-        "title": "Reception",
-        "description": "After the ceremony, we look forward to seeing you at the <strong>Vatican</strong> starting at <strong>7:00 p.m.</strong> to celebrate together with an evening filled with music, joy, and unforgettable moments.",
-        "linkText": "View Location",
-        "href": "https://maps.app.goo.gl/wzNCjDhbVs4EYnPx7"
-      },
-      {
-        "title": "Dress Code",
-        "description": "<strong>Formal dress code.</strong> Men should wear dark suits, women should wear long dresses. Light, elegant colors are welcome for this special day.",
-        "linkText": "See ideas on Pinterest",
-        "href": "https://mx.pinterest.com/danielamaciaseventos/c%C3%B3digo-de-vestimenta-boda-sd/"
-      }
-    ]
-  },
-  "galeria": {
-    "titulo": "Photo Gallery",
-    "descripcion": "A glimpse at the moments that have brought us here. Photos full of love, adventures, and memories we want to share with you before our big day.",
-    "images": [
-      {
-        "src": "/images/jpg/galeria-1.jpg",
-        "alt": "Gallery photo of Maria & Jose 1"
-      },
-      {
-        "src": "/images/jpg/galeria-2.jpg",
-        "alt": "Gallery photo of Maria & Jose 2"
-      },
-      {
-        "src": "/images/jpg/galeria-3.jpg",
-        "alt": "Gallery photo of Maria & Jose 3"
-      },
-      {
-        "src": "/images/jpg/galeria-4.jpg",
-        "alt": "Gallery photo of Maria & Jose 4"
-      },
-      {
-        "src": "/images/jpg/galeria-5.jpg",
-        "alt": "Gallery photo of Maria & Jose 5"
-      },
-      {
-        "src": "/images/jpg/galeria-6.jpg",
-        "alt": "Gallery photo of Maria & Jose 6"
-      }
-    ]
-  },
-  "registro": {
-    "heading": "Let's share this special moment",
-    "contactHeading": "Contact Us",
-    "contactGroom": "Contact the Groom",
-    "contactBride": "Contact the Bride",
-    "socialText": "You can also find us on:",
-    "social": {
-      "facebook": "https://www.linkedin.com/in/alejandro-canek?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      "instagram": "https://www.instagram.com/alejandrocanek?igsh=MXB4eWxpa3BrdHI2NQ==.",
-      "mail": "mailto:alejandro.canek.dev@gmail.com?subject=Boda%20Mar%C3%ADa%20y%20Jos%C3%A9&body=Hola%2C%20quiero%20hablar%20sobre%20la%20boda%20%F0%9F%A4%B5%F0%9F%8F%BC%E2%80%8D%E2%99%82%EF%B8%8F%F0%9F%91%B0%F0%9F%8F%BC",
-      "tiktok": "https://www.tiktok.com/es/"
-    },
-    "form": {
-      "heading": "Confirm your attendance",
-      "description": "Your commitment is very important to us. Please complete the following form to confirm or decline your attendance.",
-      "attendanceQuestion": "Will you attend the party?",
-      "yes": "Yes 🥳",
-      "no": "No 😓",
-      "nameLabel": "Full Name",
-      "nameError": "Please enter your name.",
-      "guestLabel": "Number of guests",
-      "guestError": "Please select a number.",
-      "messageLabel": "Some words you'd like to share",
-      "submitText": "Send Confirmation",
-      "successHeading": "Thanks for confirming!",
-      "successMessage": "Your response has been registered..."
-    }
-  },
-  "hospedaje": {
-    "heading": "Nearby Lodging",
-    "description": "For your convenience, we have selected some lodging options close to the event venue with different price ranges.",
-    "hotels": [
-      {
-        "title": "Hotel Indigo Rome - St. George",
-        "description": "An elegant 5-star boutique hotel on the historic Via Giulia, featuring a spectacular terrace with views over all of Rome.",
-        "linkText": "View more details",
-        "href": "https://maps.app.goo.gl/sMud8rUku2CfTUmV6",
-        "rating": 5,
-        "distance": "5 km from the event",
-        "priceRange": "250 - 400 €"
-      },
-      {
-        "title": "Starhotels Michelangelo Rome",
-        "description": "A classic 4-star hotel steps from St. Peter's Square, offering timeless comfort and direct Vatican views.",
-        "linkText": "View more details",
-        "href": "https://maps.app.goo.gl/2NX7f6NoZbVJtitq5",
-        "rating": 4,
-        "distance": "8 km from the event",
-        "priceRange": "150 - 220 €"
-      },
-      {
-        "title": "Hotel Paolo II",
-        "description": "A  modern and cozy 3-star option, noted for its excellent service and great value for money.",
-        "linkText": "View more details",
-        "href": "https://maps.app.goo.gl/2Vv5rWF8CmCeUKag8",
-        "rating": 3,
-        "distance": "12 km from the event",
-        "priceRange": "100 - 180 €"
-      }
-    ]
-  },
-  "footer": {
-    "copyright": "Maria & José · 2025",
-    "quote": "This is just the beginning of our most beautiful adventure."
+  "socials": {
+    "whatsapp": "Contáctame por WhatsApp",
+    "email": "Envíame un correo electrónico",
+    "linkedin": "Visita mi perfil de LinkedIn",
+    "github": "Explora mis proyectos en GitHub"
   }
 }

@@ -26,127 +26,15 @@
     "ctaPrimary": "Hablemos",
     "ctaSecondary": "Ver proyectos"
   },
-  "historia": {
-    "titulo": "Nuestra Historia",
-    "parrafo1": "Hace algunos años, en un lugar que ninguno de los dos imaginaba, nuestras miradas se cruzaron por primera vez. Lo que comenzó como una simple conversación se convirtió en incontables aventuras, risas y sueños compartidos. Desde aquel día, hemos caminado juntos, apoyándonos en cada paso, aprendiendo, creciendo y, sobre todo, amándonos cada vez más.",
-    "parrafo2": "Hoy, queremos celebrar ese camino que hemos recorrido y dar el siguiente paso en nuestra historia: unir nuestras vidas para siempre, rodeados de las personas que más queremos."
+  "contact": {
+    "titleAlt": "Logo de Alejandro Canek",
+    "description": "Disponible para nuevos proyectos y colaboraciones. Refinamiento de experiencia de usuario, desarrollar una interfaz desde cero o auditar tu producto actual, estoy aquí para ayudar. Hablemos.",
+    "cta": "Agendar un meet"
   },
-  "detalles": {
-    "titulo": "Detalles de la boda",
-    "cards": [
-      {
-        "title": "Ceremonia",
-        "description": "Nos uniremos en matrimonio en la <strong>Parroquia de Santa María in Trastevere, Roma,</strong> el <strong>Sábado 12 de octubre de 2025</strong> a las <strong>4:00 p.m.</strong>",
-        "linkText": "Ver Ubicación",
-        "href": "https://maps.app.goo.gl/u5m7yS11sopn1Xx69"
-      },
-      {
-        "title": "Recepción",
-        "description": "Después de la ceremonia, los esperamos en el <strong>Vaticano</strong> a partir de las <strong>7:00 p.m</strong>, para celebrar juntos con una velada llena de música, alegría y momentos inolvidables.",
-        "linkText": "Ver Ubicación",
-        "href": "https://maps.app.goo.gl/wzNCjDhbVs4EYnPx7"
-      },
-      {
-        "title": "Código de Vestimenta",
-        "description": "<strong>Etiqueta formal.</strong> Hombres con traje oscuro, mujeres con vestido largo. Los tonos claros y elegantes son bienvenidos para este día especial.",
-        "linkText": "Ver ideas en Pinterest",
-        "href": "https://mx.pinterest.com/danielamaciaseventos/c%C3%B3digo-de-vestimenta-boda-sd/"
-      }
-    ]
-  },
-  "galeria": {
-    "titulo": "Galería de Fotos",
-    "descripcion": "Un vistazo a los momentos que nos han traído hasta aquí. Fotos llenas de amor, aventuras y recuerdos que queremos compartir contigo antes de nuestro gran día.",
-    "images": [
-      {
-        "src": "/images/jpg/galeria-1.jpg",
-        "alt": "Foto de la galería de María y José 1"
-      },
-      {
-        "src": "/images/jpg/galeria-2.jpg",
-        "alt": "Foto de la galería de María y José 2"
-      },
-      {
-        "src": "/images/jpg/galeria-3.jpg",
-        "alt": "Foto de la galería de María y José 3"
-      },
-      {
-        "src": "/images/jpg/galeria-4.jpg",
-        "alt": "Foto de la galería de María y José 4"
-      },
-      {
-        "src": "/images/jpg/galeria-5.jpg",
-        "alt": "Foto de la galería de María y José 5"
-      },
-      {
-        "src": "/images/jpg/galeria-6.jpg",
-        "alt": "Foto de la galería de María y José 6"
-      }
-    ]
-  },
-  "registro": {
-    "heading": "Compartamos este momento tan especial",
-    "contactHeading": "Contáctanos",
-    "contactGroom": "Contactar al novio",
-    "contactBride": "Contactar a la novia",
-    "socialText": "También puedes encontrarnos en:",
-    "social": {
-      "facebook": "https://www.linkedin.com/in/alejandro-canek?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      "instagram": "https://www.instagram.com/alejandrocanek?igsh=MXB4eWxpa3BrdHI2NQ==.",
-      "mail": "mailto:alejandro.canek.dev@gmail.com?subject=Boda%20Mar%C3%ADa%20y%20Jos%C3%A9&body=Hola%2C%20quiero%20hablar%20sobre%20la%20boda%20%F0%9F%A4%B5%F0%9F%8F%BC%E2%80%8D%E2%99%82%EF%B8%8F%F0%9F%91%B0%F0%9F%8F%BC",
-      "tiktok": "https://www.tiktok.com/es/"
-    },
-    "form": {
-      "heading": "Confirma tu asistencia",
-      "description": "Para nosotros es muy importante el compromiso completa el siguiente formulario para confirma o rechazar tu asistencia.",
-      "attendanceQuestion": "¿Asistirás a la fiesta?",
-      "yes": "Sí 🥳",
-      "no": "No 😓",
-      "nameLabel": "Nombre Completo",
-      "nameError": "Por favor, ingresa tu nombre.",
-      "guestLabel": "Número de acompañantes",
-      "guestError": "Por favor, selecciona un número.",
-      "messageLabel": "Algunas palabras que nos quieras dedicar",
-      "submitText": "Enviar Confirmación",
-      "successHeading": "¡Gracias por confirmar!",
-      "successMessage": "Tu respuesta ha sido registrada..."
-    }
-  },
-  "hospedaje": {
-    "heading": "Hospedaje Cercano",
-    "description": "Para tu comodidad, hemos seleccionado algunas opciones de hospedaje cercanas al lugar del evento con diferentes rangos de precios.",
-    "hotels": [
-      {
-        "title": "Hotel Indigo Rome - St. George",
-        "description": "Un elegante hotel boutique de 5 estrellas en la histórica Via Giulia, con una espectacular terraza y vistas a toda Roma.",
-        "linkText": "Ver más detalles",
-        "href": "https://maps.app.goo.gl/sMud8rUku2CfTUmV6",
-        "rating": 5,
-        "distance": "A 5 km del evento",
-        "priceRange": "250 - 400 €"
-      },
-      {
-        "title": "Starhotels Michelangelo Rome",
-        "description": "Un hotel clásico de 4 estrellas a solo pasos de la Plaza de San Pedro, ofreciendo un confort atemporal y vistas directas al Vaticano.",
-        "linkText": "Ver más detalles",
-        "href": "https://maps.app.goo.gl/2NX7f6NoZbVJtitq5",
-        "rating": 4,
-        "distance": "A 8 km del evento",
-        "priceRange": "150 - 220 €"
-      },
-      {
-        "title": "Hotel Paolo II",
-        "description": "Una opción moderna y acogedora de 3 estrellas, destacada por su excelente servicio y gran relación calidad-precio.",
-        "linkText": "Ver más detalles",
-        "href": "https://maps.app.goo.gl/2Vv5rWF8CmCeUKag8",
-        "rating": 3,
-        "distance": "A 12 km del evento",
-        "priceRange": "100 - 180 €"
-      }
-    ]
-  },
-  "footer": {
-    "copyright": "María y José · 2025",
-    "quote": "Este es solo el comienzo de nuestra aventura más hermosa."
+  "socials": {
+    "whatsapp": "Contáctame por WhatsApp",
+    "email": "Envíame un correo electrónico",
+    "linkedin": "Visita mi perfil de LinkedIn",
+    "github": "Explora mis proyectos en GitHub"
   }
 }
