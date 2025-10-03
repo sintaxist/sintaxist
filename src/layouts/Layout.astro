@@ -19,16 +19,13 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="x-apple-disable-message-reformatting">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
 
-    <meta
-      name="description"
-      content={description}
-    />
+    <meta name="description" content={description} />
 
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <link
@@ -53,16 +50,22 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://www.momentainvitaciones.com.mx/opengraph.png" />
+    <meta
+      property="og:image"
+      content="https://www.momentainvitaciones.com.mx/opengraph.png"
+    />
     <meta property="og:url" content="https://www.momentainvitaciones.com.mx" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={title}>
+    <meta property="og:site_name" content={title} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://www.momentainvitaciones.com.mx/opengraph.png" />
+    <meta
+      name="twitter:image"
+      content="https://www.momentainvitaciones.com.mx/opengraph.png"
+    />
 
     <!-- Microsoft Clarity -->
     <!-- <script type="text/javascript" defer>
@@ -100,22 +103,21 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
         sessionStorage.setItem("lang_redirected", "true");
       }
     </script>
-
   </head>
   <body class="bg-white text-gray-900">
     <div class="relative z-10">
-      {noNavgation ? null : <Header t={headerInfo}/>}
-      <main class="m-6 md:mb-8 mb-0">
+      {noNavgation ? null : <Header t={headerInfo} />}
+      <main class="m-6 md:mb-8 mb-0 flex flex-col gap-16 md:gap-20 lg:gap-25">
         <slot />
       </main>
-      {noNavgation ? null : <Footer t={footerInfo}/>}
+      {noNavgation ? null : <Footer t={footerInfo} />}
     </div>
 
     <div
       id="cookie-banner"
       class="fixed bottom-4 left-4 right-4 md:left-auto md:w-[400px] p-6 rounded-xl bg-white shadow-2xl border border-gray-200/50 transition-transform duration-500 ease-out z-50"
     >
-      <p class="  text-sm text-gray-700 mb-4 leading-relaxed">
+      <p class="text-sm text-gray-700 mb-4 leading-relaxed">
         Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Al
         continuar, aceptas el uso de cookies. Puedes leer nuestra <a
           href="/politica-de-cookies"
@@ -126,13 +128,13 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
       <div class="flex justify-end space-x-2">
         <button
           id="reject-cookies"
-          class="  px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+          class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
         >
           Rechazar
         </button>
         <button
           id="accept-cookies"
-          class="  px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
+          class="px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
         >
           Aceptar
         </button>
@@ -149,22 +151,74 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
 
 <script type="text/javascript" defer>
   document.addEventListener("DOMContentLoaded", () => {
-    // Animaciones globales
-    const animatedElements = document.querySelectorAll(".animate-on-scroll");
-    if (animatedElements.length > 0) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-in-view");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      animatedElements.forEach((el) => observer.observe(el));
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px", // Se activa un poco antes de que llegue al fondo
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const animationType = element.getAttribute("data-animate");
+
+          if (animationType === "text") {
+            animateText(element);
+          }
+
+          if (animationType === "counter") {
+            animateCounter(element);
+          }
+
+          observer.unobserve(element); // Animación de una sola vez
+        }
+      });
+    }, observerOptions);
+
+    // Observar todos los elementos que necesitan animación
+    document.querySelectorAll("[data-animate]").forEach((el) => {
+      observer.observe(el);
+    });
+
+    // --- Funciones de Animación ---
+
+    function animateText(element) {
+      const delay = parseInt(element.getAttribute("data-delay")) || 0;
+      setTimeout(() => {
+        element.classList.add("is-visible");
+      }, delay);
     }
+
+    function animateCounter(element) {
+      if (element.hasAttribute("data-animated")) return; // Prevenir re-animación
+      element.setAttribute("data-animated", "true");
+
+      const target = parseInt(element.getAttribute("data-target"));
+      const duration = parseInt(element.getAttribute("data-duration"));
+      const delay = parseInt(element.getAttribute("data-delay"));
+      const suffix = element.getAttribute("data-suffix") || "";
+
+      let start = 0;
+      const increment = target / (duration / 16);
+
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= target) {
+            element.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(start) + suffix;
+          }
+        }, 16); // ~60 FPS
+      }, delay);
+    }
+  });
+</script>
+
+<script type="text/javascript" defer>
+    // document.addEventListener("DOMContentLoaded", () => {
+    
 
     // Banner de cookies
     // const banner = document.getElementById("cookie-banner");
@@ -191,7 +245,7 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
     //   localStorage.setItem("cookieConsent", "false");
     //   hideBanner();
     // });
-  });
+    // });
 </script>
 
 <!-- <style>

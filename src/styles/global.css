@@ -92,25 +92,28 @@ html, body {
   }
 }
 
-.animate-on-scroll {
+/* Animacion Fade In */
+
+/* .anim-item {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   will-change: transform, opacity;
 }
 
-.animate-on-scroll.is-in-view {
+.anim-item.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
+} */
 
-.btn-textured-wrapper {
+/* .btn-textured-wrapper {
   position: relative;
-  display: inline-flex; /* Para que el pseudo-elemento se posicione correctamente */
-  z-index: 0; /* Asegura que el contenido del botón esté por encima */
-  padding: 3px; /* El grosor del borde de la textura */
-  border-radius: 9999px; /* O el valor exacto de Figma */
-}
+  display: inline-flex;
+  z-index: 0;
+  padding: 3px;
+  border-radius: 9999px;
+} */
 
 /* .textured-border-wrapper::before {
   content: '';
@@ -127,10 +130,9 @@ html, body {
   transition: transform 0.3s ease;
 } */
 
-/* Opcional: Efecto de hover en el borde mismo */
-.textured-border-wrapper:hover::before {
+/* .textured-border-wrapper:hover::before {
     transform: scale(1.05);
-}
+} */
 
 
 #cookie-banner {
