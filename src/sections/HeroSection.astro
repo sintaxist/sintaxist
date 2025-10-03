@@ -27,7 +27,7 @@ const { t } = Astro.props;
   </header>
 
   <div class="flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between">
-    <div class="text-center lg:text-left lg:max-w-[55%]">
+    <div class="text-center lg:text-left lg:max-w-[50%]">
 
       <h1 class="anim-item font-primary text-5xl md:text-6xl lg:text-8xl text-primary leading-none">
         {t.title}
@@ -44,11 +44,13 @@ const { t } = Astro.props;
       </div>
     </div>
 
-    <img 
-      src="/assets/canek.svg" 
-      alt={t.imageAlt}
-      title={t.imageAlt}
-      class="m-auto lg:m-0 w-[100%] max-w-sm lg:max-w-lg"
-    >
+    <div class="lg:flex-1">
+      <img 
+        src="/assets/canek.svg" 
+        alt={t.imageAlt}
+        title={t.imageAlt}
+        class="block m-auto lg:m-0 w-full max-w-sm lg:max-w-lg"
+      >
+    </div>
   </div>
 </section>
