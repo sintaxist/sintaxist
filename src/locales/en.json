@@ -3,25 +3,51 @@
     "logoAlt": "Alejandro Canek Logo",
     "logoTitle": "Ir al inicio",
     "sections": {
-      "inicio": "Home",
-      "historia": "Our story",
-      "detalles": "Wedding details",
-      "galeria": "Gallery",
-      "registro": "RSVP",
-      "hospedaje": "Nearby lodging"
+      "home": "Inicio",
+      "aboutMe": "Sobre mí",
+      "projects": "Mis proyectos",
+      "experiencie": "Mí experiencia",
+      "skills": "Skills",
+      "contact": "Hablemos"
     },
     "menu": {
-      "openAria": "Open menu",
-      "label": "Menu"
+      "openAria": "Abrir menú",
+      "label": "Menú"
     }
   },
   "hero": {
+    "location": "CDMX - MX 🇲🇽",
     "subtitleTop": "UX Engineer",
     "title": "Alejandro Canek",
     "subtitleBottom": "Fintech · Invitaciones Digitales · IT",
     "description": "Más de 5 años de experiencia diseñando e implementando experiencias digitales en fintech, invitaciones web personalizadas y soluciones IT escalables.",
     "cta": "Hablemos de tu proyecto",
-    "imageAlt": "Foto de Alejandro Canek trabajando en diseño UX/UI"
+    "imageAlt": "Ilustracion Alejandro Canek",
+    "ctaPrimary": "Hablemos",
+    "ctaSecondary": "Ver proyectos"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "paragraph1": "UI/UX Engineer con más de 5 años de experiencia uniendo diseño centrado en el usuario e implementación técnica. Especializado en experiencias digitales para fintech y eventos.",
+    "paragraph2": "Desarrollo soluciones escalables, funcionales y visualmente atractivas con tecnologías web modernas.",
+    "stats": [
+      {
+        "to": 5,
+        "suffix": "+",
+        "text": "Años de Experiencia"
+      },
+      {
+        "to": 15,
+        "suffix": "",
+        "text": "Proyectos Completados"
+      },
+      {
+        "to": 100,
+        "suffix": "%",
+        "text": "Compromiso con la Calidad"
+      }
+    ],
+    "cta": "Contactar para proyecto"
   },
   "contact": {
     "titleAlt": "Logo de Alejandro Canek",

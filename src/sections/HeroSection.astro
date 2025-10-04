@@ -11,7 +11,7 @@ const { t, socials } = Astro.props;
   class="w-full border-3 border-primary rounded-2xl max-w-screen-xl mx-auto mt-[100px] px-6 xs:px-10 lg:pl-20 lg:pr-10 py-10 lg:py-20"
 >
   <header
-    class="flex justify-between items-center mb-8 sm:mb-10 flex-col lg:flex-row gap-6 lg:gap-0 lg:pr-20"
+    class="flex justify-between items-center mb-6 lg:mb-10 flex-col lg:flex-row gap-6 lg:gap-0 lg:pr-20"
   >
     <AnimatedItem>
       <span
@@ -20,27 +20,29 @@ const { t, socials } = Astro.props;
       >
     </AnimatedItem>
 
-    <div class="flex items-center gap-4 md:gap-6">
+    <div class="hidden lg:flex items-center gap-6">
       {
-        socialLinks.map((link) => (
-          <a
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            title={link.name}
-            aria-label={socials[link.ariaLabelKey]}
-            class="text-primary hover:text-primary-hover transition-all hover:-translate-y-1"
-          >
-            <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
-          </a>
+        socialLinks.map((link, index) => (
+          <AnimatedItem className="transition-all hover:-translate-y-1" delay={index * 200}>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.name}
+              aria-label={socials[link.ariaLabelKey]}
+              class="text-primary transition-all hover:text-primary-hover"
+            >
+              <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
+            </a>
+          </AnimatedItem>
         ))
       }
     </div>
   </header>
 
-  <div class="flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between">
+  <div class="flex flex-col lg:flex-row gap-10 lg:gap-8 justify-between items-center lg:items-start">
     <div class="text-center lg:text-left lg:max-w-[50%]">
-      <AnimatedItem>
+      <AnimatedItem delay={200}>
         <h1
           class="anim-item font-primary text-5xl md:text-6xl lg:text-8xl text-primary leading-none anima"
         >
@@ -48,7 +50,7 @@ const { t, socials } = Astro.props;
         </h1>
       </AnimatedItem>
 
-      <AnimatedItem>
+      <AnimatedItem delay={400}>
         <p
           class="anim-item font-secondary text-sm xs:text-base sm:text-md md:text-lg leading-[160%] text-primary mt-6 mx-auto lg:mx-0"
         >
@@ -56,27 +58,32 @@ const { t, socials } = Astro.props;
         </p>
       </AnimatedItem>
 
-
       <div
         class="anim-item mt-8 md:10 flex flex-col sm:flex-row gap-2 md:gap-4 justify-center lg:justify-start"
       >
-        <Button
-          as="a"
-          text={t.ctaPrimary}
-          href="#contact"
-          fill={true}
-          color="blue"
-          arrow={true}
-        />
-        <Button
-          as="a"
-          text={t.ctaSecondary}
-          href="#projects"
-          fill={false}
-          color="blue"
-          arrow={true}
-        />
+        <AnimatedItem delay={600}>
+          <Button
+            as="a"
+            text={t.ctaPrimary}
+            href="#contact"
+            fill={true}
+            color="blue"
+            arrow={true}
+          />
+        </AnimatedItem>
+
+        <AnimatedItem delay={800}>
+          <Button
+            as="a"
+            text={t.ctaSecondary}
+            href="#projects"
+            fill={false}
+            color="blue"
+            arrow={true}
+          />
+        </AnimatedItem>
       </div>
+
     </div>
 
     <div class="lg:flex-1">
@@ -86,6 +93,24 @@ const { t, socials } = Astro.props;
         title={t.imageAlt}
         class="block m-auto lg:m-0 w-full max-w-sm lg:max-w-lg"
       />
+    </div>
+    <div class="flex lg:hidden items-center gap-4 md:gap-6">
+      {
+        socialLinks.map((link, index) => (
+          <AnimatedItem className="transition-all hover:-translate-y-1" delay={index * 200}>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.name}
+              aria-label={socials[link.ariaLabelKey]}
+              class="text-primary transition-all hover:text-primary-hover"
+            >
+              <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
+            </a>
+          </AnimatedItem>
+        ))
+      }
     </div>
   </div>
 </section>

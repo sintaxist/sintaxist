@@ -104,16 +104,16 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
       }
     </script>
   </head>
-  <body class="bg-white text-gray-900">
+  <div class="bg-secondary text-primary">
     <div class="relative z-10">
       {noNavgation ? null : <Header t={headerInfo} />}
-      <main class="m-6 md:mb-8 mb-0 flex flex-col gap-16 md:gap-20 lg:gap-25">
+      <main>
         <slot />
       </main>
       {noNavgation ? null : <Footer t={footerInfo} />}
     </div>
 
-    <div
+    <!-- <div
       id="cookie-banner"
       class="fixed bottom-4 left-4 right-4 md:left-auto md:w-[400px] p-6 rounded-xl bg-white shadow-2xl border border-gray-200/50 transition-transform duration-500 ease-out z-50"
     >
@@ -138,7 +138,7 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
         >
           Aceptar
         </button>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>
@@ -152,8 +152,8 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
 <script type="text/javascript" defer>
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px", // Se activa un poco antes de que llegue al fondo
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px",
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
@@ -190,7 +190,7 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
     }
 
     function animateCounter(element) {
-      if (element.hasAttribute("data-animated")) return; // Prevenir re-animación
+      if (element.hasAttribute("data-animated")) return;
       element.setAttribute("data-animated", "true");
 
       const target = parseInt(element.getAttribute("data-target"));
@@ -213,6 +213,44 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
         }, 16); // ~60 FPS
       }, delay);
     }
+
+    const counters = document.querySelectorAll('.animated-counter');
+
+    if (counters.length > 0) {
+      const animateCount = (el, from, to, duration, suffix) => {
+        let startTime = null;
+        const step = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          const current = Math.floor(progress * (to - from) + from);
+          el.textContent = current.toLocaleString() + suffix; // Usamos toLocaleString para formatear números grandes si los hubiera
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      };
+
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const from = parseInt(el.dataset.from || '0', 10);
+            const to = parseInt(el.dataset.to || '0', 10);
+            const duration = parseInt(el.dataset.duration || '2000', 10);
+            const suffix = el.dataset.suffix || '';
+            
+            animateCount(el, from, to, duration, suffix);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(counter => {
+        counterObserver.observe(counter);
+      });
+    }
+
   });
 </script>
 

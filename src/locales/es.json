@@ -26,6 +26,29 @@
     "ctaPrimary": "Hablemos",
     "ctaSecondary": "Ver proyectos"
   },
+  "about": {
+    "title": "Sobre Mí",
+    "paragraph1": "UI/UX Engineer con más de 5 años de experiencia uniendo diseño centrado en el usuario e implementación técnica. Especializado en experiencias digitales para fintech y eventos.",
+    "paragraph2": "Desarrollo soluciones escalables, funcionales y visualmente atractivas con tecnologías web modernas.",
+    "stats": [
+      {
+        "to": 5,
+        "suffix": "+",
+        "text": "Años de Experiencia"
+      },
+      {
+        "to": 15,
+        "suffix": "",
+        "text": "Proyectos Completados"
+      },
+      {
+        "to": 100,
+        "suffix": "%",
+        "text": "Compromiso con la Calidad"
+      }
+    ],
+    "cta": "Contactar para proyecto"
+  },
   "contact": {
     "titleAlt": "Logo de Alejandro Canek",
     "description": "Disponible para nuevos proyectos y colaboraciones. Refinamiento de experiencia de usuario, desarrollar una interfaz desde cero o auditar tu producto actual, estoy aquí para ayudar. Hablemos.",

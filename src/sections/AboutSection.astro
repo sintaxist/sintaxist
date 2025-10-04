@@ -1,150 +1,78 @@
 ---
-import * as Icons from "@/components/ui/Icons.ts";
+import SectionLayout from "@/layouts/SectionLayout.astro";
+import AnimatedItem from "@/components/ui/AnimatedItem.astro";
+import AnimatedCounter from "@/components/ui/AnimatedCounter.astro";
+import Button from "@/components/ui/Button.astro";
+
+const { t } = Astro.props;
 ---
 
-<section id="sobre-mi" class="py-20 lg:py-32 px-6 relative overflow-x-hidden">
-  <div class="absolute inset-0 -z-10">
+<SectionLayout color="primary">
+  <section
+    id="aboutMe"
+    class="w-full border-3 border-secondary rounded-2xl max-w-screen-xl mx-auto my-[100px] px-6 xs:px-10 py-10 lg:py-20"
+  >
+    <AnimatedItem>
+      <h2
+        class="anim-item flex items-center gap-4 font-primary text-4xl md:text-5xl"
+      >
+        <svg
+          width="24"
+          height="28"
+          viewBox="0 0 24 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="M12.4434 2.80385L13.684 8.03077L18.9109 9.27139L13.684 10.512L12.4434 15.739L11.2028 10.512L5.97587 9.27139L11.2028 8.03077L12.4434 2.80385ZM3.125 10.5L4.54167 15.1667L9.20833 16.5833L4.54167 18L3.125 22.6667L1.70833 18L-2.98023e-07 16.5833L1.70833 15.1667L3.125 10.5Z"
+            fill="white"></path></svg
+        >
+        {t.title}
+      </h2>
+    </AnimatedItem>
+
     <div
-      class="absolute bottom-0 -left-24 w-96 h-96 rounded-full opacity-10 bg-amber-500 blur-3xl"
+      class="font-secondary text-base sm:text-md md:text-lg max-w-4xl space-y-4"
     >
+      <AnimatedItem delay={200}>
+        <p class="anim-item">{t.paragraph1}</p>
+      </AnimatedItem>
+      <AnimatedItem delay={400}>
+        <p class="anim-item">{t.paragraph2}</p>
+      </AnimatedItem>
     </div>
+
     <div
-      class="absolute top-0 -right-24 w-80 h-80 rounded-full opacity-10 bg-cyan-500 blur-3xl"
+      class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center sm:text-left"
     >
+      {
+        t.stats.map((stat, index) => (
+          <AnimatedItem delay={800 + index * 150}>
+            <div class="anim-item flex flex-col sm:flex-row items-center gap-3">
+              <span class="font-primary text-6xl md:text-7xl leading-none">
+                <AnimatedCounter to={stat.to} suffix={stat.suffix} />
+              </span>
+              <span class="font-secondary text-sm uppercase leading-tight">
+                {stat.text}
+              </span>
+            </div>
+          </AnimatedItem>
+        ))
+      }
     </div>
-  </div>
 
-  <div class="max-w-7xl mx-auto relative z-10">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
-      <div class="space-y-8">
-        <div
-          class="animate-on-scroll   bg-indigo-100 text-indigo-600 border border-indigo-200 px-4 py-2 rounded-full inline-block text-sm"
-        >
-          🎉 Promoción de Lanzamiento: 20% de Descuento
+    <div>
+      <AnimatedItem delay={1250}>
+        <div class="anim-item">
+          <Button
+            as="a"
+            href="#contact"
+            text={t.cta}
+            fill={false}
+            color="white"
+            arrow={true}
+          />
         </div>
-
-        <h2
-          class="  font-bold text-4xl lg:text-5xl text-gray-900 leading-tight"
-          style="transition-delay: 150ms;"
-        >
-          Tu evento digital, <span class="text-indigo-600"
-            >diseñado para ser inolvidable ✨</span
-          >
-        </h2>
-
-        <h3
-          class="  font-semibold text-2xl text-gray-700"
-          style="transition-delay: 300ms;"
-        >
-          Invitaciones digitales únicas, con calidad premium
-        </h3>
-
-        <div class="space-y-4" style="transition-delay: 450ms;">
-          <p
-            class="  font-normal text-lg text-gray-600 leading-relaxed"
-          >
-            En Mömenta diseñamos y programamos invitaciones digitales exclusivas para que tu evento comience sin estrés y con estilo. Aceptamos un número limitado de proyectos para garantizar dedicación total y resultados impecables.
-          </p>
-          <p
-            class="  font-normal text-lg text-gray-600 leading-relaxed"
-          >
-            Con más de 5 años creando experiencias digitales memorables, cada invitación es pensada como una pieza única que refleja la esencia de tu celebración.
-          </p>
-        </div>
-
-        <a
-          href="https://calendly.com/momenta-invitaciones/nueva-reunion"
-          target="_blank"
-          class="inline-flex items-center space-x-3 bg-white/40 backdrop-blur-xl rounded-2xl p-4 border border-green-200"
-          style="transition-delay: 600ms;"
-        >
-          <div class="flex items-center space-x-2">
-            <div class="w-[15px] h-[13px] bg-green-500 rounded-full animate-pulse"></div>
-            <span class="  font-semibold text-green-700">
-              Disponibles solo 3 espacios para proyectos exclusivos en 2025. Reserva el tuyo hoy.
-            </span>
-          </div>
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 gap-6">
-        <div
-          class="bg-white/40 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-lg transition-transform duration-300 animate-on-scroll"
-          style="transition-delay: 100ms;"
-        >
-          <div class="flex items-center space-x-4 mb-4">
-            <div
-              class="container-svg text-white p-3 bg-indigo-500 rounded-xl w-13 h-13 flex items-center justify-center"
-            >
-              <Fragment set:html={Icons.Star} />
-            </div>
-            <div>
-              <h4 class="  font-semibold text-xl text-gray-900">
-                Calidad Premium
-              </h4>
-              <p class="  text-gray-600 text-sm">
-                Los detalles importan
-              </p>
-            </div>
-          </div>
-          <p class="  font-normal text-gray-600">
-            Cada invitación digital es tratada como una obra maestra, con atención meticulosa a cada detalle.
-          </p>
-        </div>
-
-        <div
-          class="bg-white/40 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-lg transition-transform duration-300 animate-on-scroll"
-          style="transition-delay: 250ms;"
-        >
-          <div class="flex items-center space-x-4 mb-4">
-            <div
-              class="container-svg text-white p-3 bg-blue-500 rounded-xl w-13 h-13 flex items-center justify-center"
-            >
-              <Fragment set:html={Icons.Users} />
-            </div>
-            <div>
-              <h4 class="  font-semibold text-xl text-gray-900">
-                5+ Años de Experiencia
-              </h4>
-              <p class="  text-gray-600 text-sm">Confianza comprobada</p>
-            </div>
-          </div>
-          <p class="  font-normal text-gray-600">
-            Especialistas en UI/UX y diseño digital para eventos que conectan y emocionan.
-          </p>
-        </div>
-
-        <div
-          class="bg-white/40 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-lg transition-transform duration-300 animate-on-scroll"
-          style="transition-delay: 400ms;"
-        >
-          <div class="flex items-center space-x-4 mb-4">
-            <div
-              class="container-svg text-white p-3 bg-emerald-500 rounded-xl w-13 h-13 flex items-center justify-center"
-            >
-              <Fragment set:html={Icons.Calendar} />
-            </div>
-            <div>
-              <h4 class="  font-semibold text-xl text-gray-900">
-                Disponibilidad Limitada
-              </h4>
-              <p class="  text-gray-600 text-sm">
-                Exclusividad garantizada
-              </p>
-            </div>
-          </div>
-          <p class="  font-normal text-gray-600">
-            Proyectos exclusivos, con dedicación total y resultados excepcionales garantizados.
-          </p>
-        </div>
-      </div>
+      </AnimatedItem>
     </div>
-  </div>
-</section>
-<style>
-  .container-svg :global(svg) {
-      color: white;
-      width: 24px;
-      height: 24px;
-    }
-</style>
+  </section>
+</SectionLayout>
