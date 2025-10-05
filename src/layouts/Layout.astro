@@ -48,6 +48,22 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
     />
     <link rel="manifest" href="/favicon/site.webmanifest" /> -->
 
+    <!-- Google Fonts optimizado -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      onload="this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -98,7 +114,6 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
     </main>
     {noNavgation ? null : <Footer t={footerInfo} />}
 
-
     <!-- <div
       id="cookie-banner"
       class="fixed bottom-4 left-4 right-4 md:left-auto md:w-[400px] p-6 rounded-xl bg-white shadow-2xl border border-gray-200/50 transition-transform duration-500 ease-out z-50"
@@ -148,7 +163,6 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
 </script>
 
 <script type="text/javascript" defer>
-  // import CustomCursor from "custom-cursor.js";
 
   document.addEventListener("DOMContentLoaded", () => {
     const animationGroups = document.querySelectorAll(".animation-group");
@@ -181,7 +195,7 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
             }
           });
         },
-        { threshold: 0.7 }
+        { threshold: 0.5 }
       );
 
       animationGroups.forEach((group) => observer.observe(group));

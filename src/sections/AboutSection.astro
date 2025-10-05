@@ -8,55 +8,52 @@ const { t } = Astro.props;
 ---
 
 <SectionLayout id="aboutMe" color="primary">
-  <article class="flex flex-col gap-10">
-    <AnimatedItem>
-      <h2 class="flex font-normal items-center gap-4 font-primary text-5xl md:text-5xl lg:text-7xl">
-        <svg
-          width="24"
-          height="28"
-          viewBox="0 0 24 28"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          ><path
-            d="M12.4434 2.80385L13.684 8.03077L18.9109 9.27139L13.684 10.512L12.4434 15.739L11.2028 10.512L5.97587 9.27139L11.2028 8.03077L12.4434 2.80385ZM3.125 10.5L4.54167 15.1667L9.20833 16.5833L4.54167 18L3.125 22.6667L1.70833 18L-2.98023e-07 16.5833L1.70833 15.1667L3.125 10.5Z"
-            fill="white"></path></svg
-        >
-        {t.title}
-      </h2>
-    </AnimatedItem>
+  <article class="flex flex-col gap-8 sm:gap-10">
+    <!-- text-3xl xs:text-4xl sm:text-5xl md:text-7xl -->
+    <h2
+      class="font-primary text-4xl sm:text-5xl md:text-6xl"
+    >
+      <svg
+        width="24"
+        height="28"
+        viewBox="0 0 24 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M12.4434 2.80385L13.684 8.03077L18.9109 9.27139L13.684 10.512L12.4434 15.739L11.2028 10.512L5.97587 9.27139L11.2028 8.03077L12.4434 2.80385ZM3.125 10.5L4.54167 15.1667L9.20833 16.5833L4.54167 18L3.125 22.6667L1.70833 18L-2.98023e-07 16.5833L1.70833 15.1667L3.125 10.5Z"
+          fill="white"></path></svg
+      >
+      {t.title}
+    </h2>
 
-    <AnimatedItem delay={200}>
-      <p class="font-secondary text-base sm:text-md md:text-lg">
-        {t.paragraph1}
-      </p>
-    </AnimatedItem>
+    <p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">
+      {t.paragraph1}
+    </p>
 
-    <AnimatedItem delay={400}>
-      <p class="font-secondary text-base sm:text-md md:text-lg">
-        {t.paragraph2}
-      </p>
-    </AnimatedItem>
+    <p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">
+      {t.paragraph2}
+    </p>
 
     <div
-      class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center sm:text-left"
+      class="flex gap-10 flex-col items-center sm:items-start sm:flex-row sm:gap-6 text-left justify-between"
     >
       {
         t.stats.map((stat, index) => (
-          <AnimatedItem delay={index * 200}>
-            <div class="flex flex-col sm:flex-row items-center gap-3">
-              <span class="font-primary text-6xl md:text-7xl leading-none">
-                <AnimatedCounter to={stat.to} suffix={stat.suffix} />
-              </span>
-              <span class="font-primary text-md uppercase leading-tight">
-                {stat.text}
-              </span>
-            </div>
-          </AnimatedItem>
+          <div
+            class="anim-item flex flex-wrap flex-col sm:flex-row text-center sm:text-left items-center sm:items-start gap-3"
+            data-delay={index * 200}
+            data-animate="text"
+          >
+            <span class="font-primary text-6xl md:text-7xl leading-none">
+              <AnimatedCounter to={stat.to} suffix={stat.suffix} />
+            </span>
+            <span class="font-primary text-md sm:text-lg uppercase leading-[160%]" set:html={stat.text} />
+          </div>
         ))
       }
     </div>
 
-    <AnimatedItem delay={600}>
+    <div>
       <Button
         as="a"
         href="#contact"
@@ -65,6 +62,6 @@ const { t } = Astro.props;
         color="white"
         arrow={true}
       />
-    </AnimatedItem>
+    </div>
   </article>
 </SectionLayout>

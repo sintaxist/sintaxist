@@ -7,6 +7,7 @@ import AboutSection from "@/sections/AboutSection.astro";
 import ContactSection from "@/sections/ContactSection.astro";
 
 import { LANGUAGES, defaultLang, type AppLocale } from '@/locales';
+import ExperiencieSkillsSection from "@/sections/ExperiencieSkillsSection.astro";
 
 export function getStaticPaths() {
   return [
@@ -20,11 +21,10 @@ const t = LANGUAGES[lang].translations;
 
 ---
 
-<Layout title="Mömenta - Transformando Eventos en Experiencias Digitales" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={{}}>
+<Layout title="Alejandro Canek - UX Engineer" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={{}}>
   <HeroSection t={t.hero} socials={t.socials}/>
   <AboutSection t={t.about}/>
-  <!-- <PortfolioSection />
-  <FeaturesSection />
-  <PackagesSection /> -->
+  <!-- <PortfolioSection /> -->
+   <ExperiencieSkillsSection experience={t.experience} skills={t.skills} />
   <ContactSection t={t.contact} socials={t.socials}/>
 </Layout>

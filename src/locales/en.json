@@ -38,7 +38,7 @@
       },
       {
         "to": 15,
-        "suffix": "",
+        "suffix": "+",
         "text": "Proyectos Completados"
       },
       {
@@ -48,6 +48,119 @@
       }
     ],
     "cta": "Contactar para proyecto"
+  },
+  "experience": {
+    "title": "Mi experiencia",
+    "cta_download_cv": "Descargar CV",
+    "jobs": [
+      {
+        "company": "Payvalida",
+        "role": "Analista UI-UX",
+        "dates": "Julio 2024 – Actualidad",
+        "tasks": [
+          "Dirección de la segunda versión de la Wallet, y del nuevo Design System, manual de marca y UI Kit.",
+          "Rediseño integral de los tres productos clave de la empresa: Checkout, Wallet y Merchant.",
+          "Propuesta de nuevas arquitecturas de interacción y liderazgo de pruebas de usabilidad en múltiples iteraciones.",
+          "Desarrollo de una plataforma interna para convertir emails en HTML funcional, accesible y compatible con todos los navegadores.",
+          "Optimización técnica y visual de la comunicación por correo, aumentando tasas de apertura y clic."
+        ]
+      },
+      {
+        "company": "BBVA / Minsait",
+        "role": "Desarrollador Frontend Senior",
+        "dates": "Marzo 2024 – Marzo 2025",
+        "tasks": [
+          "Implementación del nuevo sistema de diseño en la app BBVA Venezuela utilizando LitElement.",
+          "Desarrollo de flujos clave como consulta de saldos y movimientos, incluyendo funcionalidades de filtrado y búsqueda avanzada.",
+          "Construcción de componentes reutilizables siguiendo buenas prácticas de pruebas unitarias y componentización.",
+          "Integración con la plataforma CELLS y uso de librerías internas para alineación con estándares corporativos."
+        ]
+      },
+      {
+        "company": "Gendra",
+        "role": "Desarrollador Frontend",
+        "dates": "Octubre 2022 – Marzo 2024",
+        "tasks": [
+          "Desarrollo exprés de dos productos de otorgamiento de crédito utilizando Next.js y Material UI.",
+          "Implementación de microfrontends con Gatsby y iFrames, gestionando paso de datos entre módulos embebidos."
+        ]
+      },
+      {
+        "company": "Yoorco",
+        "role": "Project Manager",
+        "dates": "Septiembre 2022 – Febrero 2023",
+        "tasks": [
+          "Dirección de una plataforma de adopción de mascotas, gestionando sesiones con cliente y definición estratégica del MVP.",
+          "Diseño de interfaz en Figma y desarrollo del front-end en Next.js, priorizando accesibilidad y modularidad."
+        ]
+      },
+      {
+        "company": "Xochinaco",
+        "role": "Diseñador UI / Desarrollador Frontend",
+        "dates": "Noviembre 2020 – Octubre 2022",
+        "tasks": [
+          "Participación en más de 10 proyectos para marcas como Intel, Bayern de Múnich, INEDLA y LANRESC.",
+          "Desarrollo de interfaces con SASS, Javascript, React.js, WordPress, Wix y Strapi."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "categories": [
+      {
+        "icon": "IconDesign",
+        "title": "Diseño y Prototipado",
+        "description": "Herramientas para crear experiencias visuales impactantes y prototipos interactivos.",
+        "pills": ["Figma", "Illustrator", "Photoshop", "Premier Pro", "Framer"]
+      },
+      {
+        "icon": "IconFrontend",
+        "title": "Desarrollo Frontend",
+        "description": "Tecnologías modernas para construir interfaces robustas y escalables.",
+        "pills": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React.js",
+          "Next.js",
+          "Astro",
+          "LitElement"
+        ]
+      },
+      {
+        "icon": "IconCms",
+        "title": "CMS y Backend",
+        "description": "Sistemas de gestión de contenido y desarrollo del lado del servidor.",
+        "pills": [
+          "WordPress",
+          "Strapi",
+          "Wix",
+          "AEM",
+          "PHP",
+          "Node.js",
+          "Supabase"
+        ]
+      },
+      {
+        "icon": "IconBranch",
+        "title": "Versionamiento y Pruebas",
+        "description": "Control de versiones y testing para mantener la calidad del código.",
+        "pills": ["Git", "Github", "BitBucket", "Azure Repos", "Jest"]
+      },
+      {
+        "icon": "IconDeploy",
+        "title": "Despliegue y Entorno",
+        "description": "Plataformas y procesos para llevar aplicaciones a producción.",
+        "pills": ["Vercel", "Netlify", "Render", "Northflank", "CI / CD Básico"]
+      },
+      {
+        "icon": "IconCollaboration",
+        "title": "Colaboración y Gestión",
+        "description": "Herramientas para trabajo en equipo y gestión de proyectos.",
+        "pills": ["Slack", "Trello", "Azure DevOps", "Google Workspace", "Jira"]
+      }
+    ]
   },
   "contact": {
     "titleAlt": "Logo de Alejandro Canek",

@@ -9,7 +9,7 @@ const menuItems = [
   { id: "home", label: t.sections.home },
   { id: "aboutMe", label: t.sections.aboutMe },
   { id: "projects", label: t.sections.projects },
-  { id: "experiencie", label: t.sections.experiencie },
+  { id: "experience", label: t.sections.experience },
   { id: "skills", label: t.sections.skills},
   { id: "contact", label: t.sections.contact},
 ];
@@ -67,9 +67,8 @@ const menuItems = [
     </div>
   </div>
 </header>
-<div id="mobile-nav-panel" class="mobile-nav-panel md:hidden fixed pt-[80px] right-0 w-full h-full bg-secondary backdrop-blur-xl z-50">
-  <div class="p-6 h-full flex flex-col">
-    <nav class="flex flex-col gap-4 space-y-2 flex-1">
+<div id="mobile-nav-panel" class="mobile-nav-panel md:hidden fixed pt-[80px] right-0 w-full h-full bg-secondary z-50">
+    <nav class="flex flex-col gap-4 space-y-2 flex-1 p-6 h-full">
       {
         menuItems.map((item) => (
           <a
@@ -81,9 +80,8 @@ const menuItems = [
           </a>
         ))
       }
-      <LangSwitcher class="m-auto"/>
+      <LangSwitcher class="mx-auto"/>
     </nav>
-  </div>
 </div>
 
 <script>

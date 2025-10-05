@@ -1,0 +1,147 @@
+---
+import SectionLayout from "@/layouts/SectionLayout.astro";
+import SkillCategory from "@/components/SkillCategory.astro";
+import ExperienceItem from "@/components/ExperienceItem.astro";
+import Button from "@/components/ui/Button.astro";
+
+const { experience, skills } = Astro.props;
+
+const lang = Astro.url.pathname.split("/")[1] || "es";
+const cvPath = `/cv/Alejandro-Canek-CV-${lang}.pdf`;
+---
+
+<SectionLayout
+  id="experience"
+  color="primary"
+  className="flex flex-col gap-12"
+  secondChild={true}
+  secondId="skills"
+>
+  <!-- Experience -->
+
+  <h2
+    class="flex items-center gap-4 font-primary text-5xl md:text-5xl lg:text-7xl"
+  >
+    <svg
+      width="28"
+      height="32"
+      viewBox="0 0 28 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        d="M14.518 3.20439L15.9391 9.17802L21.9127 10.5991L15.9391 12.0202L14.518 18.005L13.0969 12.0202L7.12327 10.5991L13.0969 9.17802L14.518 3.20439ZM3.57143 12L5.14286 17.3333L10.5 18.9167L5.14286 20.5L3.57143 25.8333L2 20.5L-3.41444e-07 18.9167L2 17.3333L3.57143 12Z"
+        fill="white"></path></svg
+    >
+    {experience.title}
+  </h2>
+
+  <div id="timeline-container" class="relative">
+    <div
+      id="timeline-line"
+      class="absolute left-[14px] top-0 w-0.5 h-0 bg-white/30"
+    >
+    </div>
+
+    <div class="flex flex-col gap-12">
+      {experience.jobs.map((job, index) => <ExperienceItem {job} {index} />)}
+    </div>
+  </div>
+
+  <div class="anim-item">
+    <Button
+      as="a"
+      href={cvPath}
+      text={experience.cta_download_cv}
+      fill={false}
+      color="white"
+      arrow={true}
+      download
+    />
+  </div>
+
+  <!-- Skills -->
+
+  <div slot="secondary" class="flex flex-col gap-12">
+    <h2
+      class="flex items-center gap-4 font-primary text-5xl md:text-5xl lg:text-7xl"
+    >
+      <svg
+        width="28"
+        height="32"
+        viewBox="0 0 28 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          d="M14.518 3.20439L15.9391 9.17802L21.9127 10.5991L15.9391 12.0202L14.518 18.005L13.0969 12.0202L7.12327 10.5991L13.0969 9.17802L14.518 3.20439ZM3.57143 12L5.14286 17.3333L10.5 18.9167L5.14286 20.5L3.57143 25.8333L2 20.5L-3.41444e-07 18.9167L2 17.3333L3.57143 12Z"
+          fill="white"></path></svg
+      >
+      {skills.title}
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      {
+        skills.categories.map((category, index) => (
+          <article
+            class="anim-item"
+            data-delay={index * 200}
+            data-animate="text"
+          >
+            <SkillCategory {category} />
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</SectionLayout>
+<script>
+  // Dentro de tu 'DOMContentLoaded' en el script del Layout
+  document.addEventListener("DOMContentLoaded", () => {
+    // ... tu código de animaciones y cursor ...
+
+    // --- LÓGICA PARA LA LÍNEA DE TIEMPO ---
+    const timelineContainer = document.getElementById("timeline-container");
+    const timelineLine = document.getElementById("timeline-line");
+    const timelineIcons = document.querySelectorAll(".timeline-icon");
+
+    if (timelineContainer && timelineLine) {
+      // 1. Animación de la línea al hacer scroll
+      window.addEventListener("scroll", () => {
+        const { top } = timelineContainer.getBoundingClientRect();
+        const containerHeight = timelineContainer.offsetHeight;
+        const windowHeight = window.innerHeight;
+
+        // Calculamos qué tan visible es el contenedor en la parte superior
+        const visibleHeight = windowHeight - top;
+
+        // La altura de la línea no puede superar la altura total del contenedor
+        let lineHeight = Math.max(0, Math.min(visibleHeight, containerHeight));
+
+        // Actualizamos la altura de la línea
+        timelineLine.style.height = `${lineHeight}px`;
+      });
+
+      // 2. Animación de pulso para los iconos
+      const iconObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const icon = entry.target;
+              // Solo animamos una vez
+              if (!icon.classList.contains("is-pulsing")) {
+                // Verificamos que la línea de tiempo haya "alcanzado" el icono
+                const lineRect = timelineLine.getBoundingClientRect();
+                const iconRect = icon.getBoundingClientRect();
+                if (lineRect.bottom >= iconRect.top + iconRect.height / 2) {
+                  icon.classList.add("is-pulsing");
+                }
+              }
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -40% 0px" }
+      );
+
+      timelineIcons.forEach((icon) => iconObserver.observe(icon));
+    }
+  });
+</script>
