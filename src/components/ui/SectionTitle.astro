@@ -1,0 +1,30 @@
+---
+import TitleDecoration from '@/icons/TitleDecoration.astro';
+import TitleDecoration2 from '@/icons/TitleDecoration2.astro';
+
+interface Props {
+  text: string;
+  color?: 'primary' | 'secondary';
+  tag?: 'h1' | 'h2' | 'h3';
+  className?: string;
+}
+
+const { text, color = 'primary', tag: Tag = 'h2', className } = Astro.props;
+
+const colorClasses = color === 'primary' ? 'text-primary' : 'text-secondary';
+
+// Generamos un ID único para que el script pueda encontrar este título específico
+const uniqueId = `title-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class:list={["relative w-fit flex gap-4 items-center", className]}>
+  <Tag id={uniqueId} class:list={[colorClasses, 'font-primary text-4xl sm:text-5xl md:text-6xl']}>
+    {text}
+  </Tag>
+
+  {color === 'primary' ? (
+    <TitleDecoration class="hidden xs:block w-10 h-10" />
+  ) : (
+    <TitleDecoration2 class="hidden xs:block w-7 md:w-10 h-7 md:h-10 rotate-7" />
+  )}
+</div>

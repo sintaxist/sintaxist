@@ -4,7 +4,7 @@ import ArrowIcon from '@/icons/Arrow.astro';
 const {
   as = 'a',
   fill = false,
-  color = 'blue',
+  color = 'primary',
   arrow = false,
   href,
   text,
@@ -16,8 +16,8 @@ const wrapperBase = "textured-border-wrapper w-full md:w-auto min-w-min group re
 const contentBase = "font-secondary flex items-center justify-center gap-4 font-semibold px-6 md:px-8 py-3 rounded-full transition-all duration-300 ease-in-out w-full h-full border-2 text-sm xs:text-base sm:text-md md:text-lg";
 
 const fillStyles = fill
-  ? (color === 'blue' ? 'bg-primary text-white border-primary' : 'bg-white text-primary border-secondary')
-  : (color === 'blue' ? 'bg-transparent text-primary border-primary' : 'bg-transparent text-white border-secondary');
+  ? (color === 'primary' ? 'bg-primary text-secondary border-primary' : 'bg-secondary text-primary border-secondary')
+  : (color === 'primary' ? 'bg-transparent text-primary border-primary' : 'bg-transparent text-secondary border-secondary');
 
 const hoverStyles = fill
   ? 'hover:-translate-y-1'
@@ -31,7 +31,7 @@ const Tag = as;
 <Tag href={as === 'a' ? href : undefined} class={wrapperBase} {...rest}>
   <div class={contentClasses}>
     {text}{arrow && (
-      <ArrowIcon class="transition-transform duration-300 group-hover:translate-x-2" />
+      <ArrowIcon class="transition-transform hidden xs:block duration-300 group-hover:translate-x-2" />
     )}
   </div>
 </Tag>

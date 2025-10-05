@@ -17,23 +17,21 @@ const {
   secondId,
 } = Astro.props;
 
-// Clases base del contenedor exterior (el fondo y el margen/padding principal)
 const containerBase =
   "w-full px-6 md:px-8 py-15 md:py-20 flex flex-col gap-10";
 const colorClasses =
   color === "primary"
-    ? "bg-textured-primary text-white"
+    ? "bg-textured-primary text-secondary"
     : "bg-secondary text-primary";
 
-// Clases para los bordes de los contenedores interiores
 const borderClass = border
   ? color === "primary"
-    ? "p-6 md:p-10 lg:p-12 border-white/50 rounded-2xl border-3"
-    : // El padding/border lo aplicamos al hijo, no al padre, por eso lo movimos aquí
+    ? "p-6 md:p-10 lg:p-12 border-secondary/50 rounded-2xl border-3"
+    :
       "p-6 md:p-10 lg:p-12 border-primary rounded-2xl border-3"
   : "";
 
-const sectionBase = "w-full max-w-screen-2xl mx-auto animation-group"; // Cada sección interna será un grupo de animación
+const sectionBase = "w-full max-w-screen-2xl mx-auto animation-group";
 ---
 
 <div

@@ -47,7 +47,7 @@
         "text": "Empresas y marcas <br/> con las que he colaborado"
       }
     ],
-    "cta": "Contactar para proyecto"
+    "cta": "Colaboremos"
   },
   "experience": {
     "title": "Mi experiencia",
@@ -77,7 +77,7 @@
         ]
       },
       {
-        "company": "Gendra",
+        "company": "Financiera Independencia / Gendra",
         "role": "Desarrollador Frontend",
         "dates": "Octubre 2022 – Marzo 2024",
         "tasks": [
@@ -95,7 +95,7 @@
         ]
       },
       {
-        "company": "Xochinaco",
+        "company": "Xochimaco",
         "role": "Diseñador UI / Desarrollador Frontend",
         "dates": "Noviembre 2020 – Octubre 2022",
         "tasks": [

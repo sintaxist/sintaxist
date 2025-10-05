@@ -2,17 +2,20 @@
 import IconBriefcase from "@/icons/IconBriefcase.astro";
 const { job } = Astro.props;
 ---
-<div class="relative pl-12 md:pl-16">
-  <div class="timeline-icon absolute left-0 top-1">
-    <IconBriefcase class="w-8 h-8 text-secondary" />
+<div class="flex gap-8 md:gap-10 w-full">
+
+  <div class="timeline-icon hidden md:flex items-center justify-center w-[80px] h-[80px] min-w-[80px] border-2 rounded-full border-secondary">
+    <IconBriefcase class="w-9 h-9" />
   </div>
 
-  <div class="flex flex-col gap-2">
-    <p class="font-secondary text-sm text-secondary">{job.dates}</p>
-    <h3 class="font-primary text-xl text-secondary">{job.company}</h3>
-    <h4 class="font-secondary font-semibold text-md text-secondary">{job.role}</h4>
-    <ul class="list-disc pl-5 space-y-2 font-secondary text-secondary mt-2">
-      {job.tasks.map(task => <li>{task}</li>)}
+  <div class="flex flex-col gap-2 md:gap-4 w-full">
+    <h3 class="font-primary text-3xl md:text-4xl">{job.company}</h3>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 md:gap-4">
+      <h4 class="font-secondary font-bold text-sm xs:text-base sm:text-md md:text-lg underline">{job.role}</h4>
+      <p class="font-secondary font-bold text-sm xs:text-base sm:text-md md:text-lg">{job.dates}</p>
+    </div>
+    <ul class="list-disc pl-5 space-y-2 font-secondary mt-2">
+      {job.tasks.map(task => <li class="font-secondary font-normal text-sm xs:text-base sm:text-md md:text-lg">{task}</li>)}
     </ul>
   </div>
 </div>
