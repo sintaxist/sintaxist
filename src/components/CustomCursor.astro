@@ -1,0 +1,134 @@
+<div id="cursor-dot"></div>
+  <div id="cursor-outline"></div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+
+    if (!cursorDot || !cursorOutline) return;
+
+    // Variables para guardar la posición del ratón
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Variables para la posición animada del círculo exterior
+    let outlineX = 0;
+    let outlineY = 0;
+
+    // El listener 'mousemove' solo guarda las coordenadas
+    window.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // El "motor" de animación que se ejecuta en cada frame
+    const animateCursor = () => {
+      // El punto central se mueve instantáneamente a la posición del ratón
+      cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+
+      // El círculo exterior "persigue" al ratón con un efecto de suavizado
+      outlineX += (mouseX - outlineX) * 0.1; // Ajusta el valor 0.1 para cambiar la "pereza" del seguimiento
+      outlineY += (mouseY - outlineY) * 0.1;
+      cursorOutline.style.transform = `translate(${outlineX - 20}px, ${outlineY - 20}px)`;
+
+      requestAnimationFrame(animateCursor);
+    };
+
+    animateCursor(); // Inicia el bucle de animación
+
+    // Lógica para detectar hover en elementos interactivos
+    const interactiveElements = document.querySelectorAll(
+      "a, button, .interactive"
+    );
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        cursorDot.classList.add("is-hovered");
+        cursorOutline.classList.add("is-hovered");
+      });
+      el.addEventListener("mouseleave", () => {
+        cursorDot.classList.remove("is-hovered");
+        cursorOutline.classList.remove("is-hovered");
+      });
+    });
+
+    // Lógica para el cambio de color en secciones oscuras
+    const sections = document.querySelectorAll("[data-section-theme]");
+    sections.forEach((section) => {
+      section.addEventListener("mouseenter", () => {
+        const theme = section.dataset.sectionTheme;
+        cursorDot.classList.toggle("is-inverted", theme === "dark");
+        cursorOutline.classList.toggle("is-inverted", theme === "dark");
+      });
+    });
+  });
+</script>
+
+<style>
+  /* --- ESTILOS PARA CURSOR NATIVO --- */
+
+  /* 1. Ocultamos el cursor por defecto */
+  html {
+    cursor: none;
+  }
+  a,
+  button,
+  .interactive {
+    cursor: none;
+  }
+
+  /* 2. Estilos para el punto central */
+  #cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    /* La posición se controla 100% con JS, no necesita 'top' o 'left' aquí */
+    transition:
+      transform 0.2s ease-out,
+      width 0.3s ease,
+      height 0.3s ease;
+  }
+
+  /* 3. Estilos para el círculo exterior */
+  #cursor-outline {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    /* La posición y el suavizado se controlan 100% con JS */
+    transition:
+      width 0.3s ease,
+      height 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  /* --- ESTADOS DEL CURSOR --- */
+
+  /* 4. Estado de Hover */
+  #cursor-outline.is-hovered {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(244, 34, 34, 0.1);
+    border-color: #f42222;
+  }
+
+  /* 5. Estado Invertido (para fondos oscuros) */
+  #cursor-dot.is-inverted {
+    background-color: white;
+  }
+  #cursor-outline.is-inverted {
+    border-color: white;
+  }
+  #cursor-outline.is-inverted.is-hovered {
+    border-color: #f42222;
+    background-color: rgba(244, 34, 34, 0.2);
+  }
+</style>

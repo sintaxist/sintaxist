@@ -1,61 +1,63 @@
 ---
-import AnimatedItem from '@/components/ui/AnimatedItem.astro';
-import Button from '@/components/ui/Button.astro';
+import AnimatedItem from "@/components/ui/AnimatedItem.astro";
+import Button from "@/components/ui/Button.astro";
 // Importamos los enlaces desde nuestro archivo de configuración
-import { socialLinks, schedulingLink } from '@/data/links.js';
+import { socialLinks, schedulingLink } from "@/data/links.js";
+import SectionLayout from "@/layouts/SectionLayout.astro";
 
 const { t, socials } = Astro.props;
 ---
-<section 
-  id="contact" 
-  class="w-full border-3 border-primary rounded-2xl max-w-screen-xl mx-auto px-6 xs:px-10 py-16 lg:py-20"
->
-  <div class="flex flex-col items-center text-center">
+
+<SectionLayout id="contact" color="secondary">
+  <div class="flex flex-col items-center gap-10">
     <AnimatedItem>
-      <img 
-        src="/assets/alejandro-canek-logo.svg" 
+      <img
+        src="/assets/alejandro-canek-logo.svg"
         alt={t.titleAlt}
-        class="anim-item w-full max-w-xs md:max-w-md mb-10"
+        class="w-full max-w-xs md:max-w-md"
       />
     </AnimatedItem>
 
     <AnimatedItem delay={200}>
-      <p class="anim-item font-secondary text-sm xs:text-base sm:text-md md:text-lg leading-[160%] text-primary max-w-3xl">
+      <p
+        class="font-secondary text-center text-sm xs:text-base sm:text-md md:text-lg leading-[160%] text-primary max-w-3xl"
+      >
         {t.description}
       </p>
     </AnimatedItem>
 
-
-    <div class="anim-item flex items-center justify-center gap-4 md:gap-6 mt-8">
-      {socialLinks.map((link, index) => (
-        <AnimatedItem className="transition-all hover:-translate-y-1" delay={index * 200}>
-          <a 
-            href={link.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            title={link.name}
-            aria-label={socials[link.ariaLabelKey]}
-            class="text-primary hover:text-primary-hover transition-all"
+    <div class="flex items-center justify-center gap-4 md:gap-6">
+      {
+        socialLinks.map((link, index) => (
+          <AnimatedItem
+            className="transition-all hover:-translate-y-1"
+            delay={index * 200}
           >
-            <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
-          </a>
-        </AnimatedItem>
-      ))}
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.name}
+              aria-label={socials[link.ariaLabelKey]}
+              class="text-primary hover:text-primary-hover transition-all"
+            >
+              <link.icon class="w-8 sm:w-9 h-8 sm:h-9" />
+            </a>
+          </AnimatedItem>
+        ))
+      }
     </div>
 
     <AnimatedItem delay={600}>
-      <div class="anim-item mt-10">
-        <Button 
-          as="a" 
-          text={t.cta} 
-          href={schedulingLink} 
-          fill={false} 
-          color="blue" 
-          arrow={true}
-          target="_blank"
-        />
-      </div>
+      <Button
+        as="a"
+        text={t.cta}
+        href={schedulingLink}
+        fill={false}
+        color="blue"
+        arrow={true}
+        target="_blank"
+      />
     </AnimatedItem>
-
   </div>
-</section>
+</SectionLayout>
