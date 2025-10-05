@@ -1,6 +1,5 @@
 import type { APIRoute } from "astro";
 import nodemailer from "nodemailer";
-import { google } from "googleapis";
 
 // --- PLANTILLA DE CONFIRMACIÓN PARA EL USUARIO ---
 const createConfirmationEmailHtml = (name: string) => `
@@ -111,43 +110,6 @@ const createNotificationEmailHtml = (data: Record<string, any>) => `
 
 export const prerender = false;
 
-async function appendToSheet(data: Record<string, any>) {
-  const auth = new google.auth.GoogleAuth({
-    credentials: JSON.parse(import.meta.env.GOOGLE_SERVICE_ACCOUNT_CREDENTIALS),
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-
-  const sheets = google.sheets({ version: "v4", auth });
-  const spreadsheetId = import.meta.env.GOOGLE_SHEET_ID;
-
-  // Concatenamos los datos de contacto
-  const contactData = [data.email, data.phone].filter(Boolean).join(" / ");
-
-  // Preparamos la fila con el orden exacto de tus columnas
-  const row = [
-    new Date().toLocaleString("es-MX", { timeZone: "America/Mexico_City" }), // Fecha de contacto
-    data.name, // Nombre Completo
-    data.eventType, // Evento
-    "", // Empresa (vacio)
-    "", // Ciudad (vacio)
-    "Landing", // Canal
-    "Nuevo", // Estado
-    "", // Interes (vacio)
-    "", // Presupuesto Estimando MXN (vacio)
-    contactData, // Datos de contacto
-    data.message || "", // Notas
-  ];
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: "A1",
-    valueInputOption: "USER_ENTERED",
-    requestBody: {
-      values: [row],
-    },
-  });
-}
-
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.json();
   const { name, email } = data;
@@ -164,8 +126,6 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   try {
-    //  --- ESCRIBIR EN GOOGLE SHEETS ---
-    await appendToSheet(data);
 
     // --- ENVIAR CORREO DE CONFIRMACIÓN AL USUARIO ---
     await transporter.sendMail({

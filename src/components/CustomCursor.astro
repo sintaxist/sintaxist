@@ -1,5 +1,5 @@
 <div id="cursor-dot"></div>
-  <div id="cursor-outline"></div>
+<div id="cursor-outline"></div>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
@@ -16,26 +16,24 @@
     let outlineX = 0;
     let outlineY = 0;
 
-    // El listener 'mousemove' solo guarda las coordenadas
     window.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     });
 
-    // El "motor" de animación que se ejecuta en cada frame
     const animateCursor = () => {
-      // El punto central se mueve instantáneamente a la posición del ratón
-      cursorDot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
 
-      // El círculo exterior "persigue" al ratón con un efecto de suavizado
-      outlineX += (mouseX - outlineX) * 0.1; // Ajusta el valor 0.1 para cambiar la "pereza" del seguimiento
-      outlineY += (mouseY - outlineY) * 0.1;
-      cursorOutline.style.transform = `translate(${outlineX - 20}px, ${outlineY - 20}px)`;
+      outlineX += (mouseX - outlineX) * 0.15;
+      outlineY += (mouseY - outlineY) * 0.15;
+      cursorOutline.style.left = `${outlineX}px`;
+      cursorOutline.style.top = `${outlineY}px`;
 
       requestAnimationFrame(animateCursor);
     };
 
-    animateCursor(); // Inicia el bucle de animación
+    animateCursor();
 
     // Lógica para detectar hover en elementos interactivos
     const interactiveElements = document.querySelectorAll(
@@ -65,70 +63,83 @@
 </script>
 
 <style>
-  /* --- ESTILOS PARA CURSOR NATIVO --- */
-
-  /* 1. Ocultamos el cursor por defecto */
-  html {
-    cursor: none;
-  }
-  a,
-  button,
-  .interactive {
-    cursor: none;
-  }
-
-  /* 2. Estilos para el punto central */
   #cursor-dot {
     position: fixed;
-    width: 8px;
-    height: 8px;
+    top: 0;
+    left: 0;
+    width: 9px;
+    height: 9px;
     background-color: var(--color-primary);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    /* La posición se controla 100% con JS, no necesita 'top' o 'left' aquí */
+    transform: translate(-50%, -50%);
     transition:
-      transform 0.2s ease-out,
       width 0.3s ease,
-      height 0.3s ease;
+      height 0.3s ease,
+      background-color 0.3s ease;
   }
 
-  /* 3. Estilos para el círculo exterior */
   #cursor-outline {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 40px;
     height: 40px;
     border: 2px solid var(--color-primary);
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    /* La posición y el suavizado se controlan 100% con JS */
+    transform: translate(-50%, -50%);
+    transform-origin: center;
     transition:
-      width 0.3s ease,
-      height 0.3s ease,
-      border-color 0.3s ease,
+      width 0.3s cubic-bezier(0.16, 1, 0.1, 2.5),
+      height 0.3s cubic-bezier(0.16, 1, 0.1, 2.5),
+      border-color ease,
       background-color 0.3s ease;
   }
 
-  /* --- ESTADOS DEL CURSOR --- */
-
-  /* 4. Estado de Hover */
   #cursor-outline.is-hovered {
     width: 70px;
     height: 70px;
-    background-color: rgba(244, 34, 34, 0.1);
-    border-color: #f42222;
+    background-color: rgba(244, 146, 34, 0.1);
+    border-color: var(--color-cursor-hover);
+    animation: breathe 1.2s ease-in-out infinite;
   }
 
-  /* 5. Estado Invertido (para fondos oscuros) */
   #cursor-dot.is-inverted {
-    background-color: white;
+    background-color: var(--color-secondary);
   }
   #cursor-outline.is-inverted {
-    border-color: white;
+    border-color: var(--color-secondary);
   }
   #cursor-outline.is-inverted.is-hovered {
-    border-color: #f42222;
-    background-color: rgba(244, 34, 34, 0.2);
+    border-color: var(--color-cursor-hover);
+    background-color: rgba(244, 146, 34, 0.1);
   }
+
+  @keyframes breathe {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @media (max-width: 1000px) {
+  #cursor-dot,
+  #cursor-outline {
+    display: none !important;
+  }
+  html {
+    cursor: auto;
+  }
+  a, button, .interactive {
+    cursor: pointer;
+  }
+}
 </style>

@@ -87,31 +87,18 @@ const menuItems = [
 </div>
 
 <script>
-  // El script original se mantiene aquí, sin cambios en la lógica.
-  // Solo se actualiza el array de clases para el scroll.
-  function updateUrlHash(sectionId: string, replace: boolean = false) {
-    if (history.pushState) {
-      if (replace) {
-        history.replaceState(null, "", `#${sectionId}`);
-      } else {
-        history.pushState(null, "", `#${sectionId}`);
-      }
-    } else {
-      window.location.hash = sectionId;
-    }
-  }
-
-  function smoothScroll(target: HTMLElement, targetId: string) {
+  function smoothScroll(target, targetId) {
     const start = window.scrollY;
     const end = target.getBoundingClientRect().top + window.scrollY - 150;
+    // AJUSTE: Aumentamos la duración para un scroll suave y perceptible
     const duration = 50;
-    let startTime: number | null = null;
+    let startTime = null;
 
-    function easeInOutQuad(t: number): number {
+    function easeInOutQuad(t) {
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
 
-    function animation(currentTime: number) {
+    function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
@@ -124,57 +111,36 @@ const menuItems = [
 
     requestAnimationFrame(animation);
   }
-  
+
   document.addEventListener("DOMContentLoaded", () => {
-    const header = document.getElementById("main-header") as HTMLElement | null;
-    const logoLink = document.getElementById(
-      "logo-link"
-    ) as HTMLAnchorElement | null;
-    const mobileMenuBtn = document.getElementById(
-      "mobile-menu-btn"
-    ) as HTMLButtonElement | null;
-    
-    function getElement<T extends HTMLElement>(id: string): T {
+    const header = document.getElementById("main-header");
+    const logoLink = document.getElementById("logo-link");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+
+    function getElement(id) {
       const el = document.getElementById(id);
       if (!el) throw new Error(`Elemento con id '${id}' no encontrado`);
-      return el as T;
+      return el;
     }
 
-    const mobileNavPanel = getElement<HTMLElement>("mobile-nav-panel");
-    const menuIcon = getElement<HTMLElement>("menu-icon");
-    const closeIcon = getElement<HTMLElement>("close-icon");
-    const allNavLinks =
-      document.querySelectorAll<HTMLAnchorElement>("a.nav-link");
-    const desktopNavLinks = document.querySelectorAll<HTMLAnchorElement>(
-      "#desktop-nav a.nav-link"
-    );
-    const mobileNavLinks = document.querySelectorAll<HTMLAnchorElement>(
-      ".mobile-nav-panel a.nav-link"
-    );
-    const navUnderline = getElement<HTMLElement>("nav-underline");
-    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+    const mobileNavPanel = getElement("mobile-nav-panel");
+    const menuIcon = getElement("menu-icon");
+    const closeIcon = getElement("close-icon");
+    const allNavLinks = document.querySelectorAll("a.nav-link");
+    const desktopNavLinks = document.querySelectorAll("#desktop-nav a.nav-link");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-panel a.nav-link");
+    const navUnderline = getElement("nav-underline");
+    const sections = document.querySelectorAll("section[id]");
 
-    if (
-      !header ||
-      !mobileMenuBtn ||
-      !mobileNavPanel ||
-      !menuIcon ||
-      !closeIcon ||
-      !navUnderline ||
-      !logoLink
-    ) {
+    if (!header || !mobileMenuBtn || !mobileNavPanel || !menuIcon || !closeIcon || !navUnderline || !logoLink) {
       console.error("Error: faltan elementos del header.");
       return;
     }
 
-
-    // CAMBIO: Clases para el scroll adaptadas a los colores del tema
     const scrolledClasses = [
       'bg-secondary',
-      // 'backdrop-blur-xl',
       'shadow-lg',
       'shadow-black/5',
-      // 'border-white/10'
     ];
 
     const handleScroll = () => {
@@ -187,8 +153,7 @@ const menuItems = [
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    // Menú móvil
-    function closeMobileMenu(): void {
+    function closeMobileMenu() {
       mobileNavPanel.classList.remove("is-open");
       menuIcon.classList.remove("hidden");
       closeIcon.classList.add("hidden");
@@ -201,63 +166,57 @@ const menuItems = [
       closeIcon.classList.toggle("hidden", !isOpen);
       closeIcon.classList.add("flex");
       document.body.style.overflow = isOpen ? "hidden" : "";
-      if(isOpen) {
+      if (isOpen) {
         header.classList.remove(...scrolledClasses);
       } else {
         handleScroll();
       }
     });
 
-    // Logo
     logoLink.addEventListener("click", (event) => {
       const hero = document.getElementById("home");
-      closeMobileMenu()
-      if (window.location.pathname === "/" && hero) {
+      closeMobileMenu();
+      if (hero) {
         event.preventDefault();
         smoothScroll(hero, "home");
       }
     });
 
-    // Links
     allNavLinks.forEach((link) => {
-      link.addEventListener("click", (event: MouseEvent) => {
+      link.addEventListener("click", (event) => {
         const href = link.getAttribute("href");
-        const targetId = href ? href.substring(1) : null;
-        if (!targetId) return;
+        if (!href || !href.startsWith('#')) return;
+
+        const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
 
-        if (window.location.pathname === "/" && targetEl) {
+        if (targetEl) {
           event.preventDefault();
           smoothScroll(targetEl, targetId);
 
           if (mobileNavPanel.classList.contains("is-open")) {
             setTimeout(() => closeMobileMenu(), 150);
           }
-        } else {
-          link.setAttribute("href", `/#${targetId}`);
         }
       });
     });
 
-    // Subrayado dinámico
-    function updateUnderline(activeLink: HTMLElement | null): void {
+    function updateUnderline(activeLink) {
       if (!activeLink) {
         navUnderline.style.width = "0";
         return;
       }
-
-      const navRect = navUnderline.parentElement!.getBoundingClientRect();
+      const navRect = navUnderline.parentElement.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
       const left = linkRect.left - navRect.left;
-
       requestAnimationFrame(() => {
         navUnderline.style.left = `${left}px`;
         navUnderline.style.width = `${linkRect.width}px`;
       });
     }
 
-    function setActiveLink(sectionId: string): void {
-      let activeDesktopLink: HTMLElement | null = null;
+    function setActiveLink(sectionId) {
+      let activeDesktopLink = null;
       desktopNavLinks.forEach((link) => {
         const isTarget = link.getAttribute("data-nav-link") === sectionId;
         link.classList.toggle("is-active", isTarget);
@@ -272,10 +231,13 @@ const menuItems = [
       });
 
       updateUnderline(activeDesktopLink);
-      history.replaceState(null, "", `/`);
+
+      const langPrefix = window.location.pathname.split('/')[1];
+      const validPrefixes = ['es', 'en'];
+      const basePath = validPrefixes.includes(langPrefix) ? `/${langPrefix}/` : '/';
+      history.replaceState(null, "", basePath);
     }
 
-    // Observador de secciones
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -290,27 +252,21 @@ const menuItems = [
 
     sections.forEach((section) => observer.observe(section));
 
-    // Resize
-    let resizeTimeout: number | undefined;
+    let resizeTimeout;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = window.setTimeout(() => {
-        if (
-          window.innerWidth >= 768 &&
-          mobileNavPanel.classList.contains("is-open")
-        ) {
+        if (window.innerWidth >= 768 && mobileNavPanel.classList.contains("is-open")) {
           closeMobileMenu();
         }
-        const activeLink = document.querySelector<HTMLElement>(
-          "#desktop-nav a.nav-link.is-active"
-        );
+        const activeLink = document.querySelector("#desktop-nav a.nav-link.is-active");
         updateUnderline(activeLink);
       }, 100);
     });
   });
 
   window.addEventListener("load", () => {
-    if (window.location.pathname === "/" && window.location.hash) {
+    if (window.location.pathname.endsWith('/') && window.location.hash) {
       const targetId = window.location.hash.substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
