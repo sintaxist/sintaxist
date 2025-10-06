@@ -3,16 +3,18 @@ import CustomCursor from "@/components/CustomCursor.astro";
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
   description: string;
-  noNavgation: boolean;
-  headerInfo: object;
-  footerInfo: object;
+  noNavgation?: boolean;
+  headerInfo?: object;
+  footerInfo?: object;
+  sections?: object;
 }
 
-const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
+const { title, description, noNavgation = false, headerInfo, footerInfo, sections } = Astro.props;
 ---
 
 <!doctype html>
@@ -105,14 +107,15 @@ const { title, description, noNavgation, headerInfo, footerInfo } = Astro.props;
         });
       `}
     </script> -->
+    <ViewTransitions />
   </head>
   <body class="bg-secondary text-primary">
     <CustomCursor />
-    {noNavgation ? null : <Header t={headerInfo} />}
+    {noNavgation ? null : <Header t={headerInfo} {sections}/>}
     <main>
       <slot />
     </main>
-    {noNavgation ? null : <Footer t={footerInfo} />}
+    {noNavgation ? null : <Footer t={footerInfo} {sections}/>}
 
     <!-- <div
       id="cookie-banner"

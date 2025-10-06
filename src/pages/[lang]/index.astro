@@ -2,29 +2,31 @@
 import Layout from "@/layouts/Layout.astro";
 
 import HeroSection from "@/sections/HeroSection.astro";
-import PortfolioSection from "@/sections/PortfolioSection.astro";
 import AboutSection from "@/sections/AboutSection.astro";
 import ContactSection from "@/sections/ContactSection.astro";
 
-import { LANGUAGES, defaultLang, type AppLocale } from '@/locales';
+import { LANGUAGES, defaultLang, type AppLocale } from "@/locales";
 import ExperiencieSkillsSection from "@/sections/ExperiencieSkillsSection.astro";
+import ProjectsSection from "@/sections/ProjectsSection.astro";
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-  ];
+  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
 const { lang = defaultLang } = Astro.params as { lang: AppLocale };
 const t = LANGUAGES[lang].translations;
-
 ---
 
-<Layout title="Alejandro Canek - UX Engineer" description="Invitaciones Digitales para Eventos Inolvidables." noNavgation={false} headerInfo={t.header} footerInfo={{}}>
-  <HeroSection t={t.hero} socials={t.socials}/>
-  <AboutSection t={t.about}/>
-  <!-- <PortfolioSection /> -->
-   <ExperiencieSkillsSection experience={t.experience} skills={t.skills} />
-  <ContactSection t={t.contact} socials={t.socials}/>
+<Layout
+  title="Alejandro Canek - UX Engineer"
+  description="Invitaciones Digitales para Eventos Inolvidables."
+  headerInfo={t.header}
+  sections={t.sections}
+  footerInfo={t.footer}
+>
+  <HeroSection t={t.hero} socials={t.socials} />
+  <AboutSection t={t.about} />
+  <ProjectsSection t={t.projects} />
+  <ExperiencieSkillsSection experience={t.experience} skills={t.skills} />
+  <ContactSection t={t.contact} socials={t.socials} />
 </Layout>

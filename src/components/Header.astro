@@ -3,21 +3,22 @@ import * as Icons from "@/components/ui/Icons.ts";
 import LangSwitcher from "@/components/LangSwitcher.astro";
 import LogoHeader from "@/components/ui/LogoHeader.astro";
 
-const { t } = Astro.props;
+const { t, sections } = Astro.props;
 
 const menuItems = [
-  { id: "home", label: t.sections.home },
-  { id: "aboutMe", label: t.sections.aboutMe },
-  { id: "projects", label: t.sections.projects },
-  { id: "experience", label: t.sections.experience },
-  { id: "skills", label: t.sections.skills},
-  { id: "contact", label: t.sections.contact},
+  { id: "home", label: sections.home },
+  { id: "aboutMe", label: sections.aboutMe },
+  { id: "projects", label: sections.projects },
+  { id: "experience", label: sections.experience },
+  { id: "skills", label: sections.skills},
+  { id: "contact", label: sections.contact},
 ];
 ---
 
 <header
   id="main-header"
   class="fixed top-0 left-0 right-0 z-51 transition-all duration-500 py-2 md:py-4"
+  data-section-theme="light"
 >
   <div class="max-w-7xl mx-auto py-4 px-6">
     <div class="flex items-center justify-between">
@@ -28,7 +29,7 @@ const menuItems = [
         title="Volver al inicio"
         class="text-primary hover:text-primary-hover transition-colors duration-300"
       >
-        <LogoHeader />
+        <LogoHeader class="h-10"/>
       </a>
 
      <nav

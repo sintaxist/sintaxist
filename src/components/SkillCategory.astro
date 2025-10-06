@@ -1,12 +1,12 @@
 ---
-import Pill from '@/components/ui/Pill.astro';
+import Pill from "@/components/ui/Pill.astro";
 
-import IconDesign from '@/icons/IconDesign.astro';
-import IconFrontend from '@/icons/IconFrontend.astro';
-import IconCms from '@/icons/IconCms.astro';
-import IconBranch from '@/icons/IconBranch.astro';
-import IconDeploy from '@/icons/IconDeploy.astro';
-import IconCollaboration from '@/icons/IconCollaboration.astro';
+import IconDesign from "@/icons/IconDesign.astro";
+import IconFrontend from "@/icons/IconFrontend.astro";
+import IconCms from "@/icons/IconCms.astro";
+import IconBranch from "@/icons/IconBranch.astro";
+import IconDeploy from "@/icons/IconDeploy.astro";
+import IconCollaboration from "@/icons/IconCollaboration.astro";
 
 const icons = {
   IconDesign,
@@ -14,21 +14,20 @@ const icons = {
   IconCms,
   IconBranch,
   IconDeploy,
-  IconCollaboration
+  IconCollaboration,
 };
 
 const { category } = Astro.props;
 const IconComponent = icons[category.icon];
 ---
-<div class="flex flex-col gap-4">
-  <header class="flex items-center gap-4">
-    {IconComponent && <IconComponent class="w-8 h-8 text-secondary" />}
-    <h3 class="font-primary text-xl uppercase tracking-wider">{category.title}</h3>
-  </header>
-  <p class="font-secondary text-secondary">{category.description}</p>
-  <div class="flex flex-wrap gap-2 pt-2">
-    {category.pills.map((pillLabel, index) => (
-      <Pill label={pillLabel} {index} />
-    ))}
-  </div>
+
+<header class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+  {IconComponent && <IconComponent class="w-8 h-8 text-secondary" />}
+  <h3 class="font-primary text-lg sm:text-xl uppercase tracking-wider">
+    {category.title}
+  </h3>
+</header>
+<p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">{category.description}</p>
+<div class="flex flex-wrap gap-2 sm:gap-2">
+  {category.pills.map((pillLabel, index) => <Pill label={pillLabel} {index} />)}
 </div>

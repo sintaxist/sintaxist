@@ -102,10 +102,6 @@ body {
 
 /* Animacion Fade In */
 
-.animated-counter {
-  contain: content;
-}
-
 .anim-item {
   opacity: 0;
   transform: translateY(30px);
@@ -119,52 +115,33 @@ body {
   transform: translateY(0);
 }
 
-/* --- ANIMACIÓN DE LÍNEA DE TIEMPO --- */
+/* --- Animación de Línea de Tiempo --- */
 
-/* La línea empieza con altura 0 (invisible) */
 .experience-item .timeline-line {
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 0.8s ease-out;
 }
 
-/* Cuando el item es visible, la línea crece hasta el 100% */
-.experience-item.is-visible .timeline-line {
-  transform: scaleY(1);
-}
-
-/* El icono empieza con una escala pequeña */
-.experience-item .timeline-icon {
-  transform: scale(0);
-  transition: transform 0.5s ease-out;
-}
-
-/* Cuando el item es visible, el icono aparece */
-.experience-item.is-visible .timeline-icon {
-  transform: scale(1);
-}
-
-/* Keyframes para la animación de pulso (puedes ajustar los valores) */
-@keyframes pulse {
+@keyframes appear-and-pulse {
   0% {
     transform: scale(1);
   }
-
-  50% {
-    transform: scale(1.2);
+  30% {
+    transform: scale(0.9);
   }
-
+  60% {
+    transform: scale(1.1);
+  }
   100% {
     transform: scale(1);
   }
 }
 
-/* El pulso solo se activa DESPUÉS de que la línea ha terminado de dibujarse */
-.experience-item.is-visible .timeline-icon.should-pulse {
-  animation: pulse 1s ease-in-out;
-  animation-delay: 0.8s;
-  /* ¡La clave! Este retardo debe coincidir con la duración de la transición de la línea */
+.timeline-icon.is-pulsing {
+  animation: appear-and-pulse .5s cubic-bezier(0.5, 0, 0.5, 1);
+  transform: scale(1);
 }
+
 
 /* #cookie-banner {
   transform: translateY(100%);

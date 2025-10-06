@@ -1,40 +1,44 @@
 ---
-import AnimatedLogo from "./AnimatedLogo.astro";
+import LogoHeader from "@/components/ui/LogoHeader.astro";
+import { socialLinks } from '@/data/links.js';
 
+const { t, sections } = Astro.props;
 const currentYear = new Date().getFullYear();
 
 const menuItems = [
-  { id: "demos", label: "Demos" },
-  { id: "features", label: "Features" },
-  { id: "sobre-mi", label: "Nosotros" },
-  { id: "paquetes", label: "Paquetes" },
-  { id: "contacto", label: "Contacto" },
+  { id: "projects", label: sections.projects },
+  { id: "experience", label: sections.experience },
+  { id: "aboutMe", label: sections.aboutMe },
+  { id: "skills", label: sections.skills },
+  { id: "contact", label: sections.contact },
 ];
 ---
 
 <footer
-  class="py-16 pb-8 px-6 relative bg-primary backdrop-blur-xl"
+  class="w-full bg-primary text-secondary pt-16 pb-8 px-6 md:px-8"
 >
-  <div class="max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-8 mb-12">
-      <div>
-        <p class="mt-4 text-primary leading-relaxed max-w-sm">
-          Experiencias digitales que convierten cada evento en un recuerdo
-          inolvidable.
+  <div class="max-w-screen-xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
+      <div class="flex flex-col gap-4 items-center md:items-start">
+        <a href="#home" class="logo-footer-link mb-4 transition-all hover:text-primary-hover">
+          <LogoHeader class="h-12 md:h-15"/>
+        </a>
+        <p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">
+          {t.bio}
         </p>
       </div>
 
       <div>
-        <h4 class="  font-semibold text-lg text-primary mb-4">
-          Navegación
+        <h4 class="font-primary text-xl uppercase tracking-wider mb-4">
+          {t.navigationTitle}
         </h4>
-        <ul class="space-y-2">
+        <ul class="space-y-3 font-secondary">
           {
             menuItems.map((item) => (
               <li>
                 <a
                   href={`#${item.id}`}
-                  class="link-style   text-primary transition-colors cursor-pointer"
+                  class="link-style font-secondary text-sm xs:text-base sm:text-md md:text-lg"
                 >
                   {item.label}
                 </a>
@@ -44,87 +48,71 @@ const menuItems = [
         </ul>
       </div>
 
-
       <div>
-        <h4 class="  font-semibold text-lg text-primary mb-4">
-          Conecta con Mömenta
+        <h4 class="font-primary text-xl uppercase tracking-wider mb-4">
+          {t.connectTitle}
         </h4>
-        <ul class="space-y-2 text-sm  ">
-          <li>
-            <a
-              href="mailto:contacto@momentainvitaciones.com.mx"
-              class="link-style text-primary transition-colors cursor-pointer overflow-hidden text-ellipsis"
-            >
-              contacto@momentainvitaciones.com.mx
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://wa.me/525533256703?text=Hola%2C%20quiero%20hablar%20sobre%20mi%20evento"
-              class="link-style text-primary transition-colors cursor-pointer"
-            >
-              +52 (55) 3325 6703
-            </a>
-          </li>
-          <p class="text-gray-500">Ciudad de México, México</p>
-        </ul>
+        <div class="flex space-x-4 justify-center md:justify-start">
+          {
+            socialLinks.map(link => (
+              <a 
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.ariaLabel}
+                title={link.name}
+                class="text-secondary transition-transform hover:-translate-y-1"
+              >
+                <link.icon class="w-7 h-7" />
+              </a>
+            ))
+          }
+        </div>
       </div>
-
     </div>
 
-    <div
-      class="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
-    >
-      <p class="  text-gray-500 text-sm text-center">
-        © {currentYear} Mömenta. Hecho con corazón para eventos extraordinarios.
+    <div class="pt-8 border-t border-secondary/50">
+      <p class="text-secondary text-sm text-center font-secondary">
+        © {currentYear} {t.copyright}
       </p>
-      <div class="flex space-x-6 text-sm  ">
-        <a
-          href="/politica-de-cookies"
-          class="link-style text-gray-500 hover:text-gray-700 transition-colors"
-          >Politica de cookies</a
-        >
-      </div>
     </div>
   </div>
 </footer>
+
 <style>
   .link-style {
     position: relative;
+    padding-bottom: 4px;
   }
 
   .link-style:before {
     content: "";
     width: 0;
-    height: 2px;
-    background-color: #4f39f6;
+    height: 1px;
+    background-color: var(--color-secondary);
     position: absolute;
-    bottom: -3px;
-    border-radius: 100px;
-    transition: width 0.3s;
-  }
-
-  .link-style:hover {
-    color: #4f39f6;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
   }
 
   .link-style:hover:before {
     width: 100%;
   }
 </style>
-<script>
-  // Reusar smoothScroll del header
-  function smoothScroll(target: any, targetId: any) {
-    const start = window.scrollY;
-    const end = target.getBoundingClientRect().top + window.scrollY - 60;
-    const duration = 50; // más suave para footer
-    let startTime: any = null;
 
-    function easeInOutQuad(t: any) {
+<script>
+  function smoothScroll(target) {
+    const start = window.scrollY;
+    const end = target.getBoundingClientRect().top + window.scrollY - 150;
+    const duration = 50;
+    let startTime = null;
+
+    function easeInOutQuad(t) {
       return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
 
-    function animation(currentTime: any) {
+    function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
@@ -140,23 +128,30 @@ const menuItems = [
 
   document.addEventListener("DOMContentLoaded", () => {
     const footerLinks = document.querySelectorAll("footer a[href^='#']");
-
     footerLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
-        const targetId = href ? href.substring(1) : null;
-        if (!targetId) return;
-
+        if (!href || !href.startsWith('#')) return;
+        
+        const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
 
-        if (window.location.pathname === "/" && targetEl) {
+        if (targetEl) {
           e.preventDefault();
-          smoothScroll(targetEl, targetId);
-        } else {
-          // Si no estamos en home, manda a home con hash
-          link.setAttribute("href", `/#${targetId}`);
+          smoothScroll(targetEl);
         }
       });
     });
+
+    const logoLink = document.querySelector('.logo-footer-link');
+    if (logoLink) {
+      logoLink.addEventListener('click', (e) => {
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+          e.preventDefault();
+          smoothScroll(homeSection);
+        }
+      });
+    }
   });
 </script>

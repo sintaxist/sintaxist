@@ -2,18 +2,18 @@
   "header": {
     "logoAlt": "Alejandro Canek Logo",
     "logoTitle": "Ir al inicio",
-    "sections": {
-      "home": "Inicio",
-      "aboutMe": "Sobre mí",
-      "projects": "Mis proyectos",
-      "experiencie": "Mí experiencia",
-      "skills": "Skills",
-      "contact": "Hablemos"
-    },
     "menu": {
       "openAria": "Abrir menú",
       "label": "Menú"
     }
+  },
+  "sections": {
+    "home": "Inicio",
+    "aboutMe": "Sobre mí",
+    "projects": "Mis proyectos",
+    "experience": "Mí experiencia",
+    "skills": "Skills",
+    "contact": "Hablemos"
   },
   "hero": {
     "location": "CDMX - MX 🇲🇽",
@@ -27,27 +27,32 @@
     "ctaSecondary": "Ver proyectos"
   },
   "about": {
-    "title": "Sobre Mí",
-    "paragraph1": "UI/UX Engineer con más de 5 años de experiencia uniendo diseño centrado en el usuario e implementación técnica. Especializado en experiencias digitales para fintech y eventos.",
-    "paragraph2": "Desarrollo soluciones escalables, funcionales y visualmente atractivas con tecnologías web modernas.",
+    "title": "Conoceme",
+    "paragraph1": "Soy UI/UX Engineer con más de 06 años de experiencia creando experiencias digitales que combinan diseño centrado en las personas con implementación técnica de alto nivel.",
+    "paragraph2": "He trabajado en proyectos para fintech, banca y eventos sociales, donde transformo ideas en productos digitales escalables, funcionales y visualmente atractivos. Mi enfoque siempre prioriza la usabilidad, la accesibilidad y la calidad en cada detalle.",
     "stats": [
       {
         "to": 5,
         "suffix": "+",
-        "text": "Años de Experiencia"
+        "text": "Años de <br/> experiencia"
       },
       {
-        "to": 15,
+        "to": 18,
         "suffix": "+",
-        "text": "Proyectos Completados"
+        "text": "Proyectos entregados <br/> con impacto real"
       },
       {
-        "to": 100,
-        "suffix": "%",
-        "text": "Compromiso con la Calidad"
+        "to": 12,
+        "suffix": "+",
+        "text": "Empresas y marcas <br/> con las que he colaborado"
       }
     ],
-    "cta": "Contactar para proyecto"
+    "cta": "Colaboremos"
+  },
+  "projects": {
+    "title": "Mis proyectos",
+    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "cta": "Ver todos los proyectos"
   },
   "experience": {
     "title": "Mi experiencia",
@@ -77,7 +82,7 @@
         ]
       },
       {
-        "company": "Gendra",
+        "company": "Financiera Independencia / Gendra",
         "role": "Desarrollador Frontend",
         "dates": "Octubre 2022 – Marzo 2024",
         "tasks": [
@@ -95,7 +100,7 @@
         ]
       },
       {
-        "company": "Xochinaco",
+        "company": "Xochimaco",
         "role": "Diseñador UI / Desarrollador Frontend",
         "dates": "Noviembre 2020 – Octubre 2022",
         "tasks": [
@@ -172,5 +177,11 @@
     "email": "Envíame un correo electrónico",
     "linkedin": "Visita mi perfil de LinkedIn",
     "github": "Explora mis proyectos en GitHub"
+  },
+  "footer": {
+    "bio": "Hecho en México 🇲🇽 con pasión global. Demostrando que el gran talento digital también habla español.",
+    "navigationTitle": "Navegación",
+    "connectTitle": "Hablemos",
+    "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
   }
 }

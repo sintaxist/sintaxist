@@ -33,12 +33,12 @@ const cvPath = `/cv/Alejandro-Canek-CV-${lang}.pdf`;
     }
   </div>
 
-  <div>
+  <div class="md:mx-auto">
     <Button
       as="a"
       href={cvPath}
       text={experience.cta_download_cv}
-      fill={false}
+      fill={true}
       color="secondary"
       arrow={true}
       download
@@ -54,7 +54,7 @@ const cvPath = `/cv/Alejandro-Canek-CV-${lang}.pdf`;
       {
         skills.categories.map((category, index) => (
           <article
-            class="anim-item"
+            class="anim-item flex flex-col gap-4"
             data-delay={index * 200}
             data-animate="text"
           >
@@ -66,32 +66,67 @@ const cvPath = `/cv/Alejandro-Canek-CV-${lang}.pdf`;
   </div>
 </SectionLayout>
 <script>
-  // --- LÓGICA PARA LA LÍNEA DE TIEMPO DE EXPERIENCIA ---
-  const experienceItems = document.querySelectorAll(".experience-item");
+  // --- LÓGICA SECUENCIAL Y BIDIRECCIONAL PARA LA LÍNEA DE TIEMPO ---
+const experienceItems = document.querySelectorAll('.experience-item');
 
-  if (experienceItems.length > 0) {
-    const experienceObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const item = entry.target;
-            item.classList.add("is-visible"); // Activa la animación de la línea y la aparición del icono
-
-            const icon = item.querySelector(".timeline-icon");
-            if (icon) {
-              // Añadimos la clase para el pulso. El retardo ('animation-delay') está en el CSS.
-              icon.classList.add("should-pulse");
-            }
-
-            observer.unobserve(item);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    ); // Se activa cuando el 40% del item es visible
-
-    experienceItems.forEach((item) => {
-      experienceObserver.observe(item);
+if (experienceItems.length > 0) {
+  // Parte 1: Observador para el primer ícono (ahora reversible)
+  const firstItemObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const firstIcon = entry.target.querySelector('.timeline-icon');
+      if (firstIcon) {
+        // Añade o quita la clase dependiendo de si el elemento está visible o no
+        firstIcon.classList.toggle('is-pulsing', entry.isIntersecting);
+      }
     });
-  }
+  }, { threshold: 0.5 });
+
+  firstItemObserver.observe(experienceItems[0]);
+
+
+  // Parte 2: Listener de scroll para las líneas y los siguientes íconos
+  const handleTimelineScroll = () => {
+  const triggerPoint = window.innerHeight * 0.8;
+
+  experienceItems.forEach((item, index) => {
+    const line = item.querySelector('.timeline-line');
+    // Si es el último item, no tiene línea, así que salimos.
+    if (!line) return; 
+
+    // --- 👇 LA CORRECCIÓN ESTÁ AQUÍ 👇 ---
+    // Verificamos que 'line' es un HTMLElement antes de usar .style
+    if (line instanceof HTMLElement) {
+      const rect = item.getBoundingClientRect();
+      const elementTop = rect.top;
+      
+      let progress = (triggerPoint - elementTop) / rect.height;
+      let clampedProgress = Math.max(0, Math.min(progress, 1));
+
+      // Ahora TypeScript sabe que 'line.style' es válido
+      line.style.transform = `scaleY(${clampedProgress})`;
+
+      const nextItem = experienceItems[index + 1];
+      if (nextItem) {
+        const nextIcon = nextItem.querySelector('.timeline-icon');
+        if (nextIcon) {
+          nextIcon.classList.toggle('is-pulsing', clampedProgress === 1);
+        }
+      }
+    }
+  });
+};
+
+  let isTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        handleTimelineScroll();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  });
+
+  handleTimelineScroll();
+}
 </script>

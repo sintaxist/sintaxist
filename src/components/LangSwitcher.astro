@@ -22,7 +22,7 @@ const otherLangs = Object.entries(LANGUAGES).filter(
     </svg>
   </button>
 
-  <ul class="lang-dropdown absolute w-full bg-secondary p-1 rounded-md list-none shadow margin-0 z-10 transition-all">
+  <ul class="lang-dropdown absolute w-full bg-white p-1 rounded-md list-none shadow margin-0 z-10 transition-all">
     {
       otherLangs.map(([code, lang]) => (
         <li>
@@ -48,7 +48,6 @@ const otherLangs = Object.entries(LANGUAGES).filter(
   .lang-dropdown {
     top: calc(100% + 5px);
     right: -0px;
-    background-color: var(--color-bg-secondary);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);

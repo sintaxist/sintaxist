@@ -1,0 +1,64 @@
+---
+import SectionLayout from '@/layouts/SectionLayout.astro';
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import ProjectCard from '@/components/ProjectCard.astro';
+import AnimatedItem from '@/components/ui/AnimatedItem.astro';
+import Button from '@/components/ui/Button.astro';
+import { PROJECTS } from '@/data/projects.js';
+
+const { t } = Astro.props;
+const featuredProjects = PROJECTS.slice(0, 6);
+---
+<SectionLayout id="projects" color="secondary">
+  <div>
+    <SectionTitle text={t.title} color="primary" />
+    <p class="font-secondary mt-4 max-w-3xl">{t.description}</p>
+  </div>
+
+  <div class="projects-grid">
+    {featuredProjects.map((project, index) => (
+      <AnimatedItem delay={index * 150} className={`project-item-${index + 1}`}>
+        <div class="anim-item h-full">
+          <ProjectCard 
+            project={project}
+            size={index === 0 || index === 5 ? 'large' : 'small'}
+          />
+        </div>
+      </AnimatedItem>
+    ))}
+  </div>
+
+  <div class="text-center">
+    <Button 
+      as="a" 
+      href="/projects" 
+      text={t.cta}
+      fill={false}
+      color="blue"
+      arrow={true}
+    />
+  </div>
+</SectionLayout>
+
+<style>
+  /* Grid complejo para el layout asimétrico */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .project-item-1 { grid-column: span 2; }
+    .project-item-6 { grid-column: span 2; }
+  }
+  @media (min-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .project-item-1 { grid-column: span 2; grid-row: span 2; }
+    .project-item-6 { grid-column: span 2; grid-row: span 2; }
+  }
+</style>

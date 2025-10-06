@@ -6,7 +6,7 @@ import IconGithub from '@/icons/IconGithub.astro';
 export const socialLinks = [
   {
     name: "WhatsApp",
-    url: "https://wa.me/+5255336703",
+    url: "https://wa.me/+525533256703",
     icon: IconWhatsapp,
     ariaLabelKey: "whatsapp"
   },

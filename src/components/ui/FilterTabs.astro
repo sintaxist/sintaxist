@@ -1,0 +1,58 @@
+---
+const { categories } = Astro.props;
+---
+<div class="flex justify-center flex-wrap gap-2">
+  <button class="filter-btn is-active" data-filter="all">Todos</button>
+  {categories.map(cat => (
+    <button class="filter-btn" data-filter={cat.id}>{cat.name}</button>
+  ))}
+</div>
+
+<style>
+  .filter-btn {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  .filter-btn:hover {
+    background-color: var(--color-primary-light);
+  }
+  .filter-btn.is-active {
+    background-color: var(--color-primary);
+    color: white;
+  }
+</style>
+
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectWrappers = document.querySelectorAll('.project-wrapper');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Manejar estado activo del botón
+      filterButtons.forEach(btn => btn.classList.remove('is-active'));
+      button.classList.add('is-active');
+
+      const filter = button.getAttribute('data-filter');
+
+      // Filtrar proyectos
+      projectWrappers.forEach(project => {
+        if (filter === 'all') {
+          project.style.display = 'block';
+        } else {
+          const categories = project.getAttribute('data-categories');
+          if (categories.includes(filter)) {
+            project.style.display = 'block';
+          } else {
+            project.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -2,18 +2,18 @@
   "header": {
     "logoAlt": "Alejandro Canek Logo",
     "logoTitle": "Ir al inicio",
-    "sections": {
-      "home": "Inicio",
-      "aboutMe": "Sobre mí",
-      "projects": "Mis proyectos",
-      "experience": "Mí experiencia",
-      "skills": "Skills",
-      "contact": "Hablemos"
-    },
     "menu": {
       "openAria": "Abrir menú",
       "label": "Menú"
     }
+  },
+  "sections": {
+    "home": "Inicio",
+    "aboutMe": "Sobre mí",
+    "projects": "Mis proyectos",
+    "experience": "Mí experiencia",
+    "skills": "Skills",
+    "contact": "Hablemos"
   },
   "hero": {
     "location": "CDMX - MX 🇲🇽",
@@ -48,6 +48,11 @@
       }
     ],
     "cta": "Colaboremos"
+  },
+  "projects": {
+    "title": "Mis proyectos",
+    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "cta": "Ver todos los proyectos"
   },
   "experience": {
     "title": "Mi experiencia",
@@ -172,5 +177,11 @@
     "email": "Envíame un correo electrónico",
     "linkedin": "Visita mi perfil de LinkedIn",
     "github": "Explora mis proyectos en GitHub"
+  },
+  "footer": {
+    "bio": "Hecho en México 🇲🇽 con pasión global. Demostrando que el gran talento digital también habla español.",
+    "navigationTitle": "Navegación",
+    "connectTitle": "Hablemos",
+    "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
   }
 }

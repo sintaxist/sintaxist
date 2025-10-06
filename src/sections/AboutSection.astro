@@ -27,7 +27,7 @@ const { t } = Astro.props;
         t.stats.map((stat, index) => (
           <div
             class="anim-item flex flex-wrap flex-col sm:flex-row text-center sm:text-left items-center sm:items-start gap-3"
-            data-delay={index * 200}
+            data-delay={index * 300}
             data-animate="text"
           >
             <span class="font-primary text-5xl sm:text-6xl md:text-7xl leading-none">
@@ -39,12 +39,12 @@ const { t } = Astro.props;
       }
     </div>
 
-    <div>
+    <div class="md:mx-auto">
       <Button
         as="a"
         href="#contact"
         text={t.cta}
-        fill={false}
+        fill={true}
         color="white"
         arrow={true}
       />
