@@ -34,13 +34,11 @@ const { categories } = Astro.props;
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      // Manejar estado activo del botón
       filterButtons.forEach(btn => btn.classList.remove('is-active'));
       button.classList.add('is-active');
 
       const filter = button.getAttribute('data-filter');
 
-      // Filtrar proyectos
       projectWrappers.forEach(project => {
         if (filter === 'all') {
           project.style.display = 'block';

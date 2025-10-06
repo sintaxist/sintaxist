@@ -114,5 +114,5 @@ const otherLangs = Object.entries(LANGUAGES).filter(
       });
     });
   }
-  document.addEventListener("DOMContentLoaded", setupLangSwitchers);
+  document.addEventListener("astro:page-load", setupLangSwitchers);
 </script>

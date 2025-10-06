@@ -1,12 +1,35 @@
 ---
-import { PROJECTS, CATEGORIES } from "../../../data/projects.js";
-import ProjectCard from "../../../components/ProjectCard.astro";
-// Crearemos este componente a continuación
-import FilterTabs from "../../../components/ui/FilterTabs.astro";
-import Layout from "../../../layouts/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
+import { LANGUAGES, defaultLang, type AppLocale } from "@/locales";
+import FilterTabs from "@/components/ui/FilterTabs.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const lang of Object.keys(LANGUAGES)) {
+    const t = LANGUAGES[lang].translations;
+    for (const project of t.projects_page.projects) {
+      paths.push({
+        params: { lang, slug: project.slug },
+        props: { t, project, lang },
+      });
+    }
+  }
+  return paths;
+}
+
+const { lang = defaultLang } = Astro.params as { lang: AppLocale };
+const { t } = Astro.props;
 ---
 
-<Layout title="Mis Proyectos" description="prueba">
+<Layout
+  title="Mis Proyectos"
+  description="prueba"
+  headerInfo={t.header}
+  sections={t.sections}
+  footerInfo={t.footer}
+>
   <div class="py-24 px-6 md:px-8">
     <header class="text-center max-w-2xl mx-auto mb-12">
       <h1 class="font-primary text-5xl text-primary">Todos mis Proyectos</h1>
@@ -16,20 +39,15 @@ import Layout from "../../../layouts/Layout.astro";
       </p>
     </header>
 
-    <FilterTabs categories={Object.values(CATEGORIES)} client:load />
+    <FilterTabs categories={Object.values(t.projects_page.categories)} />
 
     <div
       id="projects-list"
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mt-12"
     >
       {
-        PROJECTS.map((project) => (
-          <div
-            class="project-wrapper"
-            data-categories={project.categories.map((cat) => cat.id).join(",")}
-          >
-            <ProjectCard project={project} size="large" />
-          </div>
+        t.projects_page.projects.map((project) => (
+          <ProjectCard {project} {lang} size="large" />
         ))
       }
     </div>

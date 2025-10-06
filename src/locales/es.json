@@ -49,11 +49,6 @@
     ],
     "cta": "Colaboremos"
   },
-  "projects": {
-    "title": "Mis proyectos",
-    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
-    "cta": "Ver todos los proyectos"
-  },
   "experience": {
     "title": "Mi experiencia",
     "cta_download_cv": "Descargar CV",
@@ -183,5 +178,63 @@
     "navigationTitle": "Navegación",
     "connectTitle": "Hablemos",
     "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
+  },
+  "projects_page": {
+    "title": "Mis proyectos",
+    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "cta_all_projects": "Ver todos los proyectos",
+    "cta_back_to_projects": "< Regresar a Proyectos",
+    "all_projects_title": "Todos mis Proyectos",
+    "all_projects_subtitle": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
+    "view_more": "Ver más",
+
+    "categories": {
+      "all": "Todos",
+      "ui-ux": "Diseño UI/UX",
+      "frontend": "Desarrollo Frontend",
+      "cms": "CMS Headless",
+      "graphics": "Diseño Gráfico"
+    },
+
+    "projects": [
+      {
+        "slug": "yoorco-landing",
+        "title": "Landing Page Yoorco",
+        "description": "Diseño UI/UX para una plataforma de adopción de mascotas, desde la conceptualización hasta el prototipado de alta fidelidad.",
+        "imgSrc": "/assets/projects/yoorco.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "farmvalley-landing",
+        "title": "Landing Page FarmValley",
+        "imgSrc": "/assets/projects/farmvalley.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "kairos-lighting",
+        "title": "Landing Page Kairos Lighting",
+        "imgSrc": "/assets/projects/kairos.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "fondo-real-mx",
+        "title": "Landing Page Fondo Real MX",
+        "imgSrc": "/assets/projects/fondo-real.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "boda-jimena-canek",
+        "title": "Invitación Web Boda",
+        "imgSrc": "/assets/projects/boda.png",
+        "categoryIds": ["ui-ux", "frontend", "cms"]
+      },
+      {
+        "slug": "polea-semarnat",
+        "title": "Landing Polea / Semarnat",
+        "description": "Desarrollo de una interfaz atractiva y funcional para una iniciativa gubernamental, enfocada en la usabilidad y accesibilidad.",
+        "imgSrc": "/assets/projects/polea.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      }
+    ]
   }
 }

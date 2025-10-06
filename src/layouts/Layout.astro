@@ -3,7 +3,7 @@ import CustomCursor from "@/components/CustomCursor.astro";
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -107,7 +107,7 @@ const { title, description, noNavgation = false, headerInfo, footerInfo, section
         });
       `}
     </script> -->
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body class="bg-secondary text-primary">
     <CustomCursor />
@@ -167,7 +167,7 @@ const { title, description, noNavgation = false, headerInfo, footerInfo, section
 
 <script type="text/javascript" defer>
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const animationGroups = document.querySelectorAll(".animation-group");
 
     if (animationGroups.length > 0) {
@@ -184,7 +184,6 @@ const { title, description, noNavgation = false, headerInfo, footerInfo, section
               elementsToAnimate.forEach((element) => {
                 const animationType = element.getAttribute("data-animate");
 
-                // Disparamos la animación correspondiente para cada hijo
                 if (animationType === "text") {
                   animateText(element);
                 }
@@ -204,7 +203,7 @@ const { title, description, noNavgation = false, headerInfo, footerInfo, section
       animationGroups.forEach((group) => observer.observe(group));
     }
 
-    // --- Funciones de Animación (sin cambios en su lógica interna) ---
+    // --- Funciones de Animación ---
 
     function animateText(element) {
       const delay = parseInt(element.getAttribute("data-delay")) || 0;
@@ -241,7 +240,7 @@ const { title, description, noNavgation = false, headerInfo, footerInfo, section
 </script>
 
 <script type="text/javascript" defer>
-  // document.addEventListener("DOMContentLoaded", () => {
+  // document.addEventListener("astro:page-load", () => {
 
   // Banner de cookies
   // const banner = document.getElementById("cookie-banner");

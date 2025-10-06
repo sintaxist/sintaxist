@@ -1,111 +1,106 @@
 {
   "header": {
     "logoAlt": "Alejandro Canek Logo",
-    "logoTitle": "Ir al inicio",
+    "logoTitle": "Go to homepage",
     "menu": {
-      "openAria": "Abrir menú",
-      "label": "Menú"
+      "openAria": "Open menu",
+      "label": "Menu"
     }
   },
   "sections": {
-    "home": "Inicio",
-    "aboutMe": "Sobre mí",
-    "projects": "Mis proyectos",
-    "experience": "Mí experiencia",
+    "home": "Home",
+    "aboutMe": "About Me",
+    "projects": "My Projects",
+    "experience": "Experience",
     "skills": "Skills",
-    "contact": "Hablemos"
+    "contact": "Let’s Talk"
   },
   "hero": {
     "location": "CDMX - MX 🇲🇽",
     "subtitleTop": "UX Engineer",
     "title": "Alejandro Canek",
-    "subtitleBottom": "Fintech · Invitaciones Digitales · IT",
-    "description": "Más de 5 años de experiencia diseñando e implementando experiencias digitales en fintech, invitaciones web personalizadas y soluciones IT escalables.",
-    "cta": "Hablemos de tu proyecto",
-    "imageAlt": "Ilustracion Alejandro Canek",
-    "ctaPrimary": "Hablemos",
-    "ctaSecondary": "Ver proyectos"
+    "subtitleBottom": "Fintech · Digital Invitations · IT",
+    "description": "Over 5 years of experience designing and implementing digital experiences in fintech, custom web invitations, and scalable IT solutions.",
+    "cta": "Let’s talk about your project",
+    "imageAlt": "Illustration of Alejandro Canek",
+    "ctaPrimary": "Let’s Talk",
+    "ctaSecondary": "View Projects"
   },
   "about": {
-    "title": "Conoceme",
-    "paragraph1": "Soy UI/UX Engineer con más de 06 años de experiencia creando experiencias digitales que combinan diseño centrado en las personas con implementación técnica de alto nivel.",
-    "paragraph2": "He trabajado en proyectos para fintech, banca y eventos sociales, donde transformo ideas en productos digitales escalables, funcionales y visualmente atractivos. Mi enfoque siempre prioriza la usabilidad, la accesibilidad y la calidad en cada detalle.",
+    "title": "Get to Know Me",
+    "paragraph1": "I’m a UI/UX Engineer with over 6 years of experience creating digital experiences that combine human-centered design with high-level technical implementation.",
+    "paragraph2": "I’ve worked on projects for fintech, banking, and social events, transforming ideas into scalable, functional, and visually engaging digital products. My approach always prioritizes usability, accessibility, and quality in every detail.",
     "stats": [
       {
         "to": 5,
         "suffix": "+",
-        "text": "Años de <br/> experiencia"
+        "text": "Years of <br/> experience"
       },
       {
         "to": 18,
         "suffix": "+",
-        "text": "Proyectos entregados <br/> con impacto real"
+        "text": "Projects delivered <br/> with real impact"
       },
       {
         "to": 12,
         "suffix": "+",
-        "text": "Empresas y marcas <br/> con las que he colaborado"
+        "text": "Companies and brands <br/> I’ve collaborated with"
       }
     ],
-    "cta": "Colaboremos"
-  },
-  "projects": {
-    "title": "Mis proyectos",
-    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
-    "cta": "Ver todos los proyectos"
+    "cta": "Let’s Collaborate"
   },
   "experience": {
-    "title": "Mi experiencia",
-    "cta_download_cv": "Descargar CV",
+    "title": "My Experience",
+    "cta_download_cv": "Download CV",
     "jobs": [
       {
         "company": "Payvalida",
-        "role": "Analista UI-UX",
-        "dates": "Julio 2024 – Actualidad",
+        "role": "UI-UX Analyst",
+        "dates": "July 2024 – Present",
         "tasks": [
-          "Dirección de la segunda versión de la Wallet, y del nuevo Design System, manual de marca y UI Kit.",
-          "Rediseño integral de los tres productos clave de la empresa: Checkout, Wallet y Merchant.",
-          "Propuesta de nuevas arquitecturas de interacción y liderazgo de pruebas de usabilidad en múltiples iteraciones.",
-          "Desarrollo de una plataforma interna para convertir emails en HTML funcional, accesible y compatible con todos los navegadores.",
-          "Optimización técnica y visual de la comunicación por correo, aumentando tasas de apertura y clic."
+          "Led the second version of the Wallet, new Design System, brand manual, and UI Kit.",
+          "Complete redesign of the company’s three key products: Checkout, Wallet, and Merchant.",
+          "Proposed new interaction architectures and led usability testing through multiple iterations.",
+          "Developed an internal platform to convert emails into functional, accessible HTML compatible with all browsers.",
+          "Improved technical and visual communication through email, increasing open and click rates."
         ]
       },
       {
         "company": "BBVA / Minsait",
-        "role": "Desarrollador Frontend Senior",
-        "dates": "Marzo 2024 – Marzo 2025",
+        "role": "Senior Frontend Developer",
+        "dates": "March 2024 – March 2025",
         "tasks": [
-          "Implementación del nuevo sistema de diseño en la app BBVA Venezuela utilizando LitElement.",
-          "Desarrollo de flujos clave como consulta de saldos y movimientos, incluyendo funcionalidades de filtrado y búsqueda avanzada.",
-          "Construcción de componentes reutilizables siguiendo buenas prácticas de pruebas unitarias y componentización.",
-          "Integración con la plataforma CELLS y uso de librerías internas para alineación con estándares corporativos."
+          "Implemented the new design system in BBVA Venezuela’s app using LitElement.",
+          "Developed key flows such as balance and transaction inquiries, including filtering and advanced search features.",
+          "Built reusable components following best practices in unit testing and componentization.",
+          "Integrated with CELLS platform and internal libraries to align with corporate standards."
         ]
       },
       {
         "company": "Financiera Independencia / Gendra",
-        "role": "Desarrollador Frontend",
-        "dates": "Octubre 2022 – Marzo 2024",
+        "role": "Frontend Developer",
+        "dates": "October 2022 – March 2024",
         "tasks": [
-          "Desarrollo exprés de dos productos de otorgamiento de crédito utilizando Next.js y Material UI.",
-          "Implementación de microfrontends con Gatsby y iFrames, gestionando paso de datos entre módulos embebidos."
+          "Fast-track development of two credit products using Next.js and Material UI.",
+          "Implemented microfrontends with Gatsby and iFrames, managing data flow between embedded modules."
         ]
       },
       {
         "company": "Yoorco",
         "role": "Project Manager",
-        "dates": "Septiembre 2022 – Febrero 2023",
+        "dates": "September 2022 – February 2023",
         "tasks": [
-          "Dirección de una plataforma de adopción de mascotas, gestionando sesiones con cliente y definición estratégica del MVP.",
-          "Diseño de interfaz en Figma y desarrollo del front-end en Next.js, priorizando accesibilidad y modularidad."
+          "Led a pet adoption platform, managing client sessions and strategic MVP definition.",
+          "Designed the interface in Figma and developed the frontend in Next.js, prioritizing accessibility and modularity."
         ]
       },
       {
         "company": "Xochimaco",
-        "role": "Diseñador UI / Desarrollador Frontend",
-        "dates": "Noviembre 2020 – Octubre 2022",
+        "role": "UI Designer / Frontend Developer",
+        "dates": "November 2020 – October 2022",
         "tasks": [
-          "Participación en más de 10 proyectos para marcas como Intel, Bayern de Múnich, INEDLA y LANRESC.",
-          "Desarrollo de interfaces con SASS, Javascript, React.js, WordPress, Wix y Strapi."
+          "Participated in over 10 projects for brands such as Intel, Bayern Munich, INEDLA, and LANRESC.",
+          "Developed interfaces using SASS, JavaScript, React.js, WordPress, Wix, and Strapi."
         ]
       }
     ]
@@ -115,14 +110,14 @@
     "categories": [
       {
         "icon": "IconDesign",
-        "title": "Diseño y Prototipado",
-        "description": "Herramientas para crear experiencias visuales impactantes y prototipos interactivos.",
+        "title": "Design & Prototyping",
+        "description": "Tools to create impactful visual experiences and interactive prototypes.",
         "pills": ["Figma", "Illustrator", "Photoshop", "Premier Pro", "Framer"]
       },
       {
         "icon": "IconFrontend",
-        "title": "Desarrollo Frontend",
-        "description": "Tecnologías modernas para construir interfaces robustas y escalables.",
+        "title": "Frontend Development",
+        "description": "Modern technologies for building robust and scalable interfaces.",
         "pills": [
           "HTML",
           "CSS",
@@ -135,8 +130,8 @@
       },
       {
         "icon": "IconCms",
-        "title": "CMS y Backend",
-        "description": "Sistemas de gestión de contenido y desarrollo del lado del servidor.",
+        "title": "CMS & Backend",
+        "description": "Content management systems and server-side development.",
         "pills": [
           "WordPress",
           "Strapi",
@@ -149,39 +144,96 @@
       },
       {
         "icon": "IconBranch",
-        "title": "Versionamiento y Pruebas",
-        "description": "Control de versiones y testing para mantener la calidad del código.",
+        "title": "Version Control & Testing",
+        "description": "Versioning and testing to maintain code quality.",
         "pills": ["Git", "Github", "BitBucket", "Azure Repos", "Jest"]
       },
       {
         "icon": "IconDeploy",
-        "title": "Despliegue y Entorno",
-        "description": "Plataformas y procesos para llevar aplicaciones a producción.",
-        "pills": ["Vercel", "Netlify", "Render", "Northflank", "CI / CD Básico"]
+        "title": "Deployment & Environment",
+        "description": "Platforms and processes to bring applications to production.",
+        "pills": ["Vercel", "Netlify", "Render", "Northflank", "Basic CI / CD"]
       },
       {
         "icon": "IconCollaboration",
-        "title": "Colaboración y Gestión",
-        "description": "Herramientas para trabajo en equipo y gestión de proyectos.",
+        "title": "Collaboration & Management",
+        "description": "Tools for teamwork and project management.",
         "pills": ["Slack", "Trello", "Azure DevOps", "Google Workspace", "Jira"]
       }
     ]
   },
   "contact": {
-    "titleAlt": "Logo de Alejandro Canek",
-    "description": "Disponible para nuevos proyectos y colaboraciones. Refinamiento de experiencia de usuario, desarrollar una interfaz desde cero o auditar tu producto actual, estoy aquí para ayudar. Hablemos.",
-    "cta": "Agendar un meet"
+    "titleAlt": "Alejandro Canek Logo",
+    "description": "Available for new projects and collaborations. Whether refining user experience, developing an interface from scratch, or auditing your current product, I’m here to help. Let’s talk.",
+    "cta": "Schedule a Meet"
   },
   "socials": {
-    "whatsapp": "Contáctame por WhatsApp",
-    "email": "Envíame un correo electrónico",
-    "linkedin": "Visita mi perfil de LinkedIn",
-    "github": "Explora mis proyectos en GitHub"
+    "whatsapp": "Contact me on WhatsApp",
+    "email": "Send me an email",
+    "linkedin": "Visit my LinkedIn profile",
+    "github": "Explore my projects on GitHub"
   },
   "footer": {
-    "bio": "Hecho en México 🇲🇽 con pasión global. Demostrando que el gran talento digital también habla español.",
-    "navigationTitle": "Navegación",
-    "connectTitle": "Hablemos",
-    "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
+    "bio": "Made in Mexico 🇲🇽 with global passion. Proving that great digital talent also speaks Spanish.",
+    "navigationTitle": "Navigation",
+    "connectTitle": "Let’s Talk",
+    "copyright": "Alejandro Canek Fernández Maya. All rights reserved."
+  },
+  "projects_page": {
+    "title": "My Projects",
+    "description": "Each project is a journey and a collaboration. Here I present some of the paths I’ve walked with brands and teams to transform ideas into functional, memorable platforms. Explore the process, technology, and results.",
+    "cta_all_projects": "View All Projects",
+    "cta_back_to_projects": "< Back to Projects",
+    "all_projects_title": "All My Projects",
+    "all_projects_subtitle": "Explore the different works I’ve done, filtering by category.",
+    "view_more": "View More",
+    "categories": {
+      "all": "All",
+      "ui-ux": "UI/UX Design",
+      "frontend": "Frontend Development",
+      "cms": "Headless CMS",
+      "graphics": "Graphic Design"
+    },
+
+    "projects": [
+      {
+        "slug": "yoorco-landing",
+        "title": "Yoorco Landing Page",
+        "description": "UI/UX design for a pet adoption platform, from concept to high-fidelity prototyping.",
+        "imgSrc": "/assets/projects/yoorco.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "farmvalley-landing",
+        "title": "FarmValley Landing Page",
+        "imgSrc": "/assets/projects/farmvalley.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "kairos-lighting",
+        "title": "Kairos Lighting Landing Page",
+        "imgSrc": "/assets/projects/kairos.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "fondo-real-mx",
+        "title": "Fondo Real MX Landing Page",
+        "imgSrc": "/assets/projects/fondo-real.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "boda-jimena-canek",
+        "title": "Wedding Web Invitation",
+        "imgSrc": "/assets/projects/boda.png",
+        "categoryIds": ["ui-ux", "frontend", "cms"]
+      },
+      {
+        "slug": "polea-semarnat",
+        "title": "Polea / Semarnat Landing Page",
+        "description": "Development of an appealing, functional interface for a government initiative focused on usability and accessibility.",
+        "imgSrc": "/assets/projects/polea.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      }
+    ]
   }
 }

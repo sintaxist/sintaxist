@@ -2,11 +2,11 @@
 import { Image } from 'astro:assets';
 import Pill from '@/components/ui/Pill.astro';
 
-const { project, size = 'small' } = Astro.props;
+const { project, lang, size = 'small' } = Astro.props;
 const isLarge = size === 'large';
 ---
 <a 
-  href={`/projects/${project.slug}`} 
+  href={`/${lang}/projects/${project.slug}/`}
   class="project-card group block" 
   transition:name={project.slug}
 >
@@ -24,9 +24,9 @@ const isLarge = size === 'large';
         {isLarge && project.description && (
           <p class="font-secondary text-white/80 text-sm">{project.description}</p>
         )}
-        <div class="flex flex-wrap gap-2">
+        <!-- <div class="flex flex-wrap gap-2">
           {project.categories.map(cat => <Pill label={cat.name} />)}
-        </div>
+        </div> -->
         <span class="font-secondary text-white font-bold mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           Ver más &rarr;
         </span>

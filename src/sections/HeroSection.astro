@@ -1,7 +1,7 @@
 ---
 import AnimatedItem from "@/components/ui/AnimatedItem.astro";
 import Button from "@/components/ui/Button.astro";
-import { socialLinks } from "@/data/links.js";
+import { schedulingLink, socialLinks } from "@/data/links.js";
 import SectionLayout from "@/layouts/SectionLayout.astro";
 import { Image } from "astro:assets";
 import heroIllustration from "@/assets/canek.svg";
@@ -46,7 +46,8 @@ const { t, socials } = Astro.props;
           <Button
             as="a"
             text={t.ctaPrimary}
-            href="#contact"
+            href={schedulingLink}
+            target="_blank"
             fill={true}
             color="primary"
             arrow={true}

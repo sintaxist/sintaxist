@@ -10,8 +10,8 @@ const menuItems = [
   { id: "aboutMe", label: sections.aboutMe },
   { id: "projects", label: sections.projects },
   { id: "experience", label: sections.experience },
-  { id: "skills", label: sections.skills},
-  { id: "contact", label: sections.contact},
+  { id: "skills", label: sections.skills },
+  { id: "contact", label: sections.contact },
 ];
 ---
 
@@ -22,17 +22,17 @@ const menuItems = [
 >
   <div class="max-w-7xl mx-auto py-4 px-6">
     <div class="flex items-center justify-between">
-      <a 
-        href="/" 
+      <a
+        href="/"
         id="logo-link"
         aria-label={t.textLogoAriaLabel}
         title="Volver al inicio"
         class="text-primary hover:text-primary-hover transition-colors duration-300"
       >
-        <LogoHeader class="h-10"/>
+        <LogoHeader class="h-10" />
       </a>
 
-     <nav
+      <nav
         id="desktop-nav"
         class="hidden md:flex items-center justify-center gap-x-4 lg:gap-x-8 relative"
       >
@@ -60,7 +60,10 @@ const menuItems = [
           <Fragment set:html={Icons.Menu} />
           <span class="sr-only">Menú</span>
         </span>
-        <span id="close-icon" class="w-7 h-7 items-center justify-center hidden">
+        <span
+          id="close-icon"
+          class="w-7 h-7 items-center justify-center hidden"
+        >
           <Fragment set:html={Icons.X} />
           <span class="sr-only">Cerrar</span>
         </span>
@@ -68,28 +71,30 @@ const menuItems = [
     </div>
   </div>
 </header>
-<div id="mobile-nav-panel" class="mobile-nav-panel md:hidden fixed pt-[80px] right-0 w-full h-full bg-secondary z-50">
-    <nav class="flex flex-col gap-4 space-y-2 flex-1 p-6 h-full">
-      {
-        menuItems.map((item) => (
-          <a
-            href={`#${item.id}`}
-            class="nav-link mobile-nav-link text-center w-full rounded-lg p-4 font-bold transition duration-300 text-md font-secondary"
-            data-nav-link={item.id}
-          >
-            {item.label}
-          </a>
-        ))
-      }
-      <LangSwitcher class="mx-auto"/>
-    </nav>
+<div
+  id="mobile-nav-panel"
+  class="mobile-nav-panel md:hidden fixed pt-[80px] right-0 w-full h-full bg-secondary z-50"
+>
+  <nav class="flex flex-col gap-4 space-y-2 flex-1 p-6 h-full">
+    {
+      menuItems.map((item) => (
+        <a
+          href={`#${item.id}`}
+          class="nav-link mobile-nav-link text-center w-full rounded-lg p-4 font-bold transition duration-300 text-md font-secondary"
+          data-nav-link={item.id}
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <LangSwitcher class="mx-auto" />
+  </nav>
 </div>
 
 <script>
-  function smoothScroll(target, targetId) {
+  function smoothScroll(target) {
     const start = window.scrollY;
     const end = target.getBoundingClientRect().top + window.scrollY - 150;
-    // AJUSTE: Aumentamos la duración para un scroll suave y perceptible
     const duration = 50;
     let startTime = null;
 
@@ -107,11 +112,14 @@ const menuItems = [
         requestAnimationFrame(animation);
       }
     }
-
     requestAnimationFrame(animation);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     const header = document.getElementById("main-header");
     const logoLink = document.getElementById("logo-link");
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
@@ -125,23 +133,17 @@ const menuItems = [
     const mobileNavPanel = getElement("mobile-nav-panel");
     const menuIcon = getElement("menu-icon");
     const closeIcon = getElement("close-icon");
-    const allNavLinks = document.querySelectorAll("a.nav-link");
+    const allNavLinks = document.querySelectorAll("header a.nav-link");
     const desktopNavLinks = document.querySelectorAll("#desktop-nav a.nav-link");
     const mobileNavLinks = document.querySelectorAll(".mobile-nav-panel a.nav-link");
     const navUnderline = getElement("nav-underline");
     const sections = document.querySelectorAll("section[id]");
 
     if (!header || !mobileMenuBtn || !mobileNavPanel || !menuIcon || !closeIcon || !navUnderline || !logoLink) {
-      console.error("Error: faltan elementos del header.");
       return;
     }
 
-    const scrolledClasses = [
-      'bg-secondary',
-      'shadow-lg',
-      'shadow-black/5',
-    ];
-
+    const scrolledClasses = ['bg-secondary', 'shadow-lg', 'shadow-black/5'];
     const handleScroll = () => {
       if (window.scrollY > 50) {
         header.classList.add(...scrolledClasses);
@@ -172,30 +174,31 @@ const menuItems = [
       }
     });
 
-    logoLink.addEventListener("click", (event) => {
+    logoLink.addEventListener("click", (e) => {
       const hero = document.getElementById("home");
-      closeMobileMenu();
       if (hero) {
-        event.preventDefault();
-        smoothScroll(hero, "home");
+        e.preventDefault();
+        closeMobileMenu();
+        smoothScroll(hero);
       }
     });
 
     allNavLinks.forEach((link) => {
-      link.addEventListener("click", (event) => {
+      link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
         if (!href || !href.startsWith('#')) return;
-
+        
         const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
 
         if (targetEl) {
-          event.preventDefault();
-          smoothScroll(targetEl, targetId);
-
-          if (mobileNavPanel.classList.contains("is-open")) {
-            setTimeout(() => closeMobileMenu(), 150);
-          }
+          e.preventDefault();
+          closeMobileMenu();
+          smoothScroll(targetEl);
+        } else {
+          e.preventDefault();
+          const langPrefix = window.location.pathname.split('/')[1] || 'es';
+          window.location.href = `/${langPrefix}/#${targetId}`;
         }
       });
     });
@@ -228,13 +231,7 @@ const menuItems = [
           link.getAttribute("data-nav-link") === sectionId
         );
       });
-
       updateUnderline(activeDesktopLink);
-
-      const langPrefix = window.location.pathname.split('/')[1];
-      const validPrefixes = ['es', 'en'];
-      const basePath = validPrefixes.includes(langPrefix) ? `/${langPrefix}/` : '/';
-      history.replaceState(null, "", basePath);
     }
 
     const observer = new IntersectionObserver(
@@ -248,28 +245,22 @@ const menuItems = [
       },
       { rootMargin: "-40% 0px -40% 0px" }
     );
-
     sections.forEach((section) => observer.observe(section));
-
-    let resizeTimeout;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(() => {
-        if (window.innerWidth >= 768 && mobileNavPanel.classList.contains("is-open")) {
-          closeMobileMenu();
-        }
-        const activeLink = document.querySelector("#desktop-nav a.nav-link.is-active");
-        updateUnderline(activeLink);
-      }, 100);
-    });
   });
 
-  window.addEventListener("load", () => {
-    if (window.location.pathname.endsWith('/') && window.location.hash) {
+  document.addEventListener("astro:page-load", () => {
+    const navigationEntry = performance.getEntriesByType("navigation")[0];
+    const navType = (navigationEntry && 'type' in navigationEntry)
+      ? /** @type {PerformanceNavigationTiming} */ (navigationEntry).type
+      : undefined;
+    if (navType !== 'back_forward' && window.location.hash) {
       const targetId = window.location.hash.substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
-        setTimeout(() => smoothScroll(targetEl, targetId), 200);
+        setTimeout(() => {
+          smoothScroll(targetEl);
+          history.replaceState(null, "", window.location.pathname);
+        }, 100);
       }
     }
   });
@@ -281,7 +272,7 @@ const menuItems = [
     --color-glass-bg: rgba(228, 226, 210, 0.6);
   }
 
-  a.nav-link.is-active{
+  a.nav-link.is-active {
     color: var(--color-primary);
   }
 

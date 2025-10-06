@@ -4,10 +4,9 @@ import SectionTitle from "@/components/ui/SectionTitle.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import AnimatedItem from "@/components/ui/AnimatedItem.astro";
 import Button from "@/components/ui/Button.astro";
-import { PROJECTS } from "@/data/projects.js";
 
-const { t } = Astro.props;
-const featuredProjects = PROJECTS.slice(0, 6);
+const { t, lang } = Astro.props;
+// const featuredProjects = PROJECTS.slice(0, 6);
 ---
 
 <SectionLayout
@@ -23,17 +22,16 @@ const featuredProjects = PROJECTS.slice(0, 6);
 
   <div class="projects-grid">
     {
-      featuredProjects.map((project, index) => (
+      t.projects.map((project, index) => (
         <AnimatedItem
           delay={index * 150}
           className={`project-item-${index + 1}`}
         >
-          <div class="anim-item h-full">
-            <ProjectCard
-              project={project}
-              size={index === 0 || index === 5 ? "large" : "small"}
-            />
-          </div>
+          <ProjectCard
+            {project}
+            {lang}
+            size={index === 0 || index === 5 ? "large" : "small"}
+          />
         </AnimatedItem>
       ))
     }
@@ -42,8 +40,8 @@ const featuredProjects = PROJECTS.slice(0, 6);
   <div class="md:m-auto">
     <Button
       as="a"
-      href="/projects"
-      text={t.cta}
+      href={`/${lang}/projects/`}
+      text={t.cta_all_projects}
       fill={false}
       color="primary"
       arrow={true}

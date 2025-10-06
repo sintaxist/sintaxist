@@ -66,67 +66,65 @@ const cvPath = `/cv/Alejandro-Canek-CV-${lang}.pdf`;
   </div>
 </SectionLayout>
 <script>
-  // --- LÓGICA SECUENCIAL Y BIDIRECCIONAL PARA LA LÍNEA DE TIEMPO ---
-const experienceItems = document.querySelectorAll('.experience-item');
 
-if (experienceItems.length > 0) {
-  // Parte 1: Observador para el primer ícono (ahora reversible)
-  const firstItemObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const firstIcon = entry.target.querySelector('.timeline-icon');
-      if (firstIcon) {
-        // Añade o quita la clase dependiendo de si el elemento está visible o no
-        firstIcon.classList.toggle('is-pulsing', entry.isIntersecting);
+  document.addEventListener("astro:page-load", () => {
+
+  const experienceItems = document.querySelectorAll(".experience-item");
+
+  if (experienceItems.length > 0) {
+    const firstItemObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const firstIcon = entry.target.querySelector(".timeline-icon");
+          if (firstIcon) {
+            firstIcon.classList.toggle("is-pulsing", entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    firstItemObserver.observe(experienceItems[0]);
+
+    const handleTimelineScroll = () => {
+      const triggerPoint = window.innerHeight * 0.8;
+
+      experienceItems.forEach((item, index) => {
+        const line = item.querySelector(".timeline-line");
+        if (!line) return;
+
+        if (line instanceof HTMLElement) {
+          const rect = item.getBoundingClientRect();
+          const elementTop = rect.top;
+
+          let progress = (triggerPoint - elementTop) / rect.height;
+          let clampedProgress = Math.max(0, Math.min(progress, 1));
+
+          line.style.transform = `scaleY(${clampedProgress})`;
+
+          const nextItem = experienceItems[index + 1];
+          if (nextItem) {
+            const nextIcon = nextItem.querySelector(".timeline-icon");
+            if (nextIcon) {
+              nextIcon.classList.toggle("is-pulsing", clampedProgress === 1);
+            }
+          }
+        }
+      });
+    };
+
+    let isTicking = false;
+    window.addEventListener("scroll", () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(() => {
+          handleTimelineScroll();
+          isTicking = false;
+        });
+        isTicking = true;
       }
     });
-  }, { threshold: 0.5 });
 
-  firstItemObserver.observe(experienceItems[0]);
-
-
-  // Parte 2: Listener de scroll para las líneas y los siguientes íconos
-  const handleTimelineScroll = () => {
-  const triggerPoint = window.innerHeight * 0.8;
-
-  experienceItems.forEach((item, index) => {
-    const line = item.querySelector('.timeline-line');
-    // Si es el último item, no tiene línea, así que salimos.
-    if (!line) return; 
-
-    // --- 👇 LA CORRECCIÓN ESTÁ AQUÍ 👇 ---
-    // Verificamos que 'line' es un HTMLElement antes de usar .style
-    if (line instanceof HTMLElement) {
-      const rect = item.getBoundingClientRect();
-      const elementTop = rect.top;
-      
-      let progress = (triggerPoint - elementTop) / rect.height;
-      let clampedProgress = Math.max(0, Math.min(progress, 1));
-
-      // Ahora TypeScript sabe que 'line.style' es válido
-      line.style.transform = `scaleY(${clampedProgress})`;
-
-      const nextItem = experienceItems[index + 1];
-      if (nextItem) {
-        const nextIcon = nextItem.querySelector('.timeline-icon');
-        if (nextIcon) {
-          nextIcon.classList.toggle('is-pulsing', clampedProgress === 1);
-        }
-      }
-    }
-  });
-};
-
-  let isTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!isTicking) {
-      window.requestAnimationFrame(() => {
-        handleTimelineScroll();
-        isTicking = false;
-      });
-      isTicking = true;
-    }
-  });
-
-  handleTimelineScroll();
-}
+    handleTimelineScroll();
+  }
+})
 </script>

@@ -126,7 +126,7 @@ const menuItems = [
     requestAnimationFrame(animation);
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const footerLinks = document.querySelectorAll("footer a[href^='#']");
     footerLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
