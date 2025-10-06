@@ -3,11 +3,11 @@ import enTranslations from './en.json';
 
 export const LANGUAGES = {
   es: {
-    name: 'Español',
+    name: 'ES',
     translations: esTranslations
   },
   en: {
-    name: 'English',
+    name: 'EN',
     translations: enTranslations
   },
 };

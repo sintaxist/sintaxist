@@ -4,6 +4,7 @@ import Pill from '@/components/ui/Pill.astro';
 
 const { project, size = 'small' } = Astro.props;
 const isLarge = size === 'large';
+console.log(project)
 ---
 <a 
   href={`/projects/${project.slug}`} 
