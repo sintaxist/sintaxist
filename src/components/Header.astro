@@ -116,30 +116,32 @@ const menuItems = [
   }
 
   document.addEventListener("astro:page-load", () => {
+    
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
 
     const header = document.getElementById("main-header");
-    const logoLink = document.getElementById("logo-link");
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const allScrollLinks = document.querySelectorAll("a[href^='#']");
 
     function getElement(id) {
       const el = document.getElementById(id);
-      if (!el) throw new Error(`Elemento con id '${id}' no encontrado`);
+      if (!el) {
+        return null;
+      }
       return el;
     }
 
     const mobileNavPanel = getElement("mobile-nav-panel");
     const menuIcon = getElement("menu-icon");
     const closeIcon = getElement("close-icon");
-    const allNavLinks = document.querySelectorAll("header a.nav-link");
     const desktopNavLinks = document.querySelectorAll("#desktop-nav a.nav-link");
     const mobileNavLinks = document.querySelectorAll(".mobile-nav-panel a.nav-link");
     const navUnderline = getElement("nav-underline");
     const sections = document.querySelectorAll("section[id]");
 
-    if (!header || !mobileMenuBtn || !mobileNavPanel || !menuIcon || !closeIcon || !navUnderline || !logoLink) {
+    if (!header || !mobileMenuBtn || !mobileNavPanel || !menuIcon || !closeIcon || !navUnderline) {
       return;
     }
 
@@ -155,10 +157,12 @@ const menuItems = [
     handleScroll();
 
     function closeMobileMenu() {
-      mobileNavPanel.classList.remove("is-open");
-      menuIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-      document.body.style.overflow = "";
+      if (mobileNavPanel && menuIcon && closeIcon) {
+        mobileNavPanel.classList.remove("is-open");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
     }
 
     mobileMenuBtn.addEventListener("click", () => {
@@ -174,19 +178,10 @@ const menuItems = [
       }
     });
 
-    logoLink.addEventListener("click", (e) => {
-      const hero = document.getElementById("home");
-      if (hero) {
-        e.preventDefault();
-        closeMobileMenu();
-        smoothScroll(hero);
-      }
-    });
-
-    allNavLinks.forEach((link) => {
+    allScrollLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
-        if (!href || !href.startsWith('#')) return;
+        if (!href || href === '#') return;
         
         const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
@@ -195,7 +190,8 @@ const menuItems = [
           e.preventDefault();
           closeMobileMenu();
           smoothScroll(targetEl);
-        } else {
+        } 
+        else {
           e.preventDefault();
           const langPrefix = window.location.pathname.split('/')[1] || 'es';
           window.location.href = `/${langPrefix}/#${targetId}`;
@@ -224,36 +220,29 @@ const menuItems = [
         link.classList.toggle("is-active", isTarget);
         if (isTarget) activeDesktopLink = link;
       });
-
       mobileNavLinks.forEach((link) => {
-        link.classList.toggle(
-          "is-active",
-          link.getAttribute("data-nav-link") === sectionId
-        );
+        link.classList.toggle("is-active", link.getAttribute("data-nav-link") === sectionId);
       });
       updateUnderline(activeDesktopLink);
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.getAttribute("id");
-            if (sectionId) setActiveLink(sectionId);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -40% 0px" }
-    );
-    sections.forEach((section) => observer.observe(section));
-  });
+    if (sections.length > 0) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const sectionId = entry.target.getAttribute("id");
+              if (sectionId) setActiveLink(sectionId);
+            }
+          });
+        },
+        { rootMargin: "-40% 0px -40% 0px" }
+      );
+      sections.forEach((section) => observer.observe(section));
+    }
 
-  document.addEventListener("astro:page-load", () => {
-    const navigationEntry = performance.getEntriesByType("navigation")[0];
-    const navType = (navigationEntry && 'type' in navigationEntry)
-      ? /** @type {PerformanceNavigationTiming} */ (navigationEntry).type
-      : undefined;
-    if (navType !== 'back_forward' && window.location.hash) {
+    const navigationEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming;
+    if (navigationEntry && navigationEntry.type !== 'back_forward' && window.location.hash) {
       const targetId = window.location.hash.substring(1);
       const targetEl = document.getElementById(targetId);
       if (targetEl) {
@@ -267,7 +256,6 @@ const menuItems = [
 </script>
 
 <style>
-  /* CAMBIO: Se usan las variables de color del tema */
   :root {
     --color-glass-bg: rgba(228, 226, 210, 0.6);
   }
