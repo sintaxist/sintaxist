@@ -1,11 +1,20 @@
 ---
 const { categories } = Astro.props;
+const categoryList = Object.entries(categories).filter(([id]) => id !== "all");
 ---
+
 <div class="flex justify-center flex-wrap gap-2">
-  <button class="filter-btn is-active" data-filter="all">Todos</button>
-  {categories.map(cat => (
-    <button class="filter-btn" data-filter={cat.id}>{cat.name}</button>
-  ))}
+  <button class="filter-btn is-active" data-filter="all"
+    >{categories.all}</button
+  >
+
+  {
+    categoryList.map(([id, name]) => (
+      <button class="filter-btn" data-filter={id}>
+        {name}
+      </button>
+    ))
+  }
 </div>
 
 <style>
@@ -29,28 +38,78 @@ const { categories } = Astro.props;
 </style>
 
 <script>
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectWrappers = document.querySelectorAll('.project-wrapper');
+  function initFilterLogic() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectItems = document.querySelectorAll(".project-item");
+    if (!filterButtons.length || !projectItems.length) return;
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      filterButtons.forEach(btn => btn.classList.remove('is-active'));
-      button.classList.add('is-active');
+    const applyFilterAndAnimate = (filterId) => {
+      const projectItems = document.querySelectorAll(".project-item");
 
-      const filter = button.getAttribute('data-filter');
+      projectItems.forEach((item) => {
+        item.classList.remove("is-visible", "is-large-left", "is-large-right");
+        item.classList.add("is-hiding");
+      });
 
-      projectWrappers.forEach(project => {
-        if (filter === 'all') {
-          project.style.display = 'block';
-        } else {
-          const categories = project.getAttribute('data-categories');
-          if (categories.includes(filter)) {
-            project.style.display = 'block';
+      setTimeout(() => {
+        const visibleItems = [];
+
+        projectItems.forEach((project) => {
+          const categoriesAttr = project.getAttribute("data-categories");
+          const categoryArray = categoriesAttr ? categoriesAttr.split(",") : [];
+          const shouldBeVisible =
+            filterId === "all" || categoryArray.includes(filterId);
+
+          if (shouldBeVisible) {
+            visibleItems.push(project);
+            project.classList.remove("hidden");
           } else {
-            project.style.display = 'none';
+            project.classList.add("hidden");
           }
-        }
+        });
+
+        visibleItems.forEach((item, index) => {
+          const patternIndex = index % 6;
+
+          if (patternIndex === 0) {
+            item.classList.add("is-large-left");
+          }
+          else if (patternIndex === 3) {
+            item.classList.add("is-large-right");
+          }
+
+          item.classList.remove("is-hiding");
+
+          setTimeout(() => {
+            item.classList.add("is-visible");
+          }, index * 80);
+        });
+      }, 300);
+    };
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filterId = button.getAttribute("data-filter");
+        sessionStorage.setItem("activeProjectFilter", filterId);
+        filterButtons.forEach((btn) => btn.classList.remove("is-active"));
+        button.classList.add("is-active");
+        applyFilterAndAnimate(filterId);
       });
     });
-  });
+
+    const savedFilter = sessionStorage.getItem("activeProjectFilter");
+    const initialFilter = savedFilter || "all";
+    const activeButton = document.querySelector(
+      `.filter-btn[data-filter="${initialFilter}"]`
+    );
+
+    if (activeButton) {
+      filterButtons.forEach((btn) => btn.classList.remove("is-active"));
+      activeButton.classList.add("is-active");
+    }
+
+    applyFilterAndAnimate(initialFilter);
+  }
+
+  document.addEventListener("astro:page-load", initFilterLogic);
 </script>

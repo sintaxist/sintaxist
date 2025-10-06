@@ -5,7 +5,6 @@ import ArrowIcon from "@/icons/Arrow.astro";
 
 const { project, lang, size = "small", categories } = Astro.props;
 const isLarge = size === "large";
-console.log(categories, project.categoryIds)
 ---
 
 <a
@@ -20,6 +19,7 @@ console.log(categories, project.categoryIds)
       width={isLarge ? 800 : 400}
       height={isLarge ? 600 : 300}
       class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-110"
+      loading="lazy"
     />
     <div
       class={`absolute backdrop-blur-xs backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[15.148%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] transition-all duration-300 w-full -mb-[35px] group-hover:-mb-0`}

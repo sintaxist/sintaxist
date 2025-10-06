@@ -195,44 +195,14 @@
       "graphics": "Diseño Gráfico"
     },
     "projects": [
-      {
-        "slug": "yoorco-landing",
-        "title": "Landing Page Yoorco",
-        "description": "Diseño UI/UX para una plataforma de adopción de mascotas, desde la conceptualización hasta el prototipado de alta fidelidad.",
-        "imgSrc": "/assets/projects/yoorco.png",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "farmvalley-landing",
-        "title": "Landing Page FarmValley",
-        "imgSrc": "/assets/projects/farmvalley.png",
-        "categoryIds": ["ui-ux", "frontend"]
-      },
-      {
-        "slug": "kairos-lighting",
-        "title": "Landing Page Kairos Lighting",
-        "imgSrc": "/assets/projects/kairos.png",
-        "categoryIds": ["ui-ux", "frontend"]
-      },
-      {
-        "slug": "fondo-real-mx",
-        "title": "Landing Page Fondo Real MX",
-        "imgSrc": "/assets/projects/fondo-real.png",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "boda-jimena-canek",
-        "title": "Invitación Web Boda",
-        "imgSrc": "/assets/projects/boda.png",
-        "categoryIds": ["ui-ux", "frontend", "cms"]
-      },
-      {
-        "slug": "polea-semarnat",
-        "title": "Landing Polea / Semarnat",
-        "description": "Desarrollo de una interfaz atractiva y funcional para una iniciativa gubernamental, enfocada en la usabilidad y accesibilidad.",
-        "imgSrc": "/assets/projects/polea.png",
-        "categoryIds": ["ui-ux", "frontend"]
-      }
+      { "slug": "yoorco-landing", "title": "Landing Page Yoorco", "description": "Diseño UI/UX para una plataforma de adopción de mascotas.", "imgSrc": "/assets/projects/yoorco.png", "categoryIds": ["ui-ux"] },
+      { "slug": "farmvalley-landing", "title": "Landing Page FarmValley", "description": "Diseño y desarrollo frontend para una marca de productos orgánicos.", "imgSrc": "/assets/projects/farmvalley.png", "categoryIds": ["ui-ux", "frontend"] },
+      { "slug": "kairos-lighting", "title": "Landing Page Kairos Lighting", "description": "Interfaz para una empresa de iluminación inteligente.", "imgSrc": "/assets/projects/kairos.png", "categoryIds": ["ui-ux"] },
+      { "slug": "fondo-real-mx", "title": "Landing Page Fondo Real MX", "description": "Prototipado y diseño de experiencia para una fintech.", "imgSrc": "/assets/projects/fondo-real.png", "categoryIds": ["ui-ux"] },
+      { "slug": "boda-jimena-canek", "title": "Invitación Web Boda", "description": "Desarrollo full-stack de una invitación de boda interactiva.", "imgSrc": "/assets/projects/boda.png", "categoryIds": ["ui-ux", "frontend", "cms"] },
+      { "slug": "polea-semarnat", "title": "Landing Polea / Semarnat", "description": "Interfaz para una iniciativa gubernamental enfocada en la usabilidad.", "imgSrc": "/assets/projects/polea.png", "categoryIds": ["ui-ux", "frontend"] }
     ]
   }
 }
+
+
