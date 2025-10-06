@@ -1,0 +1,64 @@
+<style>
+  #cookie-banner {
+    transform: translateY(100%);
+  }
+
+  #cookie-banner.show {
+    transform: translateY(0);
+  }
+</style>
+<div
+  id="cookie-banner"
+  class="fixed bottom-4 left-4 right-4 md:left-auto md:w-[400px] p-6 rounded-xl bg-secondary shadow-2xl border border-gray-200/50 transition-transform duration-500 ease-out z-50"
+>
+  <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+    Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Al
+    continuar, aceptas el uso de cookies. Puedes leer nuestra <a
+      href="/politica-de-cookies"
+      class="text-indigo-600 hover:underline font-semibold"
+      >Política de Cookies</a
+    >.
+  </p>
+  <div class="flex justify-end space-x-2">
+    <button
+      id="reject-cookies"
+      class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+    >
+      Rechazar
+    </button>
+    <button
+      id="accept-cookies"
+      class="px-4 py-2 rounded-lg text-secondary bg-indigo-600 hover:bg-indigo-700 transition-colors"
+    >
+      Aceptar
+    </button>
+  </div>
+  <script type="text/javascript" defer>
+    document.addEventListener("astro:page-load", () => {
+      const banner = document.getElementById("cookie-banner");
+      const acceptBtn = document.getElementById("accept-cookies");
+      const rejectBtn = document.getElementById("reject-cookies");
+
+      if (!banner || !acceptBtn || !rejectBtn) return;
+
+      const showBanner = () => banner.classList.add("show");
+      const hideBanner = () => banner.classList.remove("show");
+
+      const consent = localStorage.getItem("cookieConsent");
+
+      if (consent === null) {
+        setTimeout(showBanner, 1000);
+      }
+
+      acceptBtn.addEventListener("click", function () {
+        localStorage.setItem("cookieConsent", "true");
+        hideBanner();
+      });
+
+      rejectBtn.addEventListener("click", function () {
+        localStorage.setItem("cookieConsent", "false");
+        hideBanner();
+      });
+    });
+  </script>
+</div>

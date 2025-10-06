@@ -187,7 +187,6 @@
     "all_projects_title": "Todos mis Proyectos",
     "all_projects_subtitle": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
     "view_more": "Ver más",
-
     "categories": {
       "all": "Todos",
       "ui-ux": "Diseño UI/UX",
@@ -195,7 +194,6 @@
       "cms": "CMS Headless",
       "graphics": "Diseño Gráfico"
     },
-
     "projects": [
       {
         "slug": "yoorco-landing",

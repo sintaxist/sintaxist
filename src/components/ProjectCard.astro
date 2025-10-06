@@ -1,36 +1,64 @@
 ---
-import { Image } from 'astro:assets';
-import Pill from '@/components/ui/Pill.astro';
+import { Image } from "astro:assets";
+import Pill from "@/components/ui/Pill.astro";
+import ArrowIcon from "@/icons/Arrow.astro";
 
-const { project, lang, size = 'small' } = Astro.props;
-const isLarge = size === 'large';
+const { project, lang, size = "small", categories } = Astro.props;
+const isLarge = size === "large";
+console.log(categories, project.categoryIds)
 ---
-<a 
+
+<a
   href={`/${lang}/projects/${project.slug}/`}
-  class="project-card group block" 
+  class="project-card group block text-secondary"
   transition:name={project.slug}
 >
-  <div class="relative overflow-hidden rounded-lg">
-    <Image 
-      src={project.imgSrc} 
+  <article class="relative overflow-hidden rounded-lg">
+    <Image
+      src={project.imgSrc}
       alt={`Imagen del proyecto ${project.title}`}
       width={isLarge ? 800 : 400}
       height={isLarge ? 600 : 300}
-      class="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:blur-sm group-hover:scale-105"
+      class="w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-110"
     />
-    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-      <div class="flex flex-col gap-2">
-        <h3 class:list={["font-primary text-white", isLarge ? 'text-2xl' : 'text-xl']}>{project.title}</h3>
-        {isLarge && project.description && (
-          <p class="font-secondary text-white/80 text-sm">{project.description}</p>
-        )}
-        <!-- <div class="flex flex-wrap gap-2">
-          {project.categories.map(cat => <Pill label={cat.name} />)}
-        </div> -->
-        <span class="font-secondary text-white font-bold mt-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          Ver más &rarr;
-        </span>
+    <div
+      class={`absolute backdrop-blur-xs backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[15.148%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] transition-all duration-300 w-full -mb-[35px] group-hover:-mb-0`}
+    >
+      <h3 class:list={["font-primary", isLarge ? "text-3xl" : "text-2xl"]}>
+        {project.title}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        {project.categoryIds.map((tag, index) => <Pill label={categories[tag] || tag} {index}/>)}
+      </div>
+      {
+        isLarge && project.description && (
+          <p class="font-secondary text-sm">
+            {project.description}
+          </p>
+        )
+      }
+      <div class="view-more-link flex items-center gap-2 font-secondary">
+        <p>Ver más</p>
+        <ArrowIcon class="hidden xs:block" />
       </div>
     </div>
-  </div>
+  </article>
 </a>
+
+<style>
+  .view-more-link {
+    /* Estado inicial: invisible, colapsado y movido ligeramente hacia abajo */
+    opacity: 0;
+    transform: translateY(10px);
+    overflow: hidden;
+
+    /* Transición suave para todas las propiedades, con una curva 'ease-out' para un efecto más pulido */
+    transition: all 0.3s ease-in-out;
+  }
+
+  .group:hover .view-more-link {
+    /* Estado final en hover: visible, expandido y en su posición original */
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

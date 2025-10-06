@@ -2,9 +2,10 @@
 interface Props {
   delay?: number;
   className?: string;
+  typeAnimation?: string;
 }
 
-const { delay = 0, className } = Astro.props;
+const { delay = 0, className, typeAnimation } = Astro.props;
 ---
 
 <style>
@@ -20,11 +21,17 @@ const { delay = 0, className } = Astro.props;
   .animated-text-wrapper.is-visible .animated-text-content {
     transform: translateY(0);
   }
+
+  .no-transition, .no-transition .animated-text-content {
+    transition: none !important;
+    transform: translateY(0) !important;
+  }
 </style>
 <div
   class:list={["animated-text-wrapper pt-0.5", className]}
   data-animate="text"
   data-delay={delay}
+  data-animation-type={typeAnimation}
 >
   <div class="animated-text-content">
     <slot />

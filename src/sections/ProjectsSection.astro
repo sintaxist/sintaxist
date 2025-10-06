@@ -24,12 +24,14 @@ const { t, lang } = Astro.props;
     {
       t.projects.map((project, index) => (
         <AnimatedItem
-          delay={index * 150}
+          delay={index * 200}
           className={`project-item-${index + 1}`}
+          typeAnimation="card"
         >
           <ProjectCard
             {project}
             {lang}
+            categories={t.categories}
             size={index === 0 || index === 5 ? "large" : "small"}
           />
         </AnimatedItem>

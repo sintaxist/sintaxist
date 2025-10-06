@@ -20,7 +20,7 @@ const menuItems = [
   class="fixed top-0 left-0 right-0 z-51 transition-all duration-500 py-2 md:py-4"
   data-section-theme="light"
 >
-  <div class="max-w-7xl mx-auto py-4 px-6">
+  <div class="max-w-screen-2xl mx-auto py-4 px-6">
     <div class="flex items-center justify-between">
       <a
         href="/"
@@ -95,7 +95,7 @@ const menuItems = [
   function smoothScroll(target) {
     const start = window.scrollY;
     const end = target.getBoundingClientRect().top + window.scrollY - 150;
-    const duration = 50;
+    const duration = 500;
     let startTime = null;
 
     function easeInOutQuad(t) {

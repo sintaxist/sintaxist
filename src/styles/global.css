@@ -141,12 +141,3 @@ body {
   animation: appear-and-pulse .5s cubic-bezier(0.5, 0, 0.5, 1);
   transform: scale(1);
 }
-
-
-/* #cookie-banner {
-  transform: translateY(100%);
-}
-
-#cookie-banner.show {
-  transform: translateY(0);
-} */
