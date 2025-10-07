@@ -96,6 +96,7 @@ const { t, socials } = Astro.props;
         title={t.imageAlt}
         class="block m-auto lg:m-0 w-full max-w-sm lg:max-w-lg"
         loading="eager"
+        fetchpriority="high"
       />
     </div>
     <div class="flex lg:hidden items-center gap-4 md:gap-6">
