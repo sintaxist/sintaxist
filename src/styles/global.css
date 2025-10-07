@@ -100,7 +100,8 @@ body {
 
 .bg-textured-primary {
   background-size: 200px;
-  background: url('/assets/texture.jpg') lightgray 50% / cover repeat;
+  /* background: url('https://i.imgur.com/9SSbCAH.jpg') lightgray 50% / cover repeat; */
+  background: url('https://i.imgur.com/IcgJr8H.jpg') lightgray 50% / cover repeat;
   background-color: var(--color-primary);
   background-blend-mode: multiply, normal;
 }

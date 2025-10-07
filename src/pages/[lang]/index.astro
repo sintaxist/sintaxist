@@ -9,24 +9,80 @@ import { LANGUAGES, defaultLang, type AppLocale } from "@/locales";
 import ExperiencieSkillsSection from "@/sections/ExperiencieSkillsSection.astro";
 import ProjectsSection from "@/sections/ProjectsSection.astro";
 
-export function getStaticPaths() {
-  return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
+export async function getStaticPaths() {
+  const paths = [];
+
+  for (const lang of Object.keys(LANGUAGES)) {
+    const t = LANGUAGES[lang].translations;
+
+    // Filtramos los proyectos (solo los 4 primeros y con datos mínimos)
+    const filteredProjects = t.projects_page.projects
+      .slice(0, 6)
+      .map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        description: p.description,
+        categoryIds: p.categoryIds,
+        imgSrc: p.imgSrc,
+      }));
+
+    // Solo los campos necesarios del projects_page
+    const projectsPage = {
+      title: t.projects_page.title,
+      description: t.projects_page.description,
+      cta_all_projects: t.projects_page.cta_all_projects,
+      view_more: t.projects_page.view_more,
+      categories: t.projects_page.categories,
+      projects: filteredProjects,
+    };
+
+    // Desestructuramos lo necesario y lo pasamos directo como props
+    paths.push({
+      params: { lang },
+      props: {
+        lang,
+        header: t.header,
+        hero: t.hero,
+        about: t.about,
+        experience: t.experience,
+        skills: t.skills,
+        contact: t.contact,
+        socials: t.socials,
+        footer: t.footer,
+        sections: t.sections,
+        projectsPage,
+      },
+    });
+  }
+
+  return paths;
 }
 
-const { lang = defaultLang } = Astro.params as { lang: AppLocale };
-const t = LANGUAGES[lang].translations;
+const {
+  lang,
+  header,
+  hero,
+  about,
+  experience,
+  skills,
+  contact,
+  socials,
+  footer,
+  projectsPage,
+  sections,
+} = Astro.props;
 ---
 
 <Layout
   title="Alejandro Canek - UX Engineer"
   description="Invitaciones Digitales para Eventos Inolvidables."
-  headerInfo={t.header}
-  sections={t.sections}
-  footerInfo={t.footer}
+  headerInfo={header}
+  sections={sections}
+  footerInfo={footer}
 >
-  <HeroSection t={t.hero} socials={t.socials} />
-  <AboutSection t={t.about} />
-  <ProjectsSection t={t.projects_page} {lang} />
-  <ExperiencieSkillsSection experience={t.experience} skills={t.skills} />
-  <ContactSection t={t.contact} socials={t.socials} />
+  <HeroSection t={hero} socials={socials} />
+  <AboutSection t={about} />
+  <ProjectsSection t={projectsPage} {lang} />
+  <ExperiencieSkillsSection experience={experience} skills={skills} />
+  <ContactSection t={contact} socials={socials} />
 </Layout>
