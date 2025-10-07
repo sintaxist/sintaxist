@@ -66,66 +66,65 @@ const { t, lang } = Astro.props;
     />
   </div>
 </SectionLayout>
-<script>
+<script defer>
   import Swiper from "swiper";
   import { Pagination } from "swiper/modules";
 
   document.addEventListener("astro:page-load", () => {
+    function normalizeSlideHeights() {
+      const slides = document.querySelectorAll(".mySwiper .swiper-slide");
+      let maxHeight = 0;
 
-  function normalizeSlideHeights() {
-    const slides = document.querySelectorAll(".mySwiper .swiper-slide");
-    let maxHeight = 0;
+      slides.forEach((slide) => {
+        slide.style.height = "auto";
+        maxHeight = Math.max(maxHeight, slide.offsetHeight);
+      });
 
-    slides.forEach((slide) => {
-      (slide as HTMLElement).style.height = "auto";
-      maxHeight = Math.max(maxHeight, (slide as HTMLElement).offsetHeight);
-    });
+      slides.forEach((slide) => {
+        slide.style.height = `${maxHeight}px`;
+      });
+    }
 
-    slides.forEach((slide) => {
-      (slide as HTMLElement).style.height = `${maxHeight}px`;
-    });
-  }
+    function loadSwiperCSS() {
+      const swiper = new Swiper(".mySwiper", {
+        modules: [Pagination],
+        slidesPerView: 1,
+        spaceBetween: 16,
+        freeMode: true,
+        grabCursor: true,
+        mousewheel: true,
+        keyboard: {
+          enabled: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          type: "progressbar",
+        },
+        breakpoints: {
+          320: { slidesPerView: 1.3 },
+          480: { slidesPerView: 1.5 },
+          640: { slidesPerView: 2 },
+        },
+        on: {
+          init: normalizeSlideHeights,
+          resize: normalizeSlideHeights,
+          update: normalizeSlideHeights,
+        },
+      });
+      // Si ya existe, no volver a inyectar
+      if (!document.getElementById("swiper-css")) {
+        // Swiper base CSS
+        const link = document.createElement("link");
+        link.id = "swiper-css";
+        link.rel = "stylesheet";
+        link.href =
+          "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+        document.head.appendChild(link);
 
-  function loadSwiperCSS() {
-    const swiper = new Swiper(".mySwiper", {
-      modules: [Pagination],
-      slidesPerView: 1,
-      spaceBetween: 16,
-      freeMode: true,
-      grabCursor: true,
-      mousewheel: true,
-      keyboard: {
-        enabled: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        type: "progressbar",
-      },
-      breakpoints: {
-        320: { slidesPerView: 1.3 },
-        480: { slidesPerView: 1.5 },
-        640: { slidesPerView: 2 },
-      },
-      on: {
-        init: normalizeSlideHeights,
-        resize: normalizeSlideHeights,
-        update: normalizeSlideHeights,
-      },
-    });
-    // Si ya existe, no volver a inyectar
-    if (!document.getElementById("swiper-css")) {
-      // Swiper base CSS
-      const link = document.createElement("link");
-      link.id = "swiper-css";
-      link.rel = "stylesheet";
-      link.href =
-        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
-      document.head.appendChild(link);
-
-      // Tus estilos personalizados
-      const style = document.createElement("style");
-      style.id = "swiper-custom-styles";
-      style.textContent = `
+        // Tus estilos personalizados
+        const style = document.createElement("style");
+        style.id = "swiper-custom-styles";
+        style.textContent = `
         .swiper {
           padding-bottom: 3rem;
         }
@@ -154,23 +153,22 @@ const { t, lang } = Astro.props;
           border-radius: 30px;
         }
       `;
-      document.head.appendChild(style);
+        document.head.appendChild(style);
+      }
     }
-  }
 
-  // Detectar mobile (breakpoint md:hidden → ~768px)
-  if (window.matchMedia("(max-width: 767px)").matches) {
-    loadSwiperCSS();
-  }
-
-  // Opcional: volver a evaluar en resize
-  window.addEventListener("resize", () => {
+    // Detectar mobile (breakpoint md:hidden → ~768px)
     if (window.matchMedia("(max-width: 767px)").matches) {
       loadSwiperCSS();
     }
-  });
 
-  })
+    // Opcional: volver a evaluar en resize
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        loadSwiperCSS();
+      }
+    });
+  });
 </script>
 
 <!-- { "slug": "ilustraciones-mata-chora-1", "title": "Ilustraciones Mata Chora", "description": "Serie de ilustraciones digitales para marca personal.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
