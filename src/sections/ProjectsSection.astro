@@ -66,7 +66,7 @@ const { t, lang } = Astro.props;
     />
   </div>
 </SectionLayout>
-<script defer>
+<script>
   import Swiper from "swiper";
   import { Pagination } from "swiper/modules";
 
@@ -77,12 +77,12 @@ const { t, lang } = Astro.props;
     let maxHeight = 0;
 
     slides.forEach((slide) => {
-      slide.style.height = "auto";
-      maxHeight = Math.max(maxHeight, slide.offsetHeight);
+      (slide as HTMLElement).style.height = "auto";
+      maxHeight = Math.max(maxHeight, (slide as HTMLElement).offsetHeight);
     });
 
     slides.forEach((slide) => {
-      slide.style.height = `${maxHeight}px`;
+      (slide as HTMLElement).style.height = `${maxHeight}px`;
     });
   }
 
