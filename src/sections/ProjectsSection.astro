@@ -1,10 +1,11 @@
 ---
 import SectionLayout from "@/layouts/SectionLayout.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
+// import ProjectCard from "@/components/ProjectCard.astro";
 import ProjectCardSwiper from "@/components/ProjectCardSwiper.astro";
-import AnimatedItem from "@/components/ui/AnimatedItem.astro";
+// import AnimatedItem from "@/components/ui/AnimatedItem.astro";
 import Button from "@/components/ui/Button.astro";
+import GridCardsLayout from "@/components/GridCardsLayout.astro";
 
 const { t, lang } = Astro.props;
 // const featuredProjects = PROJECTS.slice(0, 6);
@@ -21,24 +22,7 @@ const { t, lang } = Astro.props;
     {t.description}
   </p>
 
-  <div class="projects-grid-section hidden sm:grid">
-    {
-      t.projects.map((project, index) => (
-        <AnimatedItem
-          delay={index * 200}
-          className={`project-item-${index + 1}-section project-item-section`}
-          typeAnimation="card"
-        >
-          <ProjectCard
-            {project}
-            {lang}
-            categories={t.categories}
-            size={index === 0 || index === 5 ? "large" : "small"}
-          />
-        </AnimatedItem>
-      ))
-    }
-  </div>
+  <GridCardsLayout projects={t.projects} categories={t.categories} {lang} />
 
   <div class="block md:hidden">
     <div class="swiper mySwiper pb-12">
@@ -66,7 +50,7 @@ const { t, lang } = Astro.props;
     />
   </div>
 </SectionLayout>
-<script defer>
+<script>
   import Swiper from "swiper";
   import { Pagination } from "swiper/modules";
 
@@ -76,12 +60,12 @@ const { t, lang } = Astro.props;
       let maxHeight = 0;
 
       slides.forEach((slide) => {
-        slide.style.height = "auto";
-        maxHeight = Math.max(maxHeight, slide.offsetHeight);
+        (slide as HTMLElement).style.height = "auto";
+        maxHeight = Math.max(maxHeight, (slide as HTMLElement).offsetHeight);
       });
 
       slides.forEach((slide) => {
-        slide.style.height = `${maxHeight}px`;
+        (slide as HTMLElement).style.height = `${maxHeight}px`;
       });
     }
 

@@ -1,0 +1,25 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import AnimatedItem from "./ui/AnimatedItem.astro";
+
+const { projects, categories, lang } = Astro.props;
+---
+
+<div class="projects-grid-section hidden sm:grid">
+  {
+    projects.map((project, index) => (
+      <AnimatedItem
+        delay={index * 200}
+        className={`project-item-${index + 1}-section project-item-section`}
+        typeAnimation="card"
+      >
+        <ProjectCard
+          {project}
+          {lang}
+          categories={categories}
+          size={index === 0 || index === 5 ? "large" : "small"}
+        />
+      </AnimatedItem>
+    ))
+  }
+</div>
