@@ -24,7 +24,7 @@ const { t, lang } = Astro.props;
 
   <GridCardsLayout projects={t.projects} categories={t.categories} {lang} />
 
-  <div class="block md:hidden">
+  <div class="block md:hidden" data-swiper-container>
     <div class="swiper mySwiper pb-12">
       <div id="swiper-cards" class="swiper-wrapper">
         {
@@ -50,11 +50,15 @@ const { t, lang } = Astro.props;
     />
   </div>
 </SectionLayout>
-<script>
-  import Swiper from "swiper";
-  import { Pagination } from "swiper/modules";
 
+<script>
   document.addEventListener("astro:page-load", () => {
+    const swiperContainer = document.querySelector("[data-swiper-container]");
+    
+    if (!swiperContainer) return;
+
+    let swiperLoaded = false;
+
     function normalizeSlideHeights() {
       const slides = document.querySelectorAll(".mySwiper .swiper-slide");
       let maxHeight = 0;
@@ -69,8 +73,55 @@ const { t, lang } = Astro.props;
       });
     }
 
-    function loadSwiperCSS() {
-      const swiper = new Swiper(".mySwiper", {
+    async function loadSwiper() {
+      if (swiperLoaded) return;
+      swiperLoaded = true;
+
+      if (!document.getElementById("swiper-css")) {
+        const link = document.createElement("link");
+        link.id = "swiper-css";
+        link.rel = "stylesheet";
+        link.href = "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+        document.head.appendChild(link);
+
+        const style = document.createElement("style");
+        style.id = "swiper-custom-styles";
+        style.textContent = `
+          .swiper {
+            padding-bottom: 3rem;
+          }
+          .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+          }
+          .swiper-slide > div {
+            flex: 1 !important;
+          }
+          .swiper-pagination {
+            position: absolute;
+            bottom: 0;
+            left: 50% !important;
+            top: unset !important;
+            transform: translateX(-50%);
+            width: 90% !important;
+            height: 6px;
+            background-color: #D2DCED;
+            border-radius: 30px;
+            overflow: hidden;
+          }
+          .swiper-pagination-progressbar-fill {
+            background: #234C91 !important;
+            border-radius: 30px;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+
+      const { default: Swiper } = await import("swiper");
+      const { Pagination } = await import("swiper/modules");
+
+      new Swiper(".mySwiper", {
         modules: [Pagination],
         slidesPerView: 1,
         spaceBetween: 16,
@@ -95,61 +146,45 @@ const { t, lang } = Astro.props;
           update: normalizeSlideHeights,
         },
       });
-      // Si ya existe, no volver a inyectar
-      if (!document.getElementById("swiper-css")) {
-        // Swiper base CSS
-        const link = document.createElement("link");
-        link.id = "swiper-css";
-        link.rel = "stylesheet";
-        link.href =
-          "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
-        document.head.appendChild(link);
-
-        // Tus estilos personalizados
-        const style = document.createElement("style");
-        style.id = "swiper-custom-styles";
-        style.textContent = `
-        .swiper {
-          padding-bottom: 3rem;
-        }
-        .swiper-slide {
-          display: flex;
-          justify-content: center;
-          align-items: stretch;
-        }
-        .swiper-slide > div {
-          flex: 1 !important;
-        }
-        .swiper-pagination {
-          position: absolute;
-          bottom: 0;
-          left: 50% !important;
-          top: unset !important;
-          transform: translateX(-50%);
-          width: 90% !important;
-          height: 6px;
-          background-color: #D2DCED;
-          border-radius: 30px;
-          overflow: hidden;
-        }
-        .swiper-pagination-progressbar-fill {
-          background: #234C91 !important;
-          border-radius: 30px;
-        }
-      `;
-        document.head.appendChild(style);
-      }
     }
 
-    // Detectar mobile (breakpoint md:hidden → ~768px)
     if (window.matchMedia("(max-width: 767px)").matches) {
-      loadSwiperCSS();
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              loadSwiper();
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          rootMargin: "400px",
+          threshold: 0,
+        }
+      );
+
+      observer.observe(swiperContainer);
     }
 
-    // Opcional: volver a evaluar en resize
     window.addEventListener("resize", () => {
-      if (window.matchMedia("(max-width: 767px)").matches) {
-        loadSwiperCSS();
+      if (window.matchMedia("(max-width: 767px)").matches && !swiperLoaded) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                loadSwiper();
+                observer.disconnect();
+              }
+            });
+          },
+          {
+            rootMargin: "400px",
+            threshold: 0.1,
+          }
+        );
+
+        observer.observe(swiperContainer);
       }
     });
   });

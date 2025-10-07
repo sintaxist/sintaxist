@@ -55,6 +55,7 @@
     "jobs": [
       {
         "company": "Payvalida",
+        "icon": "payvalida",
         "role": "UI-UX Analyst",
         "dates": "July 2024 – Present",
         "tasks": [
@@ -67,6 +68,7 @@
       },
       {
         "company": "BBVA / Minsait",
+        "icon": "minsait",
         "role": "Senior Frontend Developer",
         "dates": "March 2024 – March 2025",
         "tasks": [
@@ -78,6 +80,7 @@
       },
       {
         "company": "Financiera Independencia / Gendra",
+        "icon": "gendra",
         "role": "Frontend Developer",
         "dates": "October 2022 – March 2024",
         "tasks": [
@@ -87,6 +90,7 @@
       },
       {
         "company": "Yoorco",
+        "icon": "yoorco",
         "role": "Project Manager",
         "dates": "September 2022 – February 2023",
         "tasks": [
@@ -96,6 +100,7 @@
       },
       {
         "company": "Xochimaco",
+        "icon": "xochimaco",
         "role": "UI Designer / Frontend Developer",
         "dates": "November 2020 – October 2022",
         "tasks": [
@@ -196,23 +201,125 @@
     },
 
     "projects": [
-      { "slug": "yoorco-landing", "title": "Landing Page Yoorco", "description": "Diseño UI/UX para una plataforma de adopción de mascotas.", "imgSrc": "/assets/projects/yoorco.png", "categoryIds": ["ui-ux"] },
-      { "slug": "farmvalley-landing", "title": "Landing Page FarmValley", "description": "Diseño y desarrollo frontend para una marca de productos orgánicos.", "imgSrc": "/assets/projects/farmvalley.png", "categoryIds": ["ui-ux", "frontend"] },
-      { "slug": "kairos-lighting", "title": "Landing Page Kairos Lighting", "description": "Interfaz para una empresa de iluminación inteligente.", "imgSrc": "/assets/projects/kairos.png", "categoryIds": ["ui-ux"] },
-      { "slug": "fondo-real-mx", "title": "Landing Page Fondo Real MX", "description": "Prototipado y diseño de experiencia para una fintech.", "imgSrc": "/assets/projects/fondo-real.png", "categoryIds": ["ui-ux"] },
-      { "slug": "boda-jimena-canek", "title": "Invitación Web Boda", "description": "Desarrollo full-stack de una invitación de boda interactiva.", "imgSrc": "/assets/projects/boda.png", "categoryIds": ["ui-ux", "frontend", "cms"] },
-      { "slug": "polea-semarnat", "title": "Landing Polea / Semarnat", "description": "Interfaz para una iniciativa gubernamental enfocada en la usabilidad.", "imgSrc": "/assets/projects/polea.png", "categoryIds": ["ui-ux", "frontend"] },
-      { "slug": "ilustraciones-mata-chora-1", "title": "Ilustraciones Mata Chora", "description": "Serie de ilustraciones digitales para marca personal.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] },
-      { "slug": "ilustraciones-mata-chora-2", "title": "Ilustraciones Mata Chora (Vol. 2)", "description": "Continuación de la serie de ilustraciones con un nuevo estilo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] },
-      { "slug": "uniformes-alpura", "title": "Uniformes Alpura", "description": "Diseño gráfico y conceptualización para línea de uniformes.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] },
-      { "slug": "midogu", "title": "App Midogu", "description": "Diseño y desarrollo de una aplicación para el cuidado de mascotas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux", "frontend"] },
-      { "slug": "cerium", "title": "Plataforma Cerium", "description": "Diseño de interfaz para una plataforma de gestión de datos.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] },
-      { "slug": "youth-cup", "title": "Youth Cup Website", "description": "Desarrollo frontend y gestión de contenido para un torneo deportivo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] },
-      { "slug": "lanresc", "title": "Sistema Lanresc", "description": "Diseño de experiencia de usuario para un sistema interno de logística.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] },
-      { "slug": "premios-monarca", "title": "Premios Monarca 2022-2024", "description": "Desarrollo de micrositios para invitaciones a eventos anuales.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] },
-      { "slug": "contecon-manzanillo", "title": "Web Contecon Manzanillo", "description": "Desarrollo frontend con integración de CMS para un portal corporativo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] },
-      { "slug": "bocar", "title": "Portal Bocar", "description": "Desarrollo de componentes para un portal de un proveedor automotriz.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] },
-      { "slug": "astom", "title": "Landing Page Astom", "description": "Desarrollo de un micrositio con animaciones complejas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }
+      {
+        "slug": "yoorco-landing",
+        "title": "Landing Page Yoorco",
+        "description": "Diseño UI/UX para una plataforma de adopción de mascotas.",
+        "imgSrc": "https://i.imgur.com/Z0EcRIQh.jpeg",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "farmvalley-landing",
+        "title": "Landing Page FarmValley",
+        "description": "Diseño y desarrollo frontend para una marca de productos orgánicos.",
+        "imgSrc": "https://i.imgur.com/aMPvCCkl.jpeg",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "kairos-lighting",
+        "title": "Landing Page Kairos Lighting",
+        "description": "Interfaz para una empresa de iluminación inteligente.",
+        "imgSrc": "https://i.imgur.com/76jQKxal.jpeg",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "fondo-real-mx",
+        "title": "Landing Page Fondo Real MX",
+        "description": "Prototipado y diseño de experiencia para una fintech.",
+        "imgSrc": "https://i.imgur.com/vEFTvgol.jpeg",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "boda-jimena-canek",
+        "title": "Invitación Web Boda",
+        "description": "Desarrollo full-stack de una invitación de boda interactiva.",
+        "imgSrc": "https://i.imgur.com/on31UDFl.jpeg",
+        "categoryIds": ["ui-ux", "frontend", "cms"]
+      },
+      {
+        "slug": "polea-semarnat",
+        "title": "Landing Polea / Semarnat",
+        "description": "Interfaz para una iniciativa gubernamental enfocada en la usabilidad.",
+        "imgSrc": "https://i.imgur.com/nbUQ8HUh.jpeg",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "ilustraciones-mata-chora-1",
+        "title": "Ilustraciones Mata Chora",
+        "description": "Serie de ilustraciones digitales para marca personal.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["graphics"]
+      },
+      {
+        "slug": "ilustraciones-mata-chora-2",
+        "title": "Ilustraciones Mata Chora (Vol. 2)",
+        "description": "Continuación de la serie de ilustraciones con un nuevo estilo.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["graphics"]
+      },
+      {
+        "slug": "uniformes-alpura",
+        "title": "Uniformes Alpura",
+        "description": "Diseño gráfico y conceptualización para línea de uniformes.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["graphics"]
+      },
+      {
+        "slug": "midogu",
+        "title": "App Midogu",
+        "description": "Diseño y desarrollo de una aplicación para el cuidado de mascotas.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["ui-ux", "frontend"]
+      },
+      {
+        "slug": "cerium",
+        "title": "Plataforma Cerium",
+        "description": "Diseño de interfaz para una plataforma de gestión de datos.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "youth-cup",
+        "title": "Youth Cup Website",
+        "description": "Desarrollo frontend y gestión de contenido para un torneo deportivo.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["frontend", "cms"]
+      },
+      {
+        "slug": "lanresc",
+        "title": "Sistema Lanresc",
+        "description": "Diseño de experiencia de usuario para un sistema interno de logística.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["ui-ux"]
+      },
+      {
+        "slug": "premios-monarca",
+        "title": "Premios Monarca 2022-2024",
+        "description": "Desarrollo de micrositios para invitaciones a eventos anuales.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["frontend", "cms"]
+      },
+      {
+        "slug": "contecon-manzanillo",
+        "title": "Web Contecon Manzanillo",
+        "description": "Desarrollo frontend con integración de CMS para un portal corporativo.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["frontend", "cms"]
+      },
+      {
+        "slug": "bocar",
+        "title": "Portal Bocar",
+        "description": "Desarrollo de componentes para un portal de un proveedor automotriz.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["frontend", "cms"]
+      },
+      {
+        "slug": "astom",
+        "title": "Landing Page Astom",
+        "description": "Desarrollo de un micrositio con animaciones complejas.",
+        "imgSrc": "/assets/projects/placeholder.png",
+        "categoryIds": ["frontend", "cms"]
+      }
     ]
   }
 }

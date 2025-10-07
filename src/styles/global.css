@@ -18,6 +18,7 @@
 
   /* Breakpoints */
   --breakpoint-xs: 320px;
+  --breakpoint-linexs: 375px;
 }
 
 /* Declaración de la fuente Bronzier */

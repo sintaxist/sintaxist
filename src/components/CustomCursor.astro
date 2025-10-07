@@ -1,24 +1,47 @@
 <div id="cursor-outline"></div>
 <div id="cursor-dot"></div>
 
-<script is:inline>
+<script>
   document.addEventListener("astro:page-load", () => {
     const cursorDot = document.getElementById("cursor-dot");
     const cursorOutline = document.getElementById("cursor-outline");
 
     if (!cursorDot || !cursorOutline) return;
 
-    // Variables para guardar la posición del ratón
     let mouseX = 0;
     let mouseY = 0;
-
-    // Variables para la posición animada del círculo exterior
     let outlineX = 0;
     let outlineY = 0;
 
+    // Recuperar última posición guardada
+    const savedPosition = sessionStorage.getItem("cursorPosition");
+    if (savedPosition) {
+      const { x, y } = JSON.parse(savedPosition);
+      mouseX = x;
+      mouseY = y;
+      outlineX = x;
+      outlineY = y;
+      
+      // Posicionar inmediatamente
+      cursorDot.style.left = `${x}px`;
+      cursorDot.style.top = `${y}px`;
+      cursorOutline.style.left = `${x}px`;
+      cursorOutline.style.top = `${y}px`;
+    }
+
+    // Actualizar posición en mousemove
     window.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      
+      // Guardar posición en sessionStorage
+      sessionStorage.setItem("cursorPosition", JSON.stringify({ x: mouseX, y: mouseY }));
+    });
+
+    // Actualizar posición en scroll (sin mover el mouse)
+    window.addEventListener("scroll", () => {
+      // El mouseX y mouseY se mantienen, no necesitamos actualizarlos
+      // El cursor se quedará en la misma posición de viewport
     });
 
     const animateCursor = () => {
@@ -35,7 +58,6 @@
 
     animateCursor();
 
-    // Lógica para detectar hover en elementos interactivos
     const interactiveElements = document.querySelectorAll(
       "a, button, .interactive"
     );
@@ -50,11 +72,10 @@
       });
     });
 
-    // Lógica para el cambio de color en secciones oscuras
     const sections = document.querySelectorAll("[data-section-theme]");
     sections.forEach((section) => {
       section.addEventListener("mouseenter", () => {
-        const theme = section.dataset.sectionTheme;
+        const theme = (section as HTMLElement).dataset.sectionTheme;
         cursorDot.classList.toggle("is-inverted", theme === "dark");
         cursorOutline.classList.toggle("is-inverted", theme === "dark");
       });
