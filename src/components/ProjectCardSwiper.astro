@@ -8,7 +8,7 @@ const isLarge = size === "large";
 
 <a
   href={`/${lang}/projects/${project.slug}/`}
-  class="project-card group block text-secondary h-full relative overflow-hidden"
+  class="project-card swiper-slide group block text-secondary h-full min-h-[450px] relative overflow-hidden rounded-lg"
   transition:name={project.slug}
 >
   <!-- SKELETON + IMG (img primero, luego overlay) -->
@@ -29,15 +29,15 @@ const isLarge = size === "large";
 
     <!-- Contenido encima de la imagen -->
     <div
-      class={`absolute backdrop-blur-xs backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[15.148%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] transition-all duration-300 w-full -mb-[45px] group-hover:-mb-0 z-30`}
+      class={`absolute backdrop-blur-sm backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[0%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] to-[124.76%] z-30`}
     >
-      <div class="hidden md:flex flex-wrap gap-2">
+      <!-- <div class="flex flex-wrap gap-2">
         {
           project.categoryIds.map((tag, index) => (
-            <Pill label={categories[tag] || tag} {index} />
+            <Pill label={categories[tag] || tag} index={index} />
           ))
         }
-      </div>
+      </div> -->
       <h3
         class:list={[
           "font-primary",
@@ -47,7 +47,7 @@ const isLarge = size === "large";
         {project.title}
       </h3>
       {
-        isLarge && project.description && (
+        project.description && (
           <p class="font-secondary text-sm">{project.description}</p>
         )
       }
@@ -119,16 +119,5 @@ const isLarge = size === "large";
       visibility 0.45s ease-in-out;
     animation: none;
     pointer-events: none;
-  }
-  .view-more-link {
-    opacity: 0;
-    transform: translateY(10px);
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .group:hover .view-more-link {
-    opacity: 1;
-    transform: translateY(0);
   }
 </style>

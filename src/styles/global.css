@@ -144,49 +144,40 @@ body {
 
 /* Grid Projects */
 
-.projects-grid {
-  display: grid;
+.projects-grid-section {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: minmax(250px, auto);
-  gap: 5px; /* El gap que pediste */
+  gap: 5px;
+  margin: auto;
 }
 
-.project-item {
+.project-item-section {
   grid-column: span 1;
   grid-row: span 1;
 }
 
-.project-item:nth-child(6n + 1) {
+.project-item-section:nth-child(6n + 1) {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-.project-item:nth-child(6n + 4) {
-  grid-column: span 2;
-  grid-row: span 2;
+.project-item-section:nth-child(6) {
+  grid-area: 3 / 2 / 5 / 4;
 }
 
 @media (max-width: 1024px) {
-  .projects-grid {
+  .projects-grid-section {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(200px, auto);
+    grid-auto-rows: minmax(150px, auto);
   }
 
-  .project-item:nth-child(6n + 1),
-  .project-item:nth-child(6n + 4) {
+  .project-item-section:nth-child(6) {
+    grid-area: 4 / 1 / 6 / 3;
+  }
+
+  .project-item-section:nth-child(6n + 1){
     grid-column: span 2;
     grid-row: span 2;
   }
 }
 
-@media (max-width: 767px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  .project-item,
-  .project-item:nth-child(6n + 1),
-  .project-item:nth-child(6n + 4) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-}

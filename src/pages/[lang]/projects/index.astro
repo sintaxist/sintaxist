@@ -24,7 +24,6 @@ export async function getStaticPaths() {
 
 
 const { t, lang, projects, categories } = Astro.props;
-console.log(projects)
 const projectsPerPage = 6;
 const initialProjects = projects.slice(0, projectsPerPage);
 ---

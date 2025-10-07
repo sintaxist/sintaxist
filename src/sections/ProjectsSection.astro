@@ -2,6 +2,7 @@
 import SectionLayout from "@/layouts/SectionLayout.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
+import ProjectCardSwiper from "@/components/ProjectCardSwiper.astro";
 import AnimatedItem from "@/components/ui/AnimatedItem.astro";
 import Button from "@/components/ui/Button.astro";
 
@@ -20,12 +21,12 @@ const { t, lang } = Astro.props;
     {t.description}
   </p>
 
-  <div class="projects-grid">
+  <div class="projects-grid-section hidden sm:grid">
     {
       t.projects.map((project, index) => (
         <AnimatedItem
           delay={index * 200}
-          className={`project-item-${index + 1} project-item`}
+          className={`project-item-${index + 1}-section project-item-section`}
           typeAnimation="card"
         >
           <ProjectCard
@@ -39,6 +40,21 @@ const { t, lang } = Astro.props;
     }
   </div>
 
+  <div class="block md:hidden">
+    <div class="swiper mySwiper pb-12">
+      <div id="swiper-cards" class="swiper-wrapper">
+        {
+          t.projects.map((project, index) => (
+            <ProjectCardSwiper {project} {lang} categories={t.categories} />
+          ))
+        }
+      </div>
+
+      <!-- Barra de progreso -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
   <div class="md:m-auto">
     <Button
       as="a"
@@ -50,48 +66,121 @@ const { t, lang } = Astro.props;
     />
   </div>
 </SectionLayout>
+<script defer>
+  import Swiper from "swiper";
+  import { Pagination } from "swiper/modules";
 
-<style>
-  /* Grid complejo para el layout asimétrico */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.5rem;
-  }
-  @media (min-width: 768px) {
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .project-item-1 {
-      grid-column: span 2;
-    }
-    .project-item-6 {
-      grid-column: span 2;
-    }
-  }
-  @media (min-width: 1024px) {
-    .projects-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .project-item-1 {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    .project-item-6 {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-  }
-</style>
+  document.addEventListener("astro:page-load", () => {
 
- <!-- { "slug": "ilustraciones-mata-chora-1", "title": "Ilustraciones Mata Chora", "description": "Serie de ilustraciones digitales para marca personal.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
-      <!-- { "slug": "ilustraciones-mata-chora-2", "title": "Ilustraciones Mata Chora (Vol. 2)", "description": "Continuación de la serie de ilustraciones con un nuevo estilo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
-      <!-- { "slug": "uniformes-alpura", "title": "Uniformes Alpura", "description": "Diseño gráfico y conceptualización para línea de uniformes.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
-      <!-- { "slug": "midogu", "title": "App Midogu", "description": "Diseño y desarrollo de una aplicación para el cuidado de mascotas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux", "frontend"] }, -->
-      <!-- { "slug": "cerium", "title": "Plataforma Cerium", "description": "Diseño de interfaz para una plataforma de gestión de datos.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] }, -->
-      <!-- { "slug": "youth-cup", "title": "Youth Cup Website", "description": "Desarrollo frontend y gestión de contenido para un torneo deportivo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
-      <!-- { "slug": "lanresc", "title": "Sistema Lanresc", "description": "Diseño de experiencia de usuario para un sistema interno de logística.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] }, -->
-      <!-- { "slug": "premios-monarca", "title": "Premios Monarca 2022-2024", "description": "Desarrollo de micrositios para invitaciones a eventos anuales.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
-      <!-- { "slug": "contecon-manzanillo", "title": "Web Contecon Manzanillo", "description": "Desarrollo frontend con integración de CMS para un portal corporativo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
-      <!-- { "slug": "bocar", "title": "Portal Bocar", "description": "Desarrollo de componentes para un portal de un proveedor automotriz.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
-      <!-- { "slug": "astom", "title": "Landing Page Astom", "description": "Desarrollo de un micrositio con animaciones complejas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] } -->
+  function normalizeSlideHeights() {
+    const slides = document.querySelectorAll(".mySwiper .swiper-slide");
+    let maxHeight = 0;
+
+    slides.forEach((slide) => {
+      slide.style.height = "auto";
+      maxHeight = Math.max(maxHeight, slide.offsetHeight);
+    });
+
+    slides.forEach((slide) => {
+      slide.style.height = `${maxHeight}px`;
+    });
+  }
+
+  function loadSwiperCSS() {
+    const swiper = new Swiper(".mySwiper", {
+      modules: [Pagination],
+      slidesPerView: 1,
+      spaceBetween: 16,
+      freeMode: true,
+      grabCursor: true,
+      mousewheel: true,
+      keyboard: {
+        enabled: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        type: "progressbar",
+      },
+      breakpoints: {
+        320: { slidesPerView: 1.3 },
+        480: { slidesPerView: 1.5 },
+        640: { slidesPerView: 2 },
+      },
+      on: {
+        init: normalizeSlideHeights,
+        resize: normalizeSlideHeights,
+        update: normalizeSlideHeights,
+      },
+    });
+    // Si ya existe, no volver a inyectar
+    if (!document.getElementById("swiper-css")) {
+      // Swiper base CSS
+      const link = document.createElement("link");
+      link.id = "swiper-css";
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css";
+      document.head.appendChild(link);
+
+      // Tus estilos personalizados
+      const style = document.createElement("style");
+      style.id = "swiper-custom-styles";
+      style.textContent = `
+        .swiper {
+          padding-bottom: 3rem;
+        }
+        .swiper-slide {
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+        }
+        .swiper-slide > div {
+          flex: 1 !important;
+        }
+        .swiper-pagination {
+          position: absolute;
+          bottom: 0;
+          left: 50% !important;
+          top: unset !important;
+          transform: translateX(-50%);
+          width: 90% !important;
+          height: 6px;
+          background-color: #D2DCED;
+          border-radius: 30px;
+          overflow: hidden;
+        }
+        .swiper-pagination-progressbar-fill {
+          background: #234C91 !important;
+          border-radius: 30px;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
+  // Detectar mobile (breakpoint md:hidden → ~768px)
+  if (window.matchMedia("(max-width: 767px)").matches) {
+    loadSwiperCSS();
+  }
+
+  // Opcional: volver a evaluar en resize
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      loadSwiperCSS();
+    }
+  });
+
+  })
+</script>
+
+<!-- { "slug": "ilustraciones-mata-chora-1", "title": "Ilustraciones Mata Chora", "description": "Serie de ilustraciones digitales para marca personal.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
+<!-- { "slug": "ilustraciones-mata-chora-2", "title": "Ilustraciones Mata Chora (Vol. 2)", "description": "Continuación de la serie de ilustraciones con un nuevo estilo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
+<!-- { "slug": "uniformes-alpura", "title": "Uniformes Alpura", "description": "Diseño gráfico y conceptualización para línea de uniformes.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["graphics"] }, -->
+<!-- { "slug": "midogu", "title": "App Midogu", "description": "Diseño y desarrollo de una aplicación para el cuidado de mascotas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux", "frontend"] }, -->
+<!-- { "slug": "cerium", "title": "Plataforma Cerium", "description": "Diseño de interfaz para una plataforma de gestión de datos.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] }, -->
+<!-- { "slug": "youth-cup", "title": "Youth Cup Website", "description": "Desarrollo frontend y gestión de contenido para un torneo deportivo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
+<!-- { "slug": "lanresc", "title": "Sistema Lanresc", "description": "Diseño de experiencia de usuario para un sistema interno de logística.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["ui-ux"] }, -->
+<!-- { "slug": "premios-monarca", "title": "Premios Monarca 2022-2024", "description": "Desarrollo de micrositios para invitaciones a eventos anuales.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
+<!-- { "slug": "contecon-manzanillo", "title": "Web Contecon Manzanillo", "description": "Desarrollo frontend con integración de CMS para un portal corporativo.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
+<!-- { "slug": "bocar", "title": "Portal Bocar", "description": "Desarrollo de componentes para un portal de un proveedor automotriz.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] }, -->
+<!-- { "slug": "astom", "title": "Landing Page Astom", "description": "Desarrollo de un micrositio con animaciones complejas.", "imgSrc": "/assets/projects/placeholder.png", "categoryIds": ["frontend", "cms"] } -->
