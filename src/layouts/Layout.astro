@@ -184,7 +184,7 @@ const {
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.1 }
       );
 
       animationGroups.forEach((group) => observer.observe(group));
@@ -193,7 +193,6 @@ const {
         enableProjectCards();
       }
     } else {
-      // Si no hay animaciones, habilitar inmediatamente
       enableProjectCards();
     }
 
