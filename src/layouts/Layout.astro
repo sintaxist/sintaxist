@@ -37,26 +37,6 @@ const {
 
     <meta name="description" content={description} />
 
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/favicon/favicon-16x16.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/favicon/apple-touch-icon.png"
-    />
-    <link rel="manifest" href="/favicon/site.webmanifest" /> -->
-
     <!-- Google Fonts optimizado -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -72,8 +52,6 @@ const {
         rel="stylesheet"
       />
     </noscript>
-
-    <!-- <link rel="preload" href="/fonts/BronzierRusty.woff2" as="font" type="font/woff2" crossorigin> -->
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
@@ -126,17 +104,52 @@ const {
   document.documentElement.classList.add(`lang-${lang}`);
 </script>
 
-<script is:inline defer>
+<script is:inline>
   let lastNavigationDirection = 'initial';
+  let isNavigating = false;
+  let animationsComplete = false;
 
-  document.addEventListener('astro:before-swap', (event) => {
+  // Detectar dirección de navegación
+  document.addEventListener('astro:before-preparation', (event) => {
     lastNavigationDirection = event.direction;
   });
 
+  // Antes de cambiar de página, marcar que estamos navegando
+  document.addEventListener('astro:before-swap', () => {
+    isNavigating = true;
+    animationsComplete = false;
+    // Cancelar cualquier animación pendiente
+    const animatingElements = document.querySelectorAll('.is-animating');
+    animatingElements.forEach(el => {
+      el.classList.remove('is-animating');
+    });
+  });
+
   document.addEventListener("astro:page-load", () => {
+    // Resetear el flag después de un pequeño delay
+    setTimeout(() => {
+      isNavigating = false;
+    }, 100);
+    
     const animationGroups = document.querySelectorAll(".animation-group");
     
+    // Bloquear clicks en las cards durante las animaciones
+    const projectCards = document.querySelectorAll('.project-card');
+    if (projectCards.length > 0 && lastNavigationDirection !== 'back') {
+      projectCards.forEach(card => {
+        card.style.pointerEvents = 'none';
+      });
+    }
+    
     if (animationGroups.length > 0) {
+      let totalAnimations = 0;
+      let completedAnimations = 0;
+
+      animationGroups.forEach(group => {
+        const elements = group.querySelectorAll('[data-animate="text"]');
+        totalAnimations += elements.length;
+      });
+
       const observer = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
@@ -150,10 +163,15 @@ const {
                 if (lastNavigationDirection === 'back' && isCard) {
                   element.classList.add('no-transition');
                   element.classList.add('is-visible');
-                } 
-
-                else {
-                  animateText(element);
+                  completedAnimations++;
+                } else {
+                  animateText(element, () => {
+                    completedAnimations++;
+                    // Cuando todas las animaciones terminen, habilitar clicks
+                    if (completedAnimations >= totalAnimations) {
+                      enableProjectCards();
+                    }
+                  });
                 }
               });
 
@@ -161,17 +179,68 @@ const {
             }
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.1, rootMargin: '50px' }
       );
 
       animationGroups.forEach((group) => observer.observe(group));
+
+      if (!animationsComplete) {
+          enableProjectCards();
+        }
+    } else {
+      // Si no hay animaciones, habilitar inmediatamente
+      enableProjectCards();
     }
 
-    function animateText(element) {
+    function animateText(element, callback) {
       const delay = parseInt(element.getAttribute("data-delay")) || 0;
+      const animationDuration = 600; // duración de la animación en ms
+      
       setTimeout(() => {
-        element.classList.add("is-visible");
+        if (isNavigating) {
+          callback && callback();
+          return;
+        }
+        element.classList.add("is-visible", "is-animating");
+        
+        // Llamar al callback cuando termine la animación
+        setTimeout(() => {
+          callback && callback();
+        }, animationDuration);
       }, delay);
     }
+
+    function enableProjectCards() {
+      if (animationsComplete) return;
+      animationsComplete = true;
+      
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach(card => {
+        card.style.pointerEvents = 'auto';
+      });
+    }
+
+    // Si venimos de 'back', habilitar inmediatamente
+    if (lastNavigationDirection === 'back') {
+      enableProjectCards();
+    }
+  });
+
+  // Limpiar estado al terminar la transición
+  document.addEventListener('astro:after-swap', () => {
+    isNavigating = false;
   });
 </script>
+
+<style is:global>
+  /* Asegurar que las transiciones de página tengan prioridad */
+  [data-astro-transition] {
+    z-index: 10000 !important;
+  }
+
+  /* Desactivar animaciones durante transiciones de página */
+  html.astro-transition * {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+</style>

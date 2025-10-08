@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     const t = LANGUAGES[lang].translations;
 
     // Filtramos los proyectos (solo los 4 primeros y con datos mínimos)
-    const filteredProjects = t.projects_page.projects
+    const filteredProjects = t.projectsPage.projects
       .slice(0, 6)
       .map((p) => ({
         slug: p.slug,
@@ -24,15 +24,15 @@ export async function getStaticPaths() {
         description: p.description,
         categoryIds: p.categoryIds,
         imgSrc: p.imgSrc,
+        viewMore: t.projectsPage.viewMore,
       }));
 
-    // Solo los campos necesarios del projects_page
+    // Solo los campos necesarios del projectsPage
     const projectsPage = {
-      title: t.projects_page.title,
-      description: t.projects_page.description,
-      cta_all_projects: t.projects_page.cta_all_projects,
-      view_more: t.projects_page.view_more,
-      categories: t.projects_page.categories,
+      title: t.projectsPage.title,
+      description: t.projectsPage.description,
+      ctaAllProjects: t.projectsPage.ctaAllProjects,
+      categories: t.projectsPage.categories,
       projects: filteredProjects,
     };
 

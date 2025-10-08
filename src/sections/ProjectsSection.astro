@@ -1,14 +1,11 @@
 ---
 import SectionLayout from "@/layouts/SectionLayout.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
-// import ProjectCard from "@/components/ProjectCard.astro";
 import ProjectCardSwiper from "@/components/ProjectCardSwiper.astro";
-// import AnimatedItem from "@/components/ui/AnimatedItem.astro";
 import Button from "@/components/ui/Button.astro";
 import GridCardsLayout from "@/components/GridCardsLayout.astro";
 
 const { t, lang } = Astro.props;
-// const featuredProjects = PROJECTS.slice(0, 6);
 ---
 
 <SectionLayout
@@ -22,7 +19,7 @@ const { t, lang } = Astro.props;
     {t.description}
   </p>
 
-  <GridCardsLayout projects={t.projects} categories={t.categories} {lang} />
+  <GridCardsLayout projects={t.projects} categories={t.categories} {lang} className="hidden sm:grid"/>
 
   <div class="block md:hidden" data-swiper-container>
     <div class="swiper mySwiper pb-12">
@@ -43,7 +40,7 @@ const { t, lang } = Astro.props;
     <Button
       as="a"
       href={`/${lang}/projects/`}
-      text={t.cta_all_projects}
+      text={t.ctaAllProjects}
       fill={false}
       color="primary"
       arrow={true}

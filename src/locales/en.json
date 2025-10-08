@@ -184,14 +184,14 @@
     "connectTitle": "Let’s Talk",
     "copyright": "Alejandro Canek Fernández Maya. All rights reserved."
   },
-  "projects_page": {
+  "projectsPage": {
     "title": "My Projects",
     "description": "Each project is a journey and a collaboration. Here I present some of the paths I’ve walked with brands and teams to transform ideas into functional, memorable platforms. Explore the process, technology, and results.",
-    "cta_all_projects": "View All Projects",
-    "cta_back_to_projects": "< Back to Projects",
-    "all_projects_title": "All My Projects",
-    "all_projects_subtitle": "Explore the different works I’ve done, filtering by category.",
-    "view_more": "View More",
+    "ctaAllProjects": "View All Projects",
+    "ctaBacktoProjects": "< Back to Projects",
+    "allProjectsTitle": "All My Projects",
+    "allProjectsDescription": "Explore the different works I’ve done, filtering by category.",
+    "viewMore": "View More",
     "categories": {
       "all": "All",
       "ui-ux": "UI/UX Design",

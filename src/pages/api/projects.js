@@ -11,7 +11,7 @@ export async function GET({ request }) {
   const perPage = 6;
 
   // Cargamos todos los proyectos del archivo JSON correspondiente
-  const allProjects = LANGUAGES[lang].translations.projects_page.projects;
+  const allProjects = LANGUAGES[lang].translations.projectsPage.projects;
 
   // Filtramos los proyectos por categoría si es necesario
   const filteredProjects = filter === 'all' 

@@ -15,17 +15,13 @@ const { delay = 0, className, typeAnimation } = Astro.props;
 
   .animated-text-content {
     transform: translateY(150%);
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.2);
   }
 
   .animated-text-wrapper.is-visible .animated-text-content {
     transform: translateY(0);
   }
 
-  .no-transition, .no-transition .animated-text-content {
-    transition: none !important;
-    transform: translateY(0) !important;
-  }
 </style>
 <div
   class:list={["animated-text-wrapper pt-0.5", className]}

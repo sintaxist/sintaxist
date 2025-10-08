@@ -184,14 +184,14 @@
     "connectTitle": "Hablemos",
     "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
   },
-  "projects_page": {
+  "projectsPage": {
     "title": "Mis proyectos",
     "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
-    "cta_all_projects": "Ver todos los proyectos",
-    "cta_back_to_projects": "< Regresar a Proyectos",
-    "all_projects_title": "Todos mis Proyectos",
-    "all_projects_subtitle": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
-    "view_more": "Ver más",
+    "ctaAllProjects": "Ver todos los proyectos",
+    "ctaBacktoProjects": "< Regresar a Proyectos",
+    "allProjectsTitle": "Todos mis Proyectos",
+    "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
+    "viewMore": "Ver más",
     "categories": {
       "all": "Todos",
       "ui-ux": "Diseño UI/UX",

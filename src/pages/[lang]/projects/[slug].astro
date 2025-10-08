@@ -10,12 +10,12 @@ export async function getStaticPaths() {
   for (const lang of Object.keys(LANGUAGES)) {
     const t = LANGUAGES[lang].translations;
 
-    for (const project of t.projects_page.projects) {
+    for (const project of t.projectsPage.projects) {
       paths.push({
         params: { lang, slug: project.slug },
         props: {
           project: project,
-          cta_back_to_projects: t.projects_page.cta_back_to_projects,
+          ctaBacktoProjects: t.projectsPage.ctaBacktoProjects,
           lang: lang,
           infoLayout: {header: t.header, sections: t.sections, footer: t.footer},
         },
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { project, cta_back_to_projects, lang, infoLayout } = Astro.props;
+const { project, ctaBacktoProjects, lang, infoLayout } = Astro.props;
 ---
 
 <Layout
@@ -63,7 +63,7 @@ const { project, cta_back_to_projects, lang, infoLayout } = Astro.props;
       <Button
         as="a"
         href={`/${lang}/projects`}
-        text={cta_back_to_projects}
+        text={ctaBacktoProjects}
         fill={false}
         color="blue"
       />

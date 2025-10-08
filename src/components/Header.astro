@@ -17,7 +17,7 @@ const menuItems = [
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-51 transition-all duration-500 py-2 md:py-4"
+  class="fixed top-0 left-0 right-0 z-51 transition-all py-2 md:py-4"
   data-section-theme="light"
 >
   <div class="max-w-screen-2xl mx-auto py-4 px-6">
@@ -27,7 +27,7 @@ const menuItems = [
         id="logo-link"
         aria-label={t.textLogoAriaLabel}
         title="Volver al inicio"
-        class="text-primary hover:text-primary-hover transition-colors duration-300"
+        class="text-primary hover:text-primary-hover transition-colors"
       >
         <LogoHeader class="h-10" />
       </a>
@@ -40,7 +40,7 @@ const menuItems = [
           menuItems.map((item) => (
             <a
               href={`#${item.id}`}
-              class="font-secondary nav-link text-xs lg:text-md text-primary transition-colors duration-300 tracking-wide py-2"
+              class="font-secondary nav-link text-xs lg:text-md text-primary transition-colors tracking-wide py-2"
               data-nav-link={item.id}
             >
               {item.label}
@@ -54,7 +54,7 @@ const menuItems = [
 
       <button
         id="mobile-menu-btn"
-        class="cursor-pointer md:hidden p-2 rounded-md text-primary hover:bg-primary-light transition-colors duration-300 z-50"
+        class="cursor-pointer md:hidden p-2 rounded-md text-primary hover:bg-primary-light transition-colors z-50"
       >
         <span id="menu-icon" class="w-7 h-7 flex items-center justify-center">
           <Fragment set:html={Icons.Menu} />
@@ -80,7 +80,7 @@ const menuItems = [
       menuItems.map((item) => (
         <a
           href={`#${item.id}`}
-          class="nav-link mobile-nav-link text-center w-full rounded-lg p-4 font-bold transition duration-300 text-md font-secondary"
+          class="nav-link mobile-nav-link text-center w-full rounded-lg p-4 font-bold transition text-md font-secondary"
           data-nav-link={item.id}
         >
           {item.label}
