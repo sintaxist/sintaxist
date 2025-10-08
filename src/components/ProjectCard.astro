@@ -2,13 +2,17 @@
 import Pill from "@/components/ui/Pill.astro";
 import ArrowIcon from "@/icons/Arrow.astro";
 
-const { project, lang, size = "small", categories, index } = Astro.props;
-const isLarge = size === "large";
+const { project, lang, isLarge = "small", categories, index, className } = Astro.props;
 ---
 
 <a
   href={`/${lang}/projects/${project.slug}/`}
-  class="project-card group block text-secondary h-full relative overflow-hidden anim-item"
+ 
+  class:list={[
+    "project-card group block text-secondary overflow-hidden anim-item",
+    className,
+    { "is-large-card": isLarge },
+  ]}
   transition:name={project.slug}
   data-astro-prefetch
   data-animation-type="card"
@@ -29,9 +33,9 @@ const isLarge = size === "large";
     <div class="skeleton-overlay" aria-hidden="true"></div>
 
     <div
-      class="absolute backdrop-blur-xs backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[15.148%] gap-2 items-start left-0 p-4 sm:p-6 to-[rgba(44,58,71,0)] transition-all w-full -mb-[45px] group-hover:-mb-0 z-30"
+      class="absolute backdrop-blur-xs backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[15%] gap-2 items-start left-0 p-4 sm:p-6 to-[rgba(44,58,71,0)] to-[120%] transition-all w-full -mb-[40px] sm:-mb-[45px] group-hover:-mb-0 z-30"
     >
-      <div class="hidden md:flex flex-wrap gap-2">
+      <div class="hidden lg:flex flex-wrap gap-2">
         {
           project.categoryIds.map((tag, tagIndex) => (
             <Pill label={categories[tag] || tag} index={tagIndex} />
@@ -48,13 +52,13 @@ const isLarge = size === "large";
       </h3>
       {
         isLarge && project.description && (
-          <p class="font-secondary text-xs sm:text-sm md:text-base line-clamp-2">
+          <p class="font-secondary text-base line-clamp-2">
             {project.description}
           </p>
         )
       }
       <div class="view-more-link flex items-center gap-2 font-secondary mt-2">
-        <p class="text-sm underline">{project.viewMore}</p>
+        <p class="text-base text-bold underline">{project.viewMore}</p>
         <ArrowIcon class="hidden xs:block w-4 h-4" />
       </div>
     </div>

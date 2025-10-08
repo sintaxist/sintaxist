@@ -1,87 +1,25 @@
 ---
 import ProjectCard from "@/components/ProjectCard.astro";
 
-const { projects, categories, lang } = Astro.props;
+const { projects, categories, lang, isHome } = Astro.props;
+const lastItems = projects.length < 6
 ---
 
-<div class="animation-group">
-  <div class="projects-grid-section hidden md:grid">
-    {
-      projects.map((project, index) => {
-        const position = index % 6;
-        const size = position === 0 || position === 3 ? "large" : "small";
-        
-        return (
-          <div class="project-item-section">
-            <ProjectCard
-              {project}
-              {lang}
-              {size}
-              {categories}
-              index={index}
-            />
-          </div>
-        );
-      })
-    }
-  </div>
+<div class:list={[
+    "grid-parent",
+    { "is-compact": lastItems },
+    isHome ? "hidden md:grid grid-flow-row-dense" : "grid grid-flow-row-dense"
+  ]}>
+  {
+    projects.map((project, index) => 
+      <ProjectCard
+          {project}
+          {lang}
+          {categories}
+          {index}
+          isLarge={index === 0 || index === 5}
+          className={!lastItems ? `item${index + 1}` : ''}
+        />
+    )
+  }
 </div>
-
-<style>
-  .projects-grid-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(250px, auto);
-    gap: 5px;
-    margin: auto;
-    width: 100%;
-  }
-
-  .project-item-section {
-    grid-column: span 1;
-    grid-row: span 1;
-    min-height: 250px;
-  }
-
-  /* Patrón: cada 6 elementos */
-  /* Posición 1 (index 0, 6, 12...): Grande izquierda */
-  .project-item-section:nth-child(6n + 1) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  /* Posición 4 (index 3, 9, 15...): Grande derecha */
-  .project-item-section:nth-child(6n + 4) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .projects-grid-section {
-      grid-template-columns: repeat(2, 1fr);
-      grid-auto-rows: minmax(200px, auto);
-    }
-    
-    .project-item-section {
-      min-height: 200px;
-    }
-    
-    .project-item-section:nth-child(6n + 1) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    
-    .project-item-section:nth-child(6n + 4) {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-  }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    .projects-grid-section {
-      display: none !important;
-    }
-  }
-</style>

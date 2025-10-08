@@ -17,7 +17,7 @@ export async function getStaticPaths() {
       description: p.description,
       categoryIds: p.categoryIds,
       imgSrc: p.imgSrc,
-      viewMore: t.projectsPage.viewMore
+      viewMore: t.projectsPage.viewMore,
     }));
 
     paths.push({
@@ -34,6 +34,7 @@ export async function getStaticPaths() {
         lang,
         projects: filteredProjects,
         categories: t.projectsPage.categories,
+        ctaBacktoHome: t.projectsPage.ctaBacktoHome,
       },
     });
   }
@@ -41,7 +42,16 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { texts, lang, projects, categories, header, sections, footer } = Astro.props;
+const {
+  texts,
+  lang,
+  projects,
+  categories,
+  header,
+  sections,
+  footer,
+  ctaBacktoHome,
+} = Astro.props;
 
 // Dividir proyectos en grupos de 6
 const projectBatches = [];
@@ -63,11 +73,15 @@ for (let i = 0; i < projects.length; i += 6) {
     border={false}
     className="mt-18 flex flex-col gap-8"
   >
-    <SectionTitle
-      color="primary"
-      text={texts.title || "Proyectos"}
-      tag="h1"
-    />
+      <a
+        href="#"
+        id="back-to-home-btn"
+        class="hidden font-secondary text-primary hover:text-primary-hover transition-colors font-semibold"
+      >
+        {ctaBacktoHome}
+      </a>
+
+    <SectionTitle color="primary" text={texts.title || "Proyectos"} tag="h1" />
 
     <div class="flex flex-col gap-[5px]">
       {
@@ -78,3 +92,28 @@ for (let i = 0; i < projects.length; i += 6) {
     </div>
   </SectionLayout>
 </Layout>
+<script define:vars={{ lang }}>
+  document.addEventListener("astro:page-load", () => {
+    // --- LÓGICA PARA EL BOTÓN DE "VOLVER A LA HOME" ---
+    const backButton = document.getElementById("back-to-home-btn");
+    if (backButton) {
+      // Obtenemos la URL de la página anterior
+      const referrer = document.referrer;
+
+      console.log(referrer)
+      // Construimos la URL esperada de la home para el idioma actual
+      const homeUrl = `${window.location.origin}/${lang}/`;
+
+      // Si la página anterior es la home, mostramos el botón
+      if (referrer === homeUrl) {
+        backButton.classList.remove("hidden");
+      }
+
+      // Añadimos el evento de clic para que funcione como el "atrás" del navegador
+      backButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        history.back();
+      });
+    }
+  });
+</script>

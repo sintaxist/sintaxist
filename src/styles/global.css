@@ -155,3 +155,46 @@ body {
   transition: none !important;
   transform: translateY(0) !important;
 }
+
+.grid-parent {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, minmax(250px, 350px));
+  gap: 5px;
+}
+
+.grid-parent.is-compact {
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: auto;
+}
+
+.grid-parent.is-compact .is-large-card {
+    grid-column: span 2;
+  }
+
+.item1 { grid-area: 1 / 1 / 3 / 3; }
+.item2 { grid-area: 1 / 3 / 2 / 4; }
+.item3 { grid-area: 2 / 3 / 3 / 4; }
+.item4 { grid-area: 3 / 1 / 4 / 2; }
+.item5 { grid-area: 4 / 1 / 5 / 2; }
+.item6 { grid-area: 3 / 2 / 5 / 4; }
+
+
+@media (width <= 1024px) {
+  .grid-parent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, minmax(250px, 300px));
+  }
+
+  .item1 { grid-area: 1 / 1 / 3 / 3; }
+  .item2 { grid-area: 3 / 1 / 4 / 2; }
+  .item3 { grid-area: 3 / 2 / 4 / 3; }
+  .item4 { grid-area: 6 / 1 / 7 / 2; }
+  .item5 { grid-area: 6 / 2 / 7 / 3; }
+  .item6 { grid-area: 4 / 1 / 6 / 3; }
+}
+
+@media (width <= 768px) {
+  .grid-parent {
+    grid-template-rows: repeat(6, 200px);
+  }
+}

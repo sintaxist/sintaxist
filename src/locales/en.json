@@ -185,21 +185,21 @@
     "copyright": "Alejandro Canek Fernández Maya. All rights reserved."
   },
   "projectsPage": {
-    "title": "My Projects",
-    "description": "Each project is a journey and a collaboration. Here I present some of the paths I’ve walked with brands and teams to transform ideas into functional, memorable platforms. Explore the process, technology, and results.",
-    "ctaAllProjects": "View All Projects",
-    "ctaBacktoProjects": "< Back to Projects",
-    "allProjectsTitle": "All My Projects",
-    "allProjectsDescription": "Explore the different works I’ve done, filtering by category.",
-    "viewMore": "View More",
+    "title": "Mis proyectos",
+    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "ctaAllProjects": "Ver todos los proyectos",
+    "ctaBacktoProjects": "< Regresar a Proyectos",
+    "ctaBacktoHome": "Volver al Inicio",
+    "allProjectsTitle": "Todos mis Proyectos",
+    "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
+    "viewMore": "Ver más",
     "categories": {
-      "all": "All",
-      "ui-ux": "UI/UX Design",
-      "frontend": "Frontend Development",
-      "cms": "Headless CMS",
-      "graphics": "Graphic Design"
+      "all": "Todos",
+      "ui-ux": "Diseño UI/UX",
+      "frontend": "Desarrollo Frontend",
+      "cms": "CMS Headless",
+      "graphics": "Diseño Gráfico"
     },
-
     "projects": [
       {
         "slug": "yoorco-landing",
