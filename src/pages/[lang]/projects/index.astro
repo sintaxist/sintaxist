@@ -4,6 +4,7 @@ import SectionLayout from "@/layouts/SectionLayout.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import GridCardsLayout from "@/components/GridCardsLayout.astro";
 import { LANGUAGES } from "@/locales";
+import ArrowIcon from '@/icons/Arrow.astro';
 
 export async function getStaticPaths() {
   const paths = [];
@@ -71,19 +72,19 @@ for (let i = 0; i < projects.length; i += 6) {
     id="contact"
     color="secondary"
     border={false}
-    className="mt-18 flex flex-col gap-8"
+    className="mt-18 flex flex-col gap-4"
   >
-      <a
-        href="#"
-        id="back-to-home-btn"
-        class="hidden font-secondary text-primary hover:text-primary-hover transition-colors font-semibold"
-      >
-        {ctaBacktoHome}
-      </a>
+    <a
+      href="/"
+      id="back-to-home-btn"
+      class="hidden text-xs md:text-sm relative font-secondary text-primary hover:text-primary-hover transition-colors font-bold w-fit"
+    >
+      <ArrowIcon class="scale-[-1] w-4 h-4 group-hover:translate-x-2" /> {ctaBacktoHome}
+    </a>
 
     <SectionTitle color="primary" text={texts.title || "Proyectos"} tag="h1" />
 
-    <div class="flex flex-col gap-[5px]">
+    <div class="flex flex-col gap-[5px] mt-6">
       {
         projectBatches.map((batch, index) => (
           <GridCardsLayout projects={batch} categories={categories} {lang} />
@@ -92,28 +93,84 @@ for (let i = 0; i < projects.length; i += 6) {
     </div>
   </SectionLayout>
 </Layout>
+
 <script define:vars={{ lang }}>
   document.addEventListener("astro:page-load", () => {
-    // --- LÓGICA PARA EL BOTÓN DE "VOLVER A LA HOME" ---
     const backButton = document.getElementById("back-to-home-btn");
-    if (backButton) {
-      // Obtenemos la URL de la página anterior
-      const referrer = document.referrer;
+    if (!backButton) return;
 
-      console.log(referrer)
-      // Construimos la URL esperada de la home para el idioma actual
-      const homeUrl = `${window.location.origin}/${lang}/`;
-
-      // Si la página anterior es la home, mostramos el botón
-      if (referrer === homeUrl) {
+    // Marcar en sessionStorage cuando venimos desde la home
+    const currentPath = window.location.pathname;
+    const isProjectsPage = currentPath.includes('/projects');
+    
+    // Si estamos en la página de proyectos, verificar de dónde venimos
+    if (isProjectsPage) {
+      const cameFromHome = sessionStorage.getItem('cameFromHome');
+      
+      if (cameFromHome === 'true') {
         backButton.classList.remove("hidden");
       }
+    }
 
-      // Añadimos el evento de clic para que funcione como el "atrás" del navegador
-      backButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        history.back();
-      });
+    // Evento de clic para regresar
+    backButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      // Limpiar el flag antes de regresar
+      sessionStorage.removeItem('cameFromHome');
+      history.back();
+    });
+  });
+
+  // Detectar navegación y marcar cuando salimos de la home
+  document.addEventListener('astro:before-preparation', (event) => {
+    const fromPath = window.location.pathname;
+    const toPath = event.to?.pathname || '';
+    
+    // Verificar si estamos en la home
+    const isHome = fromPath === '/' || fromPath === `/${lang}/` || fromPath === `/${lang}`;
+    
+    // Verificar si vamos a proyectos
+    const goingToProjects = toPath.includes('/projects');
+    
+    // Si vamos desde home a proyectos, marcar el flag
+    if (isHome && goingToProjects) {
+      sessionStorage.setItem('cameFromHome', 'true');
+    } else if (!goingToProjects) {
+      // Si vamos a cualquier otra página, limpiar el flag
+      sessionStorage.removeItem('cameFromHome');
+    }
+  });
+
+  // Limpiar el flag cuando navegamos a una página que no es proyectos
+  document.addEventListener('astro:after-swap', () => {
+    const currentPath = window.location.pathname;
+    const isProjectsPage = currentPath.includes('/projects');
+    
+    if (!isProjectsPage) {
+      sessionStorage.removeItem('cameFromHome');
     }
   });
 </script>
+
+<style>
+  #back-to-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  #back-to-home-btn:before {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+  }
+
+  #back-to-home-btn:hover:before {
+    width: 100%;
+  }
+</style>

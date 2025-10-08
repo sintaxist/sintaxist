@@ -73,6 +73,8 @@ const {
       content="https://www.momentainvitaciones.com.mx/opengraph.png"
     />
 
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <ClientRouter />
   </head>
   <body class="bg-secondary text-primary">
@@ -105,23 +107,23 @@ const {
 </script>
 
 <script is:inline>
-  let lastNavigationDirection = 'initial';
+  let lastNavigationDirection = "initial";
   let isNavigating = false;
   let animationsComplete = false;
 
   // Detectar dirección de navegación
-  document.addEventListener('astro:before-preparation', (event) => {
+  document.addEventListener("astro:before-preparation", (event) => {
     lastNavigationDirection = event.direction;
   });
 
   // Antes de cambiar de página, marcar que estamos navegando
-  document.addEventListener('astro:before-swap', () => {
+  document.addEventListener("astro:before-swap", () => {
     isNavigating = true;
     animationsComplete = false;
     // Cancelar cualquier animación pendiente
-    const animatingElements = document.querySelectorAll('.is-animating');
-    animatingElements.forEach(el => {
-      el.classList.remove('is-animating');
+    const animatingElements = document.querySelectorAll(".is-animating");
+    animatingElements.forEach((el) => {
+      el.classList.remove("is-animating");
     });
   });
 
@@ -130,22 +132,22 @@ const {
     setTimeout(() => {
       isNavigating = false;
     }, 100);
-    
+
     const animationGroups = document.querySelectorAll(".animation-group");
-    
+
     // Bloquear clicks en las cards durante las animaciones
-    const projectCards = document.querySelectorAll('.project-card');
-    if (projectCards.length > 0 && lastNavigationDirection !== 'back') {
-      projectCards.forEach(card => {
-        card.style.pointerEvents = 'none';
+    const projectCards = document.querySelectorAll(".project-card");
+    if (projectCards.length > 0 && lastNavigationDirection !== "back") {
+      projectCards.forEach((card) => {
+        card.style.pointerEvents = "none";
       });
     }
-    
+
     if (animationGroups.length > 0) {
       let totalAnimations = 0;
       let completedAnimations = 0;
 
-      animationGroups.forEach(group => {
+      animationGroups.forEach((group) => {
         const elements = group.querySelectorAll('[data-animate="text"]');
         totalAnimations += elements.length;
       });
@@ -155,14 +157,17 @@ const {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const group = entry.target;
-              const elementsToAnimate = group.querySelectorAll('[data-animate="text"]');
+              const elementsToAnimate = group.querySelectorAll(
+                '[data-animate="text"]'
+              );
 
               elementsToAnimate.forEach((element) => {
-                const isCard = element.getAttribute('data-animation-type') === 'card';
+                const isCard =
+                  element.getAttribute("data-animation-type") === "card";
 
-                if (lastNavigationDirection === 'back' && isCard) {
-                  element.classList.add('no-transition');
-                  element.classList.add('is-visible');
+                if (lastNavigationDirection === "back" && isCard) {
+                  element.classList.add("no-transition");
+                  element.classList.add("is-visible");
                   completedAnimations++;
                 } else {
                   animateText(element, () => {
@@ -179,14 +184,14 @@ const {
             }
           });
         },
-        { threshold: 0.1, rootMargin: '50px' }
+        { threshold: 0.1, rootMargin: "50px" }
       );
 
       animationGroups.forEach((group) => observer.observe(group));
 
       if (!animationsComplete) {
-          enableProjectCards();
-        }
+        enableProjectCards();
+      }
     } else {
       // Si no hay animaciones, habilitar inmediatamente
       enableProjectCards();
@@ -195,14 +200,14 @@ const {
     function animateText(element, callback) {
       const delay = parseInt(element.getAttribute("data-delay")) || 0;
       const animationDuration = 600; // duración de la animación en ms
-      
+
       setTimeout(() => {
         if (isNavigating) {
           callback && callback();
           return;
         }
         element.classList.add("is-visible", "is-animating");
-        
+
         // Llamar al callback cuando termine la animación
         setTimeout(() => {
           callback && callback();
@@ -213,22 +218,31 @@ const {
     function enableProjectCards() {
       if (animationsComplete) return;
       animationsComplete = true;
-      
-      const projectCards = document.querySelectorAll('.project-card');
-      projectCards.forEach(card => {
-        card.style.pointerEvents = 'auto';
+
+      const projectCards = document.querySelectorAll(".project-card");
+      projectCards.forEach((card) => {
+        card.style.pointerEvents = "auto";
       });
     }
 
     // Si venimos de 'back', habilitar inmediatamente
-    if (lastNavigationDirection === 'back') {
+    if (lastNavigationDirection === "back") {
       enableProjectCards();
     }
   });
 
   // Limpiar estado al terminar la transición
-  document.addEventListener('astro:after-swap', () => {
+  document.addEventListener("astro:after-swap", () => {
     isNavigating = false;
+  });
+</script>
+<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    AOS.init({
+      duration: 800, // Duración de la animación
+      once: true, // Animar solo una vez
+    });
   });
 </script>
 

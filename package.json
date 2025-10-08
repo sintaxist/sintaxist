@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/vercel": "8.0.4",
     "@tailwindcss/vite": "^4.1.14",
+    "aos": "^2.3.4",
     "astro": "5.13.2",
     "nodemailer": "7.0.5",
     "swiper": "11.2.10",

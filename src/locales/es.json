@@ -188,7 +188,7 @@
     "title": "Mis proyectos",
     "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "ctaAllProjects": "Ver todos los proyectos",
-    "ctaBacktoProjects": "< Regresar a Proyectos",
+    "ctaBack": "Regresar",
     "ctaBacktoHome": "Volver al Inicio",
     "allProjectsTitle": "Todos mis Proyectos",
     "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
@@ -202,11 +202,31 @@
     },
     "projects": [
       {
-        "slug": "yoorco-landing",
-        "title": "Landing Page Yoorco",
-        "description": "Diseño UI/UX para una plataforma de adopción de mascotas.",
+        "slug": "landing-yoorco",
+        "title": "Landing Page para Yoorco",
+        "intro": "Transformé la experiencia digital de Yoorco, una empresa de desarrollo de software por suscripción, rediseñando su landing page para comunicar su valor con mayor claridad, estructura y modernidad.",
+        "seoDescription": "Caso de estudio del rediseño de la landing page de Yoorco. Diseño minimalista, responsive y optimizado para mejorar la conversión.",
         "imgSrc": "https://i.imgur.com/Z0EcRIQh.jpeg",
-        "categoryIds": ["ui-ux"]
+        "context": "Yoorco necesitaba actualizar su presencia digital para reflejar mejor su propuesta: ofrecer un departamento de desarrollo de software por una renta mensual. Su antigua web no transmitía con claridad su mensaje ni su profesionalismo.",
+        "process_title": "Proceso de Diseño",
+        "process_description": "El trabajo comenzó con una simplificación del logotipo. A partir de ahí, estructuré el nuevo diseño en Figma, creando un sistema visual basado en el minimalismo funcional y el equilibrio cromático.",
+        "process_list": [
+          "<strong>Identidad visual:</strong> Simplificación del logotipo y definición de una paleta cromática.",
+          "<strong>Arquitectura de la landing:</strong> Rediseño de la estructura para guiar al usuario con claridad.",
+          "<strong>Diseño UI y responsive:</strong> Creación de un diseño adaptable a desktop, tablet y mobile.",
+          "<strong>Entrega final:</strong> Proyecto documentado en Figma"
+        ],
+        "results_title": "Resultados",
+        "results_description": "El nuevo diseño permitió a Yoorco transmitir su mensaje de forma directa y profesional, fortaleciendo su presencia digital y mejorando la percepción de marca y confianza visual.",
+        "categoryIds": ["ui-ux", "frontend", "graphics"],
+        "gallery": [
+          { "src": "/assets/projects/yoorco/process-1.webp", "alt": "Proceso de diseño Yoorco" },
+          { "src": "/assets/projects/yoorco/process-2.webp", "alt": "Wireframes y layout" }
+        ],
+        "figmaUrl": "https://www.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&t=HnKMEsZBkmCl1JuT-1",
+        "figmaEmbed": "https://embed.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&embed-host=share",
+        "demoUrl": null,
+        "repoUrl": null
       },
       {
         "slug": "farmvalley-landing",
