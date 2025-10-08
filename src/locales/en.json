@@ -193,6 +193,7 @@
     "allProjectsTitle": "Todos mis Proyectos",
     "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
     "viewMore": "Ver más",
+    "textFigmaUrl": "Ver Figma",
     "categories": {
       "all": "Todos",
       "ui-ux": "Diseño UI/UX",

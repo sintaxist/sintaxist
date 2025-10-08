@@ -5,6 +5,11 @@ import IconMinsait from "@/icons/IconMinsait.astro";
 import IconPayvalida from "@/icons/IconPayvalida.astro";
 import IconYoorco from "@/icons/IconYoorco.astro";
 
+interface Props {
+  job: object,
+  isLast?: boolean,
+}
+
 const { job, isLast = false } = Astro.props;
 
 const iconMap = {

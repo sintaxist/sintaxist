@@ -193,10 +193,12 @@
     "allProjectsTitle": "Todos mis Proyectos",
     "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
     "viewMore": "Ver más",
+    "textFigmaUrl": "Ver Figma",
     "categories": {
       "all": "Todos",
       "ui-ux": "Diseño UI/UX",
       "frontend": "Desarrollo Frontend",
+      "branding": "Branding",
       "cms": "CMS Headless",
       "graphics": "Diseño Gráfico"
     },

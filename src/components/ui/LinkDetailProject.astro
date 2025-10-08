@@ -1,0 +1,31 @@
+---
+import IconFigma from "@/icons/IconFigma.astro";
+import IconGithub from "@/icons/IconGithub.astro";
+import IconDemo from "@/icons/IconDemo.astro";
+
+interface Props {
+    url: string,
+    text: string,
+    icon: string
+}
+
+const iconMap = {
+    figma: IconFigma,
+    github: IconGithub,
+    demo: IconDemo,
+};
+
+const { url, text, icon} = Astro.props
+
+const IconComponent = iconMap[icon?.toLowerCase()] || IconDemo;
+---
+
+<a
+    class="relative flex gap-2 items-center text-primary font-secondary text-bold"
+    href={url}
+    title=""
+    target="_blank"
+>
+    <IconComponent class="w-6 h-6" />
+    {text}
+</a>

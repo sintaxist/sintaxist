@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@astrojs/vercel": "8.0.4",
-    "@tailwindcss/vite": "^4.1.14",
-    "aos": "^2.3.4",
+    "@tailwindcss/vite": "4.1.14",
+    "aos": "2.3.4",
     "astro": "5.13.2",
     "nodemailer": "7.0.5",
     "swiper": "11.2.10",
     "tailwind-merge": "3.3.1",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "4.1.14"
   },
   "devDependencies": {
     "@types/nodemailer": "7.0.1"

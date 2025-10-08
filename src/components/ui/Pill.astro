@@ -1,6 +1,23 @@
 ---
-const { label, index } = Astro.props;
+interface Props {
+  label: string;
+  index?: number;
+  noAnimation?: boolean;
+  primary?: boolean;
+  delay?: number;
+}
+
+const { label, index, noAnimation = false, primary = false, delay = 200 } = Astro.props;
+
+const pillStyles = primary
+  ? "text-primary border-primary bg-primary/10"
+  : "text-secondary border-secondary bg-primary/15";
 ---
-<span class="anim-item border text-secondary border-secondary rounded-full px-4 py-1.5 text-xs sm:text-sm font-secondary bg-primary/15" data-delay={400 + index * 200} data-animate="text">
+
+<span
+  class={`${pillStyles} ${!noAnimation ? "anim-item" : ""} font-secondary border rounded-full px-4 py-1.5 text-xs sm:text-sm`}
+  data-delay={delay + index * 200}
+  data-animate="text"
+>
   {label}
 </span>

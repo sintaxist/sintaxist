@@ -6,16 +6,119 @@ import Pill from "@/components/ui/Pill.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import { LANGUAGES } from "@/locales";
 import type { AppLocale } from "@/locales";
+import ParagraphInfo from "@/components/ui/ParagraphInfo.astro";
+import BackButton from "@/components/BackButton.astro";
+import IconFigma from "@/icons/IconFigma.astro";
+import LinkDetailProject from "@/components/ui/LinkDetailProject.astro";
 
 export async function getStaticPaths() {
   const paths = [];
+
   for (const lang of Object.keys(LANGUAGES)) {
     const t = LANGUAGES[lang as AppLocale].translations;
+
+    const projectInfo = {
+      slug: "yoorco",
+      title: "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
+      description:
+        "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
+      imgSrc: "https://i.imgur.com/Z0EcRIQh.jpeg",
+      textFigmaUrl: t.projectsPage.textFigmaUrl,
+      figmaUrl:
+        "https://www.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&t=HnKMEsZBkmCl1JuT-1",
+      figmaEmbed:
+        "https://embed.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&embed-host=share",
+      categoryIds: ["ui-ux", "branding"],
+
+      overview: `
+        <p><strong>Yoorco</strong> es una empresa mexicana que ofrece desarrollo de software por suscripción, 
+        operando como un “departamento de tecnología externo” para startups y empresas en crecimiento.</p>
+        <p>El objetivo de este proyecto fue reimaginar su presencia digital, creando una landing page moderna, estratégica 
+        y alineada con su visión de crecimiento tecnológico.</p>
+        <p>El resultado: una interfaz clara, limpia y flexible que transmite confianza y comunica valor con precisión.</p>
+      `,
+
+      timeframe: "1 Semana",
+      role: "UX/UI Design, Visual Design, Branding Simplification, Prototyping",
+      tools: "Figma, FigJam, Photoshop, Illustrator",
+
+      challenge: `
+        La versión anterior de la web de Yoorco no reflejaba la madurez ni la claridad de su propuesta.
+        El mensaje principal se diluía entre textos genéricos, una arquitectura poco intuitiva y una estética desactualizada.
+        Yoorco necesitaba una landing page capaz de comunicar su servicio con precisión y consistencia visual,
+        fortaleciendo la percepción de marca y facilitando la comprensión del modelo de suscripción tecnológica.
+      `,
+
+      goal: `
+        <ul>
+          <li>Transmitir profesionalismo, claridad y enfoque tecnológico.</li>
+          <li>Alinear el branding con su propuesta de valor.</li>
+          <li>Mejorar la conversión mediante una estructura informativa simple y estratégica.</li>
+          <li>Crear un sistema visual escalable y adaptable a cualquier dispositivo.</li>
+        </ul>
+      `,
+
+      process_title: "My Design Process",
+      process_description: `
+        <h3>🔍 Empathize & Research</h3>
+        <p>Se analizaron referentes de empresas SaaS, estudios digitales y marcas tecnológicas con modelos de suscripción,
+        identificando patrones visuales efectivos:</p>
+        <ul>
+          <li>Jerarquía visual clara (beneficios sobre funciones).</li>
+          <li>Color como diferenciador, no saturación.</li>
+          <li>Uso estratégico del espacio negativo y tipografía moderna.</li>
+        </ul>
+
+        <h3>🧩 Define & Ideate</h3>
+        <p>Se propuso una estructura narrativa en 5 secciones clave:</p>
+        <ul>
+          <li>Hero — Mensaje de valor directo + CTA.</li>
+          <li>Metas con Yoorco — Beneficios concretos.</li>
+          <li>Casos de Éxito — Confianza y resultados.</li>
+          <li>Clientes — Validación social.</li>
+          <li>Equipo — Humanización de la marca.</li>
+        </ul>
+
+        <h3>🎨 Design & Prototype</h3>
+        <p>El rediseño se centró en una paleta cromática refinada y un sistema UI modular:</p>
+        <ul>
+          <li><span class="text-[#F77F08] font-medium">🟠 Naranja #F77F08</span> — dinamismo, energía y acción.</li>
+          <li><span class="text-[#086FFD] font-medium">🔵 Azul #086FFD</span> — tecnología y confianza.</li>
+          <li><span class="text-[#FEFEFE] font-medium">⚪ Blanco #FEFEFE</span> — claridad visual.</li>
+          <li><span class="text-[#0E4085] font-medium">🔵 Azul oscuro #0E4085</span> — solidez y estabilidad.</li>
+        </ul>
+
+        <p>El resultado fue un diseño minimalista, elegante y adaptable, que mantiene coherencia entre desktop, tablet y mobile.
+        Todo el flujo se diseñó en Figma, con prototipo interactivo y componentes reutilizables.</p>
+      `,
+
+      results_title: "Results",
+      results_description: `
+        <p>El nuevo diseño permitió a Yoorco proyectar una identidad más profesional y confiable, con una comunicación clara del modelo de negocio.</p>
+        <p>El enfoque en la jerarquía visual y el contenido estratégico generó una mejor comprensión del servicio y una experiencia más fluida para el usuario.</p>
+        <h4>💡 Impacto clave:</h4>
+        <ul>
+          <li>+100% en claridad del mensaje visual.</li>
+          <li>Identidad digital sólida y escalable.</li>
+          <li>Mayor consistencia de marca entre medios digitales.</li>
+          <li>Base visual lista para integración en Astro.</li>
+        </ul>
+      `,
+
+      future_title: "Future Opportunities",
+      future_description: `
+        <p>El siguiente paso natural para Yoorco sería integrar métricas UX y analítica de interacción,
+        permitiendo medir el rendimiento de los CTAs, tiempos de permanencia y puntos de abandono.</p>
+        <p>Además, el sistema visual está preparado para escalar hacia un diseño de producto completo,
+        incluyendo dashboards, paneles administrativos o micrositios especializados.</p>
+      `,
+    };
+
     for (const project of t.projectsPage.projects) {
       paths.push({
         params: { lang, slug: project.slug },
         props: {
-          project,
+          project: projectInfo,
           lang: lang as AppLocale,
           header: t.header,
           sections: t.sections,
@@ -26,6 +129,7 @@ export async function getStaticPaths() {
       });
     }
   }
+
   return paths;
 }
 
@@ -35,161 +139,127 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
 
 <Layout
   title={`${project.title} — Caso de Estudio`}
-  description={project.seoDescription || ""}
+  description={project.intro}
   headerInfo={header}
   sections={sections}
   footerInfo={footer}
 >
-  <div class="pt-24 animation-group">
-    <article
-      class="max-w-4xl mx-auto px-6 md:px-8"
-      transition:name={project.slug}
-    >
-      <header class="text-center mb-12 anim-item" data-animate="text">
-        <div class="flex gap-2 justify-center mb-4">
-          {
-            project.categoryIds?.map((catId) => (
-              <Pill label={categories[catId] || catId} />
-            ))
-          }
-        </div>
-        <h1 class="font-primary text-5xl text-primary mb-4">{project.title}</h1>
-        <p class="text-lg text-primary/80 max-w-3xl mx-auto">{project.intro}</p>
-        <div class="flex justify-center gap-4 mt-8 flex-wrap">
-          {
-            project.demoUrl && (
-              <Button
-                as="a"
-                href={project.demoUrl}
-                text="Ver demo"
-                target="_blank"
-              />
-            )
-          }
-          {
-            project.figmaUrl && (
-              <Button
-                as="a"
-                href={project.figmaUrl}
-                text="Ver en Figma"
-                target="_blank"
-              />
-            )
-          }
-          {
-            project.repoUrl && (
-              <Button
-                as="a"
-                href={project.repoUrl}
-                text="Ver repositorio"
-                target="_blank"
-              />
-            )
-          }
-        </div>
-      </header>
+  <article
+    class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col gap-15 pt-30 animation-group"
+    transition:name={project.slug}
+  >
+    <BackButton info={ctaBack} />
 
-      <div class="anim-item" data-animate="text" data-delay="150">
-        <Image
-          src={project.imgSrc}
-          alt={`...`}
-          width={1200}
-          height={800}
-          class="w-full rounded-2xl shadow-lg mb-16"
-        />
+    <header class="flex flex-col gap-4">
+      <div class="flex gap-2 justify-center">
+        {
+          project.categoryIds?.map((cat, index) => (
+            <Pill label={categories[cat] || cat} {index} primary delay={0} />
+          ))
+        }
       </div>
 
-      <div
-        class="prose max-w-none font-secondary text-lg text-primary space-y-16"
+      <h1
+        class="text-center font-primary text-5xl text-primary mb-4 leading-[130%] anim-item"
+        data-delay={400}
+        data-animate="text"
       >
+        {project.title}
+      </h1>
+      <Image
+        src={project.imgSrc}
+        alt={`Diseño del proyecto ${project.title}`}
+        width={1200}
+        height={800}
+        class="w-full m-auto shadow-lg rounded-lg mt-2 anim-item"
+        data-animate="text"
+        data-delay={600}
+      />
+      <div class="flex items-center gap-4">
         {
-          project.context && (
-            <section class="anim-item" data-animate="text" data-delay="100">
-              <SectionTitle color="primary" text="Contexto" tag="h2" />
-              <p set:html={project.context} class="mt-4" />
-            </section>
-          )
+          project.figmaUrl && 
+          <LinkDetailProject url={project.figmaUrl} text={project.textFigmaUrl} icon="figma"/>
         }
-
-        {
-          project.process_description && (
-            <section class="anim-item" data-animate="text" data-delay="100">
-              <SectionTitle
-                color="primary"
-                text={project.process_title || "Proceso"}
-                tag="h2"
-              />
-              <p set:html={project.process_description} class="mt-4" />
-              {project.process_list && (
-                <ul class="list-disc pl-5 space-y-2 mt-4">
-                  {project.process_list.map((item) => (
-                    <li set:html={item} />
-                  ))}
-                </ul>
-              )}
-            </section>
-          )
-        }
-
-        {
-          project.gallery && project.gallery.length > 0 && (
-            <section class="not-prose mt-12">
-              <div class="grid md:grid-cols-2 gap-6">
-                {project.gallery.map((img, index) => (
-                  <div
-                    class="anim-item"
-                    data-animate="text"
-                    data-delay={index * 150}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      class="rounded-xl shadow-md"
-                      width={800}
-                      height={600}
-                    />
-                  </div>
-                ))}
-              </div>
-            </section>
-          )
-        }
-
-        {
-          project.results_description && (
-            <section class="anim-item" data-animate="text" data-delay="100">
-              <SectionTitle
-                color="primary"
-                text={project.results_title || "Resultados"}
-                tag="h2"
-              />
-              <p set:html={project.results_description} class="mt-4" />
-            </section>
-          )
-        }
-
-        {
-          project.figmaEmbed && (
-            <section class="anim-item" data-animate="text" data-delay="100">
-              <SectionTitle color="primary" text="Diseño en Figma" tag="h2" />
-              <iframe
-                src={project.figmaEmbed}
-                class="w-full h-[400px] md:h-[600px] mt-8 rounded-lg shadow-md border border-gray-200"
-                allowfullscreen
-              />
-            </section>
-          )
-        }
-
-        <Button
-          as="a"
-          href={`/${lang}/projects`}
-          text={ctaBack}
-          fill={false}
-          color="primary"
-        />
       </div>
+    </header>
 
-    </article>
-  </div>
+    <!-- <div class="flex justify-center gap-4 mt-8 flex-wrap">
+        {
+          project.figmaUrl && (
+            <Button
+              as="a"
+              href={project.figmaUrl}
+              text="Ver diseño en Figma"
+              target="_blank"
+            />
+          )
+        }
+      </div> -->
+
+    <!-- Imagen principal -->
+
+    <!-- Contenido -->
+    <div class="max-w-none font-secondary text-lg text-primary space-y-20">
+      <section>
+        <SectionTitle color="primary" text="🧭 Project Overview" tag="h2" />
+        <p set:html={project.overview} class="mt-4" />
+        <div class="grid md:grid-cols-3 gap-6 mt-8 text-sm">
+          <div>
+            <h3 class="font-semibold text-primary/80 mb-1">⏱️ Timeframe</h3>
+            <p>{project.timeframe}</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-primary/80 mb-1">🎯 My Role</h3>
+            <p>{project.role}</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-primary/80 mb-1">🧰 Tools</h3>
+            <p>{project.tools}</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text="🚧 The Challenge" tag="h2" />
+        <p set:html={project.challenge} class="mt-4" />
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text="🎯 Objective / Goal" tag="h2" />
+        <div class="mt-4" set:html={project.goal} />
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text={project.process_title} tag="h2" />
+        <div class="mt-4" set:html={project.process_description} />
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text={project.results_title} tag="h2" />
+        <div class="mt-4" set:html={project.results_description} />
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text={project.future_title} tag="h2" />
+        <div class="mt-4" set:html={project.future_description} />
+      </section>
+
+      <section>
+        <SectionTitle color="primary" text="📎 Prototype" tag="h2" />
+        <p class="mt-2">Visualiza el diseño directamente desde Figma:</p>
+        <iframe
+          src={project.figmaEmbed}
+          class="w-full h-[400px] md:h-[600px] mt-8 rounded-lg shadow-md border border-gray-200"
+          allowfullscreen></iframe>
+      </section>
+
+      <Button
+        as="a"
+        href={`/${lang}/projects`}
+        text={ctaBack}
+        fill={false}
+        color="primary"
+      />
+    </div>
+  </article>
 </Layout>
