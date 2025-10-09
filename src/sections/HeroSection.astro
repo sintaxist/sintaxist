@@ -6,6 +6,11 @@ import SectionLayout from "@/layouts/SectionLayout.astro";
 import { Image } from "astro:assets";
 import heroIllustration from "@/assets/canek.svg";
 
+interface Props {
+  t: object,
+  socials?: object
+}
+
 const { t, socials } = Astro.props;
 ---
 

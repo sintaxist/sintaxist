@@ -1,8 +1,13 @@
 ---
-import Pill from "@/components/ui/Pill.astro";
 import ArrowIcon from "@/icons/Arrow.astro";
 
-const { project, lang, size = "small", categories } = Astro.props;
+interface Props {
+  project: object;
+  lang: string;
+  size?: string;
+}
+
+const { project, lang, size = "small" } = Astro.props;
 const isLarge = size === "large";
 ---
 
@@ -11,9 +16,7 @@ const isLarge = size === "large";
   class="project-card swiper-slide group block text-secondary h-full min-h-[450px] relative overflow-hidden rounded-lg"
   transition:name={project.slug}
 >
-  <!-- SKELETON + IMG (img primero, luego overlay) -->
   <article class="skeleton-wrapper relative overflow-hidden w-full h-full">
-    <!-- Imagen (inline onload para añadir .loaded) -->
     <img
       src={project.imgSrc}
       alt={`Imagen del proyecto ${project.title}`}
@@ -24,20 +27,11 @@ const isLarge = size === "large";
       onload="this.classList.add('loaded')"
     />
 
-    <!-- Shimmer overlay (se oculta cuando la img tiene .loaded) -->
     <div class="skeleton-overlay" aria-hidden="true"></div>
 
-    <!-- Contenido encima de la imagen -->
     <div
       class={`absolute backdrop-blur-sm backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[0%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] to-[124.76%] z-30`}
     >
-      <!-- <div class="flex flex-wrap gap-2">
-        {
-          project.categoryIds.map((tag, index) => (
-            <Pill label={categories[tag] || tag} index={index} />
-          ))
-        }
-      </div> -->
       <h3
         class:list={[
           "font-primary",
@@ -51,7 +45,9 @@ const isLarge = size === "large";
           <p class="font-secondary text-sm">{project.description}</p>
         )
       }
-      <div class="view-more-link flex items-center gap-2 font-secondary mt-[10px]">
+      <div
+        class="view-more-link flex items-center gap-2 font-secondary mt-[10px]"
+      >
         <p class="underline">Ver más</p>
         <ArrowIcon class="hidden xs:block" />
       </div>
@@ -60,14 +56,10 @@ const isLarge = size === "large";
 </a>
 
 <style>
-  /* contenedor general del skeleton (sin rounded) */
   .project-card .skeleton-wrapper {
     position: relative;
     overflow: hidden;
-    /* altura se controla con el padre / attributes width/height del img */
   }
-
-  /* imagen: inicia oculta y hace fade-in cuando carga */
   .project-card img.project-image {
     display: block;
     width: 100%;
@@ -77,17 +69,14 @@ const isLarge = size === "large";
     transition: all 0.3s;
     z-index: 10;
   }
-
-  /* cuando la imagen añade la clase 'loaded' (onload) se muestra */
   .project-card img.project-image.loaded {
     opacity: 1;
   }
 
-  /* overlay shimmer (usa tu color #234C91) */
   .project-card .skeleton-overlay {
     position: absolute;
     inset: 0;
-    z-index: 20; /* debajo del contenido (z-30) y encima de la img (z-10) */
+    z-index: 20;
     background: linear-gradient(
       90deg,
       #234c91 0%,
@@ -110,7 +99,6 @@ const isLarge = size === "large";
     }
   }
 
-  /* Cuando la imagen tenga .loaded, ocultamos el overlay (selector de hermano adyacente) */
   .project-card img.project-image.loaded + .skeleton-overlay {
     opacity: 0;
     visibility: hidden;

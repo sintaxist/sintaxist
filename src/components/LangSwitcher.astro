@@ -2,6 +2,10 @@
 import { LANGUAGES, defaultLang } from "@/locales";
 import Flag from "@/icons/flags/Flag.astro";
 
+interface Props {
+  class?: string,
+}
+
 const { class: externalClasses } = Astro.props;
 const combinedClasses = `lang-switcher relative h-fit ${externalClasses || ''}`;
 

@@ -1,6 +1,11 @@
 ---
 import LogoHeader from "@/components/ui/LogoHeader.astro";
-import { socialLinks } from '@/data/links.js';
+import { socialLinks } from "@/data/links.js";
+
+interface Props {
+  t: object;
+  sections: object;
+}
 
 const { t, sections } = Astro.props;
 const currentYear = new Date().getFullYear();
@@ -14,14 +19,17 @@ const menuItems = [
 ];
 ---
 
-<footer
-  class="w-full bg-primary text-secondary pt-16 pb-8 px-6 md:px-8"
->
+<footer class="w-full bg-primary text-secondary pt-16 pb-8 px-6 md:px-8">
   <div class="max-w-screen-2xl mx-auto">
     <div class="grid md:grid-cols-3 gap-12 mb-12 text-center md:text-left">
       <div class="flex flex-col gap-4 items-center md:items-start">
-        <a href="/" class="logo-footer-link mb-4 transition-all hover:text-primary-hover" title="Logo Alejandro Canek" aria-label="Logo Alejandro Canek">
-          <LogoHeader class="h-12 md:h-15"/>
+        <a
+          href="/"
+          class="logo-footer-link mb-4 transition-all hover:text-primary-hover"
+          title="Logo Alejandro Canek"
+          aria-label="Logo Alejandro Canek"
+        >
+          <LogoHeader class="h-12 md:h-15" />
         </a>
         <p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">
           {t.bio}
@@ -54,8 +62,8 @@ const menuItems = [
         </h4>
         <div class="flex space-x-4 justify-center md:justify-start">
           {
-            socialLinks.map(link => (
-              <a 
+            socialLinks.map((link) => (
+              <a
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -73,7 +81,8 @@ const menuItems = [
 
     <div class="pt-8 border-t border-secondary/50">
       <p class="text-secondary text-sm text-center font-secondary">
-        © {currentYear} {t.copyright}
+        © {currentYear}
+        {t.copyright}
       </p>
     </div>
   </div>
@@ -131,8 +140,8 @@ const menuItems = [
     footerLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
-        if (!href || !href.startsWith('#')) return;
-        
+        if (!href || !href.startsWith("#")) return;
+
         const targetId = href.substring(1);
         const targetEl = document.getElementById(targetId);
 
@@ -143,10 +152,10 @@ const menuItems = [
       });
     });
 
-    const logoLink = document.querySelector('.logo-footer-link');
+    const logoLink = document.querySelector(".logo-footer-link");
     if (logoLink) {
-      logoLink.addEventListener('click', (e) => {
-        const homeSection = document.getElementById('home');
+      logoLink.addEventListener("click", (e) => {
+        const homeSection = document.getElementById("home");
         if (homeSection) {
           e.preventDefault();
           smoothScroll(homeSection);

@@ -4,6 +4,11 @@ import Button from "@/components/ui/Button.astro";
 import { socialLinks, schedulingLink } from "@/data/links.js";
 import SectionLayout from "@/layouts/SectionLayout.astro";
 
+interface Props {
+  t: object;
+  socials?: object;
+}
+
 const { t, socials } = Astro.props;
 ---
 

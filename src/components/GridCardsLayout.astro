@@ -1,6 +1,13 @@
 ---
 import ProjectCard from "@/components/ProjectCard.astro";
 
+interface Props {
+  projects: object,
+  categories: object,
+  lang?: string
+  isHome?: boolean
+}
+
 const { projects, categories, lang, isHome } = Astro.props;
 const lastItems = projects.length < 6
 ---

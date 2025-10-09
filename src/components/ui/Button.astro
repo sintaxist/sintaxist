@@ -1,5 +1,14 @@
 ---
 import ArrowIcon from '@/icons/Arrow.astro';
+interface Props {
+  as?: string,
+  fill?: boolean,
+  color?: string,
+  arrow?: boolean,
+  href?: string,
+  text?: string
+}
+
 
 const {
   as = 'a',

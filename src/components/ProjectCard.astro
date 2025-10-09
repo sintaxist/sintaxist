@@ -2,6 +2,15 @@
 import Pill from "@/components/ui/Pill.astro";
 import ArrowIcon from "@/icons/Arrow.astro";
 
+interface Props {
+  project: object,
+  lang: string,
+  isLarge?: boolean,
+  categories?: object,
+  index?: number,
+  className?: string
+}
+
 const { project, lang, isLarge = "small", categories, index, className } = Astro.props;
 ---
 
@@ -70,7 +79,6 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
     cursor: pointer;
   }
 
-  /* Cuando está deshabilitado durante animaciones */
   .project-card[style*="pointer-events: none"] {
     cursor: default;
   }
@@ -78,7 +86,6 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
   .project-card .skeleton-wrapper {
     position: relative;
     overflow: hidden;
-    background-color: #234c91;
   }
 
   .project-card img.project-image {
@@ -94,7 +101,6 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
     opacity: 1;
   }
 
-  /* Hover en la imagen */
   .group:hover .project-image {
     transform: scale(1.1);
   }
@@ -144,7 +150,6 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
     transform: translateY(0);
   }
 
-  /* Mobile optimizations */
   @media (max-width: 768px) {
     .project-card:hover {
       transform: none;

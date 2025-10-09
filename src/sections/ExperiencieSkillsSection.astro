@@ -5,6 +5,11 @@ import ExperienceItem from "@/components/ExperienceItem.astro";
 import Button from "@/components/ui/Button.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 
+interface Props {
+  experience: object,
+  skills?: object
+}
+
 const { experience, skills } = Astro.props;
 
 const lang = Astro.url.pathname.split("/")[1] || "es";

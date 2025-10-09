@@ -1,4 +1,8 @@
 ---
+interface Props {
+  categories?: object,
+}
+
 const { categories } = Astro.props;
 const categoryList = Object.entries(categories).filter(([id]) => id !== "all");
 ---

@@ -3,6 +3,11 @@ import * as Icons from "@/components/ui/Icons.ts";
 import LangSwitcher from "@/components/LangSwitcher.astro";
 import LogoHeader from "@/components/ui/LogoHeader.astro";
 
+interface Props {
+  t: object,
+  sections?: object,
+}
+
 const { t, sections } = Astro.props;
 
 const menuItems = [
