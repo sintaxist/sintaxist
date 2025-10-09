@@ -21,7 +21,7 @@ const IconComponent = iconMap[icon?.toLowerCase()] || IconDemo;
 ---
 
 <a
-    class="relative flex gap-2 items-center text-primary font-secondary text-bold"
+    class="link-container pb-[4px] relative flex gap-2 items-center text-primary font-secondary text-bold"
     href={url}
     title=""
     target="_blank"
@@ -29,3 +29,19 @@ const IconComponent = iconMap[icon?.toLowerCase()] || IconDemo;
     <IconComponent class="w-6 h-6" />
     {text}
 </a>
+<style>
+    .link-container:before {
+        content: "";
+        width: 0;
+        height: 2px;
+        background-color: var(--color-primary);
+        position: absolute;
+        bottom: 0;
+        left: 2rem;
+        transition: width 0.3s ease-out;
+    }
+
+    .link-container:hover:before {
+        width: calc(100% - 2rem);
+    }
+</style>

@@ -4,8 +4,8 @@ import LangSwitcher from "@/components/LangSwitcher.astro";
 import LogoHeader from "@/components/ui/LogoHeader.astro";
 
 interface Props {
-  t: object,
-  sections?: object,
+  t: any,
+  sections?: any,
 }
 
 const { t, sections } = Astro.props;
@@ -22,10 +22,10 @@ const menuItems = [
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-51 transition-all py-2 md:py-4"
+  class="fixed top-0 left-0 right-0 z-51 transition-all py-4 md:py-6"
   data-section-theme="light"
 >
-  <div class="max-w-screen-2xl mx-auto py-4 px-6">
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-6">
     <div class="flex items-center justify-between">
       <a
         href="/"
@@ -34,7 +34,7 @@ const menuItems = [
         title="Volver al inicio"
         class="text-primary hover:text-primary-hover transition-colors"
       >
-        <LogoHeader class="h-10" />
+        <LogoHeader class="h-7 md:h-9" />
       </a>
 
       <nav

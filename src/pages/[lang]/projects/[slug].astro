@@ -10,6 +10,7 @@ import ParagraphInfo from "@/components/ui/ParagraphInfo.astro";
 import BackButton from "@/components/BackButton.astro";
 import IconFigma from "@/icons/IconFigma.astro";
 import LinkDetailProject from "@/components/ui/LinkDetailProject.astro";
+import ItemInfoBlog from "@/components/ui/ItemInfoBlog.astro";
 
 export async function getStaticPaths() {
   const paths = [];
@@ -19,7 +20,8 @@ export async function getStaticPaths() {
 
     const projectInfo = {
       slug: "yoorco",
-      title: "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
+      title:
+        "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
       description:
         "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
       imgSrc: "https://i.imgur.com/Z0EcRIQh.jpeg",
@@ -31,66 +33,69 @@ export async function getStaticPaths() {
       categoryIds: ["ui-ux", "branding"],
 
       overview: `
-        <p><strong>Yoorco</strong> es una empresa mexicana que ofrece desarrollo de software por suscripción, 
-        operando como un “departamento de tecnología externo” para startups y empresas en crecimiento.</p>
-        <p>El objetivo de este proyecto fue reimaginar su presencia digital, creando una landing page moderna, estratégica 
-        y alineada con su visión de crecimiento tecnológico.</p>
-        <p>El resultado: una interfaz clara, limpia y flexible que transmite confianza y comunica valor con precisión.</p>
+        <strong>Yoorco</strong> es una empresa mexicana que ofrece desarrollo de software por suscripción, 
+        operando como un “departamento de tecnología externo” para startups y empresas en crecimiento.<br/><br/>
+        El objetivo de este proyecto fue reimaginar su presencia digital, creando una landing page moderna, estratégica 
+        y alineada con su visión de crecimiento tecnológico.<br/><br/>
+        El resultado: una interfaz clara, limpia y flexible que transmite confianza y comunica valor con precisión.
       `,
 
       timeframe: "1 Semana",
-      role: "UX/UI Design, Visual Design, Branding Simplification, Prototyping",
+      role: "Diseñador UI / UX",
       tools: "Figma, FigJam, Photoshop, Illustrator",
 
-      challenge: `
-        La versión anterior de la web de Yoorco no reflejaba la madurez ni la claridad de su propuesta.
-        El mensaje principal se diluía entre textos genéricos, una arquitectura poco intuitiva y una estética desactualizada.
-        Yoorco necesitaba una landing page capaz de comunicar su servicio con precisión y consistencia visual,
-        fortaleciendo la percepción de marca y facilitando la comprensión del modelo de suscripción tecnológica.
-      `,
+      challenge: {
+        title: "El problema",
+        description: `
+          <strong>Yoorco</strong> necesitaba una landing page capaz de comunicar su servicio con precisión y consistencia visual,
+          fortaleciendo la percepción de marca y facilitando la comprensión del modelo de neogcio.
+        `,
+      },
 
-      goal: `
-        <ul>
-          <li>Transmitir profesionalismo, claridad y enfoque tecnológico.</li>
-          <li>Alinear el branding con su propuesta de valor.</li>
-          <li>Mejorar la conversión mediante una estructura informativa simple y estratégica.</li>
-          <li>Crear un sistema visual escalable y adaptable a cualquier dispositivo.</li>
-        </ul>
-      `,
+      goal: {
+        title: "La meta",
+        description:
+          "Transmitir profesionalismo, claridad y enfoque tecnológico, alineando el branding con su propuesta de valor, y creando un sistema visual escalable y adaptable a cualquier dispositivo.",
+      },
 
-      process_title: "My Design Process",
-      process_description: `
-        <h3>🔍 Empathize & Research</h3>
-        <p>Se analizaron referentes de empresas SaaS, estudios digitales y marcas tecnológicas con modelos de suscripción,
-        identificando patrones visuales efectivos:</p>
-        <ul>
-          <li>Jerarquía visual clara (beneficios sobre funciones).</li>
-          <li>Color como diferenciador, no saturación.</li>
-          <li>Uso estratégico del espacio negativo y tipografía moderna.</li>
-        </ul>
-
-        <h3>🧩 Define & Ideate</h3>
-        <p>Se propuso una estructura narrativa en 5 secciones clave:</p>
-        <ul>
-          <li>Hero — Mensaje de valor directo + CTA.</li>
-          <li>Metas con Yoorco — Beneficios concretos.</li>
-          <li>Casos de Éxito — Confianza y resultados.</li>
-          <li>Clientes — Validación social.</li>
-          <li>Equipo — Humanización de la marca.</li>
-        </ul>
-
-        <h3>🎨 Design & Prototype</h3>
-        <p>El rediseño se centró en una paleta cromática refinada y un sistema UI modular:</p>
-        <ul>
-          <li><span class="text-[#F77F08] font-medium">🟠 Naranja #F77F08</span> — dinamismo, energía y acción.</li>
-          <li><span class="text-[#086FFD] font-medium">🔵 Azul #086FFD</span> — tecnología y confianza.</li>
-          <li><span class="text-[#FEFEFE] font-medium">⚪ Blanco #FEFEFE</span> — claridad visual.</li>
-          <li><span class="text-[#0E4085] font-medium">🔵 Azul oscuro #0E4085</span> — solidez y estabilidad.</li>
-        </ul>
-
-        <p>El resultado fue un diseño minimalista, elegante y adaptable, que mantiene coherencia entre desktop, tablet y mobile.
-        Todo el flujo se diseñó en Figma, con prototipo interactivo y componentes reutilizables.</p>
-      `,
+      process: {
+        title: "Mi proceso de diseño",
+        childs: [
+          {
+            title: "Empathize & Research",
+            description:
+              "Se analizaron referentes de empresas SaaS, estudios digitales y marcas tecnológicas con modelos de suscripción identificando patrones visuales efectivos:",
+            list: [
+              "Jerarquía visual clara (beneficios sobre funciones).",
+              "Color como diferenciador, no saturación.",
+              "Uso estratégico del espacio negativo y tipografía moderna.",
+            ],
+          },
+          {
+            title: "Define & Ideate",
+            description:
+              "Se propuso una estructura narrativa en 5 secciones clave:",
+            list: [
+              "Hero — Mensaje de valor directo + CTA.",
+              "Metas con Yoorco — Beneficios concretos.",
+              "Casos de Éxito — Confianza y resultados.",
+              "Clientes — Validación social.",
+              "Equipo — Humanización de la marca.",
+            ],
+          },
+          {
+            title: "Design & Prototype",
+            description:
+              "El rediseño se centró en una paleta cromática refinada y un sistema UI modular:",
+            list: [
+              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#F77F08] w-6 h-6 circle-color"></span> #F77F08 — dinamismo, energía y acción.`,
+              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#086FFD] w-6 h-6 circle-color"></span> #086FFD — tecnología y confianza.`,
+              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#FEFEFE] w-6 h-6 circle-color"></span> #FEFEFE — claridad visual.`,
+              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#0E4085] w-6 h-6 circle-color"></span> #0E4085 — solidez y estabilidad.`,
+            ],
+          },
+        ],
+      },
 
       results_title: "Results",
       results_description: `
@@ -145,94 +150,115 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
   footerInfo={footer}
 >
   <article
-    class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col gap-15 pt-30 animation-group"
+    class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col gap-8 md:gap-16 pt-25 md:pt-30 animation-group text-primary font-secondary"
     transition:name={project.slug}
   >
-    <BackButton info={ctaBack} />
-
     <header class="flex flex-col gap-4">
-      <div class="flex gap-2 justify-center">
-        {
-          project.categoryIds?.map((cat, index) => (
-            <Pill label={categories[cat] || cat} {index} primary delay={0} />
-          ))
-        }
-      </div>
-
+      <BackButton info={ctaBack} />
       <h1
-        class="text-center font-primary text-5xl text-primary mb-4 leading-[130%] anim-item"
-        data-delay={400}
+        class="md:text-center font-primary text-2xl sm:text-3xl md:text-5xl text-primary mb-4 leading-[130%] anim-item"
         data-animate="text"
       >
         {project.title}
       </h1>
+      <div class="flex flex-wrap gap-2 md:justify-center">
+        {
+          project.categoryIds?.map((cat, index) => (
+            <Pill label={categories[cat] || cat} {index} primary delay={200} />
+          ))
+        }
+      </div>
       <Image
         src={project.imgSrc}
         alt={`Diseño del proyecto ${project.title}`}
         width={1200}
-        height={800}
+        height={400}
         class="w-full m-auto shadow-lg rounded-lg mt-2 anim-item"
         data-animate="text"
-        data-delay={600}
+        data-delay={200}
       />
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 mt-2">
         {
-          project.figmaUrl && 
-          <LinkDetailProject url={project.figmaUrl} text={project.textFigmaUrl} icon="figma"/>
+          project.figmaUrl && (
+            <LinkDetailProject
+              url={project.figmaUrl}
+              text={project.textFigmaUrl}
+              icon="figma"
+            />
+          )
         }
       </div>
     </header>
 
-    <!-- <div class="flex justify-center gap-4 mt-8 flex-wrap">
-        {
-          project.figmaUrl && (
-            <Button
-              as="a"
-              href={project.figmaUrl}
-              text="Ver diseño en Figma"
-              target="_blank"
-            />
-          )
-        }
-      </div> -->
-
-    <!-- Imagen principal -->
-
-    <!-- Contenido -->
-    <div class="max-w-none font-secondary text-lg text-primary space-y-20">
-      <section>
-        <SectionTitle color="primary" text="🧭 Project Overview" tag="h2" />
-        <p set:html={project.overview} class="mt-4" />
-        <div class="grid md:grid-cols-3 gap-6 mt-8 text-sm">
-          <div>
-            <h3 class="font-semibold text-primary/80 mb-1">⏱️ Timeframe</h3>
-            <p>{project.timeframe}</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary/80 mb-1">🎯 My Role</h3>
-            <p>{project.role}</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-primary/80 mb-1">🧰 Tools</h3>
-            <p>{project.tools}</p>
-          </div>
+    <section class="flex flex-col gap-6 md:gap-10">
+      <SectionTitle
+        color="primary"
+        text="Overview"
+        tag="h2"
+        iconPosition="left"
+      />
+      <div class="flex gap-6 flex-col-reverse md:flex-row">
+        <ul class="flex flex-col gap-6 md:min-w-[25%]">
+          <li class="flex flex-col gap-3 flex-1">
+            <h3 class="underline font-primary text-xl md:text-2xl">
+              Tiempo de desarrollo:
+            </h3>
+            <p class="text-sm md:text-base lg:text-md">{project.timeframe}</p>
+          </li>
+          <li class="flex flex-col gap-3 flex-1">
+            <h3 class="underline font-primary text-xl md:text-2xl">Mi rol:</h3>
+            <p class="text-sm md:text-base lg:text-md">{project.role}</p>
+          </li>
+          <li class="flex flex-col gap-3 flex-1">
+            <h3 class="underline font-primary text-xl md:text-2xl">Herramientas:</h3>
+            <p class="text-sm md:text-base lg:text-md">{project.tools}</p>
+          </li>
+        </ul>
+        <div class="flex flex-col gap-4">
+          <h3 class="font-primary text-4xl mb-2 hidden md:block">Contexto</h3>
+          <ParagraphInfo text={project.overview} />
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <SectionTitle color="primary" text="🚧 The Challenge" tag="h2" />
-        <p set:html={project.challenge} class="mt-4" />
-      </section>
+    <hr class="w-full text-primary" />
 
-      <section>
-        <SectionTitle color="primary" text="🎯 Objective / Goal" tag="h2" />
-        <div class="mt-4" set:html={project.goal} />
-      </section>
+    <section class="flex flex-col gap-6 md:gap-10">
+      <ItemInfoBlog
+        title={project.challenge.title}
+        description={project.challenge.description}
+      />
+      <ItemInfoBlog
+        title={project.goal.title}
+        description={project.goal.description}
+      />
+    </section>
 
-      <section>
-        <SectionTitle color="primary" text={project.process_title} tag="h2" />
-        <div class="mt-4" set:html={project.process_description} />
-      </section>
+    <hr class="w-full text-primary" />
+
+    <section class="flex flex-col gap-8 md:gap-16">
+      <SectionTitle
+        color="primary"
+        text={project.process.title}
+        tag="h2"
+        iconPosition="left"
+      />
+      <div class="flex flex-col gap-6 md:gap-10">
+        {
+          project.process.childs.map((child) => (
+            <ItemInfoBlog
+              title={child.title}
+              description={child.description}
+              list={child.list}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <hr class="w-full text-primary" />
+
+    <!-- <div>
 
       <section>
         <SectionTitle color="primary" text={project.results_title} tag="h2" />
@@ -260,6 +286,6 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
         fill={false}
         color="primary"
       />
-    </div>
+    </div> -->
   </article>
 </Layout>

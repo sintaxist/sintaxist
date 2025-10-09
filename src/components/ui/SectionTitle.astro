@@ -7,13 +7,18 @@ interface Props {
   color?: 'primary' | 'secondary';
   tag?: 'h1' | 'h2' | 'h3';
   className?: string;
+  iconPosition?: 'left' | 'right'
 }
 
-const { text, color = 'primary', tag: Tag = 'h2', className } = Astro.props;
+const { text, color = 'primary', tag: Tag = 'h2', iconPosition = 'right', className } = Astro.props;
 
 const colorClasses = color === 'primary' ? 'text-primary' : 'text-secondary';
 
+const iconPositionStyle = iconPosition === 'left' ? 'absolute -left-12 top-4' : '';
+
 const uniqueId = `title-${Math.random().toString(36).substr(2, 9)}`;
+
+
 ---
 
 <div class:list={["relative w-fit flex gap-4 items-center", className]}>
@@ -22,8 +27,8 @@ const uniqueId = `title-${Math.random().toString(36).substr(2, 9)}`;
   </Tag>
 
   {color === 'primary' ? (
-    <TitleDecoration class="hidden xs:block w-10 h-10" />
+    <TitleDecoration class={`${iconPositionStyle} hidden xs:block w-10 h-10`} />
   ) : (
-    <TitleDecoration2 class="hidden xs:block w-7 md:w-10 h-7 md:h-10 rotate-7" />
+    <TitleDecoration2 class={`${iconPositionStyle} hidden xs:block w-7 md:w-10 h-7 md:h-10 rotate-7`} />
   )}
 </div>

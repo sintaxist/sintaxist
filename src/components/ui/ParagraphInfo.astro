@@ -1,13 +1,13 @@
 ---
 interface Props {
-    info: any;
+    text: any;
     className?: string;
 }
 
-const { info, className } = Astro.props;
+const { text, className } = Astro.props;
 ---
 
 <p
-    set:html={info}
-    class={`${className} font-secondary text-sm xs:text-base sm:text-md md:text-lg`}
+    set:html={text}
+    class={`${className} font-secondary text-sm xs:text-base sm:text-md md:text-lg leading-[170%]`}
 />
