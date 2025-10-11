@@ -8,17 +8,15 @@ interface Props {
 }
 
 const { title, description, list } = Astro.props;
-
-console.log(list);
 ---
 
 <div class="flex flex-col md:flex-row gap-3 md:gap-6">
-    <h3 class="md:min-w-[25%] md:w-[25%] font-primary text-2xl sm:text-3xl md:text-4xl">{title}</h3>
+    <h3 class="md:min-w-[20%] md:w-[20%] font-bold leading-[160%] text-lg md:text-xl underline">{title}</h3>
     <div class="flex flex-col gap-2">
         <ParagraphInfo text={description} />
         {
             list && (
-                <ul class="flex flex-col gap-2 mt-2 list-disc ms-6 sm:ms-10">
+                <ul class="flex flex-col gap-2 mt-4 list-disc ms-6 sm:ms-10">
                     {list.map((item) => (
                         <li class="text-sm md:text-base" set:html={item} />
                     ))}

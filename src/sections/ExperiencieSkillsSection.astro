@@ -5,9 +5,15 @@ import ExperienceItem from "@/components/ExperienceItem.astro";
 import Button from "@/components/ui/Button.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 
+
+interface Experience {
+  title: string;
+  jobs: any[];
+  cta_download_cv: string;
+}
 interface Props {
-  experience: object,
-  skills?: object
+  experience: Experience,
+  skills?: any
 }
 
 const { experience, skills } = Astro.props;

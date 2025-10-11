@@ -1,14 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Button from "@/components/ui/Button.astro";
 import Pill from "@/components/ui/Pill.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import { LANGUAGES } from "@/locales";
 import type { AppLocale } from "@/locales";
 import ParagraphInfo from "@/components/ui/ParagraphInfo.astro";
 import BackButton from "@/components/BackButton.astro";
-import IconFigma from "@/icons/IconFigma.astro";
 import LinkDetailProject from "@/components/ui/LinkDetailProject.astro";
 import ItemInfoBlog from "@/components/ui/ItemInfoBlog.astro";
 
@@ -17,128 +15,38 @@ export async function getStaticPaths() {
 
   for (const lang of Object.keys(LANGUAGES)) {
     const t = LANGUAGES[lang as AppLocale].translations;
+    const projects = t.projectsPage.projects;
 
-    const projectInfo = {
-      slug: "yoorco",
-      title:
-        "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
-      description:
-        "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
-      imgSrc: "https://i.imgur.com/Z0EcRIQh.jpeg",
-      textFigmaUrl: t.projectsPage.textFigmaUrl,
-      figmaUrl:
-        "https://www.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&t=HnKMEsZBkmCl1JuT-1",
-      figmaEmbed:
-        "https://embed.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&embed-host=share",
-      categoryIds: ["ui-ux", "branding"],
+    projects.forEach((project, index) => {
+      const prevProject = index > 0 ? projects[index - 1] : null;
+      const nextProject = index < projects.length - 1 ? projects[index + 1] : null;
 
-      overview: `
-        <strong>Yoorco</strong> es una empresa mexicana que ofrece desarrollo de software por suscripción, 
-        operando como un “departamento de tecnología externo” para startups y empresas en crecimiento.<br/><br/>
-        El objetivo de este proyecto fue reimaginar su presencia digital, creando una landing page moderna, estratégica 
-        y alineada con su visión de crecimiento tecnológico.<br/><br/>
-        El resultado: una interfaz clara, limpia y flexible que transmite confianza y comunica valor con precisión.
-      `,
-
-      timeframe: "1 Semana",
-      role: "Diseñador UI / UX",
-      tools: "Figma, FigJam, Photoshop, Illustrator",
-
-      challenge: {
-        title: "El problema",
-        description: `
-          <strong>Yoorco</strong> necesitaba una landing page capaz de comunicar su servicio con precisión y consistencia visual,
-          fortaleciendo la percepción de marca y facilitando la comprensión del modelo de neogcio.
-        `,
-      },
-
-      goal: {
-        title: "La meta",
-        description:
-          "Transmitir profesionalismo, claridad y enfoque tecnológico, alineando el branding con su propuesta de valor, y creando un sistema visual escalable y adaptable a cualquier dispositivo.",
-      },
-
-      process: {
-        title: "Mi proceso de diseño",
-        childs: [
-          {
-            title: "Empathize & Research",
-            description:
-              "Se analizaron referentes de empresas SaaS, estudios digitales y marcas tecnológicas con modelos de suscripción identificando patrones visuales efectivos:",
-            list: [
-              "Jerarquía visual clara (beneficios sobre funciones).",
-              "Color como diferenciador, no saturación.",
-              "Uso estratégico del espacio negativo y tipografía moderna.",
-            ],
-          },
-          {
-            title: "Define & Ideate",
-            description:
-              "Se propuso una estructura narrativa en 5 secciones clave:",
-            list: [
-              "Hero — Mensaje de valor directo + CTA.",
-              "Metas con Yoorco — Beneficios concretos.",
-              "Casos de Éxito — Confianza y resultados.",
-              "Clientes — Validación social.",
-              "Equipo — Humanización de la marca.",
-            ],
-          },
-          {
-            title: "Design & Prototype",
-            description:
-              "El rediseño se centró en una paleta cromática refinada y un sistema UI modular:",
-            list: [
-              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#F77F08] w-6 h-6 circle-color"></span> #F77F08 — dinamismo, energía y acción.`,
-              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#086FFD] w-6 h-6 circle-color"></span> #086FFD — tecnología y confianza.`,
-              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#FEFEFE] w-6 h-6 circle-color"></span> #FEFEFE — claridad visual.`,
-              `<span class="inline-block shadow-lg mr-1 rounded-full bg-[#0E4085] w-6 h-6 circle-color"></span> #0E4085 — solidez y estabilidad.`,
-            ],
-          },
-        ],
-      },
-
-      results_title: "Results",
-      results_description: `
-        <p>El nuevo diseño permitió a Yoorco proyectar una identidad más profesional y confiable, con una comunicación clara del modelo de negocio.</p>
-        <p>El enfoque en la jerarquía visual y el contenido estratégico generó una mejor comprensión del servicio y una experiencia más fluida para el usuario.</p>
-        <h4>💡 Impacto clave:</h4>
-        <ul>
-          <li>+100% en claridad del mensaje visual.</li>
-          <li>Identidad digital sólida y escalable.</li>
-          <li>Mayor consistencia de marca entre medios digitales.</li>
-          <li>Base visual lista para integración en Astro.</li>
-        </ul>
-      `,
-
-      future_title: "Future Opportunities",
-      future_description: `
-        <p>El siguiente paso natural para Yoorco sería integrar métricas UX y analítica de interacción,
-        permitiendo medir el rendimiento de los CTAs, tiempos de permanencia y puntos de abandono.</p>
-        <p>Además, el sistema visual está preparado para escalar hacia un diseño de producto completo,
-        incluyendo dashboards, paneles administrativos o micrositios especializados.</p>
-      `,
-    };
-
-    for (const project of t.projectsPage.projects) {
       paths.push({
         params: { lang, slug: project.slug },
         props: {
-          project: projectInfo,
+          project: project,
           lang: lang as AppLocale,
           header: t.header,
           sections: t.sections,
           footer: t.footer,
+          titles: t.projectsPage.titles,
           categories: t.projectsPage.categories,
           ctaBack: t.projectsPage.ctaBack,
+          previousProject: prevProject
+            ? { slug: prevProject.slug, title: prevProject.title }
+            : null,
+          nextProject: nextProject
+            ? { slug: nextProject.slug, title: nextProject.title }
+            : null,
         },
       });
-    }
+    });
   }
 
   return paths;
 }
 
-const { project, lang, header, sections, footer, categories, ctaBack } =
+const { project, lang, header, sections, footer, categories, ctaBack, titles, previousProject, nextProject,  } =
   Astro.props;
 ---
 
@@ -150,7 +58,7 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
   footerInfo={footer}
 >
   <article
-    class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col gap-8 md:gap-16 pt-25 md:pt-30 animation-group text-primary font-secondary"
+    class="max-w-5xl mx-auto px-6 sm:px-8 flex flex-col gap-8 md:gap-16 pt-25 md:pt-30 pb-16 animation-group text-primary font-secondary"
     transition:name={project.slug}
   >
     <header class="flex flex-col gap-4">
@@ -173,7 +81,7 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
         alt={`Diseño del proyecto ${project.title}`}
         width={1200}
         height={400}
-        class="w-full m-auto shadow-lg rounded-lg mt-2 anim-item"
+        class="w-full m-auto shadow-lg rounded-lg mt-2"
         data-animate="text"
         data-delay={200}
       />
@@ -191,101 +99,295 @@ const { project, lang, header, sections, footer, categories, ctaBack } =
     </header>
 
     <section class="flex flex-col gap-6 md:gap-10">
-      <SectionTitle
-        color="primary"
-        text="Overview"
-        tag="h2"
-        iconPosition="left"
-      />
-      <div class="flex gap-6 flex-col-reverse md:flex-row">
-        <ul class="flex flex-col gap-6 md:min-w-[25%]">
-          <li class="flex flex-col gap-3 flex-1">
-            <h3 class="underline font-primary text-xl md:text-2xl">
-              Tiempo de desarrollo:
-            </h3>
-            <p class="text-sm md:text-base lg:text-md">{project.timeframe}</p>
-          </li>
-          <li class="flex flex-col gap-3 flex-1">
-            <h3 class="underline font-primary text-xl md:text-2xl">Mi rol:</h3>
-            <p class="text-sm md:text-base lg:text-md">{project.role}</p>
-          </li>
-          <li class="flex flex-col gap-3 flex-1">
-            <h3 class="underline font-primary text-xl md:text-2xl">Herramientas:</h3>
-            <p class="text-sm md:text-base lg:text-md">{project.tools}</p>
-          </li>
+      <SectionTitle color="primary" text="Contexto" tag="h2" />
+      <ParagraphInfo text={project.overview} />
+      {
+        (project.timeframe || project.role || project.tools) &&
+        <ul class="flex flex-col md:flex-row gap-8">
+          {
+            project.timeframe &&
+            <li class="flex flex-col gap-3 flex-1">
+              <h3 class="underline font-bold text-lg md:text-xl">
+                {titles.timeframe}
+              </h3>
+              <p class="text-sm md:text-base lg:text-md">{project.timeframe}</p>
+            </li>
+          }
+          {
+            project.role &&
+            <li class="flex flex-col gap-3 flex-1">
+              <h3 class="underline font-bold text-lg md:text-xl">{titles.role}</h3>
+              <p class="text-sm md:text-base lg:text-md">{project.role}</p>
+            </li>
+          }
+          {
+            project.tools &&
+            <li class="flex flex-col gap-3 flex-1">
+              <h3 class="underline font-bold text-lg md:text-xl">
+                {titles.tools}
+              </h3>
+              <p class="text-sm md:text-base lg:text-md">{project.tools}</p>
+            </li>
+          }
         </ul>
-        <div class="flex flex-col gap-4">
-          <h3 class="font-primary text-4xl mb-2 hidden md:block">Contexto</h3>
-          <ParagraphInfo text={project.overview} />
-        </div>
-      </div>
+      }
     </section>
 
-    <hr class="w-full text-primary" />
-
-    <section class="flex flex-col gap-6 md:gap-10">
-      <ItemInfoBlog
-        title={project.challenge.title}
-        description={project.challenge.description}
-      />
-      <ItemInfoBlog
-        title={project.goal.title}
-        description={project.goal.description}
-      />
-    </section>
-
-    <hr class="w-full text-primary" />
-
-    <section class="flex flex-col gap-8 md:gap-16">
-      <SectionTitle
-        color="primary"
-        text={project.process.title}
-        tag="h2"
-        iconPosition="left"
-      />
-      <div class="flex flex-col gap-6 md:gap-10">
+    {
+      (project.challenge || project.goal) && 
+      <hr class="w-full text-primary" />
+      <section class="flex flex-col gap-6 md:gap-10">
         {
-          project.process.childs.map((child) => (
-            <ItemInfoBlog
-              title={child.title}
-              description={child.description}
-              list={child.list}
-            />
-          ))
+          project.challenge &&
+          <ItemInfoBlog
+            title={titles.challenge}
+            description={project.challenge.description}
+          />
         }
+        {
+          project.goal &&
+          <ItemInfoBlog
+            title={titles.goal}
+            description={project.goal.description}
+          />
+        }
+      </section>
+    }
+
+    {
+      project.process &&
+      <hr class="w-full text-primary" />
+      <section class="flex flex-col gap-8 md:gap-10">
+        <SectionTitle color="primary" text={titles.process} tag="h2" />
+        <div class="flex flex-col gap-6 md:gap-10">
+          {
+            project.process.childs.map((child) => (
+              <ItemInfoBlog
+                title={child.title}
+                description={child.description}
+                list={child.list}
+              />
+            ))
+          }
+        </div>
+      </section>
+    }
+
+    {
+      project.results &&
+      <hr class="w-full text-primary" />
+      <section class="flex flex-col gap-8 md:gap-10">
+        <SectionTitle color="primary" text={titles.results} tag="h2" />
+        <div class="flex flex-col gap-6 md:gap-10">
+          {
+            project.results.childs.map((child) => (
+              <ItemInfoBlog
+                title={child.title}
+                description={child.description}
+                list={child.list}
+              />
+            ))
+          }
+        </div>
+      </section>
+    }
+
+    {
+      project.gallery && project.gallery.length > 0 && (
+          <hr class="w-full text-primary" />
+          <section class="flex flex-col gap-8 md:gap-10">
+            <SectionTitle color="primary" text={titles.gallery} tag="h2" />
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 h-[400px]">
+              {project.gallery.map((image) => (
+                <div class="aspect-video h-full w-full bg-gray-100 rounded-md overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 group">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={600}
+                    height={400}
+                    class="w-full h-full object-cover gallery-image group-hover:scale-110 transition-transform duration-300"
+                    data-alt={image.alt}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+      )
+    }
+
+    {
+      project.future &&
+      <hr class="w-full text-primary" />
+      <section class="flex flex-col gap-8 md:gap-10">
+        <SectionTitle color="primary" text={titles.future} tag="h2" />
+        <ParagraphInfo text={project.future.description} />
+      </section>
+    }
+
+    {
+      project.figmaEmbed &&
+      <hr class="w-full text-primary" />
+      <section class="flex flex-col gap-8 md:gap-10">
+        <SectionTitle color="primary" text={titles.prototype} tag="h2" />
+        <div id="figma-container" class="relative">
+          <iframe
+            id="figma-iframe"
+            data-src={project.figmaEmbed}
+            class="w-full h-[400px] md:h-[600px] mt-8 rounded-lg shadow-md border border-gray-200"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+      </section>
+    }
+
+    <nav class="flex flex-col sm:flex-row justify-between items-center gap-6 mt-8 md:mt-12 border-t border-primary pt-8">
+      <div class="text-center sm:text-left min-w-0">
+        {previousProject && (
+          <a href={`/${lang}/projects/${previousProject.slug}/`} class="text-primary hover:text-primary-hover transition-colors duration-300 group">
+            <span class="text-sm text-gray-500 block">← Anterior</span>
+            <p class="font-bold text-lg text-clamp-2">{previousProject.title}</p>
+          </a>
+        )}
       </div>
-    </section>
-
-    <hr class="w-full text-primary" />
-
-    <!-- <div>
-
-      <section>
-        <SectionTitle color="primary" text={project.results_title} tag="h2" />
-        <div class="mt-4" set:html={project.results_description} />
-      </section>
-
-      <section>
-        <SectionTitle color="primary" text={project.future_title} tag="h2" />
-        <div class="mt-4" set:html={project.future_description} />
-      </section>
-
-      <section>
-        <SectionTitle color="primary" text="📎 Prototype" tag="h2" />
-        <p class="mt-2">Visualiza el diseño directamente desde Figma:</p>
-        <iframe
-          src={project.figmaEmbed}
-          class="w-full h-[400px] md:h-[600px] mt-8 rounded-lg shadow-md border border-gray-200"
-          allowfullscreen></iframe>
-      </section>
-
-      <Button
-        as="a"
-        href={`/${lang}/projects`}
-        text={ctaBack}
-        fill={false}
-        color="primary"
-      />
-    </div> -->
+      <div class="text-center sm:text-right min-w-0">
+        {nextProject && (
+          <a href={`/${lang}/projects/${nextProject.slug}/`} class="text-primary hover:text-primary-hover transition-colors duration-300 group">
+            <span class="text-sm text-gray-500 block">Siguiente →</span>
+            <p class="font-bold text-lg text-clamp-2">{nextProject.title}</p>
+          </a>
+        )}
+      </div>
+    </nav>
   </article>
 </Layout>
+
+<div id="image-modal" class="fixed inset-0 bg-black bg-opacity-85 z-52 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300" aria-modal="true" role="dialog">
+  
+  <div id="modal-content" class="relative scale-95 transition-transform duration-300 rounded-lg overflow-hidden">
+    <img id="modal-image" src="" alt="" class="object-contain max-w-[90vw] max-h-[90vh]" />
+  </div>
+
+  <button id="modal-close-btn" class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center text-3xl font-light hover:bg-opacity-80 transition-all" aria-label="Cerrar imagen">
+    &times;
+  </button>
+
+  <button id="modal-prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center text-2xl hover:bg-opacity-80 hover:scale-110 transition-all duration-200" aria-label="Imagen anterior">
+    &#x2190;
+  </button>
+
+  <button id="modal-next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center text-2xl hover:bg-opacity-80 hover:scale-110 transition-all duration-200" aria-label="Siguiente imagen">
+    &#x2192;
+  </button>
+
+  <div id="modal-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm bg-black bg-opacity-50 rounded-full px-3 py-1">
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const modal = document.getElementById("image-modal");
+    const modalContent = document.getElementById("modal-content");
+    const modalImage = document.getElementById("modal-image") as HTMLImageElement; 
+    const closeBtn = document.getElementById("modal-close-btn");
+    
+    const prevBtn = document.getElementById("modal-prev-btn");
+    const nextBtn = document.getElementById("modal-next-btn");
+    const modalCounter = document.getElementById("modal-counter");
+
+    const galleryImages = Array.from(document.querySelectorAll(".gallery-image"));
+    let currentImageIndex = -1;
+
+    if (modal && modalImage && closeBtn && modalContent && prevBtn && nextBtn && modalCounter) {
+      const openModal = (index) => {
+        if (index < 0 || index >= galleryImages.length) return;
+        
+        currentImageIndex = index;
+        const imageElement = galleryImages[index] as HTMLImageElement; 
+        modalImage.src = imageElement.src;
+        modalImage.alt = imageElement.dataset.alt || imageElement.alt;
+        
+        modalCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+        
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modalContent.classList.remove("scale-95");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeModal = () => {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modalContent.classList.add("scale-95");
+        document.body.style.overflow = "";
+        currentImageIndex = -1;
+      };
+
+      const navigateModal = (direction) => {
+        if (currentImageIndex === -1) return;
+        let nextIndex = currentImageIndex + direction;
+        if (nextIndex >= galleryImages.length) {
+          nextIndex = 0;
+        } else if (nextIndex < 0) {
+          nextIndex = galleryImages.length - 1;
+        }
+        openModal(nextIndex);
+      };
+
+      galleryImages.forEach((img, index) => {
+        img.addEventListener("click", () => openModal(index));
+      });
+
+      closeBtn.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      prevBtn.addEventListener("click", () => navigateModal(-1));
+      nextBtn.addEventListener("click", () => navigateModal(1));
+
+      document.addEventListener("keydown", (e) => {
+        if (modal.classList.contains("opacity-0")) return;
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight") navigateModal(1);
+        if (e.key === "ArrowLeft") navigateModal(-1);
+      });
+    }
+
+    const figmaIframe = document.getElementById("figma-iframe") as HTMLIFrameElement; 
+    if (figmaIframe) {
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const iframe = entry.target as HTMLIFrameElement; 
+            iframe.src = iframe.dataset.src;
+            observer.unobserve(iframe);
+          }
+        });
+      }, { rootMargin: "200px" });
+      observer.observe(figmaIframe);
+    }
+
+    const figmaContainer = document.getElementById("figma-container");
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+    if (figmaContainer && cursorDot && cursorOutline) {
+      figmaContainer.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '0';
+        cursorOutline.style.opacity = '0';
+      });
+      figmaContainer.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '1';
+        cursorOutline.style.opacity = '1';
+      });
+    }
+  });
+</script>
+<style>
+  .text-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+</style>

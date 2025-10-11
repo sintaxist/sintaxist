@@ -8,8 +8,15 @@ import IconBranch from "@/icons/IconBranch.astro";
 import IconDeploy from "@/icons/IconDeploy.astro";
 import IconCollaboration from "@/icons/IconCollaboration.astro";
 
+interface CategoryInfo {
+  icon: string;
+  title: string;
+  description: string;
+  pills: any[];
+}
+
 interface Props {
-  category: object,
+  category: CategoryInfo;
 }
 
 const icons = {
@@ -31,7 +38,9 @@ const IconComponent = icons[category.icon];
     {category.title}
   </h3>
 </header>
-<p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">{category.description}</p>
+<p class="font-secondary text-sm xs:text-base sm:text-md md:text-lg">
+  {category.description}
+</p>
 <div class="flex flex-wrap gap-2 sm:gap-2">
   {category.pills.map((pillLabel, index) => <Pill label={pillLabel} {index} />)}
 </div>

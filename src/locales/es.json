@@ -193,7 +193,18 @@
     "allProjectsTitle": "Todos mis Proyectos",
     "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
     "viewMore": "Ver más",
-    "textFigmaUrl": "Ver Figma",
+    "titles": {
+      "challenge": "El problema",
+      "goal": "La meta",
+      "process": "Mi proceso de diseño",
+      "results": "Resultados",
+      "gallery": "Galeria",
+      "future": "Oportunidades a futuro",
+      "timeframe": "Tiempo de desarrollo",
+      "tools": "Herramientas",
+      "role": "Mi rol",
+      "prototype": "Prototipo"
+    },
     "categories": {
       "all": "Todos",
       "ui-ux": "Diseño UI/UX",
@@ -204,32 +215,98 @@
     },
     "projects": [
       {
-        "slug": "landing-yoorco",
-        "title": "Landing Page para Yoorco",
-        "intro": "Transformé la experiencia digital de Yoorco, una empresa de desarrollo de software por suscripción, rediseñando su landing page para comunicar su valor con mayor claridad, estructura y modernidad.",
-        "seoDescription": "Caso de estudio del rediseño de la landing page de Yoorco. Diseño minimalista, responsive y optimizado para mejorar la conversión.",
+        "slug": "yoorco",
+        "title": "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
+        "description": "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
         "imgSrc": "https://i.imgur.com/Z0EcRIQh.jpeg",
-        "context": "Yoorco necesitaba actualizar su presencia digital para reflejar mejor su propuesta: ofrecer un departamento de desarrollo de software por una renta mensual. Su antigua web no transmitía con claridad su mensaje ni su profesionalismo.",
-        "process_title": "Proceso de Diseño",
-        "process_description": "El trabajo comenzó con una simplificación del logotipo. A partir de ahí, estructuré el nuevo diseño en Figma, creando un sistema visual basado en el minimalismo funcional y el equilibrio cromático.",
-        "process_list": [
-          "<strong>Identidad visual:</strong> Simplificación del logotipo y definición de una paleta cromática.",
-          "<strong>Arquitectura de la landing:</strong> Rediseño de la estructura para guiar al usuario con claridad.",
-          "<strong>Diseño UI y responsive:</strong> Creación de un diseño adaptable a desktop, tablet y mobile.",
-          "<strong>Entrega final:</strong> Proyecto documentado en Figma"
-        ],
-        "results_title": "Resultados",
-        "results_description": "El nuevo diseño permitió a Yoorco transmitir su mensaje de forma directa y profesional, fortaleciendo su presencia digital y mejorando la percepción de marca y confianza visual.",
-        "categoryIds": ["ui-ux", "frontend", "graphics"],
+
         "gallery": [
-          { "src": "/assets/projects/yoorco/process-1.webp", "alt": "Proceso de diseño Yoorco" },
-          { "src": "/assets/projects/yoorco/process-2.webp", "alt": "Wireframes y layout" }
+          { "src": "https://i.imgur.com/UEmRhmm.png", "alt": "Vista del dashboard del proyecto" },
+          { "src": "https://i.imgur.com/2LHwU02.png", "alt": "Diseño del perfil de usuario en móvil" },
+          { "src": "https://i.imgur.com/eZ9F2eH.png", "alt": "Diseño del perfil de usuario en móvil" }
         ],
+
+        "textFigmaUrl": "Ver Figma",
         "figmaUrl": "https://www.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&t=HnKMEsZBkmCl1JuT-1",
         "figmaEmbed": "https://embed.figma.com/design/kHpZdtjO6qXXCnRRcXUy8d/Landing-Yoorco?node-id=0-1&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": "Ver demo",
         "demoUrl": null,
-        "repoUrl": null
+
+        "categoryIds": ["ui-ux", "branding"],
+
+        "overview": " <strong>Yoorco</strong> es una empresa mexicana que ofrece desarrollo de software por suscripción, operando como un “departamento de tecnología externo” para startups y empresas en crecimiento.<br/><br/> El objetivo de este proyecto fue reimaginar su presencia digital, creando una landing page moderna, estratégica  y alineada con su visión de crecimiento tecnológico.<br/><br/> El resultado: una interfaz clara, limpia y flexible que transmite confianza y comunica valor con precisión.",
+
+        "timeframe": "1 Semana",
+        "role": "Diseñador UI / UX",
+        "tools": "Figma, FigJam, Photoshop, Illustrator",
+
+        "challenge": {
+          "description": " <strong>Yoorco</strong> necesitaba una landing page capaz de comunicar su servicio con precisión y consistencia visual, fortaleciendo la percepción de marca y facilitando la comprensión del modelo de neogcio."
+        },
+
+        "goal": {
+          "description": "Transmitir profesionalismo, claridad y enfoque tecnológico, alineando el branding con su propuesta de valor, y creando un sistema visual escalable y adaptable a cualquier dispositivo."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Empathize & Research",
+              "description": "Se analizaron referentes de empresas SaaS, estudios digitales y marcas tecnológicas con modelos de suscripción identificando patrones visuales efectivos:",
+              "list": [
+                "Jerarquía visual clara (beneficios sobre funciones).",
+                "Color como diferenciador, no saturación.",
+                "Uso estratégico del espacio negativo y tipografía moderna."
+              ]
+            },
+            {
+              "title": "Define & Ideate",
+              "description": "Se propuso una estructura narrativa en 5 secciones clave:",
+              "list": [
+                "Hero — Mensaje de valor directo + CTA.",
+                "Metas con Yoorco — Beneficios concretos.",
+                "Casos de Éxito — Confianza y resultados.",
+                "Clientes — Validación social.",
+                "Equipo — Humanización de la marca."
+              ]
+            },
+            {
+              "title": "Design & Prototype",
+              "description": "El rediseño se centró en una paleta cromática refinada y un sistema UI modular:",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#F77F08] w-6 h-6 circle-color'></span> #F77F08 — dinamismo, energía y acción",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#086FFD] w-6 h-6 circle-color'></span> #086FFD — tecnología y confianza.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FEFEFE] w-6 h-6 circle-color'></span> #FEFEFE — claridad visual.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#0E4085] w-6 h-6 circle-color'></span> #0E4085 — solidez y estabilidad."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Impacto clave",
+              "description": "El nuevo diseño permitió a Yoorco proyectar una identidad más profesional y confiable, con una comunicación clara del modelo de negocio. <br/> <br/> El enfoque en la jerarquía visual y el contenido estratégico generó una mejor comprensión del servicio y una experiencia más fluida para el usuario.",
+              "list": [
+                "+100% en claridad del mensaje visual.",
+                "Identidad digital sólida y escalable.",
+                "Mayor consistencia de marca entre medios digitales.",
+                "Base visual lista para integración en Astro."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "El siguiente paso natural para Yoorco sería integrar métricas UX y analítica de interacción, permitiendo medir el rendimiento de los CTAs, tiempos de permanencia y puntos de abandono. <br/> <br/> Además, el sistema visual está preparado para escalar hacia un diseño de producto completo, incluyendo dashboards, paneles administrativos o micrositios especializados."
+        }
       },
+
       {
         "slug": "farmvalley-landing",
         "title": "Landing Page FarmValley",

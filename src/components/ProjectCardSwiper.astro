@@ -1,10 +1,18 @@
 ---
 import ArrowIcon from "@/icons/Arrow.astro";
 
+interface Project {
+  slug: string;
+  title: string;
+  imgSrc: string;
+  description: string;
+}
+
 interface Props {
-  project: object;
+  project: Project;
   lang: string;
   size?: string;
+  categories?: object
 }
 
 const { project, lang, size = "small" } = Astro.props;
@@ -30,7 +38,7 @@ const isLarge = size === "large";
     <div class="skeleton-overlay" aria-hidden="true"></div>
 
     <div
-      class={`absolute backdrop-blur-sm backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[0%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] to-[124.76%] z-30`}
+      class={`w-full absolute backdrop-blur-sm backdrop-filter bg-gradient-to-t bottom-0 box-border content-stretch flex flex-col from-[#2c3a47] from-[0%] gap-2 items-start left-0 p-6 to-[rgba(44,58,71,0)] to-[124.76%] z-30`}
     >
       <h3
         class:list={[

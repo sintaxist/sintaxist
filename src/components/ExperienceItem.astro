@@ -5,8 +5,16 @@ import IconMinsait from "@/icons/IconMinsait.astro";
 import IconPayvalida from "@/icons/IconPayvalida.astro";
 import IconYoorco from "@/icons/IconYoorco.astro";
 
+interface InfoJobs {
+  icon: string;
+  company: string;
+  role: string;
+  dates: string;
+  tasks: any[];
+}
+
 interface Props {
-  job: object,
+  job: InfoJobs,
   isLast?: boolean,
 }
 

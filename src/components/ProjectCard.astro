@@ -2,8 +2,17 @@
 import Pill from "@/components/ui/Pill.astro";
 import ArrowIcon from "@/icons/Arrow.astro";
 
+interface Project {
+  slug: string;
+  title: string;
+  imgSrc: string;
+  description: string;
+  viewMore: string;
+  categoryIds: any[];
+}
+
 interface Props {
-  project: object,
+  project: Project,
   lang: string,
   isLarge?: boolean,
   categories?: object,

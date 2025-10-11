@@ -4,8 +4,16 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter.astro";
 import Button from "@/components/ui/Button.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 
+interface Transaltion {
+  title: string;
+  paragraph1: string;
+  paragraph2: string;
+  stats: any[];
+  cta: string;
+}
+
 interface Props {
-  t: object,
+  t: Transaltion,
 }
 
 const { t } = Astro.props;

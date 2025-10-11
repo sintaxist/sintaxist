@@ -5,9 +5,17 @@ import ProjectCardSwiper from "@/components/ProjectCardSwiper.astro";
 import Button from "@/components/ui/Button.astro";
 import GridCardsLayout from "@/components/GridCardsLayout.astro";
 
+interface Translation {
+  title: string;
+  description: string;
+  ctaAllProjects: string;
+  projects: any[];
+  categories: any[];
+}
+
 interface Props {
-  t: object,
-  lang?: string
+  t: Translation;
+  lang?: string;
 }
 
 const { t, lang } = Astro.props;
@@ -30,7 +38,7 @@ const { t, lang } = Astro.props;
     <div class="swiper mySwiper pb-12">
       <div id="swiper-cards" class="swiper-wrapper">
         {
-          t.projects.map((project, index) => (
+          t.projects.map((project) => (
             <ProjectCardSwiper {project} {lang} categories={t.categories} />
           ))
         }
