@@ -6,6 +6,7 @@ interface Props {
   border?: boolean;
   secondChild?: boolean;
   secondId?: string;
+  threshold?: string
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   border = true,
   secondChild = false,
   secondId,
+  threshold
 } = Astro.props;
 
 const containerBase =
@@ -31,12 +33,13 @@ const borderClass = border
       "p-6 md:p-10 lg:p-12 border-primary rounded-2xl border-3"
   : "";
 
-const sectionBase = "w-full max-w-screen-2xl mx-auto animation-group";
+const sectionBase = "w-full max-w-screen-2xl mx-auto";
 ---
 
 <div
-  class:list={[containerBase, colorClasses]}
+  class:list={[containerBase, colorClasses, "animation-group"]}
   data-section-theme={color === "primary" ? "dark" : "light"}
+  data-threshold={threshold || "0.1"}
 >
   <section id={id} class:list={[sectionBase, borderClass, className]}>
     <slot />

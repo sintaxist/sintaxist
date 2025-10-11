@@ -106,39 +106,17 @@ const {
 </html>
 
 <script is:inline>
-  const hasBeenRedirected = sessionStorage.getItem("lang_redirected");
-
-  if (!hasBeenRedirected) {
-    const userLang = navigator.language.split("-")[0];
-    const currentPath = window.location.pathname;
-
-    if (userLang === "en" && currentPath === "/") {
-      window.location.href = "/en/";
-    }
-
-    sessionStorage.setItem("lang_redirected", "true");
-  }
-
-  const lang = localStorage.getItem("lang") || "es";
-  document.documentElement.lang = lang;
-  document.documentElement.classList.add(`lang-${lang}`);
-</script>
-
-<script is:inline>
   let lastNavigationDirection = "initial";
   let isNavigating = false;
   let animationsComplete = false;
 
-  // Detectar dirección de navegación
   document.addEventListener("astro:before-preparation", (event) => {
     lastNavigationDirection = event.direction;
   });
 
-  // Antes de cambiar de página, marcar que estamos navegando
   document.addEventListener("astro:before-swap", () => {
     isNavigating = true;
     animationsComplete = false;
-    // Cancelar cualquier animación pendiente
     const animatingElements = document.querySelectorAll(".is-animating");
     animatingElements.forEach((el) => {
       el.classList.remove("is-animating");
@@ -146,16 +124,15 @@ const {
   });
 
   document.addEventListener("astro:page-load", () => {
-    // Resetear el flag después de un pequeño delay
     setTimeout(() => {
       isNavigating = false;
     }, 100);
 
     const animationGroups = document.querySelectorAll(".animation-group");
 
-    // Bloquear clicks en las cards durante las animaciones
     const projectCards = document.querySelectorAll(".project-card");
     if (projectCards.length > 0 && lastNavigationDirection !== "back") {
+      // CORRECCIÓN: Se quitó 'as HTMLElement'
       projectCards.forEach((card) => {
         card.style.pointerEvents = "none";
       });
@@ -173,7 +150,13 @@ const {
       const observer = new IntersectionObserver(
         (entries, observer) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+            // CORRECCIÓN: Se quitó 'as HTMLElement'
+            const target = entry.target;
+            const requiredThreshold = parseFloat(target.dataset.threshold) || 0.1;
+
+            console.log(requiredThreshold)
+
+            if (entry.isIntersecting && entry.intersectionRatio >= requiredThreshold) {
               const group = entry.target;
               const elementsToAnimate = group.querySelectorAll(
                 '[data-animate="text"]'
@@ -184,13 +167,11 @@ const {
                   element.getAttribute("data-animation-type") === "card";
 
                 if (lastNavigationDirection === "back" && isCard) {
-                  element.classList.add("no-transition");
-                  element.classList.add("is-visible");
+                  element.classList.add("no-transition", "is-visible");
                   completedAnimations++;
                 } else {
                   animateText(element, () => {
                     completedAnimations++;
-                    // Cuando todas las animaciones terminen, habilitar clicks
                     if (completedAnimations >= totalAnimations) {
                       enableProjectCards();
                     }
@@ -202,7 +183,7 @@ const {
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] }
       );
 
       animationGroups.forEach((group) => observer.observe(group));
@@ -216,7 +197,7 @@ const {
 
     function animateText(element, callback) {
       const delay = parseInt(element.getAttribute("data-delay")) || 0;
-      const animationDuration = 600; // duración de la animación en ms
+      const animationDuration = 600;
 
       setTimeout(() => {
         if (isNavigating) {
@@ -225,7 +206,6 @@ const {
         }
         element.classList.add("is-visible", "is-animating");
 
-        // Llamar al callback cuando termine la animación
         setTimeout(() => {
           callback && callback();
         }, animationDuration);
@@ -237,29 +217,19 @@ const {
       animationsComplete = true;
 
       const projectCards = document.querySelectorAll(".project-card");
+      // CORRECCIÓN: Se quitó 'as HTMLElement'
       projectCards.forEach((card) => {
         card.style.pointerEvents = "auto";
       });
     }
 
-    // Si venimos de 'back', habilitar inmediatamente
     if (lastNavigationDirection === "back") {
       enableProjectCards();
     }
   });
 
-  // Limpiar estado al terminar la transición
   document.addEventListener("astro:after-swap", () => {
     isNavigating = false;
-  });
-</script>
-<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script is:inline>
-  document.addEventListener("astro:page-load", () => {
-    AOS.init({
-      duration: 800, // Duración de la animación
-      once: true, // Animar solo una vez
-    });
   });
 </script>
 

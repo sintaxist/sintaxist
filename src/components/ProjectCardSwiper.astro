@@ -12,7 +12,7 @@ interface Props {
   project: Project;
   lang: string;
   size?: string;
-  categories?: object
+  categories?: object;
 }
 
 const { project, lang, size = "small" } = Astro.props;
@@ -50,7 +50,13 @@ const isLarge = size === "large";
       </h3>
       {
         project.description && (
-          <p class="font-secondary text-sm">{project.description}</p>
+          <p
+            class="line-clamp-2 font-secondary text-sm"
+            title={project.description}
+            aria-label={project.description}
+          >
+            {project.description}
+          </p>
         )
       }
       <div
@@ -105,15 +111,5 @@ const isLarge = size === "large";
     100% {
       background-position: 1000px 0;
     }
-  }
-
-  .project-card img.project-image.loaded + .skeleton-overlay {
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.45s ease-in-out,
-      visibility 0.45s ease-in-out;
-    animation: none;
-    pointer-events: none;
   }
 </style>

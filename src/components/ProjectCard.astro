@@ -70,7 +70,11 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
       </h3>
       {
         isLarge && project.description && (
-          <p class="font-secondary text-base line-clamp-2">
+          <p
+            class="font-secondary text-base line-clamp-2"
+            title={project.description}
+            aria-label={project.description}
+          >
             {project.description}
           </p>
         )
