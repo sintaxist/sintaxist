@@ -2,18 +2,20 @@
 import ArrowIcon from "@/icons/Arrow.astro";
 
 interface Props {
-    defaultPath?: string;
+    lang: string; // Idioma actual
     info: string;
     className?: string;
 }
 
-const { defaultPath = "/", info, className = "" } = Astro.props;
+const { lang, info, className = "" } = Astro.props;
+const homePath = `/${lang}/`;
+const projectsPath = `/${lang}/projects/`;
 ---
 
 <a
-    href={defaultPath}
+    href={homePath}
     id="smart-back-button"
-    data-default-path={defaultPath}
+    data-lang={lang}
     class={`hidden text-xs md:text-sm relative font-secondary text-primary hover:text-primary-hover transition-colors font-bold w-fit group ${className}`}
 >
     <ArrowIcon
@@ -26,33 +28,43 @@ const { defaultPath = "/", info, className = "" } = Astro.props;
 document.addEventListener("astro:page-load", () => {
     const backButton = document.getElementById("smart-back-button");
 
-    if (backButton) {
-        backButton.addEventListener("click", (e) => {
-            e.preventDefault();
+    if (!backButton) return;
 
-            const defaultPath = backButton.getAttribute("data-default-path") || "/";
-            const referrer = document.referrer;
-            const hasHistory = window.history.length > 1;
+    backButton.addEventListener("click", (e) => {
+        e.preventDefault();
 
-            if (hasHistory && referrer) {
-                try {
-                    const referrerURL = new URL(referrer);
-                    const comesFromSameSite = referrerURL.origin === window.location.origin;
+        const lang = backButton.getAttribute("data-lang") || "es";
+        const referrer = document.referrer;
+        const currentPath = window.location.pathname;
 
-                    // Si viene del mismo sitio y NO es "projects", vamos atrás
-                    if (comesFromSameSite && !referrerURL.pathname.includes("/projects")) {
-                        window.history.back();
-                        return;
-                    }
-                } catch (err) {
-                    console.warn("Error parsing referrer URL:", err);
-                }
+        const homePath = `/${lang}/`;
+        const projectsPath = `/${lang}/projects/`;
+
+        // Caso: estamos en /projects/[slug]
+        if (currentPath.startsWith(projectsPath) && currentPath !== projectsPath) {
+            if (referrer.endsWith(homePath)) {
+                window.location.href = projectsPath; // Volvemos a /projects/
+            } else {
+                window.location.href = projectsPath; // Siempre volver a /projects/
             }
+            return;
+        }
 
-            // Si no hay historial válido o viene de projects, ir al defaultPath
-            window.location.href = defaultPath;
-        });
-    }
+        // Caso: estamos en /projects/
+        if (currentPath === projectsPath) {
+            window.location.href = homePath; // Volvemos a home
+            return;
+        }
+
+        // Cualquier otro caso, usar historial si existe
+        if (window.history.length > 1) {
+            window.history.back();
+            return;
+        }
+
+        // Por defecto, ir al home
+        window.location.href = homePath;
+    });
 });
 </script>
 

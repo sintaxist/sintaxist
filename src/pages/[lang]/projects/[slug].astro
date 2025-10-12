@@ -63,7 +63,7 @@ const { project, lang, header, sections, footer, categories, ctaBack, titles, pr
     transition:name={project.slug}
   >
     <header class="flex flex-col gap-4">
-      <BackButton info={ctaBack} />
+      <BackButton info={ctaBack} {lang}/>
       <h1
         class="md:text-center font-primary text-2xl sm:text-3xl md:text-5xl text-primary mb-4 leading-[130%] anim-item"
         data-animate="text"
