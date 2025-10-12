@@ -23,50 +23,58 @@ const { defaultPath = "/", info, className = "" } = Astro.props;
 </a>
 
 <script>
-    document.addEventListener("astro:page-load", () => {
-        const backButton = document.getElementById("smart-back-button");
+document.addEventListener("astro:page-load", () => {
+    const backButton = document.getElementById("smart-back-button");
 
-        if (backButton) {
-            backButton.addEventListener("click", (e) => {
-                e.preventDefault();
+    if (backButton) {
+        backButton.addEventListener("click", (e) => {
+            e.preventDefault();
 
-                const defaultPath =
-                    backButton.getAttribute("data-default-path") || "/";
+            const defaultPath = backButton.getAttribute("data-default-path") || "/";
+            const referrer = document.referrer;
+            const hasHistory = window.history.length > 1;
 
-                const hasHistory = window.history.length > 1;
-                const comesFromSameSite =
-                    document.referrer &&
-                    new URL(document.referrer).origin ===
-                        window.location.origin;
+            if (hasHistory && referrer) {
+                try {
+                    const referrerURL = new URL(referrer);
+                    const comesFromSameSite = referrerURL.origin === window.location.origin;
 
-                if (hasHistory && comesFromSameSite) {
-                    window.history.back();
-                } else {
-                    window.location.href = defaultPath;
+                    // Si viene del mismo sitio y NO es "projects", vamos atrás
+                    if (comesFromSameSite && !referrerURL.pathname.includes("/projects")) {
+                        window.history.back();
+                        return;
+                    }
+                } catch (err) {
+                    console.warn("Error parsing referrer URL:", err);
                 }
-            });
-        }
-    });
+            }
+
+            // Si no hay historial válido o viene de projects, ir al defaultPath
+            window.location.href = defaultPath;
+        });
+    }
+});
 </script>
+
 <style>
-    #smart-back-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
+#smart-back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-    #smart-back-button:before {
-        content: "";
-        width: 0;
-        height: 2px;
-        background-color: var(--color-primary);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        transition: width 0.3s ease-out;
-    }
+#smart-back-button:before {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+}
 
-    #smart-back-button:hover:before {
-        width: 100%;
-    }
+#smart-back-button:hover:before {
+    width: 100%;
+}
 </style>
