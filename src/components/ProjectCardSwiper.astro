@@ -112,4 +112,13 @@ const isLarge = size === "large";
       background-position: 1000px 0;
     }
   }
+
+  .project-card img.project-image.loaded + .skeleton-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease-out,
+      visibility 0.3s ease-out;
+    animation: none;
+  }
 </style>

@@ -10,7 +10,7 @@
   "sections": {
     "home": "Inicio",
     "aboutMe": "Sobre mí",
-    "projects": "Mis proyectos",
+    "projects": "Ultimos proyectos",
     "experience": "Mí experiencia",
     "skills": "Skills",
     "contact": "Hablemos"
@@ -185,18 +185,20 @@
     "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
   },
   "projectsPage": {
-    "title": "Mis proyectos",
+    "title": "Ultimos proyectos",
     "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "ctaAllProjects": "Ver todos los proyectos",
     "ctaBack": "Regresar",
     "ctaBacktoHome": "Volver al Inicio",
     "allProjectsTitle": "Todos mis Proyectos",
-    "allProjectsDescription": "Explora los diferentes trabajos que he realizado, filtrando por categoría.",
+    "allProjectsDescription": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "viewMore": "Ver más",
     "titles": {
       "challenge": "El problema",
       "goal": "La meta",
       "process": "Mi proceso de diseño",
+      "personas": "User personas",
+      "concept": "Concepto",
       "results": "Resultados",
       "gallery": "Galeria",
       "future": "Oportunidades a futuro",
@@ -211,19 +213,748 @@
       "frontend": "Desarrollo Frontend",
       "branding": "Branding",
       "cms": "CMS Headless",
-      "graphics": "Diseño Gráfico"
+      "graphics": "Diseño Gráfico",
+      "landing": "Landing Page",
+      "development": "CI / CD",
+      "wordpress": "WordPress / CMS",
+      "startup": "Startup",
+      "illustration": "Ilustración",
+      "research": "Investigación UX",
+      "product": "Estrategia de Producto"
     },
     "projects": [
       {
+        "slug": "kairos-lighting",
+        "title": "Diseñando identidad a través de la luz — Kairos Lighting Landing Page",
+        "metaDescription": "Diseño de la landing page para Kairos Lighting, una marca especializada en experiencias lumínicas personalizadas. Un enfoque minimalista que comunica elegancia, emoción e innovación visual.",
+        "description": "Diseño de la landing page para Kairos Lighting, una marca especializada en experiencias lumínicas personalizadas. Un enfoque minimalista que comunica elegancia, emoción e innovación visual.",
+        "imgSrc": "https://i.imgur.com/76jQKxa.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/ihtFVlH.png",
+            "alt": "Vista general del diseño de la landing Kairos Lighting"
+          },
+          {
+            "src": "https://i.imgur.com/tJ131u5.png",
+            "alt": "Vista de la sección de proyectos en Kairos Lighting"
+          },
+          {
+            "src": "https://i.imgur.com/NcP7vlF.png",
+            "alt": "Diseño mobile de Kairos Lighting"
+          },
+          {
+            "src": "https://i.imgur.com/SG0Zux8.png",
+            "alt": "Diseño mobile de Kairos Lighting"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/NWYxgKxT6YAV57LfoEgVVY/Kairos-Lighting?node-id=3201-167&t=BIMaSOhCHNg0Ilc6-1",
+        "figmaEmbed": "https://embed.figma.com/design/NWYxgKxT6YAV57LfoEgVVY/Kairos-Lighting?node-id=3201-167&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": "Ver demo",
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "branding", "landing"],
+
+        "overview": "<strong>Kairos Lighting</strong> es una empresa mexicana dedicada a crear experiencias lumínicas que trascienden la funcionalidad. Su enfoque une innovación, estética y eficiencia, transformando la luz en identidad visual.<br/><br/>Este proyecto marcó su primera presencia digital. El objetivo fue diseñar una landing page minimalista y elegante que reflejara su esencia: claridad, precisión y carácter visual.<br/><br/>El resultado: una interfaz limpia, armónica y coherente con la marca, donde cada detalle transmite luminosidad y profesionalismo.",
+
+        "timeframe": "1 Semana",
+        "role": "Diseñador UI / UX",
+        "tools": "Figma, FigJam, Illustrator",
+
+        "challenge": {
+          "description": "Kairos Lighting no contaba con presencia digital previa. El reto fue construir desde cero una identidad visual web que reflejara su maestría en iluminación, transmitiendo sofisticación, innovación y una fuerte conexión emocional con su filosofía de marca."
+        },
+
+        "goal": {
+          "description": "Diseñar una landing page moderna y funcional que proyecte la esencia de Kairos Lighting: una marca que convierte la luz en una forma de expresión. El objetivo fue comunicar profesionalismo, orden visual y una narrativa minimalista que respire luminosidad."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Empathize & Research",
+              "description": "Se analizaron referencias de estudios de diseño lumínico y marcas de interiorismo premium para definir un lenguaje visual elegante y contemporáneo.",
+              "list": [
+                "Predominancia de espacios negativos y equilibrio tipográfico.",
+                "Paleta cromática basada en contraste luz/oscuridad.",
+                "Jerarquía visual limpia para guiar la atención sin distracciones."
+              ]
+            },
+            {
+              "title": "Define & Ideate",
+              "description": "Se diseñó una arquitectura de información clara y jerárquica, con 7 secciones principales que articulan la identidad de la marca:",
+              "list": [
+                "Inicio — Impacto visual y mensaje central.",
+                "Nosotros — Filosofía y propósito de marca.",
+                "Proyectos — Casos destacados y ejemplos reales.",
+                "Servicios — Especialización en soluciones lumínicas.",
+                "Marcas — Asociaciones y proveedores premium.",
+                "Testimonios — Confianza y respaldo humano.",
+                "Contacto — Conversión directa y accesible."
+              ]
+            },
+            {
+              "title": "Design & Prototype",
+              "description": "El diseño se desarrolló exclusivamente en Figma, con enfoque mobile-first y principios de diseño minimalista. La identidad visual se consolidó con una paleta cromática inspirada en la luz y el contraste:",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#8B0007] w-6 h-6 circle-color'></span> #8B0007 — intensidad y carácter visual.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FFF6F4] w-6 h-6 circle-color'></span> #FFF6F4 — claridad y pureza de marca.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#3E4940] w-6 h-6 circle-color'></span> #3E4940 — solidez y elegancia tipográfica."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Impacto clave",
+              "description": "El diseño marcó el inicio de la identidad digital de Kairos Lighting, estableciendo una base visual coherente y atemporal. Su nueva presencia online logró transmitir profesionalismo y confianza, reflejando la esencia de su propuesta: iluminar con propósito.",
+              "list": [
+                "Primera presencia digital oficial de la marca.",
+                "Refuerzo del posicionamiento visual en redes sociales.",
+                "Diseño adaptable y preparado para escalar a desktop.",
+                "Estilo visual alineado con la filosofía de iluminación emocional."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "El siguiente paso para Kairos Lighting será extender su ecosistema digital hacia un catálogo interactivo de proyectos y una sección de e-commerce para soluciones lumínicas personalizadas.<br/><br/>El sistema visual está listo para evolucionar hacia un sitio completo multi-página, manteniendo la coherencia y la atmósfera luminosa que define a la marca."
+        }
+      },
+
+      {
+        "slug": "invitacion-jimena-canek",
+        "title": "Una experiencia digital para celebrar el amor — Invitación Jimena & Canek",
+        "metaDescription": "Una invitación de boda interactiva desarrollada con Next.js y Strapi, que combina diseño, tecnología y emoción para ofrecer una experiencia única y personalizada.",
+        "description": "Una invitación de boda digital creada para Jimena y Canek, con un enfoque en fluidez, control y diseño emocional. Desarrollada con Next.js, Strapi y PostgreSQL, ofrece una experiencia única, funcional y totalmente automatizada.",
+        "imgSrc": "https://i.imgur.com/on31UDFl.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/9Xz0m8F.png",
+            "alt": "Vista principal de la invitación de boda Jimena & Canek"
+          },
+          {
+            "src": "https://i.imgur.com/olzxtwh.png",
+            "alt": "Sección del formulario de confirmación de asistencia"
+          },
+          {
+            "src": "https://i.imgur.com/osYOSlx.png",
+            "alt": "Galería interactiva y detalles del evento"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/kK3eZqmNj2qX3caKNFSSl8/Invitacion-Jimena---Canek?node-id=21-2&t=nK5EIJIbBF6CkARt-1",
+        "figmaEmbed": "https://embed.figma.com/design/kK3eZqmNj2qX3caKNFSSl8/Invitacion-Jimena---Canek?node-id=21-2&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": "Ver demo",
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "frontend", "development"],
+
+        "overview": "<strong>Invitación Jimena & Canek</strong> fue un proyecto integral que combinó <strong>diseño, desarrollo y branding</strong> para crear una experiencia digital de boda personalizada.<br/><br/>El objetivo fue optimizar la gestión de invitados, simplificar confirmaciones y ofrecer una experiencia emotiva, elegante y funcional.<br/><br/>El resultado: una plataforma intuitiva, automatizada y visualmente coherente con la identidad del evento, desde la invitación digital hasta los materiales físicos y el filtro de Instagram.",
+
+        "timeframe": "3 Semanas",
+        "role": "Diseñador UI / UX, Desarrollador Front-End",
+        "tools": "Figma, Next.js, Strapi, PostgreSQL, Photoshop, Illustrator",
+
+        "challenge": {
+          "description": "El reto principal fue crear una invitación digital que no solo comunicara la esencia del evento, sino que también gestionara dinámicamente invitados, confirmaciones y accesos personalizados, todo dentro de una interfaz fluida y emocionalmente atractiva."
+        },
+
+        "goal": {
+          "description": "Ofrecer una experiencia digital completa para una boda moderna: una invitación interactiva, un sistema de control de invitados automatizado y un diseño coherente entre lo físico y lo digital."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Research & Concept",
+              "description": "Se analizaron tendencias en invitaciones digitales y experiencias de usuario aplicadas a eventos sociales, buscando equilibrar elegancia, emoción y usabilidad.",
+              "list": [
+                "Diseño emocional centrado en la historia de los novios.",
+                "Colores cálidos y tipografía serif para transmitir cercanía y elegancia.",
+                "Arquitectura de información optimizada para flujo y claridad."
+              ]
+            },
+            {
+              "title": "Design & Development",
+              "description": "Se diseñó y desarrolló una landing interactiva con Next.js, Strapi y PostgreSQL, integrando animaciones y automatizaciones:",
+              "list": [
+                "Sección Hero — historia y contexto del evento.",
+                "Formulario de asistencia con filtrado por familia y envío automático de boletos personalizados vía correo.",
+                "Lista de espera para nuevos asistentes y control desde CMS.",
+                "Galería con subida de fotos del evento y mesa de regalos.",
+                "Panel administrativo en Strapi con control de invitados, exportación de datos y gestión de mensajes."
+              ]
+            },
+            {
+              "title": "Branding & Experience",
+              "description": "El diseño visual se extendió más allá del entorno digital para crear una experiencia coherente:",
+              "list": [
+                "Boletos de entrada personalizados.",
+                "Tents de mesa y etiquetas para obsequios.",
+                "Filtro de Instagram con identidad visual del evento."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Resultados e impacto",
+              "description": "La invitación digital transformó la experiencia de gestión y comunicación del evento, reduciendo tiempos, errores y esfuerzo administrativo.<br/><br/>Además, generó una experiencia memorable para los invitados al integrar diseño, interacción y tecnología.",
+              "list": [
+                "Automatización completa de confirmaciones y envío de boletos.",
+                "Más de 200 invitados gestionados digitalmente.",
+                "Integración visual coherente entre branding físico y digital.",
+                "Sistema CMS flexible y reutilizable para futuros eventos."
+              ]
+            }
+          ]
+        },
+
+        "future": null
+      },
+
+      {
+        "slug": "midogu",
+        "title": "Midogu — Plataforma para la adopción responsable de mascotas",
+        "metaDescription": "Midogu es una plataforma digital diseñada para fomentar la adopción responsable de perros, ofreciendo una experiencia personalizada que conecta a adoptantes, refugios y profesionales del bienestar animal.",
+        "description": "Midogu es una plataforma que impulsa la adopción responsable de perros, conectando a personas interesadas con refugios, criadores certificados y servicios complementarios. <br/><br/>El proyecto abordó tanto el diseño UI/UX como el desarrollo frontend, con el objetivo de mejorar la experiencia de adopción, fortalecer la confianza del usuario y promover el bienestar animal mediante un enfoque ético y tecnológico.",
+        "imgSrc": "https://i.imgur.com/7cHJabv.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/Wfs74CM.png",
+            "alt": "Vista del home de la plataforma Midogu"
+          },
+          {
+            "src": "https://i.imgur.com/Yza43JQ.png",
+            "alt": "Pantalla de resultados del test de compatibilidad"
+          },
+          {
+            "src": "https://i.imgur.com/Wi9HpmV.png",
+            "alt": "Diseño de la ficha de adopción de mascota"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/K19zMSHXFnejuWjeUyd105/Midogu?node-id=0-1&t=JscViwTM6jHLDm7L-1",
+        "figmaEmbed": "https://embed.figma.com/design/K19zMSHXFnejuWjeUyd105/Midogu?node-id=0-1&embed-host=share",
+        "repoUrl": null,
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "frontend", "branding"],
+
+        "overview": "<strong>Midogu</strong> busca transformar el proceso de adopción de mascotas en una experiencia más humana, confiable y digital. <br/><br/>El proyecto partió de la necesidad de resolver problemas de transparencia, compatibilidad y acceso a información confiable. Se desarrolló una plataforma web que combina un test de compatibilidad, un sistema de gestión de refugios y herramientas de seguimiento post-adopción.",
+
+        "timeframe": "3 Meses",
+        "role": "Diseñador UI/UX, Desarrollador Frontend, Gestor de Cliente",
+        "tools": "Figma, Next.js, Illustrator, Photoshop",
+
+        "challenge": {
+          "description": "El principal reto fue diseñar una experiencia digital que inspirara confianza en un proceso tradicionalmente complejo. La plataforma debía educar sobre adopción responsable, ofrecer herramientas prácticas y mantener la coherencia visual con los elementos gráficos ya existentes que el cliente deseaba conservar."
+        },
+
+        "goal": {
+          "description": "Fomentar la adopción responsable y el bienestar animal, ofreciendo una experiencia intuitiva, emocional y eficiente. Se buscó reducir la fricción en la búsqueda de mascotas compatibles y fortalecer la relación entre usuarios, refugios y profesionales."
+        },
+
+        "research": {
+          "title": "Investigación de Usuarios",
+          "description": "Se realizó una encuesta a 110 personas interesadas en adoptar o comprar mascotas para entender motivaciones, frustraciones y expectativas. Esto permitió definir patrones de comportamiento y validar hipótesis sobre la experiencia de adopción digital.",
+          "insights": [
+            "El 78% de los encuestados prefería adoptar, pero desconfiaba de los procesos actuales.",
+            "El 64% valoraba recibir asesoramiento profesional antes de adoptar.",
+            "El 52% deseaba una herramienta que filtrara perros según estilo de vida y personalidad."
+          ]
+        },
+
+        "personas": {
+          "childs": [
+            {
+              "name": "María García",
+              "age": "29 años",
+              "occupation": "Diseñadora Gráfica",
+              "goals": "Encontrar un perro que se adapte a su estilo de vida activo y apoyar una causa altruista.",
+              "frustrations": "Falta de transparencia en refugios y dificultad para encontrar un perro adecuado.",
+              "needs": "Plataforma con recomendaciones personalizadas y recursos sobre adopción."
+            },
+            {
+              "name": "Pablo Martínez",
+              "age": "35 años",
+              "occupation": "Ejecutivo Financiero",
+              "goals": "Encontrar un perro ideal para vivir en un apartamento con poco mantenimiento.",
+              "frustrations": "Dificultad para encontrar información confiable sobre razas adecuadas para espacios reducidos.",
+              "needs": "Sistema que sugiera perros según estilo de vida y horarios."
+            },
+            {
+              "name": "Ana López",
+              "age": "45 años",
+              "occupation": "Ama de casa",
+              "goals": "Adoptar un perro amigable con niños y que se integre en la vida familiar.",
+              "frustrations": "Falta de opciones de adopción cercanas y poca información sobre compatibilidad con niños.",
+              "needs": "Plataforma con filtros claros y fichas informativas detalladas."
+            }
+          ]
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Análisis y Planeación",
+              "description": "Se realizó un Business Model Canvas para identificar los segmentos de clientes, propuesta de valor y fuentes de ingreso. También se definieron los hitos clave del MVP."
+            },
+            {
+              "title": "Diseño UI/UX",
+              "description": "Se creó un sistema de diseño unificado reutilizando los assets existentes del cliente, adaptando colores, tipografías y componentes para mantener coherencia con la identidad previa."
+            },
+            {
+              "title": "Desarrollo Frontend",
+              "description": "Implementación del MVP en Next.js con arquitectura modular, priorizando rendimiento e internacionalización. El diseño fue responsive y optimizado para desktop y mobile."
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Impacto y Resultados",
+              "description": "Midogu consolidó su MVP y validó su propuesta de valor con usuarios reales. La nueva interfaz generó mayor confianza y una navegación clara.",
+              "list": [
+                "Experiencia de adopción más transparente y personalizada.",
+                "Validación positiva en pruebas de usabilidad con usuarios.",
+                "Base sólida para futura expansión del ecosistema digital."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "El siguiente paso para Midogu es escalar su plataforma hacia una experiencia móvil nativa y fortalecer la relación con refugios mediante dashboards de gestión y analítica de adopciones."
+        }
+      },
+
+      {
+        "slug": "fondo-real-mx",
+        "title": "Diseñando confianza y cercanía para el sector financiero — Fondo Real MX",
+        "metaDescription": "Una landing page desarrollada en WordPress para Fondo Real MX, enfocada en comunicar accesibilidad, confianza y soluciones financieras para el sector agropecuario y empresarial.",
+        "description": "Diseño y desarrollo de la nueva presencia digital de Fondo Real MX en WordPress, con un enfoque humano y accesible para el sector agropecuario y productivo. El resultado: un sitio web cálido, claro y funcional que inspira confianza y cercanía.",
+        "imgSrc": "https://i.imgur.com/vEFTvgoh.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/SzFog5o.png",
+            "alt": "Vista principal de la landing page de Fondo Real MX"
+          },
+          {
+            "src": "https://i.imgur.com/JKsdeHi.png",
+            "alt": "Sección de créditos en la página principal"
+          },
+          {
+            "src": "https://i.imgur.com/DafFaNq.png",
+            "alt": "Diseño de la página de detalle de crédito"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/VqaOM2hZzETvEbvTmSHBHo/Fondo-Real-MX?node-id=0-1&t=m92FrFnWz2EDg2Pz-1",
+        "figmaEmbed": "https://embed.figma.com/design/VqaOM2hZzETvEbvTmSHBHo/Fondo-Real-MX?node-id=0-1&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": "Ver sitio",
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "wordpress", "landing"],
+
+        "overview": "<strong>Fondo Real MX</strong> es una empresa mexicana especializada en ofrecer soluciones financieras al sector agropecuario, empresarial y productivo.<br/><br/>El proyecto consistió en diseñar y desarrollar su nueva presencia digital en <strong>WordPress</strong>, creando una landing page estratégica y páginas de detalle para cada tipo de crédito.<br/><br/>El resultado fue un sitio accesible, confiable y visualmente cálido, que refleja empatía con su público objetivo y comunica los valores de cercanía y crecimiento.",
+
+        "timeframe": "2 Semanas",
+        "role": "Diseñador UI / UX, Desarrollador WordPress",
+        "tools": "Figma, WordPress, Elementor, Photoshop, Illustrator",
+
+        "challenge": {
+          "description": "El desafío principal fue diseñar una experiencia digital que rompiera la barrera de desconfianza hacia el financiamiento, creando una interfaz más humana, visualmente amigable y cercana al sector agropecuario y productivo."
+        },
+
+        "goal": {
+          "description": "Transmitir confianza, accesibilidad y profesionalismo, evitando una estética fría o corporativa, mediante una paleta de colores cálida y un lenguaje visual adaptado al público objetivo."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Research & Insights",
+              "description": "Se analizaron referentes del sector financiero y rural, identificando los elementos que comunican seguridad sin perder cercanía:",
+              "list": [
+                "Uso de colores cálidos y contrastes suaves.",
+                "Jerarquía visual centrada en beneficios y confianza.",
+                "Tipografía clara y mensajes empáticos."
+              ]
+            },
+            {
+              "title": "Design & Structure",
+              "description": "Se estructuró la landing page y las páginas de detalle de créditos con secciones estratégicas:",
+              "list": [
+                "Hero con mensaje de valor directo y llamado a la acción.",
+                "Quiénes somos — narrativa institucional cercana.",
+                "Nuestros créditos — estructura comparativa y visual.",
+                "Historias que inspiran confianza — testimonios y casos reales.",
+                "Sección de contacto — enfoque en claridad y acompañamiento."
+              ]
+            },
+            {
+              "title": "Visual Identity",
+              "description": "Se aplicó una paleta de color inspirada en la tierra y la energía del campo:",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#57DFCB] w-6 h-6 circle-color'></span> #57DFCB — frescura y accesibilidad.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FFD44A] w-6 h-6 circle-color'></span> #FFD44A — energía y optimismo.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FEFAF5] w-6 h-6 circle-color'></span> #FEFAF5 — calidez y apertura.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#1F1F1F] w-6 h-6 circle-color'></span> #1F1F1F — contraste y legibilidad."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Resultados",
+              "description": "La nueva página web permitió a Fondo Real MX establecer su primera presencia digital sólida, alineada a su identidad y valores de marca.<br/><br/>El diseño cálido y accesible aumentó la confianza de sus clientes y facilitó la comprensión de sus productos financieros.",
+              "list": [
+                "Primera presencia digital de la marca.",
+                "Estructura adaptable para futuros servicios.",
+                "Diseño modular implementado en WordPress.",
+                "Mayor percepción de accesibilidad y cercanía."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "Como siguiente paso, se propone integrar herramientas de <strong>analítica web</strong> y un <strong>panel CMS personalizado</strong> que permita al cliente administrar tasas, formularios y contenidos de manera dinámica."
+        }
+      },
+
+      {
+        "slug": "fortalecimiento-marco-juridico-cambio-climatico",
+        "title": "Fortaleciendo el marco jurídico por un futuro sostenible — POLEA, SEMARNAT e INECC",
+        "metaDescription": "Diseño UI para la landing del proyecto 'Fortalecimiento al Marco Jurídico en Materia de Cambio Climático', impulsado por México-UK PACT, POLEA, SEMARNAT e INECC, enfocado en la acción climática y la justicia ambiental.",
+        "description": "Diseño UI de la landing del proyecto 'Fortalecimiento al Marco Jurídico en Materia de Cambio Climático a Nivel Federal'. Una propuesta visual clara, institucional y accesible que comunica acción climática, colaboración internacional y justicia ambiental.",
+        "imgSrc": "https://i.imgur.com/nbUQ8HU.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/BH4aAoA.png",
+            "alt": "Vista principal de la landing del proyecto de fortalecimiento jurídico"
+          },
+          {
+            "src": "https://i.imgur.com/PRfnmwu.png",
+            "alt": "Diseño de la sección de documentos de consulta"
+          },
+          {
+            "src": "https://i.imgur.com/OWBOys2.png",
+            "alt": "Diseño responsive en dispositivos móviles"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/PB5XYjwjaRr4XlbaEOEbxF/POLEA-Landing?node-id=0-1&t=CIuzZR6rjzUqxehD-1",
+        "figmaEmbed": "https://embed.figma.com/design/PB5XYjwjaRr4XlbaEOEbxF/POLEA-Landing?node-id=0-1&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": "Ver demo",
+        "demoUrl": "https://www.accionesclimaticasmx.com/",
+
+        "categoryIds": ["ui-ux", "landing"],
+
+        "overview": "El proyecto <strong>“Fortalecimiento al Marco Jurídico en Materia de Cambio Climático a Nivel Federal”</strong> surge de la colaboración entre <strong>México-UK PACT</strong>, <strong>POLEA</strong>, <strong>SEMARNAT</strong> e <strong>INECC</strong>, con el objetivo de consolidar una acción climática eficaz, justa y sostenible.<br/><br/>Se diseñó una landing institucional que comunica de forma clara los objetivos del proyecto, los documentos de consulta y los eventos relacionados, promoviendo una lectura fluida y accesible en todos los dispositivos.",
+
+        "timeframe": "1.5 Semanas",
+        "role": "Diseñador UI / UX",
+        "tools": "Figma, FigJam, Illustrator, Photoshop",
+
+        "challenge": {
+          "description": "El reto fue traducir un tema técnico y jurídico en una interfaz clara y visualmente atractiva, manteniendo el carácter institucional y fomentando la participación ciudadana en temas de justicia climática y sostenibilidad."
+        },
+
+        "goal": {
+          "description": "Diseñar una landing funcional y estética que reflejara colaboración, acción climática y transparencia, guiando al usuario con un flujo visual coherente y accesible."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Concepto Visual",
+              "description": "Se definió una línea gráfica institucional pero cercana, con un sistema visual que guiara la lectura del usuario mediante texturas y una línea temática recurrente:",
+              "list": [
+                "Diseño con estructura modular adaptable a desktop, tablet y mobile.",
+                "Línea visual continua que conecta las secciones.",
+                "Uso de iconografía y texturas naturales para reforzar la temática ambiental."
+              ]
+            },
+            {
+              "title": "Paleta de Color",
+              "description": "La elección cromática comunica equilibrio entre naturaleza, energía y seriedad institucional:",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FAA94A] w-6 h-6 circle-color'></span> #FAA94A — energía y acción.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#00D4BB] w-6 h-6 circle-color'></span> #00D4BB — sostenibilidad y equilibrio.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#0A2950] w-6 h-6 circle-color'></span> #0A2950 — solidez y confianza institucional.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FEFBF4] w-6 h-6 circle-color'></span> #FEFBF4 — claridad y accesibilidad."
+              ]
+            },
+            {
+              "title": "Extensión del Sistema UI",
+              "description": "Se desarrolló un pequeño <strong>UI Kit</strong> complementario para la plataforma de encuestas asociada al proyecto, manteniendo consistencia visual y usabilidad."
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Resultados",
+              "description": "El diseño logró transmitir la seriedad del proyecto sin perder accesibilidad visual, facilitando la consulta de documentos y materiales de comunicación. <br/><br/>El sitio contribuyó a fortalecer la identidad digital del programa y promover la participación ciudadana en temas de cambio climático.",
+              "list": [
+                "Interfaz clara y adaptable a todos los dispositivos.",
+                "Comunicación visual coherente con la identidad institucional.",
+                "Mayor facilidad para acceder a materiales de comunicación y documentos oficiales.",
+                "Diseño UI extendido al ecosistema de encuestas complementarias."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "El siguiente paso recomendado es la integración de componentes interactivos que faciliten la visualización de resultados de encuestas y estadísticas sobre participación ciudadana, reforzando la transparencia y el acceso a la información pública."
+        }
+      },
+
+      {
+        "slug": "matachora-ilustraciones",
+        "title": "Matachora — Serie de ilustraciones espaciales",
+        "metaDescription": "Serie de ilustraciones conceptuales con temática espacial para Matachora, una marca de papeles para cigarros artesanales. Inspiradas en el concepto de 'viaje mágico' y creadas íntegramente en Adobe Illustrator.",
+        "description": "Ilustraciones creadas para <strong>Matachora</strong>, una marca de papeles para cigarros inspirada en la experiencia de un 'viaje mágico'. La serie toma elementos del universo, la expansión y la energía psicodélica como metáfora visual del proceso creativo y la libertad. <br/><br/>Cada pieza fue elaborada en Adobe Illustrator, explorando formas geométricas y colores vibrantes que evocan un viaje cósmico dentro de la identidad de la marca.",
+        "imgSrc": "https://i.imgur.com/zyWruai.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/ICvNOxY.jpeg",
+            "alt": "Ilustración principal de la serie Matachora"
+          },
+          {
+            "src": "https://i.imgur.com/UVNV4oB.jpeg",
+            "alt": "Detalle de ilustración con temática espacial"
+          },
+          {
+            "src": "https://i.imgur.com/HiO5a7x.jpeg",
+            "alt": "Composición geométrica inspirada en un viaje cósmico"
+          }
+        ],
+
+        "textDemoUrl": "Descargar ilustraciones",
+        "demoUrl": "https://drive.google.com/drive/folders/16KlrBM62otxjwK6AZ7BEUSzpFdZ0mWEY?usp=drive_link",
+
+        "categoryIds": ["graphics", "illustration", "branding"],
+
+        "overview": "Serie de ilustraciones conceptuales con temática espacial para Matachora, una marca de papeles para cigarros. La idea detrás del proyecto fue representar visualmente la noción de un 'viaje mágico' a través del color, la forma y el movimiento. Se buscó un equilibrio entre lo místico y lo lúdico, reforzando la identidad artesanal de la marca.",
+
+        "timeframe": "3 Semanas",
+        "role": "Ilustrador / Diseñador Gráfico",
+        "tools": "Adobe Illustrator",
+
+        "concept": {
+          "description": "La propuesta visual parte de la idea del viaje interior, utilizando el espacio exterior como metáfora. Se exploraron formas curvas, planetas abstractos, texturas gaseosas y paletas neón que evocan expansión, curiosidad y libertad sensorial."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Exploración Visual",
+              "description": "Se definieron referencias estéticas del arte psicodélico y la ilustración digital contemporánea, mezclando geometría con composición orgánica para generar movimiento y profundidad."
+            },
+            {
+              "title": "Color y Composición",
+              "description": "La paleta se centra en contrastes de neones y oscuros cósmicos para representar la sensación de inmersión en otro plano visual.",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#3D1A78] w-6 h-6 circle-color'></span> Tonos púrpura y azul para profundidad espacial.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FF5C8D] w-6 h-6 circle-color'></span> Colores vibrantes para acentuar la energía del 'viaje'.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#F8E71C] w-6 h-6 circle-color'></span> Toques luminosos que equilibran la composición."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Resultado",
+              "description": "Una serie visual sólida que refuerza la identidad artística de Matachora y le da un carácter distintivo dentro del mercado de papeles artesanales.",
+              "list": [
+                "Conjunto de tres ilustraciones principales con variaciones cromáticas.",
+                "Exploración visual coherente con la filosofía de la marca.",
+                "Diseños aplicables a empaques, piezas digitales y campañas visuales."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "La serie podría expandirse hacia animaciones o visuales interactivos para campañas digitales o merchandising, manteniendo la estética psicodélica y espacial como eje creativo."
+        }
+      },
+
+      {
+        "slug": "farmvalley",
+        "title": "FarmValley — Conectando la agroindustria con tecnología",
+        "metaDescription": "Diseño y desarrollo UI/UX de FarmValley, la plataforma que conecta productores y compradores del sector agropecuario mediante canales especializados. Startup construida con Next.js e internacionalización.",
+        "description": "FarmValley es una startup enfocada en conectar a la agroindustria mediante una plataforma digital que une productores, compradores, asesores y empresas del sector hortícola y frutícola. Participé en el diseño de la landing page y en el desarrollo frontend con Next.js, priorizando una experiencia fluida, moderna y cercana al entorno agrícola.",
+        "imgSrc": "https://i.imgur.com/aMPvCCk.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/zHRRVQm.png",
+            "alt": "Vista general de la landing de FarmValley"
+          },
+          {
+            "src": "https://i.imgur.com/wkyULQL.png",
+            "alt": "Diseño UI de secciones informativas de la plataforma"
+          },
+          {
+            "src": "https://i.imgur.com/oIYOayf.png",
+            "alt": "Componentes de interfaz y navegación en FarmValley"
+          }
+        ],
+
+        "textFigmaUrl": "Ver Figma",
+        "figmaUrl": "https://www.figma.com/design/nlbAKj1a3Kzb8wS7tKNh0I/Farm-Valley?node-id=0-1&t=hbvdi7KqhyAHjGpL-1",
+        "figmaEmbed": "https://embed.figma.com/design/nlbAKj1a3Kzb8wS7tKNh0I/Farm-Valley?node-id=0-1&embed-host=share",
+
+        "repoUrl": null,
+        "textRepoUrl": "Ver repositorio",
+
+        "textDemoUrl": null,
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "frontend", "startup", "landing"],
+
+        "overview": "FarmValley es una plataforma que impulsa la digitalización del mercado agropecuario en Latinoamérica. <br/><br/>Permite que agricultores, empresas, asesores y compradores interactúen en un entorno confiable donde pueden publicar ventas, rentas, cosechas o servicios. El proyecto fue concebido con un enfoque de diseño limpio, natural y de fácil navegación, integrando tecnología moderna para su crecimiento escalable.",
+
+        "timeframe": "3 Semanas",
+        "role": "Diseñador UI/UX y Desarrollador Frontend",
+        "tools": "Figma, Next.js, React, i18next, TailwindCSS, Vercel",
+
+        "challenge": {
+          "description": "El reto fue diseñar una interfaz atractiva y funcional para un público agrícola no tan familiarizado con plataformas digitales, equilibrando una estética moderna con una sensación de confianza y cercanía."
+        },
+
+        "goal": {
+          "description": "Crear una landing page representativa de la startup que comunique su propuesta de valor, su carácter tecnológico y su conexión con el campo, manteniendo claridad, ritmo visual y consistencia de marca."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Identidad Visual",
+              "description": "Se definió un estilo visual inspirado en la naturaleza y la tecnología, con énfasis en texturas orgánicas y colores naturales para transmitir confianza y sostenibilidad.",
+              "list": [
+                "Uso de ilustraciones y texturas de plantas.",
+                "Composición modular para escalar el contenido fácilmente.",
+                "Diseño minimalista que comunica profesionalismo sin perder calidez."
+              ]
+            },
+            {
+              "title": "Paleta de Color",
+              "description": "La paleta cromática equilibra naturalidad y contraste:",
+              "list": [
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#18B24F] w-6 h-6 circle-color'></span> #18B24F — color principal, naturaleza y crecimiento.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#283334] w-6 h-6 circle-color'></span> #283334 — tipografía y estructura, transmite solidez.",
+                "<span class='inline-block shadow-lg mr-1 rounded-full bg-[#FFFBE9] w-6 h-6 circle-color'></span> #FFFBE9 — fondo cálido que suaviza el contraste."
+              ]
+            },
+            {
+              "title": "Desarrollo Frontend",
+              "description": "Implementación con Next.js y soporte multilenguaje (internacionalización) para futuras expansiones regionales.",
+              "list": [
+                "Optimización SEO y tiempos de carga bajos.",
+                "Internacionalización con i18next.",
+                "Despliegue en Vercel con CI/CD."
+              ]
+            }
+          ]
+        },
+
+        "features": {
+          "childs": [
+            {
+              "title": "Características principales",
+              "description": "El diseño y desarrollo se centraron en una estructura escalable, adaptable y centrada en el usuario.",
+              "list": [
+                "Diseño responsive adaptado a desktop, tablet y móvil.",
+                "Sistema modular de componentes reutilizables.",
+                "Integración lista para autenticación y paneles dinámicos.",
+                "Enfoque visual coherente con la identidad agrícola y tecnológica."
+              ]
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Resultados",
+              "description": "El proyecto definió la identidad visual inicial de FarmValley y estableció la base tecnológica para su expansión como plataforma digital en el sector agropecuario.",
+              "list": [
+                "Diseño y desarrollo listos para escalamiento del producto.",
+                "Landing funcional y visualmente coherente con el público objetivo.",
+                "Mejor posicionamiento de marca dentro del sector agro-industrial digital."
+              ]
+            }
+          ]
+        },
+
+        "future": null
+      },
+
+      {
         "slug": "yoorco",
         "title": "Impulsando el crecimiento digital a través del diseño — Yoorco Landing Page",
+        "metaDescription": "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
         "description": "Una landing page estratégica para Yoorco: rediseñada para reflejar profesionalismo, claridad y crecimiento tecnológico, impulsando su modelo de suscripción digital.",
         "imgSrc": "https://i.imgur.com/Z0EcRIQh.jpeg",
 
         "gallery": [
-          { "src": "https://i.imgur.com/UEmRhmm.png", "alt": "Vista del dashboard del proyecto" },
-          { "src": "https://i.imgur.com/2LHwU02.png", "alt": "Diseño del perfil de usuario en móvil" },
-          { "src": "https://i.imgur.com/eZ9F2eH.png", "alt": "Diseño del perfil de usuario en móvil" }
+          {
+            "src": "https://i.imgur.com/UEmRhmm.png",
+            "alt": "Vista del dashboard del proyecto"
+          },
+          {
+            "src": "https://i.imgur.com/2LHwU02.png",
+            "alt": "Diseño del perfil de usuario en móvil"
+          },
+          {
+            "src": "https://i.imgur.com/eZ9F2eH.png",
+            "alt": "Diseño del perfil de usuario en móvil"
+          }
         ],
 
         "textFigmaUrl": "Ver Figma",
@@ -308,116 +1039,82 @@
       },
 
       {
-        "slug": "farmvalley-landing",
-        "title": "Landing Page FarmValley",
-        "description": "Diseño y desarrollo frontend para una marca de productos orgánicos.",
-        "imgSrc": "https://i.imgur.com/aMPvCCkl.jpeg",
-        "categoryIds": ["ui-ux", "frontend"]
-      },
-      {
-        "slug": "kairos-lighting",
-        "title": "Landing Page Kairos Lighting",
-        "description": "Interfaz para una empresa de iluminación inteligente.",
-        "imgSrc": "https://i.imgur.com/76jQKxal.jpeg",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "fondo-real-mx",
-        "title": "Landing Page Fondo Real MX",
-        "description": "Prototipado y diseño de experiencia para una fintech.",
-        "imgSrc": "https://i.imgur.com/vEFTvgol.jpeg",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "boda-jimena-canek",
-        "title": "Invitación Web Boda",
-        "description": "Desarrollo full-stack de una invitación de boda interactiva.",
-        "imgSrc": "https://i.imgur.com/on31UDFl.jpeg",
-        "categoryIds": ["ui-ux", "frontend", "cms"]
-      },
-      {
-        "slug": "polea-semarnat",
-        "title": "Landing Polea / Semarnat",
-        "description": "Interfaz para una iniciativa gubernamental enfocada en la usabilidad.",
-        "imgSrc": "https://i.imgur.com/nbUQ8HUh.jpeg",
-        "categoryIds": ["ui-ux", "frontend"]
-      },
-      {
-        "slug": "ilustraciones-mata-chora-1",
-        "title": "Ilustraciones Mata Chora",
-        "description": "Serie de ilustraciones digitales para marca personal.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["graphics"]
-      },
-      {
-        "slug": "ilustraciones-mata-chora-2",
-        "title": "Ilustraciones Mata Chora (Vol. 2)",
-        "description": "Continuación de la serie de ilustraciones con un nuevo estilo.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["graphics"]
-      },
-      {
-        "slug": "uniformes-alpura",
-        "title": "Uniformes Alpura",
-        "description": "Diseño gráfico y conceptualización para línea de uniformes.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["graphics"]
-      },
-      {
-        "slug": "midogu",
-        "title": "App Midogu",
-        "description": "Diseño y desarrollo de una aplicación para el cuidado de mascotas.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["ui-ux", "frontend"]
-      },
-      {
         "slug": "cerium",
-        "title": "Plataforma Cerium",
-        "description": "Diseño de interfaz para una plataforma de gestión de datos.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "youth-cup",
-        "title": "Youth Cup Website",
-        "description": "Desarrollo frontend y gestión de contenido para un torneo deportivo.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["frontend", "cms"]
-      },
-      {
-        "slug": "lanresc",
-        "title": "Sistema Lanresc",
-        "description": "Diseño de experiencia de usuario para un sistema interno de logística.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["ui-ux"]
-      },
-      {
-        "slug": "premios-monarca",
-        "title": "Premios Monarca 2022-2024",
-        "description": "Desarrollo de micrositios para invitaciones a eventos anuales.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["frontend", "cms"]
-      },
-      {
-        "slug": "contecon-manzanillo",
-        "title": "Web Contecon Manzanillo",
-        "description": "Desarrollo frontend con integración de CMS para un portal corporativo.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["frontend", "cms"]
-      },
-      {
-        "slug": "bocar",
-        "title": "Portal Bocar",
-        "description": "Desarrollo de componentes para un portal de un proveedor automotriz.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["frontend", "cms"]
-      },
-      {
-        "slug": "astom",
-        "title": "Landing Page Astom",
-        "description": "Desarrollo de un micrositio con animaciones complejas.",
-        "imgSrc": "/assets/projects/placeholder.png",
-        "categoryIds": ["frontend", "cms"]
+        "title": "Cerium — App de Mantenimiento de Redes",
+        "metaDescription": "Diseño UI/UX de una aplicación para Cerium, especializada en escaneo de códigos y mantenimiento de infraestructuras tecnológicas para el sector hotelero.",
+        "description": "Diseño UI/UX de la app Cerium, creada para escanear códigos y facilitar el mantenimiento de redes tecnológicas en hoteles, asegurando eficiencia, seguridad y una experiencia intuitiva para los usuarios técnicos.",
+        "imgSrc": "https://i.imgur.com/PhOwnjt.jpeg",
+
+        "gallery": [
+          {
+            "src": "https://i.imgur.com/NqPdwyZ.png",
+            "alt": "Pantalla de escaneo de códigos en la app Cerium"
+          },
+          {
+            "src": "https://i.imgur.com/Rt0riQ4.png",
+            "alt": "Interfaz de seguimiento y mantenimiento de red"
+          },
+          {
+            "src": "https://i.imgur.com/5RgtZPA.png",
+            "alt": "Pantalla de detalles de infraestructura tecnológica"
+          }
+        ],
+
+        "figmaUrl": "https://www.figma.com/design/2ItimDPCHjXKIkpK2k48tC/CERIUM-AR-APP?node-id=0-1&t=pSogxvtuLnuDXjtt-1",
+        "figmaEmbed": "https://embed.figma.com/design/2ItimDPCHjXKIkpK2k48tC/CERIUM-AR-APP?node-id=0-1&embed-host=share",
+        "repoUrl": null,
+        "demoUrl": null,
+
+        "categoryIds": ["ui-ux", "frontend"],
+
+        "overview": "<strong>Cerium</strong> es una compañía tecnológica especializada en infraestructuras de red y servicios de comunicaciones en el sector hotelero. La app fue diseñada para que técnicos puedan escanear códigos de equipos y gestionar el mantenimiento de manera rápida, eficiente y segura, fortaleciendo la relación con los clientes y garantizando la integridad de las redes.",
+
+        "timeframe": "2 Semanas",
+        "role": "Diseñador UI / UX",
+        "tools": "Figma, Illustrator, Photoshop",
+
+        "challenge": {
+          "description": "El reto principal fue diseñar una interfaz clara e intuitiva que permitiera a los técnicos gestionar el mantenimiento de redes complejas mediante escaneo de códigos, sin sacrificar rapidez ni precisión."
+        },
+
+        "goal": {
+          "description": "Optimizar la experiencia de los usuarios técnicos, reduciendo errores y tiempos de intervención, y reflejar visualmente la identidad tecnológica y profesional de Cerium."
+        },
+
+        "process": {
+          "childs": [
+            {
+              "title": "Investigación y Análisis",
+              "description": "Se estudiaron los flujos de trabajo de los técnicos, las necesidades de información en campo y los puntos críticos para la gestión de redes hoteleras."
+            },
+            {
+              "title": "Wireframes y Prototipado",
+              "description": "Se definieron flujos de escaneo, seguimiento de incidencias y mantenimiento preventivo mediante wireframes y prototipos interactivos en Figma."
+            },
+            {
+              "title": "Diseño UI",
+              "description": "Se creó un diseño limpio, profesional y minimalista que prioriza la claridad de información y la facilidad de uso en dispositivos móviles."
+            }
+          ]
+        },
+
+        "results": {
+          "childs": [
+            {
+              "title": "Impacto",
+              "description": "La app permitió optimizar los procesos de mantenimiento de redes, facilitando la identificación rápida de equipos y el seguimiento de incidencias.",
+              "list": [
+                "Interfaz clara y funcional para técnicos.",
+                "Reducción de errores en el mantenimiento de la red.",
+                "Experiencia coherente con la identidad profesional de Cerium."
+              ]
+            }
+          ]
+        },
+
+        "future": {
+          "description": "Se planea integrar funciones avanzadas como historial de mantenimiento, notificaciones de incidencias y dashboards de control para supervisores de red."
+        }
       }
     ]
   }

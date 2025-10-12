@@ -1,0 +1,51 @@
+---
+interface Child {
+  name: string;
+  age: string;
+  occupation: string;
+  goals: string;
+  frustrations: string;
+  needs: string;
+}
+
+interface Props {
+  child: Child;
+}
+
+const { child } = Astro.props;
+---
+
+<article
+  class="h-full flex flex-col p-6 border-3 border-primary rounded-2xl bg-secondary text-primary"
+>
+  <header class="pb-4 border-b border-primary/20">
+    <h3 class="font-primary text-2xl font-bold">{child.name}</h3>
+    <p class="font-secondary text-sm text-primary/80">
+      {child.age} &bull; {child.occupation}
+    </p>
+  </header>
+
+  <ul class="mt-4 space-y-4 font-secondary text-base flex-grow">
+    <li class="flex items-start gap-3">
+      <span class="text-xl mt-1">🎯</span>
+      <div>
+        <strong class="font-bold block">Metas:</strong>
+        <p class="text-primary/90">{child.goals}</p>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="text-xl mt-1">😕</span>
+      <div>
+        <strong class="font-bold block">Frustraciones:</strong>
+        <p class="text-primary/90">{child.frustrations}</p>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <span class="text-xl mt-1">❤️</span>
+      <div>
+        <strong class="font-bold block">Necesidades:</strong>
+        <p class="text-primary/90">{child.needs}</p>
+      </div>
+    </li>
+  </ul>
+</article>

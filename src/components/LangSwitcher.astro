@@ -15,6 +15,12 @@ const currentLang = LANGUAGES[currentLocale];
 const otherLangs = Object.entries(LANGUAGES).filter(
   ([code]) => code !== currentLocale
 );
+
+// Obtener la ruta actual sin el idioma
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const pathWithoutLang = pathSegments.length > 1 && pathSegments[0] === currentLocale 
+  ? "/" + pathSegments.slice(1).join("/")
+  : Astro.url.pathname;
 ---
 
 <div class={combinedClasses}>
@@ -30,7 +36,10 @@ const otherLangs = Object.entries(LANGUAGES).filter(
     {
       otherLangs.map(([code, lang]) => (
         <li>
-          <a class="flex items-center gap-1 px-1 py-2 decoration-none text-primary text-sm text-bold rounded-sm transition-all hover:bg-primary-light" href={`/${code}/`}>
+          <a 
+            class="flex items-center gap-1 px-1 py-2 decoration-none text-primary text-sm text-bold rounded-sm transition-all hover:bg-primary-light" 
+            href={`/${code}${pathWithoutLang}/`}
+          >
             <Flag code={code} class="flag-icon" />
             <span class="font-secondary">&nbsp;{lang.name}</span>
           </a>

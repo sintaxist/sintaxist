@@ -44,7 +44,7 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
       width={isLarge ? 800 : 400}
       height={isLarge ? 600 : 300}
       loading="lazy"
-      class="project-image w-full h-full object-cover transition-all group-hover:scale-110"
+      class="project-image w-full h-full object-cover transition-all group-hover:scale-105"
       onload="this.classList.add('loaded')"
     />
 
@@ -74,9 +74,8 @@ const { project, lang, isLarge = "small", categories, index, className } = Astro
             class="font-secondary text-base line-clamp-2"
             title={project.description}
             aria-label={project.description}
-          >
-            {project.description}
-          </p>
+            set:html={project.description}
+          ></p>
         )
       }
       <div class="view-more-link flex items-center gap-2 font-secondary mt-2">
