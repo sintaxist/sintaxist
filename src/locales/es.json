@@ -28,11 +28,11 @@
   },
   "about": {
     "title": "Conóceme",
-    "paragraph1": "Soy UI/UX Engineer con más de 06 años de experiencia creando experiencias digitales que combinan diseño centrado en las personas con implementación técnica de alto nivel.",
+    "paragraph1": "Soy UI/UX Engineer con más de 6 años de experiencia creando experiencias digitales que combinan diseño centrado en las personas con implementación técnica de alto nivel.",
     "paragraph2": "He trabajado en proyectos para fintech, banca y eventos sociales, donde transformo ideas en productos digitales escalables, funcionales y visualmente atractivos. Mi enfoque siempre prioriza la usabilidad, la accesibilidad y la calidad en cada detalle.",
     "stats": [
       {
-        "to": 5,
+        "to": 6,
         "suffix": "+",
         "text": "Años de <br/> experiencia"
       },
@@ -186,12 +186,12 @@
   },
   "projectsPage": {
     "title": "Últimos proyectos",
-    "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "description": "Cada proyecto es un viaje y una contribución. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "ctaAllProjects": "Ver todos los proyectos",
     "ctaBack": "Regresar",
     "ctaBacktoHome": "Volver al Inicio",
     "allProjectsTitle": "Todos mis Proyectos",
-    "allProjectsDescription": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
+    "allProjectsDescription": "Cada proyecto es un viaje y una contribución. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "viewMore": "Ver más",
     "titles": {
       "challenge": "El problema",
