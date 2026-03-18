@@ -10,8 +10,8 @@
   "sections": {
     "home": "Inicio",
     "aboutMe": "Sobre mí",
-    "projects": "Ultimos proyectos",
-    "experience": "Mí experiencia",
+    "projects": "Últimos proyectos",
+    "experience": "Mi experiencia",
     "skills": "Skills",
     "contact": "Hablemos"
   },
@@ -27,7 +27,7 @@
     "ctaSecondary": "Ver proyectos"
   },
   "about": {
-    "title": "Conoceme",
+    "title": "Conóceme",
     "paragraph1": "Soy UI/UX Engineer con más de 06 años de experiencia creando experiencias digitales que combinan diseño centrado en las personas con implementación técnica de alto nivel.",
     "paragraph2": "He trabajado en proyectos para fintech, banca y eventos sociales, donde transformo ideas en productos digitales escalables, funcionales y visualmente atractivos. Mi enfoque siempre prioriza la usabilidad, la accesibilidad y la calidad en cada detalle.",
     "stats": [
@@ -185,7 +185,7 @@
     "copyright": "Alejandro Canek Fernández Maya. Todos los derechos reservados."
   },
   "projectsPage": {
-    "title": "Ultimos proyectos",
+    "title": "Últimos proyectos",
     "description": "Cada proyecto es un viaje y una colaboración. Aquí presento algunos de los caminos que he recorrido junto a marcas y equipos para transformar ideas en plataformas funcionales y memorables. Explora el proceso, la tecnología y los resultados.",
     "ctaAllProjects": "Ver todos los proyectos",
     "ctaBack": "Regresar",

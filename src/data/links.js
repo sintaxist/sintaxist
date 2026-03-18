@@ -30,4 +30,5 @@ export const socialLinks = [
   }
 ];
 
-export const schedulingLink = "https://calendly.com/alejandro-canek/hablemos-alejandro-canek";
+// export const schedulingLink = "https://calendly.com/alejandro-canek/hablemos-alejandro-canek";
+export const schedulingLink = "https://wa.me/+525533256703";
